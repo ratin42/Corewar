@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/18 19:51:09 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/19 15:42:22 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ INC_PATH		:=	includes
 LIB_PATH		:=	libft
 
 SRC_NAME1		:=	asm.c \
+					get_file.c \
+					get_header.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a
