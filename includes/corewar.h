@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/19 16:01:46 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/19 16:36:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 int	 parse_file(t_asm *asmbly, char *file);
 void get_comment(t_asm *asmbly, char *str);
 void get_name(t_asm *asmbly, char *str);
+void get_instruction(t_asm *asmbly, char *str);
 
 #endif
