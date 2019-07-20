@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   get_opcode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/20 22:15:37 by ratin            ###   ########.fr       */
+/*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
+/*   Updated: 2019/07/20 22:16:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "corewar.h"
 
-typedef struct			s_asm
+void	get_opcode(t_asm *asmbly, char *str, int line)
 {
-	char				*name;
-	char				*comment;
-	struct s_instru		*instru;
-}						t_asm;
+	int		i;
+	int		y;
+	char	*opcode;
+	t_instru	*instru;
 
-typedef struct			s_param
-{
-	unsigned int		type;
-	int					value;
-	struct s_param		*next;
-}						t_param;
-
-typedef struct			s_instru
-{
-	char				*label;
-	char				*opcode;
-	char				*ocp;
-	int					line;
-	struct s_param		*param;
-	struct s_instru		*next;
-}						t_instru;
-
-#endif
+	i = 0;
+	y = 0;
+	instru = find_instru(asmbly, line);
+	while (str[i] && str[i] == ' ')
+		i++;
+	while (str[i + y] && str[i + y] != ' ')
+		y++;
+	if (!(opcode = ft_strsub(str, i, y)))
+		exit(ERROR);
+	instru->opcode = opcode;
+	(void)asmbly;
+	(void)line;
+}

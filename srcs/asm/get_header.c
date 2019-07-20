@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/19 16:18:55 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/20 22:06:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_name(t_asm *asmbly, char *str)
 	{
 		if (str[i] != name[i])
 		{
-			ft_putstr("Lexical error at [1:");
+			ft_putstr("Lexical error for name at [1:");
 			ft_putnbr(i);
 			ft_putstr("]\n");
 			exit(ERROR);
@@ -48,7 +48,7 @@ void	get_comment(t_asm *asmbly, char *str)
 	{
 		if (str[i] != comment[i])
 		{
-			ft_putstr("Lexical error at [2:");
+			ft_putstr("Lexical error for comment at [2:");
 			ft_putnbr(i);
 			ft_putstr("]\n");
 			exit(ERROR);

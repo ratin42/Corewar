@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/19 16:35:39 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/20 22:18:55 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ SRC_NAME1		:=	asm.c \
 					get_file.c \
 					get_header.c \
 					get_instruction.c \
+					instruction.c \
+					get_opcode.c \
+					debug.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a
@@ -28,7 +31,7 @@ LIB_LINK		:=	-L $(LIB_PATH) -lft
 OBJ1			:=	$(addprefix $(OBJ_PATH)/,$(SRC_NAME1:.c=.o))
 INCS			:=	-I $(LIB_PATH)/$(INC_DIR) -I $(INC_DIR)
 CC				:=	gcc
-CFLAGS			:=	-Wall -Wextra -Werror
+CFLAGS			:=	-Wall -Wextra -Werror -g
 C_GREEN			:=	"\033[32m"
 C_BLUE			:=	"\033[36m"
 C_BASE			:=	"\033[00m"
