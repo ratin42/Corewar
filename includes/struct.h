@@ -6,17 +6,37 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/20 22:15:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/21 01:09:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+struct					s_type
+{
+	int					param1;
+	int					param2;
+	int					param3;
+};
+
+typedef struct			s_op
+{
+	char				*name;
+	int					nbr_of_param;
+	struct s_type		type_of_param;
+	int					opcode;
+	int					nbr_of_cycle;
+	char				*description;
+	unsigned int		coding_opcode;
+	unsigned int		direct_size;
+}						t_op;
+
 typedef struct			s_asm
 {
 	char				*name;
 	char				*comment;
+	struct s_op			op_tab[17];
 	struct s_instru		*instru;
 }						t_asm;
 
@@ -31,7 +51,6 @@ typedef struct			s_instru
 {
 	char				*label;
 	char				*opcode;
-	char				*ocp;
 	int					line;
 	struct s_param		*param;
 	struct s_instru		*next;

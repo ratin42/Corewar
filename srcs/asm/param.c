@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   param.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/20 23:38:48 by ratin            ###   ########.fr       */
+/*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
+/*   Updated: 2019/07/21 00:15:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			print_instruction(t_asm *asmbly)
+t_param			*create_param(void)
 {
-	t_instru	*instru;
+	t_param		*new_param;
 
-	instru = asmbly->instru;
-	printf("\n~~~ instruction are ~~~\n");
-	while (instru)
-	{
-		printf("line = %d\n", instru->line);
-		printf("label = %s\n", instru->label);
-		printf("opcode = %s\n", instru->opcode);
-		instru = instru->next;
-		printf("___________________________________\n");
-	}
-	printf("\n~~~       FIN       ~~~\n");
+	if (!(new_param = malloc(sizeof(*new_param))))
+		exit(ERROR);
+	new_param->value = 0;
+	new_param->next = NULL;
+	return (new_param);
 }
