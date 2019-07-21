@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 00:15:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/21 23:58:51 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ void			get_label(t_asm *asmbly, char *str, int line)
 
 void			get_instruction(t_asm *asmbly, char *str, int line)
 {
+	int			indexer;
+
+	indexer = 0;
 	add_instru(asmbly, line);
 	if (ft_strchr(str, LABEL_CHAR) != NULL)
 		get_label(asmbly, str, line);
-	get_opcode(asmbly, str, line);
-	//get_params(asmbly, str, line);
+	indexer = get_opcode(asmbly, str, line);
+	get_params(asmbly, &str[indexer], line);
 }

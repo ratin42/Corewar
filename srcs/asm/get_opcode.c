@@ -6,28 +6,35 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 01:20:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/21 22:53:33 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			check_opcode(char *opcode, int line)
+void			check_opcode(char *opcode, int line, char *str, int i_opcode)
 {
-	extern int	g_op_tab[17];
+	extern t_op	g_op_tab[17];
 	int			i;
 
 	i = 0;
-	while (i < 17)
+	while (g_op_tab[i].name != NULL)
 	{
-		printf("opcode = %s\n", (g_op_tab[i]).name);
+		if (ft_strcmp(opcode, g_op_tab[i].name) == 0)
+			return ;
 		i++;
 	}
-	(void)opcode;
-	(void)line;
+	ft_putstr("Lexical error for opcode at [");
+	ft_putnbr(line);
+	ft_putchar(':');
+	ft_putnbr(i);
+	ft_putstr("] ->");
+	ft_putstr(&str[i_opcode]);
+	ft_putchar('\n');
+	exit(ERROR);
 }
 
-void			get_opcode(t_asm *asmbly, char *str, int line)
+int				get_opcode(t_asm *asmbly, char *str, int line)
 {
 	int			i;
 	int			y;
@@ -41,6 +48,8 @@ void			get_opcode(t_asm *asmbly, char *str, int line)
 	{
 		while (str[i] && str[i - 1] != ':')
 			i++;
+		if (str[i - 2] == '%')
+			i = 0;
 	}
 	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
 		i++;
@@ -50,6 +59,7 @@ void			get_opcode(t_asm *asmbly, char *str, int line)
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
 		exit(ERROR);
-	check_opcode(opcode, line);
+	check_opcode(opcode, line, str, i);
 	instru->opcode = opcode;
+	return (i);
 }

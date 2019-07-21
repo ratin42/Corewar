@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 01:09:20 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/21 23:53:15 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct			s_asm
 typedef struct			s_param
 {
 	unsigned int		type;
+	char				*param;
 	int					value;
+	int					line;
 	struct s_param		*next;
 }						t_param;
 
@@ -52,6 +54,7 @@ typedef struct			s_instru
 	char				*label;
 	char				*opcode;
 	int					line;
+	int					nbr_of_params;
 	struct s_param		*param;
 	struct s_instru		*next;
 }						t_instru;
