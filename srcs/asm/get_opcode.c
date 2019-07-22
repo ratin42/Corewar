@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 22:53:33 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 21:09:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 		i++;
 	while (str[i] && str[i] == ' ')
 		i++;
-	while (str[i + y] && str[i + y] != ' ')
+	while (str[i + y] && str[i + y] != 32
+		&& (str[i + y] < 9 || str[i + y] > 13))
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
 		exit(ERROR);

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 23:58:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 21:25:31 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			verify_label(char *label, int line)
 	}
 }
 
-void			get_label(t_asm *asmbly, char *str, int line)
+int				get_label(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*instru;
 	char		*label;
@@ -54,6 +54,9 @@ void			get_label(t_asm *asmbly, char *str, int line)
 		exit(ERROR);
 	verify_label(label, line);
 	instru->label = label;
+	if (check_opc_presence(str) == 0)
+		return (1);
+	return (0);
 }
 
 void			get_instruction(t_asm *asmbly, char *str, int line)
@@ -66,4 +69,5 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 		get_label(asmbly, str, line);
 	indexer = get_opcode(asmbly, str, line);
 	get_params(asmbly, &str[indexer], line);
+	check_params_error(asmbly, str, line);
 }

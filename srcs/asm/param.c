@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 23:56:57 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 20:55:55 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,39 @@ int				get_nbr_of_params(char *opcode)
 	return (g_op_tab[i].nbr_of_param);
 }
 
+void			fill_params(t_asm *asmbly, char *str, int line)
+{
+	t_instru	*instru;
+	int			param_nbr;
+	int			i;
+	int			y;
+	char		*param;
+
+	i = 0;
+	param_nbr = 0;
+	instru = find_instru(asmbly, line);
+	printf("			str = %s\n", str);
+	while (str[i])
+	{
+		y = 0;
+		i++;
+		while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+			i++;
+		while (str[i + y] != ',' && str[i + y]
+			&& (str[i + y] < 9 || str[i + y] > 13))
+		{
+			if (str[i + y] == COMMENT_CHAR)
+				return ;
+			y++;
+		}
+		param = ft_strsub(str, i, y);
+		add_param(instru, line, param);
+		free(param);
+		i += y + 1;
+		param_nbr++;
+	}
+}
+
 void			get_params(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*instru;
@@ -67,7 +100,8 @@ void			get_params(t_asm *asmbly, char *str, int line)
 	i = 0;
 	instru = find_instru(asmbly, line);
 	instru->nbr_of_params = get_nbr_of_params(instru->opcode);
-	while (str[i] && str[i] != ' ')
+	while ((str[i] != 32 && (str[i] < 9 || str[i] > 13)) && str[i])
 		i++;
 	fill_params(asmbly, &str[i], line);
+	get_params_type(asmbly, &str[i], line);
 }

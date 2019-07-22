@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 23:59:04 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 21:25:47 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,6 @@ int			main(int ac, char **av)
 	print_instruction(&asmbly);
 	return (0);
 }
+
+//rajouter la gestion de declaration du label et opcode sur ligne d'apres
+//implementer check_opc_presence dams get_label

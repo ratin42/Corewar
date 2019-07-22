@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 23:58:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 20:58:12 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			print_param(t_instru *instru)
 	last = instru->param;
 	while (last)
 	{
-		printf("param = %s\n", last->param);
+		printf("	param = %-10s type = %d\n", last->param, last->type);
 		last = last->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 23:50:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 18:07:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 
 # define ERROR				-1
 # define SUCCESS			1
-# define COREWAR_INSTRUCTION1 "live ld st add sub and or xor zjmp ldi sti fork"
-# define COREWAR_INSTRUCTION2 "lld lldi lfork aff"
 
 int			parse_file(t_asm *asmbly, char *file);
 void		get_comment(t_asm *asmbly, char *str);
@@ -39,8 +37,9 @@ int			get_opcode(t_asm *asbly, char *str, int line);
 void		get_instruction(t_asm *asmbly, char *str, int line);
 void		add_instru(t_asm *asmbly, int line);
 void		get_params(t_asm *asmbly, char *str, int line);
-void		fill_params(t_asm *asmbly, char *str, int line);
-void		add_param(t_instru *instru, int line, char *param);
+void		check_params_error(t_asm *asmbly, char *str, int line);
+void		print_erro_param(char *str, int line, int error);
+void		get_params_type(t_asm *asmbly, char *str, int line);
 
 
 /*

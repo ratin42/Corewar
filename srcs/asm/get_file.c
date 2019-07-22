@@ -6,16 +6,32 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/21 22:35:00 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/22 19:58:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+static int	is_empty(char *str)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strcmp(str, "") == 0)
+		return (1);
+	while (str[i])
+	{
+		if (str[i] != 32 && (str[i] < 9 || str[i] > 13))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void		parse(t_asm *asmbly, char *str, int	turn)
 {
 	//print_instruction(asmbly);
-	if (ft_strcmp(str, "") == 0)
+	if (is_empty(str) == 1 )
 		return ;
 	if (str[0] == COMMENT_CHAR)
 		return ;
