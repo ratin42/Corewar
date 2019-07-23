@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 20:37:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:33:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		check_label(char *param)
 			return (0);
 		i++;
 	}
-	return (2);
+	return (1);
 }
 
 static int		check_ind(char *param)
@@ -92,8 +92,6 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 			param->type = T_DIR;
 		else if (check_ind(param->param) == 1)
 			param->type = T_IND;
-		else if (check_dir(param->param) == 2 || check_ind(param->param) == 2)
-			param->type = T_LAB;
 		else
 			error_type(param);
 		param = param->next;

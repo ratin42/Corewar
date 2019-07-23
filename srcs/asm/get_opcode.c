@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 19:01:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:33:37 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,18 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	instru = find_instru(asmbly, line);
 	if (ft_strchr(str, LABEL_CHAR) != NULL)
 	{
-		while (str[i] && str[i - 1] != ':')
+		while (str[i] && str[i] != ':')
+		{
+			if ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+			{
+				i = 0;
+				break ;
+			}
 			i++;
-		if (str[i - 2] == '%')
-			i = 0;
+		}
 	}
+	if (str[i] == ':')
+		i++;
 	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
 		i++;
 	while (str[i] && str[i] == ' ')

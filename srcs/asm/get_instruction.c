@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 18:58:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:26:45 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int				get_label(t_asm *asmbly, char *str, int line)
 	while ((str[y] == 32 || (str[y] >= 9 && str[y] <= 13)) && str[y])
 		y++;
 	while (str[i] && str[i] != (char)LABEL_CHAR)
+	{
+		if ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+			return (0);
 		i++;
-	if (str[i - 1] == '%')
-		return (0);
+	}
 	if (!(label = ft_strsub(str, y, i)))
 		exit(ERROR);
 	verify_label(label, line);

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 19:02:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:33:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,72 @@ int				check_nbr_of_param(t_instru *instru, char *str, int line)
 	return (0);
 }
 
+void			type_p_error(t_param *param, int line, t_instru *ins, int p_in)
+{
+	ft_putstr("bad parameter at line: ");
+	ft_putnbr(line);
+	ft_putstr(" for instruction ");
+	ft_putstr(ins->opcode);
+	ft_putstr(".\nGot ");
+	if (param->type == 1)
+		ft_putstr("register");
+	if (param->type == 2)
+		ft_putstr("direct");
+	if (param->type == 4)
+		ft_putstr("indirect");
+	ft_putstr(" for parameter number ");
+	ft_putnbr(p_in);
+	ft_putstr("\n");
+	exit(ERROR);
+}
+
+int				check_type_of_param(t_instru *instru, char *str, int line)
+{
+	t_param		*last;
+	extern t_op	g_op_tab[17];
+	int			i;
+	int			para_index;
+	int			checker;
+
+	i = 0;
+	para_index = 1;
+	last = instru->param;
+	while (g_op_tab[i].name != 0)
+	{
+		if (ft_strcmp(g_op_tab[i].name, instru->opcode) == 0)
+			break ;
+		i++;
+	}
+	while (last)
+	{
+		if (para_index == 1)
+			checker = g_op_tab[i].type_of_param.param1;
+		if (para_index == 2)
+			checker = g_op_tab[i].type_of_param.param2;
+		if (para_index == 3)
+			checker = g_op_tab[i].type_of_param.param3;
+		if (checker == 1 || checker == 2 || checker == 4)
+		{
+			if (last->type != checker)
+				type_p_error(last, line, instru, para_index);
+		}
+		else
+		{
+			if (last->type > checker)
+				type_p_error(last, line, instru, para_index);
+		}
+		para_index++;
+		last = last->next;
+	}
+	(void)str;
+	return (0);
+}
+
 void			check_params_error(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*current;	
 
 	current = find_instru(asmbly, line);
 	check_nbr_of_param(current, str, line);
+	check_type_of_param(current, str, line);
 }
