@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 19:02:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:45:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_param			*create_param(int line, char *param)
 
 	if (!(new_param = malloc(sizeof(*new_param))))
 		exit(ERROR);
-	new_param->value = 0;
 	new_param->line = line;
 	new_param->param = ft_strdup(param);
 	new_param->next = NULL;

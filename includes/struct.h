@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 19:38:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:45:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct			s_param
 {
 	int					type;
 	char				*param;
-	int					value;
 	int					line;
 	struct s_param		*next;
 }						t_param;
