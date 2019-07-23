@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 20:55:55 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 19:02:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 	i = 0;
 	param_nbr = 0;
 	instru = find_instru(asmbly, line);
-	printf("			str = %s\n", str);
 	while (str[i])
 	{
 		y = 0;

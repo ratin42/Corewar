@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 20:56:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 19:02:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,5 @@ void			check_params_error(t_asm *asmbly, char *str, int line)
 	t_instru	*current;	
 
 	current = find_instru(asmbly, line);
-	print_instruction(asmbly);
 	check_nbr_of_param(current, str, line);
-	(void)str;
 }
