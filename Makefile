@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/22 16:41:43 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/23 22:09:04 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_NAME1		:=	asm.c \
 					debug.c \
 					param.c \
 					op.c \
+					param_creation.c \
 					param_error.c \
 					param2.c \
 

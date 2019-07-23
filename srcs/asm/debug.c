@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 20:58:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:47:05 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			print_param(t_instru *instru)
 {
 	t_param		*last;
-	
+
 	last = instru->param;
 	while (last)
 	{

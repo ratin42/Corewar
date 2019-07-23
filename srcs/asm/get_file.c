@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 19:58:27 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:48:05 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ static int	is_empty(char *str)
 	return (1);
 }
 
-void		parse(t_asm *asmbly, char *str, int	turn)
+void		parse(t_asm *asmbly, char *str, int turn)
 {
-	//print_instruction(asmbly);
-	if (is_empty(str) == 1 )
+	if (is_empty(str) == 1)
 		return ;
 	if (str[0] == COMMENT_CHAR)
 		return ;
@@ -67,13 +66,10 @@ int			parse_file(t_asm *asmbly, char *file)
 	fd_file = open_file(file);
 	while (get_next_line(fd_file, &str) > 0)
 	{
-		//printf("=======================new line=====================\n");
 		parse(asmbly, str, turn);
 		if (str != NULL)
 			free(str);
 		turn++;
-		//printf("=======================fin line=====================\n\n");
 	}
-	//printf("sortie\n");
 	return (SUCCESS);
 }

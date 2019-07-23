@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:33:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:48:31 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int				check_type_of_param(t_instru *instru, char *str, int line)
 
 void			check_params_error(t_asm *asmbly, char *str, int line)
 {
-	t_instru	*current;	
+	t_instru	*current;
 
 	current = find_instru(asmbly, line);
 	check_nbr_of_param(current, str, line);

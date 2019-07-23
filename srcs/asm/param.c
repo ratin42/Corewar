@@ -6,40 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:45:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 22:09:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-t_param			*create_param(int line, char *param)
-{
-	t_param		*new_param;
-
-	if (!(new_param = malloc(sizeof(*new_param))))
-		exit(ERROR);
-	new_param->line = line;
-	new_param->param = ft_strdup(param);
-	new_param->next = NULL;
-	return (new_param);
-}
-
-void			add_param(t_instru *instru, int line, char *param)
-{
-	t_param		*new_param;
-	t_param		*last;
-
-	last = instru->param;
-	new_param = create_param(line, param);
-	if (instru->param == NULL)
-		instru->param = new_param;
-	else
-	{
-		while (last->next)
-			last = last->next;
-		last->next = new_param;
-	}
-}
 
 int				get_nbr_of_params(char *opcode)
 {
@@ -56,6 +27,21 @@ int				get_nbr_of_params(char *opcode)
 		i++;
 	}
 	return (g_op_tab[i].nbr_of_param);
+}
+
+int				get_comma(char *str, int i)
+{
+	int			y;
+
+	y = 0;
+	while (str[i + y] != ',' && str[i + y]
+		&& (str[i + y] < 9 || str[i + y] > 13))
+	{
+		if (str[i + y] == COMMENT_CHAR)
+			return (-1);
+		y++;
+	}
+	return (y);
 }
 
 void			fill_params(t_asm *asmbly, char *str, int line)
@@ -75,13 +61,8 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		i++;
 		while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
-		while (str[i + y] != ',' && str[i + y]
-			&& (str[i + y] < 9 || str[i + y] > 13))
-		{
-			if (str[i + y] == COMMENT_CHAR)
-				return ;
-			y++;
-		}
+		if ((y = get_comma(str, i)) == -1)
+			return ;
 		param = ft_strsub(str, i, y);
 		add_param(instru, line, param);
 		free(param);

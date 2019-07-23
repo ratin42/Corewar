@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 19:03:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:46:50 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			main(int ac, char **av)
 	if (ac < 2)
 	{
 		ft_putstr("Usage: ./asm <sourcefile.s>\n");
-		exit (ERROR);
+		exit(ERROR);
 	}
 	init_prog(&asmbly);
 	parse_file(&asmbly, av[ac - 1]);

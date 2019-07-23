@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/22 18:07:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 22:09:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		get_params(t_asm *asmbly, char *str, int line);
 void		check_params_error(t_asm *asmbly, char *str, int line);
 void		print_erro_param(char *str, int line, int error);
 void		get_params_type(t_asm *asmbly, char *str, int line);
+void		add_param(t_instru *instru, int line, char *param);
 
 
 /*

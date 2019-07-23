@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:33:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/23 21:52:43 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ void			check_opcode(char *opcode, int line, char *str, int i_opcode)
 	exit(ERROR);
 }
 
+int				pass_label_char(char *str)
+{
+	int			i;
+
+	i = 0;
+	if (ft_strchr(str, LABEL_CHAR) != NULL)
+	{
+		while (str[i] && str[i] != LABEL_CHAR)
+		{
+			if ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+			{
+				i = 0;
+				break ;
+			}
+			i++;
+		}
+	}
+	return (i);
+}
+
 int				get_opcode(t_asm *asmbly, char *str, int line)
 {
 	int			i;
@@ -44,18 +64,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	i = 0;
 	y = 0;
 	instru = find_instru(asmbly, line);
-	if (ft_strchr(str, LABEL_CHAR) != NULL)
-	{
-		while (str[i] && str[i] != ':')
-		{
-			if ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
-			{
-				i = 0;
-				break ;
-			}
-			i++;
-		}
-	}
+	i = pass_label_char(str);
 	if (str[i] == ':')
 		i++;
 	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
