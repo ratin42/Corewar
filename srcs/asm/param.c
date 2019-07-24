@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 22:09:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/24 19:43:29 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		param = ft_strsub(str, i, y);
 		add_param(instru, line, param);
 		free(param);
-		i += y + 1;
+		i += y;
+		if (str[i] == '\0')
+			break ;
+		i++;
 		param_nbr++;
 	}
 }
