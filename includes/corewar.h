@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 00:32:26 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 01:48:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void		replace_label(t_asm *asmbly);
 */
 void		print_instruction(t_asm *asmbly);
 void		print_bytecode(char *str);
+void        write_header(header_t *header);
 
 #endif
