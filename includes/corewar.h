@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:50:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 20:26:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void		convert_instruction(t_asm *asmbly);
 char		*reg_conver(t_param *param);
 char		*dir_conver(t_param *param, t_instru *instru);
 char		*ind_conver(t_param *param, t_instru *instru);
+char		*fill_direct(int size, char **conv);
+char		*reduce_conv(int size, char **conv);
+char		*get_opc(t_instru *instru);
 
 /*
 ** debug

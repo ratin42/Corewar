@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:48:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 20:33:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		*lab_conver(int size)
 	return (conv);
 }
 
-static char		*fill_direct(int size, char **conv)
+char			*fill_direct(int size, char **conv)
 {
 	char		*tmp;
 	int			i;
@@ -52,7 +52,7 @@ static char		*fill_direct(int size, char **conv)
 	return (*conv);
 }
 
-static char		*reduce_conv(int size, char **conv)
+char			*reduce_conv(int size, char **conv)
 {
 	char		*tmp;
 	int			i;

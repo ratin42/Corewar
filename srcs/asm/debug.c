@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 02:44:55 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 18:11:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,18 @@ void			print_instruction(t_asm *asmbly)
 	printf("\n~~~ instruction are ~~~\n");
 	while (instru)
 	{
+		printf("___________________________________\n");
+		printf("\nopcode = %s\n", instru->opcode);
 		printf("line = %d\n", instru->line);
 		printf("label = %s\n", instru->label);
-		printf("opcode = %s\n", instru->opcode);
 		printf("nbr_of_param = %d\n", instru->nbr_of_params);
 		print_param(instru);
+		printf("     =>");
+		fflush(stdout);
+		print_bytecode(instru->converted_params);
+		printf("\n");
 		instru = instru->next;
-		printf("___________________________________\n");
 	}
+	printf("___________________________________\n");
 	printf("\n~~~       FIN       ~~~\n");
 }
