@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 18:11:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 00:30:01 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void			print_bytecode(char *str)
 	y = 0;
 	while (str[i])
 	{
-		if (y % 2 == 0)
-			ft_putchar(' ');
+/* 		if (y % 2 == 0)
+			ft_putchar(' '); */
 		ft_putchar(str[i]);
 		i++;
 		y++;
@@ -58,7 +58,10 @@ void			print_instruction(t_asm *asmbly)
 		print_param(instru);
 		printf("     =>");
 		fflush(stdout);
-		print_bytecode(instru->converted_params);
+		print_bytecode(instru->conv_par);
+		printf("size => ");
+		fflush(stdout);
+		ft_putnbr(instru->byte_size);
 		printf("\n");
 		instru = instru->next;
 	}

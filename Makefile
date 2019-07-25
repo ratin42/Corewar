@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/25 20:20:16 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/25 23:59:01 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_NAME1		:=	op.c \
 					param3.c \
 					get_opc.c \
 					get_file.c \
+					get_label.c \
 					get_opcode.c \
 					get_header.c \
 					param_conv.c \

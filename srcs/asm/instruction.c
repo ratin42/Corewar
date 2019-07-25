@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 20:12:41 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 00:30:05 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ t_instru		*create_instuction(int line)
 
 	if (!(new_instru = malloc(sizeof(*new_instru))))
 		exit(ERROR);
-	new_instru->converted_params = NULL;
+	new_instru->conv_par = NULL;
 	new_instru->param = NULL;
 	new_instru->label = NULL;
 	new_instru->opcode = NULL;
 	new_instru->line = line;
 	new_instru->nbr_of_params = 0;
+	new_instru->byte_size = 0;
 	new_instru->next = NULL;
 	return (new_instru);
 }

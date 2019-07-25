@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:49:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 00:29:52 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ typedef struct			s_param
 
 typedef struct			s_instru
 {
-	char				*converted_params;
+	char				*conv_par;
 	char				*label;
 	char				*opcode;
+	int					byte_size;
 	int					line;
 	int					nbr_of_params;
 	struct s_param		*param;

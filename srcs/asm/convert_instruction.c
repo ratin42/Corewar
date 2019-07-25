@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 20:32:56 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 01:42:39 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static char		*convert_params(t_instru *instru)
 			result = ft_strjoin_free(result, dir_conver(param, instru), 1);
 		if (param->type == 4)
 			result = ft_strjoin_free(result, ind_conver(param, instru), 1);
+		result = ft_strjoin_free(result, ";", 1);
 		param = param->next;
 	}
 	return (result);
@@ -53,6 +54,22 @@ static char		*convert_opcode(t_instru *instru)
 	return (conv);
 }
 
+static int		add_byte_size(t_instru *instru)
+{
+	int			result;
+	int			i;
+
+	i = 0;
+	result = 0;
+	while (instru->conv_par[i])
+	{
+		if (i % 2 == 0 && instru->conv_par[i] != ';')
+			result++;
+		i++;
+	}
+	return (result);
+}
+
 void			convert_instruction(t_asm *asmbly)
 {
 	extern t_op	g_op_tab[17];
@@ -63,16 +80,16 @@ void			convert_instruction(t_asm *asmbly)
 	while (instru)
 	{
 		op_index = find_op_index(instru->opcode);
-		//printf("\n--------instruction %s-------\n", instru->opcode);
-		instru->converted_params = convert_opcode(instru);
+		instru->conv_par = convert_opcode(instru);
 		if (g_op_tab[op_index].coding_opcode == 1)
 		{
-			instru->converted_params = ft_strjoin_free(instru->converted_params
+			instru->conv_par = ft_strjoin_free(instru->conv_par
 				, get_opc(instru), 1);
 		}
-		instru->converted_params = ft_strjoin_free(instru->converted_params
+		instru->conv_par = ft_strjoin_free(instru->conv_par
 			, convert_params(instru), 1);
-		//printf("\n--------instruction %s-------\n", instru->converted_params);
+		instru->byte_size = add_byte_size(instru);
 		instru = instru->next;
 	}
+	replace_label(asmbly);
 }
