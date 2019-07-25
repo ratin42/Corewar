@@ -6,11 +6,29 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:47:05 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 02:44:55 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+void			print_bytecode(char *str)
+{
+	int			i;
+	int			y;
+
+	i = 0;
+	y = 0;
+	while (str[i])
+	{
+		if (y % 2 == 0)
+			ft_putchar(' ');
+		ft_putchar(str[i]);
+		i++;
+		y++;
+	}
+	printf("\n");
+}
 
 void			print_param(t_instru *instru)
 {

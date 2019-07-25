@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_reverse_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 18:06:43 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:09:31 by saouas           ###   ########.fr       */
+/*   Created: 2019/01/14 13:32:58 by saouas            #+#    #+#             */
+/*   Updated: 2019/07/25 01:37:15 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void		ft_reverse_str(char *str, int len)
 {
-	t_list *next;
-	t_list *current;
+	int i;
+	int j;
+	int tmp;
 
-	current = *alst;
-	while (current)
+	i = 0;
+	j = len - 1;
+	while (i < j)
 	{
-		next = current->next;
-		del(current->content, current->content_size);
-		free(current);
-		current = next;
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
 	}
-	*alst = NULL;
 }

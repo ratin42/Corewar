@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 15:08:52 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/24 17:34:16 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/25 00:32:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,19 @@ int			is_register(char *param)
 		&& register_range(ft_atoi(param + 1), 1, REG_NUMBER))
 		return (T_REG);
 	return (0);
+}
+
+int			find_op_index(char *opcode)
+{
+	extern t_op	g_op_tab[17];
+	int		i;
+
+	i = 0;
+	while (g_op_tab[i].name != 0)
+	{
+		if (ft_strcmp(g_op_tab[i].name, opcode) == 0)
+			break ;
+		i++;
+	}
+	return (i);
 }

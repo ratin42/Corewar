@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 18:33:32 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/24 20:12:41 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_instru		*create_instuction(int line)
 
 	if (!(new_instru = malloc(sizeof(*new_instru))))
 		exit(ERROR);
+	new_instru->converted_params = NULL;
 	new_instru->param = NULL;
 	new_instru->label = NULL;
 	new_instru->opcode = NULL;

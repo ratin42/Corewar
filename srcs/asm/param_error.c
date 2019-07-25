@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 19:28:09 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 00:24:52 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,15 @@ void			type_p_error(t_param *param, int line, t_instru *ins, int p_in)
 
 int				check_type_of_param(t_instru *instru, char *str, int line)
 {
-	t_param		*last;
 	extern t_op	g_op_tab[17];
+	t_param		*last;
 	int			i;
 	int			para_index;
 	int			checker;
 
-	i = 0;
+	i = find_op_index(instru->opcode);
 	para_index = 1;
 	last = instru->param;
-	while (g_op_tab[i].name != 0)
-	{
-		if (ft_strcmp(g_op_tab[i].name, instru->opcode) == 0)
-			break ;
-		i++;
-	}
 	while (last)
 	{
 		if (para_index == 1)

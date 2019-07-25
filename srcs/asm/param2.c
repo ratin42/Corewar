@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 19:43:34 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 00:16:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int		check_dir(char *param)
 
 void			error_type(t_param *param)
 {
-	ft_putstr("Lexical error for param at line ");
+	ft_putstr("Lexical error of type for param at line ");
 	ft_putnbr(param->line);
 	ft_putstr(" ->");
 	ft_putstr(param->param);
@@ -85,8 +85,7 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	param = instru->param;
 	while (param)
 	{
-		if (param->param[0] == 'r' && ft_isdigit(param->param[1]) == 1
-		&& param->param[2] == '\0')
+		if (is_register(param->param) == T_REG)
 			param->type = T_REG;
 		else if (check_dir(param->param) == 1)
 			param->type = T_DIR;

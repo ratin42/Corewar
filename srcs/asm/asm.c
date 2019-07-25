@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 20:00:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 01:28:43 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			main(int ac, char **av)
 	init_prog(&asmbly);
 	parse_file(&asmbly, av[ac - 1]);
 	convert_instruction(&asmbly);
-	print_instruction(&asmbly);
+	//print_instruction(&asmbly);
 	return (0);
 }
 

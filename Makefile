@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/24 20:06:01 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/25 03:18:31 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_NAME1		:=	asm.c \
 					param2.c \
 					convert_instruction.c \
 					param3.c \
+					param_conv.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a

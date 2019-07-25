@@ -13,12 +13,12 @@ SRC = ft_strlen.c ft_strdup.c ft_atoi.c ft_isalnum.c ft_isalpha.c \
 		ft_itoa.c ft_strsplit.c ft_strtrim.c ft_strjoin.c ft_strsub.c \
 		ft_strequ.c ft_strnequ.c ft_strmapi.c ft_strmap.c ft_striteri.c \
 		ft_striter.c ft_strclr.c ft_strdel.c ft_strnew.c ft_memdel.c \
-		ft_memalloc.c ft_lstadd.c ft_lstiter.c ft_lstnew.c ft_lstdelone.c \
-		ft_lstdel.c ft_lstmap.c ft_isblank.c ft_str_is_alpha.c \
+		ft_memalloc.c ft_isblank.c ft_str_is_alpha.c \
 		ft_str_is_numeric.c ft_str_is_lowercase.c ft_str_is_uppercase.c \
 		get_next_line.c ft_strjoin_free.c ft_print_words_tables.c \
 		ft_putendl_fd.c ft_str_is_printable.c ft_strndup.c ft_strdjoin.c \
-		ft_strfreedup.c ft_abs.c
+		ft_strfreedup.c ft_abs.c ft_convert_base.c ft_atoi_base.c \
+		ft_litoa.c get_nb.c ft_realloc.c ft_reverse_str.c \
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"

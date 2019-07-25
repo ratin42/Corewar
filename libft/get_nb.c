@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   get_nb.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 17:32:52 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:09:49 by saouas           ###   ########.fr       */
+/*   Created: 2019/01/14 23:37:35 by saouas            #+#    #+#             */
+/*   Updated: 2019/07/25 01:38:04 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+int		get_nb(char c, char *base)
 {
-	del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
+	long i;
+
+	i = 0;
+	while (base[i] && base[i] != c)
+		i++;
+	return (i);
 }

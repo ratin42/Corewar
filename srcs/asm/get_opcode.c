@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:52:43 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 00:22:24 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void			check_opcode(char *opcode, int line, char *str, int i_opcode)
 			return ;
 		i++;
 	}
-	ft_putstr("Lexical error for opcode at [");
+	ft_putstr("Lexical error for opcode at line ");
 	ft_putnbr(line);
-	ft_putchar(':');
-	ft_putnbr(i);
-	ft_putstr("] ->");
+	ft_putstr(" ->");
 	ft_putstr(&str[i_opcode]);
 	ft_putchar('\n');
 	exit(ERROR);
