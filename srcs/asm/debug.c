@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 18:11:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 22:45:14 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,9 @@ void			print_instruction(t_asm *asmbly)
 	}
 	printf("___________________________________\n");
 	printf("\n~~~       FIN       ~~~\n");
+	
+	printf("\n~~~ Header ~~~\n");
+	header_t *header;
+	header = (header_t *)malloc(sizeof(header_t));
+	write_header(header);
 }
