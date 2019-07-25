@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:08:15 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 04:42:30 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static char		*convert_params(t_asm *asmbly, t_instru *instru)
 			result = ft_strjoin_free(result, reg_conver(param), 1);
 		if (param->type == 2)
 			result = ft_strjoin_free(result, dir_conver(param, instru), 1);
-/* 		if (param->type == 4)
-			result = ft_strjoin_free(result, ind_conver(param, instru), 1); */
+		if (param->type == 4)
+			result = ft_strjoin_free(result, ind_conver(param, instru), 1);
 		param = param->next;
 	}
 	(void)asmbly;

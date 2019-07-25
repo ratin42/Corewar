@@ -6,41 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:07:06 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 04:48:37 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-char		*reg_conver(t_param *param)
-{
-	char		*result;
-	char		*tmp;
-
-	if (ft_strlen(param->param) == 2)
-	{
-		if (!(result = (char *)malloc(sizeof(char) * 3)))
-			exit(ERROR);
-		result[0] = '0';
-		result[1] = param->param[1];
-		result[2] = '\0';
-	}
-	else
-		result = ft_convert_base_finale(&param->param[1], "0123456789abcdef");
-	if (ft_strlen(result) < 2)
-	{
-		if (!(tmp = ft_strdup(result)))
-			exit(ERROR);
-		free(result);
-		if (!(result = (char *)malloc(sizeof(char) * 3)))
-			exit(ERROR);
-		result[0] = '0';
-		result[1] = tmp[0];
-		result[2] = '\0';
-		free(tmp);
-	}
-	return (result);
-}
 
 static char		*lab_conver(int size)
 {
@@ -109,7 +79,7 @@ static char		*reduce_conv(int size, char **conv)
 	return (*conv);
 }
 
-char		*dir_conver(t_param *param, t_instru *instru)
+char			*dir_conver(t_param *param, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
 	char		*conv;
@@ -132,5 +102,26 @@ char		*dir_conver(t_param *param, t_instru *instru)
 		conv = fill_direct(size, &conv);
 	else if (size < 0)
 		conv = reduce_conv(size, &conv);
+	return (conv);
+}
+
+char			*ind_conver(t_param *param, t_instru *instru)
+{
+	char		*conv;
+	int			size;
+	int			i;
+
+	i = 0;
+	conv = NULL;
+	size = 4;
+	if (ft_strchr(param->param, ':') != NULL)
+		return (lab_conver(size));
+	conv = ft_convert_base_finale(param->param, "0123456789abcdef");
+	size -= ft_strlen(conv);
+	if (size > 0)
+		conv = fill_direct(size, &conv);
+	else if (size < 0)
+		conv = reduce_conv(size, &conv);
+	(void)instru;
 	return (conv);
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 19:43:29 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 04:45:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,11 @@ int				get_comma(char *str, int i)
 void			fill_params(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*instru;
-	int			param_nbr;
 	int			i;
 	int			y;
 	char		*param;
 
 	i = 0;
-	param_nbr = 0;
 	instru = find_instru(asmbly, line);
 	while (str[i])
 	{
@@ -70,7 +68,6 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		if (str[i] == '\0')
 			break ;
 		i++;
-		param_nbr++;
 	}
 }
 

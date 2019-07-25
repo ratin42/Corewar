@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.c                                              :+:      :+:    :+:   */
+/*   param_conv2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:42:01 by ratin            ###   ########.fr       */
+/*   Created: 2019/07/25 04:38:57 by ratin             #+#    #+#             */
+/*   Updated: 2019/07/25 04:47:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		init_prog(t_asm *asmbly)
+char		*reg_conver(t_param *param)
 {
-	asmbly->name = NULL;
-	asmbly->comment = NULL;
-	asmbly->instru = NULL;
-}
+	char		*result;
+	char		*tmp;
 
-int			main(int ac, char **av)
-{
-	t_asm	asmbly;
-
-	if (ac < 2)
+	result = ft_convert_base_finale(&param->param[1], "0123456789abcdef");
+	if (ft_strlen(result) < 2)
 	{
-		ft_putstr("Usage: ./asm <sourcefile.s>\n");
-		exit(ERROR);
+		if (!(tmp = ft_strdup(result)))
+			exit(ERROR);
+		free(result);
+		if (!(result = (char *)malloc(sizeof(char) * 3)))
+			exit(ERROR);
+		result[0] = '0';
+		result[1] = tmp[0];
+		result[2] = '\0';
+		free(tmp);
 	}
-	init_prog(&asmbly);
-	parse_file(&asmbly, av[ac - 1]);
-	convert_instruction(&asmbly);
-	print_instruction(&asmbly);
-	return (0);
+	return (result);
 }

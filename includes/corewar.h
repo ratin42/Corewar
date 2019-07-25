@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 03:20:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/25 04:50:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		get_name(t_asm *asmbly, char *str);
 */
 t_instru	*find_instru(t_asm *asmbly, int line);
 int			get_opcode(t_asm *asbly, char *str, int line);
-int         is_register(char *param);
+int			is_register(char *param);
 int			find_op_index(char *opcode);
 void		get_instruction(t_asm *asmbly, char *str, int line);
 void		add_instru(t_asm *asmbly, int line);
@@ -50,12 +50,12 @@ void		add_param(t_instru *instru, int line, char *param);
 void		convert_instruction(t_asm *asmbly);
 char		*reg_conver(t_param *param);
 char		*dir_conver(t_param *param, t_instru *instru);
-
+char		*ind_conver(t_param *param, t_instru *instru);
 
 /*
 ** debug
 */
-void			print_instruction(t_asm *asmbly);
-void			print_bytecode(char *str);
+void		print_instruction(t_asm *asmbly);
+void		print_bytecode(char *str);
 
 #endif

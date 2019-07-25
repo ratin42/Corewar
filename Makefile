@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/25 03:18:31 by ratin            ###   ########.fr        #
+#    Updated: 2019/07/25 04:39:17 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,22 @@ OBJ_PATH		:=	obj
 INC_PATH		:=	includes
 LIB_PATH		:=	libft
 
-SRC_NAME1		:=	asm.c \
-					get_file.c \
-					get_header.c \
-					get_instruction.c \
-					instruction.c \
-					get_opcode.c \
+SRC_NAME1		:=	op.c \
+					asm.c \
 					debug.c \
 					param.c \
-					op.c \
-					param_creation.c \
-					param_error.c \
 					param2.c \
-					convert_instruction.c \
 					param3.c \
+					get_file.c \
+					get_opcode.c \
+					get_header.c \
 					param_conv.c \
+					param_conv2.c \
+					instruction.c \
+					param_error.c \
+					param_creation.c \
+					get_instruction.c \
+					convert_instruction.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a
