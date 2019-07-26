@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:33:14 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/26 19:49:53 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/26 21:34:31 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ char		*ft_uitoa_base(unsigned int n, int base)
 //     return (s);
 // }
 
-int			get_header(header_t *h, char *name, char *comment, int size)
+int			get_header(header_t *h, char *name, char *comment, unsigned int size)
 {
 	int i;
 	header_t *header;
 
 	if (!(h = (header_t *)malloc(sizeof(*header))))
-		return (printf("error\n"));
+		return (printf("Error\n"));
 	header = h;
 	init_header(header);
 	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
@@ -118,7 +118,6 @@ int			get_header(header_t *h, char *name, char *comment, int size)
 
 void        write_header(header_t *header)
 {
-	
 //	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
 	header->magic = COREWAR_EXEC_MAGIC;
 //	header->prog_name = get_name();
@@ -127,15 +126,20 @@ void        write_header(header_t *header)
 //	header->comment = get_comment();
 	char *str;
 	str = "00";
+	char *name = "zork";
+	char *comment = "hey";
 	printf("\n---------- Magic ---------------\n");
 	print_bytecode(ft_strjoin(str, ft_uitoa_base(header->magic, 16)));
 //	print_bytecode(ft_uitoa_base(header->magic, 16));
-	printf("---------- Name ----------------\n");
-	print_bytecode(header->prog_name);
-	printf("---------- Prog_size -----------\n");
-	print_bytecode(ft_uitoa_base(swap_endian(header->prog_size), 16));
-	printf("---------- Comment -------------\n");
-	print_bytecode(header->comment);
+	if (get_header(header, name, comment, header->prog_size) == 0)
+	{
+		printf("---------- Name ----------------\n");
+		print_bytecode(ft_convert_base_finale(name, "0123456789abcdef"));
+		printf("---------- Prog_size -----------\n");
+		print_bytecode(ft_uitoa_base(swap_endian(header->prog_size), 16));
+		printf("---------- Comment -------------\n");
+		print_bytecode(ft_convert_base_finale(comment, "0123456789abcdef"));
+	}
 }
 
 // need to add the fd in write_header()
