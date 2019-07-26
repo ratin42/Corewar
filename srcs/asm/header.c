@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:33:14 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/26 19:42:13 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/26 19:49:53 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,34 +63,34 @@ char		*ft_uitoa_base(unsigned int n, int base)
 	return (value);
 }
 
-void reverse(char* begin, char* end) 
-{ 
-    char temp; 
-    while (begin < end) { 
-        temp = *begin; 
-        *begin++ = *end; 
-        *end-- = temp; 
-    } 
-} 
+// void reverse(char* begin, char* end) 
+// { 
+//     char temp; 
+//     while (begin < end) { 
+//         temp = *begin; 
+//         *begin++ = *end; 
+//         *end-- = temp; 
+//     } 
+// } 
 
-char *reverseWords(char* s) 
-{ 
-    char* word_begin = s; 
-    char* temp = s; 
+// char *reverseWords(char* s) 
+// { 
+//     char* word_begin = s; 
+//     char* temp = s; 
   
-    while (*temp) { 
-        temp++; 
-        if (*temp == '\0') { 
-            reverse(word_begin, temp - 1); 
-        } 
-        else if (*temp == ' ') { 
-            reverse(word_begin, temp - 1); 
-            word_begin = temp + 1; 
-        } 
-    } 
-    reverse(s, temp - 1); 
-    return (s);
-}
+//     while (*temp) { 
+//         temp++; 
+//         if (*temp == '\0') { 
+//             reverse(word_begin, temp - 1); 
+//         } 
+//         else if (*temp == ' ') { 
+//             reverse(word_begin, temp - 1); 
+//             word_begin = temp + 1; 
+//         } 
+//     } 
+//     reverse(s, temp - 1); 
+//     return (s);
+// }
 
 int			get_header(header_t *h, char *name, char *comment, int size)
 {
