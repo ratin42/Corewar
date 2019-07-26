@@ -6,12 +6,25 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:33:14 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/25 22:49:51 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/26 19:42:13 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include <fcntl.h>
+
+static void	init_header(header_t *header)
+{
+	unsigned char *tmp;
+	int i;
+	int size;
+
+	i = 0;
+	size = sizeof(*header);
+	tmp = (unsigned char *)header;
+	while (i < size)
+		tmp[i++] = 0;
+}
 
 uint32_t	swap_endian(uint32_t val)
 {
@@ -50,39 +63,77 @@ char		*ft_uitoa_base(unsigned int n, int base)
 	return (value);
 }
 
-// void rev_print(char *s,int i)
-// {
-// 	int p1;
-// 	int p2;
-// 	char aff;
+void reverse(char* begin, char* end) 
+{ 
+    char temp; 
+    while (begin < end) { 
+        temp = *begin; 
+        *begin++ = *end; 
+        *end-- = temp; 
+    } 
+} 
 
-// 	p1 = 0;
-// 	p2 = 0;
-// 	while (s[p2] && s[p2] != ' ')
-// 		p2++;
-// 	if (s[p2] == ' ')
-// 		rev_print(s + p2 + 1, 0);
-// 	while(p1 < p2)
-// 	{
-// 		aff = s[p1++];
-// 		write(1, &aff, 1);
-// 	}
-// 	if (!i)
-// 		write(1, " ", 1);
-// }
+char *reverseWords(char* s) 
+{ 
+    char* word_begin = s; 
+    char* temp = s; 
+  
+    while (*temp) { 
+        temp++; 
+        if (*temp == '\0') { 
+            reverse(word_begin, temp - 1); 
+        } 
+        else if (*temp == ' ') { 
+            reverse(word_begin, temp - 1); 
+            word_begin = temp + 1; 
+        } 
+    } 
+    reverse(s, temp - 1); 
+    return (s);
+}
+
+int			get_header(header_t *h, char *name, char *comment, int size)
+{
+	int i;
+	header_t *header;
+
+	if (!(h = (header_t *)malloc(sizeof(*header))))
+		return (printf("error\n"));
+	header = h;
+	init_header(header);
+	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
+	header->prog_size = swap_endian(size);
+	i = 0;
+	while (name[i++])
+		header->prog_name[i - 1] = name[i - 1];
+	while (i < PROG_NAME_LENGTH + 1)
+		header->prog_name[i++] = 0;
+	i = 0;
+	while (comment[i++])
+		header->comment[i - 1] = comment[i - 1];
+	while (i < COMMENT_LENGTH + 1)
+		header->comment[i++] = 0;
+	return (0);
+}
 
 void        write_header(header_t *header)
 {
-	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
-	// header->prog_name = get_name();
-	header->prog_size = swap_endian(header->prog_size);
-	// header->comment = get_comment();
+	
+//	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
+	header->magic = COREWAR_EXEC_MAGIC;
+//	header->prog_name = get_name();
+	header->prog_size = 23;
+//	header->prog_size = swap_endian(header->prog_size);
+//	header->comment = get_comment();
+	char *str;
+	str = "00";
 	printf("\n---------- Magic ---------------\n");
-	print_bytecode(ft_uitoa_base(header->magic, 16));
+	print_bytecode(ft_strjoin(str, ft_uitoa_base(header->magic, 16)));
+//	print_bytecode(ft_uitoa_base(header->magic, 16));
 	printf("---------- Name ----------------\n");
 	print_bytecode(header->prog_name);
 	printf("---------- Prog_size -----------\n");
-	print_bytecode(ft_uitoa_base(header->prog_size, 16));
+	print_bytecode(ft_uitoa_base(swap_endian(header->prog_size), 16));
 	printf("---------- Comment -------------\n");
 	print_bytecode(header->comment);
 }
