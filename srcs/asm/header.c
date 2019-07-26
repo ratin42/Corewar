@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 18:33:14 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/26 21:34:31 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/26 22:39:09 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void        write_header(header_t *header)
 	header->magic = COREWAR_EXEC_MAGIC;
 //	header->prog_name = get_name();
 	header->prog_size = 23;
+//	header->prog_size = get_size(param->type, op->opcode);
 //	header->prog_size = swap_endian(header->prog_size);
 //	header->comment = get_comment();
 	char *str;
