@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 01:42:39 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 02:55:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,23 @@ static char		*convert_params(t_instru *instru)
 	while (param)
 	{
 		if (param->type == 1)
-			result = ft_strjoin_free(result, reg_conver(param), 1);
+		{
+			if (!(result = ft_strjoin_free(result, reg_conver(param), 1)))
+				exit(ERROR);
+		}
 		if (param->type == 2)
-			result = ft_strjoin_free(result, dir_conver(param, instru), 1);
+		{
+			if (!(result = ft_strjoin_free(result, dir_conver(param, instru), 1)))
+				exit(ERROR);
+
+		}
 		if (param->type == 4)
-			result = ft_strjoin_free(result, ind_conver(param, instru), 1);
-		result = ft_strjoin_free(result, ";", 1);
+		{
+			if (!(result = ft_strjoin_free(result, ind_conver(param, instru), 1)))
+				exit(ERROR);
+		}
+		if (!(result = ft_strjoin_free(result, ";", 1)))
+			exit(ERROR);
 		param = param->next;
 	}
 	return (result);
@@ -44,7 +55,8 @@ static char		*convert_opcode(t_instru *instru)
 	size = 2;
 	op_index = find_op_index(instru->opcode);
 	c_opcode = ft_itoa(g_op_tab[op_index].opcode);
-	conv = ft_convert_base_finale(c_opcode, "0123456789abcdef");
+	if (!(conv = ft_convert_base_finale(c_opcode, "0123456789abcdef")))
+		exit(ERROR);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);
@@ -75,7 +87,9 @@ void			convert_instruction(t_asm *asmbly)
 	extern t_op	g_op_tab[17];
 	t_instru	*instru;
 	int			op_index;
+	int			i;
 
+	i = 0;
 	instru = asmbly->instru;
 	while (instru)
 	{
@@ -91,5 +105,9 @@ void			convert_instruction(t_asm *asmbly)
 		instru->byte_size = add_byte_size(instru);
 		instru = instru->next;
 	}
-	replace_label(asmbly);
+	while (i < 3)
+	{
+		replace_label(asmbly);
+		i++;
+	}
 }

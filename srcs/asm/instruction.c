@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 00:30:05 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 01:21:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_instru		*create_instuction(int line)
 	new_instru->line = line;
 	new_instru->nbr_of_params = 0;
 	new_instru->byte_size = 0;
+	new_instru->labelsrc = 0;
 	new_instru->next = NULL;
 	return (new_instru);
 }

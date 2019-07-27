@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 00:29:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 01:17:40 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct			s_instru
 	char				*conv_par;
 	char				*label;
 	char				*opcode;
+	int					labelsrc;
 	int					byte_size;
 	int					line;
 	int					nbr_of_params;

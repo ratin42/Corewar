@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 19:20:37 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 19:05:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/26 23:37:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ char				*ft_convert_base_finale(char *nbr, char *base_to)
 		tab[2] = 1;
 	}
 	tab[1] = calcul;
-	ret = treat(base_to, tab, &size);
+	if (!(ret = treat(base_to, tab, &size)))
+		return (NULL);
 	ft_reverse_str(ret, ft_strlen(ret));
 	return (ret);
 }

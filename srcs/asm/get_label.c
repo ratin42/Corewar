@@ -6,27 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 01:47:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 01:26:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-/* void	count()
-{
-	t_instru	*count;
-	int	size;
-
-	count = instru->next;
-	size = 0;
-	while (count)
-	{
-		if (count->label )
-		size += count->byte_size;
-		count = count->next;
-	}
-}
- */
 
 int		compare_label(char *label1, char *label2)
 {
@@ -41,25 +25,39 @@ int		compare_label(char *label1, char *label2)
 	return (0);
 }
 
-/* void	fill_label(t_asm *asmbly, t_instru *instru, int size)
+void	fill_label(t_instru *instru, int distance)
 {
 	int			i;
+	int			size;
+	char		*conv;
+	char		*addr;
 
 	i = 0;
+	size = 1;
+	if (!(addr = ft_itoa(distance)))
+		exit(ERROR);
 	while (instru->conv_par[i] && instru->conv_par[i] != 'L')
 		i++;
-	
-} */
+	while (instru->conv_par[++i] && instru->conv_par[i] == 'L')
+		size++;
+	if (!(conv = ft_convert_base_finale(addr, "0123456789abcdef")))
+		exit(ERROR);
+	size -= ft_strlen(conv);
+	if (size > 0)
+		conv = fill_direct(size, &conv);
+	else if (size < 0)
+		conv = reduce_conv(size, &conv);
+	free(addr);
+	write_label(instru, conv);
+}
 
-void	size_label(t_asm *asmbly, t_instru *instru, char *label)
+void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
 {
 	t_instru	*count;
-	int			size;
-	int			i;
+	int			distance;
 
-	i = 0;
 	count = instru;
-	size = 0;
+	distance = 0;
 	while (count)
 	{
 		if (count->label != NULL)
@@ -67,13 +65,12 @@ void	size_label(t_asm *asmbly, t_instru *instru, char *label)
 			if (compare_label(count->label, label) == 1)
 				break ;
 		}
-		size += count->byte_size;
+		distance += count->byte_size;
 		count = count->next;
+		if (count == NULL)
+			distance = reverse_label(asmbly, instru, label);
 	}
-	size -= 1;
-	printf("size = %d for %s\n", size, instru->opcode);
-//	fill_label(asmbly, instru, size);
-	(void)asmbly;
+	fill_label(instru, distance);
 }
 
 void	get_label_value(t_asm *asmbly, t_instru *instru)
@@ -100,7 +97,7 @@ void	get_label_value(t_asm *asmbly, t_instru *instru)
 	while (param->param[i] != LABEL_CHAR)
 		i++;
 	i++;
-	size_label(asmbly, instru, &param->param[i]);
+	distance_label(asmbly, instru, &param->param[i]);
 }
 
 void	replace_label(t_asm *asmbly)

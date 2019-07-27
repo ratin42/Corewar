@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 01:48:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 01:23:58 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ char		*fill_direct(int size, char **conv);
 char		*reduce_conv(int size, char **conv);
 char		*get_opc(t_instru *instru);
 void		replace_label(t_asm *asmbly);
+void		write_label(t_instru *instru, char *conv);
+int			reverse_label(t_asm *asmbly, t_instru *instru, char *label);
+int			compare_label(char *label1, char *label2);
 
 /*
 ** debug

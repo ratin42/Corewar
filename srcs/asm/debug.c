@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/26 01:48:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 01:33:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ void			print_bytecode(char *str)
 	y = 0;
 	while (str[i])
 	{
-/* 		if (y % 2 == 0)
-			ft_putchar(' '); */
-		ft_putchar(str[i]);
+		if (str[i] == ';')
+			y--;
+		if (y % 2 == 0)
+			ft_putchar(' ');
+		if (str[i] != ';')
+			ft_putchar(str[i]);
 		i++;
 		y++;
 	}
@@ -68,8 +71,8 @@ void			print_instruction(t_asm *asmbly)
 	printf("___________________________________\n");
 	printf("\n~~~       FIN       ~~~\n");
 	
-	printf("\n~~~ Header ~~~\n");
+/* 	printf("\n~~~ Header ~~~\n");
 	header_t *header;
 	header = (header_t *)malloc(sizeof(header_t));
-	write_header(header);
+	write_header(header); */
 }
