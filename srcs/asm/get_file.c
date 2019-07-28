@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 03:12:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 20:26:12 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,24 @@ static int	is_empty(char *str)
 	return (1);
 }
 
+int			check_comment(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] == 32 && (str[i] >= 9 || str[i] <= 13))
+		i++;
+	if (str[i] == COMMENT_CHAR)
+		return (1);
+	else
+		return (0);
+}
+
 void		parse(t_asm *asmbly, char *str, int turn)
 {
 	if (is_empty(str) == 1)
 		return ;
-	if (str[0] == COMMENT_CHAR)
+	if (check_comment(str) == 1)
 		return ;
 	else if (turn == 0)
 		get_name(asmbly, str);
