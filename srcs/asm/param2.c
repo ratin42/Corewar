@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 20:12:31 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 20:16:37 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	param = instru->param;
 	while (param)
 	{
-		printf("param in finder = %s\n", param->param);
 		if (is_register(param->param) == T_REG)
 			param->type = T_REG;
 		else if (check_dir(param->param) == 1)
