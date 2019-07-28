@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 19:38:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 20:14:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				get_comma(char *str, int i)
 	int			y;
 
 	y = 0;
-	while (str[i + y] != ',' && str[i + y]
+	while (str[i + y] && str[i + y] != ',' &&  str[i + y] != 32
 		&& (str[i + y] < 9 || str[i + y] > 13))
 	{
 		if (str[i + y] == COMMENT_CHAR)
@@ -42,6 +42,19 @@ int				get_comma(char *str, int i)
 		y++;
 	}
 	return (y);
+}
+
+void			get_last_param(char *str, int i, t_instru *instru, int line)
+{
+	int			y;
+	char		*param;
+
+	y = 0;
+	while (str[i + y] && str[i + y] != '#')
+		y++;
+	param = ft_strsub(str, i, y);
+	add_param(instru, line, param);
+	free(param);
 }
 
 void			fill_params(t_asm *asmbly, char *str, int line)
@@ -58,8 +71,13 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		y = 0;
 		while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
-		if ((y = get_comma(str, i)) == -1)
+		if (str[i] == '\0' || str[i] == '#')
 			return ;
+		if ((y = get_comma(str, i)) == -1)
+		{
+			get_last_param(str, i, instru, line);
+			return ;
+		}
 		param = ft_strsub(str, i, y);
 		add_param(instru, line, param);
 		free(param);
