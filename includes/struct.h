@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 01:17:40 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 17:37:11 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct			s_asm
 {
 	char				*name;
 	char				*comment;
+	int					size;
 	struct s_op			op_tab[17];
 	struct s_instru		*instru;
 }						t_asm;

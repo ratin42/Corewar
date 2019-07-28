@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 19:46:17 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/27 03:12:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,27 @@ static int	open_file(char *str)
 	return (fd);
 }
 
+void		check_name(char *file)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strlen(file) < 2)
+	{
+		ft_putstr("bad file name\n");
+		exit(ERROR);
+	}
+	while (file[i])
+		i++;
+	if (file[i - 1] == 's' && file[i - 2] == '.')
+		return ;
+	else
+	{
+		ft_putstr("bad file name\n");
+		exit(ERROR);
+	}
+}
+
 int			parse_file(t_asm *asmbly, char *file)
 {
 	int		fd_file;
@@ -64,6 +85,7 @@ int			parse_file(t_asm *asmbly, char *file)
 
 	turn = 0;
 	fd_file = open_file(file);
+	check_name(file);
 	while (get_next_line(fd_file, &str) > 0)
 	{
 		parse(asmbly, str, turn);

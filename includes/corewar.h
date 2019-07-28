@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 01:23:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 17:34:04 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <sys/stat.h>
 # include "struct.h"
 # include "op.h"
 # include "../libft/includes/libft.h"
@@ -31,6 +32,8 @@
 int			parse_file(t_asm *asmbly, char *file);
 void		get_comment(t_asm *asmbly, char *str);
 void		get_name(t_asm *asmbly, char *str);
+uint32_t	swap_endian(uint32_t val);
+void		count_size(t_asm *asmbly);
 
 /*
 ** instruction
@@ -61,6 +64,11 @@ void		replace_label(t_asm *asmbly);
 void		write_label(t_instru *instru, char *conv);
 int			reverse_label(t_asm *asmbly, t_instru *instru, char *label);
 int			compare_label(char *label1, char *label2);
+
+/*
+** write file
+*/
+void	write_file(t_asm *asmbly, char *file);
 
 /*
 ** debug
