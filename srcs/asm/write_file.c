@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 17:39:04 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 17:47:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			write_file(t_asm *asmbly, char *file)
 
 	new_file = ft_strndup(file, ft_strlen(file) - 2);
 	new_file = ft_strjoin_free(new_file, ".cor", 1);
-	fd = open(new_file, O_WRONLY | O_APPEND | O_CREAT | 0, 0644);
+	fd = open(new_file, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 	{
 		ft_putstr("eror when creating the file\n");
