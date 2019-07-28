@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 18:34:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 18:53:40 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ void	write_file(t_asm *asmbly, char *file);
 */
 void		print_instruction(t_asm *asmbly);
 void		print_bytecode(char *str);
-void        write_header(header_t *header);
 
 #endif
