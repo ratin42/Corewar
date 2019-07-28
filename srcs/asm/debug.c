@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 01:33:35 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 18:27:58 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void			print_instruction(t_asm *asmbly)
 		printf("label = %s\n", instru->label);
 		printf("nbr_of_param = %d\n", instru->nbr_of_params);
 		print_param(instru);
-		printf("     =>");
-		fflush(stdout);
-		print_bytecode(instru->conv_par);
+		//printf("     =>");
+		//fflush(stdout);
+/* 		print_bytecode(instru->conv_par);
 		printf("size => ");
 		fflush(stdout);
 		ft_putnbr(instru->byte_size);
-		printf("\n");
+		printf("\n"); */
 		instru = instru->next;
 	}
 	printf("___________________________________\n");
