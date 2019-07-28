@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 19:45:31 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/28 19:49:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ static int		check_dir(char *param)
 		return (check_label(&param[i]));
 	while (param[i])
 	{
+		if ((param[i] == '-' || param[i] == '+')
+			&& (param[i + 1]) && ft_isdigit(param[i + 1]))
+			i++;
 		if (ft_isdigit(param[i]) == 0)
 			return (0);
 		i++;
