@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/07/28 19:28:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 22:23:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct		header_s
+typedef struct		header_t
 {
   unsigned int		magic;
   char				prog_name[PROG_NAME_LENGTH + 1];

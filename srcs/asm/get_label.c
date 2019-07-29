@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 01:26:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 20:57:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fill_label(t_instru *instru, int distance)
 		i++;
 	while (instru->conv_par[++i] && instru->conv_par[i] == 'L')
 		size++;
-	if (!(conv = ft_convert_base_finale(addr, "0123456789abcdef")))
+	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
 		exit(ERROR);
 	size -= ft_strlen(conv);
 	if (size > 0)

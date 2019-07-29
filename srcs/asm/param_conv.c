@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 20:33:08 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 20:57:06 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char			*dir_conver(t_param *param, t_instru *instru)
 		size = 8;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
-	conv = ft_convert_base_finale(&param->param[1], "0123456789abcdef");
+	conv = ft_ul_convert_base(&param->param[1], "0123456789abcdef");
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);
@@ -116,7 +116,7 @@ char			*ind_conver(t_param *param, t_instru *instru)
 	size = 4;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
-	conv = ft_convert_base_finale(param->param, "0123456789abcdef");
+	conv = ft_ul_convert_base(param->param, "0123456789abcdef");
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);

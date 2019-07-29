@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 04:38:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:47:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 21:56:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*reg_conver(t_param *param)
 	char		*result;
 	char		*tmp;
 
-	result = ft_convert_base_finale(&param->param[1], "0123456789abcdef");
+	result = ft_ul_convert_base(&param->param[1], "0123456789abcdef");
 	if (ft_strlen(result) < 2)
 	{
 		if (!(tmp = ft_strdup(result)))

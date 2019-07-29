@@ -16,17 +16,18 @@ int main(int ac, char **av)
 	
 	struct stat hey;
 
-	char	*file;
+	char	*file = NULL;
 
-	if ((fd = open(av[1], O_RDONLY) == -1))
-		return (0);
+	fd = open(av[1], O_RDONLY);
 
 	stat(av[1], &hey);
 
 
+	printf("before fd = %d\n", fd);
 	ret = read(fd, file, hey.st_size);
 	if (ret != 0)
 		return (0);
+	printf("file %s\n", file);
 	
 
 	(void)ac;

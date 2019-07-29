@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   ft_ul_convert_base.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/15 19:20:37 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/29 20:21:35 by ratin            ###   ########.fr       */
+/*   Created: 2019/01/22 15:29:31 by saouas            #+#    #+#             */
+/*   Updated: 2019/07/29 21:54:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-long long int		give_base_nbr(char *base)
+static unsigned long long int	give_base_nbr(char *base)
 {
 	return (ft_strlen(base));
 }
 
-long long int		base_to_decimal(char *nbr)
+static unsigned long long int	u_base_to_decimal(char *nbr)
 {
-	long long int	len;
-	long long int	nbr2;
-	char			*str;
+	unsigned long long int		len;
+	unsigned long long int		nbr2;
+	char						*str;
 
-	nbr2 = ft_atoi_base(nbr, "0123456789");
-	str = ft_litoa(nbr2);
+	nbr2 = atoul_base(nbr, "0123456789");
+	str = ft_lutoa(nbr2);
 	len = ft_strlen(str);
 	free(str);
 	return (nbr2);
 }
 
-char				*treat(char *base_to, long long int *tab,
-long long int *size)
+static char						*treat(char *base_to,
+unsigned long long int *tab, unsigned long long int *size)
 {
-	long long int	i;
-	long long int	tmp;
-	char			*ret;
+	unsigned long long int		i;
+	unsigned long long int		tmp;
+	char						*ret;
 
 	if (!(ret = (char *)malloc(sizeof(char) * 1)))
 		return (NULL);
@@ -59,25 +59,19 @@ long long int *size)
 	return (ret);
 }
 
-#include <stdio.h>
-char				*ft_convert_base_finale(char *nbr, char *base_to)
+char							*ft_ul_convert_base(char *nbr,
+char *base_to)
 {
-	long long int	calcul;
-	long long int	size;
-	long long int	tab[3];
-	char			*ret;
+	unsigned long long int		calcul;
+	unsigned long long int		size;
+	unsigned long long int		tab[3];
+	char						*ret;
 
-	tab[0] = base_to_decimal(nbr);
+	tab[0] = u_base_to_decimal(nbr);
 	size = 1;
-	calcul = base_to_decimal(nbr);
-	if (calcul < 0)
-	{
-		calcul = calcul * -1;
-		tab[2] = 1;
-	}
+	calcul = u_base_to_decimal(nbr);
 	tab[1] = calcul;
-	if (!(ret = treat(base_to, tab, &size)))
-		return (NULL);
+	ret = treat(base_to, tab, &size);
 	ft_reverse_str(ret, ft_strlen(ret));
 	return (ret);
 }
