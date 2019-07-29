@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 17:38:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 14:24:50 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int			main(int ac, char **av)
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
+	ft_putstr("Writing output program\n");
 	//print_instruction(&asmbly);
 	return (0);
 }
+
+//changer le fd des error
+//gerer les free

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 17:14:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 13:36:46 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	get_name(t_asm *asmbly, char *str)
 		print_error(str);
 	if (!(asmbly->name = ft_strsub(str, i, y)))
 		exit(ERROR);
+	asmbly->got_name = 1;
 }
 
 void	get_comment(t_asm *asmbly, char *str)
@@ -60,4 +61,5 @@ void	get_comment(t_asm *asmbly, char *str)
 		print_error(str);
 	if (!(asmbly->comment = ft_strsub(str, i, y)))
 		exit(ERROR);
+	asmbly->got_comment = 1;
 }
