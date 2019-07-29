@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 18:53:40 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 13:38:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@
 # define SUCCESS			1
 
 /*
-** asm reading
+** asm parsing
 */
-int			parse_file(t_asm *asmbly, char *file);
 void		get_comment(t_asm *asmbly, char *str);
 void		get_name(t_asm *asmbly, char *str);
-uint32_t	swap_endian(uint32_t val);
 void		count_size(t_asm *asmbly);
+int			parse_file(t_asm *asmbly, char *file);
+int			check_comment(char *str);
+int			name_presence(char *str);
+int			comment_presence(char *str);
+int			is_empty(char *str);
 
 /*
 ** instruction
 */
 t_instru	*find_instru(t_asm *asmbly, int line);
-int			get_opcode(t_asm *asbly, char *str, int line);
-int			is_register(char *param);
-int			find_op_index(char *opcode);
 void		get_instruction(t_asm *asmbly, char *str, int line);
 void		add_instru(t_asm *asmbly, int line);
 void		get_params(t_asm *asmbly, char *str, int line);
@@ -49,11 +49,13 @@ void		check_params_error(t_asm *asmbly, char *str, int line);
 void		print_erro_param(char *str, int line, int error);
 void		get_params_type(t_asm *asmbly, char *str, int line);
 void		add_param(t_instru *instru, int line, char *param);
+int			get_opcode(t_asm *asbly, char *str, int line);
+int			is_register(char *param);
+int			find_op_index(char *opcode);
 
 /*
 ** conversion
 */
-void		convert_instruction(t_asm *asmbly);
 char		*reg_conver(t_param *param);
 char		*dir_conver(t_param *param, t_instru *instru);
 char		*ind_conver(t_param *param, t_instru *instru);
@@ -61,6 +63,7 @@ char		*fill_direct(int size, char **conv);
 char		*reduce_conv(int size, char **conv);
 char		*get_ocp(t_instru *instru);
 void		replace_label(t_asm *asmbly);
+void		convert_instruction(t_asm *asmbly);
 void		write_label(t_instru *instru, char *conv);
 int			reverse_label(t_asm *asmbly, t_instru *instru, char *label);
 int			compare_label(char *label1, char *label2);
@@ -68,7 +71,8 @@ int			compare_label(char *label1, char *label2);
 /*
 ** write file
 */
-void	write_file(t_asm *asmbly, char *file);
+uint32_t	swap_endian(uint32_t val);
+void		write_file(t_asm *asmbly, char *file);
 
 /*
 ** debug

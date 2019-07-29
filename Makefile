@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
+#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/28 17:56:05 by syzhang          ###   ########.fr        #
+#    Updated: 2019/07/29 13:38:38 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_NAME1		:=	op.c \
 					get_opc.c \
 					get_file.c \
 					get_label.c \
+					parse_func.c \
 					count_size.c \
 					get_label2.c \
 					get_opcode.c \

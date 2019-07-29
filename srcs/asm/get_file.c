@@ -6,62 +6,46 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 20:26:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 14:55:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int	is_empty(char *str)
+void	parse_error(t_asm *asmbly)
 {
-	int		i;
-
-	i = 0;
-	if (ft_strcmp(str, "") == 0)
-		return (1);
-	while (str[i])
-	{
-		if (str[i] != 32 && (str[i] < 9 || str[i] > 13))
-			return (0);
-		i++;
-	}
-	return (1);
+	ft_putstr_fd("error no comment or no name found\n", 2);
+	(void)asmbly;
+	exit(ERROR);
 }
 
-int			check_comment(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] == 32 && (str[i] >= 9 || str[i] <= 13))
-		i++;
-	if (str[i] == COMMENT_CHAR)
-		return (1);
-	else
-		return (0);
-}
-
-void		parse(t_asm *asmbly, char *str, int turn)
+void	parse(t_asm *asmbly, char *str, int turn)
 {
 	if (is_empty(str) == 1)
 		return ;
 	if (check_comment(str) == 1)
 		return ;
-	else if (turn == 0)
+	else if (name_presence(str) == 1 && asmbly->got_name == 0)
 		get_name(asmbly, str);
-	else if (turn == 1)
+	else if (comment_presence(str) == 1 && asmbly->got_comment == 0)
 		get_comment(asmbly, str);
-	else
+	else if (asmbly->got_name == 1 && asmbly->got_comment == 1)
 		get_instruction(asmbly, str, turn + 1);
+	else
+	{
+		free(str);
+		parse_error(asmbly);
+	}
 }
 
 static int	open_file(char *str)
 {
 	int		fd;
 
-	if ((fd = open(str, O_RDONLY)) == -1)
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
 	{
-		ft_putstr("Can't read source file ");
+		ft_putstr("our Can't read source file ");
 		ft_putstr(str);
 		ft_putchar('\n');
 		exit(ERROR);

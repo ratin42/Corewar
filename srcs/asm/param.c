@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 20:14:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 14:36:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 	while (str[i])
 	{
 		y = 0;
-		while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+		while ((str[i] == ',' || str[i] == 32
+			|| (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
 		if (str[i] == '\0' || str[i] == '#')
 			return ;
