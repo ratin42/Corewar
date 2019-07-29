@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 22:22:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 22:32:06 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@ int         atoi_hex(char *str, int fd)
 void			write_bytecode(t_asm *asmbly, int fd)
 {
 	t_instru	*instru;
-	header_t	*header;
+	t_header	*header;
 
 	instru = asmbly->instru;
 	
-	header = malloc(sizeof(header_t));
+	header = malloc(sizeof(t_header));
 	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
 	header->prog_size = swap_endian(asmbly->size);
 	ft_strcpy(header->prog_name, asmbly->name);
 	ft_strcpy(header->comment, asmbly->comment);
-	write(fd, header, sizeof(header_t));
+	write(fd, header, sizeof(t_header));
 	while (instru)
 	{
 		atoi_hex(instru->conv_par, fd);
