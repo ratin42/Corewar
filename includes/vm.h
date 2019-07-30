@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/29 23:13:10 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/30 15:02:48 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 # include <stdlib.h>
 # include "op.h"
 
-struct					s_type
+typedef struct			s_type
 {
 	int					param1;
 	int					param2;
 	int					param3;
-};
+}                       t_type;
 
 typedef struct			s_op
 {
 	char				*name;
 	int					nbr_of_param;
-	struct s_type		type_of_param;
+	t_type	        	type_of_param;
 	int					opcode;
 	int					nbr_of_cycle;
 	char				*description;
@@ -57,3 +57,5 @@ typedef struct          s_champion
     unsigned int        magic;
     unsigned int        prog_size;
 }                       t_champion;
+
+#endif

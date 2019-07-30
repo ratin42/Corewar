@@ -6,17 +6,17 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:01:45 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/29 23:28:11 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/30 15:07:05 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static int		register_range(int value, int min, int max)
+int		register_range(int value, int min, int max)
 {
 	if (value >= min && value <= max)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int is_register(unsigned char octet)
