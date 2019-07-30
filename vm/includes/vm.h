@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/30 16:57:57 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/30 22:14:52 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <locale.h>
 # include <stdint.h>
 # include <stdlib.h>
-# include "op.h"
-# include "libft.h"
+//# include "op.h"
+//# include "libft.h"
 # include <sys/types.h>
 # include <sys/uio.h>
-//#include "../../includes/op.h"
-//#include "../libft/includes/libft.h"
+#include "../../includes/op.h"
+#include "../libft/includes/libft.h"
 
 # include <stdio.h>
 
@@ -50,12 +50,16 @@ typedef struct			s_op
 
 typedef struct          s_process
 {
+	char				*prog_name;
+	char				*comment;
+	unsigned int		magic;
+	unsigned int		prog_size;
+
     int                 reg[REG_NUMBER + 1];
     unsigned int        pc;
     unsigned int        carry;
     unsigned int        live;
-    t_op                instruction;
-    struct s_process    *next;
+
 }                       t_process;
 
 typedef struct          s_champion
@@ -74,26 +78,64 @@ typedef struct 			s_corewar
 	unsigned int		tail;
 	unsigned int 		ram_full;
 	int					count;
+    struct s_op			instruction;
+
+	struct s_process	process[4];
+
 }						t_corewar;
 
-typedef	struct		s_instru
-{
-//
-}					t_instru;
 
-typedef	struct		s_process
-{
-	struct s_header		header;
-	struct s_instru		*instru;
+/*
+ * DEBUG_TOOLS.c
+*/
 
-}					t_process;
+void				print_process_data(t_corewar *cor, int player_nb);
+
+/*
+ * COREWAR.c
+*/
+
+void				corewar_quit(char *str);
+
+/*
+ * GET_TYPE.c
+*/
+
+int					register_range(int value, int min, int max);
+int 				is_register(unsigned char octet);
+int 				is_indirect(int octet);
+int 				is_direct(int octet);
+
+/*
+ * PARSING_1.c
+*/
+
+int					parse_arguments(char *av);
+int					get_infos(int ac, char **av, t_corewar *cor);
+//swap_endian doublons, deja present dans asm
+uint32_t			swap_endian(uint32_t val);
+
+/*
+ * READ_PROCESS.c
+*/
+
+void				read_process(char *name, t_corewar *cor, int i);
 
 
-uint32_t	swap_endian(uint32_t val);
 
-void	corewar_quit(char *str);
-void	read_process(char *name);
-int		parse_arguments(char *av);
-int		get_infos(int ac, char **av);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif

@@ -6,7 +6,7 @@
 #    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/29 20:54:08 by hlombard         ###   ########.fr        #
+#    Updated: 2019/07/30 20:23:45 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ INC_PATH		:=	includes
 LIB_PATH		:=	libft
 
 SRC_NAME1		:=	corewar.c \
+					parsing_1.c \
+					read_process.c \
+					debug_tools.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a
