@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 00:22:24 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/30 22:31:41 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
 		exit(ERROR);
+	//printf("str = %s line = %d\n", str, line);
 	check_opcode(opcode, line, str, i);
 	instru->opcode = opcode;
 	return (i);

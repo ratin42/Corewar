@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 22:01:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/30 23:21:40 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void			convert_instruction(t_asm *asmbly)
 	//print_instruction(asmbly);
 	while (instru)
 	{
+		if (instru->opcode == NULL)
+			break ;
 		op_index = find_op_index(instru->opcode);
 		instru->conv_par = convert_opcode(instru);
 		if (g_op_tab[op_index].coding_opcode == 1)

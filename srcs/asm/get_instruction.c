@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 14:24:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/30 22:41:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int				check_opc_presence(char *str)
 		i++;
 	while (str[++i])
 	{
+		if (str[i] == COMMENT_CHAR)
+			return (0);
 		if (str[i] && str[i] != 32 && (str[i] < 9 || str[i] > 13))
 			return (1);
 	}
@@ -70,7 +72,8 @@ int				get_label(t_asm *asmbly, char *str, int line)
 	if (!(label = ft_strsub(str, y, i)))
 		exit(ERROR);
 	verify_label(label, line);
-	instru->label = label;
+	if (instru->label == NULL)
+		instru->label = label;
 	if (check_opc_presence(str) == 0)
 		return (-1);
 	return (0);
@@ -85,6 +88,8 @@ static int		last_instru_cmplt(t_asm *asmbly)
 		return (1);
 	while (last->next)
 		last = last->next;
+	if (last->label != NULL && last->opcode == NULL)
+		return (-1);
 	if (last->opcode == NULL)
 		return (0);
 	return (1);
@@ -100,6 +105,8 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 		add_instru(asmbly, line);
 	if (ft_strchr(str, LABEL_CHAR) != NULL)
 	{
+		if (last_instru_cmplt(asmbly) == -1)
+			line -= 1;
 		if (get_label(asmbly, str, line) == -1)
 		{
 			instru = find_instru(asmbly, line);

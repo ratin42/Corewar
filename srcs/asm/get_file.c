@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 16:19:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/30 22:44:19 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int			parse_file(t_asm *asmbly, char *file)
 			free(str);
 		turn++;
 	}
+	//print_instruction(asmbly);
 	return (SUCCESS);
 }
