@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_str.c                                   :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 13:32:58 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 01:37:15 by ratin            ###   ########.fr       */
+/*   Created: 2018/11/14 21:34:34 by hlombard          #+#    #+#             */
+/*   Updated: 2018/11/16 23:01:45 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-void		ft_reverse_str(char *str, int len)
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
-	int i;
-	int j;
-	int tmp;
-
-	i = 0;
-	j = len - 1;
-	while (i < j)
+	if (alst != NULL && del != NULL)
 	{
-		tmp = str[i];
-		str[i] = str[j];
-		str[j] = tmp;
-		i++;
-		j--;
+		(*del)((*alst)->content, (*alst)->content_size);
+		ft_memdel((void **)alst);
 	}
 }

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_nb.c                                           :+:      :+:    :+:   */
+/*   ft_strmaxint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hlombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 23:37:35 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 01:38:04 by ratin            ###   ########.fr       */
+/*   Created: 2019/07/05 16:03:51 by hlombard          #+#    #+#             */
+/*   Updated: 2019/07/05 16:03:59 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-int		get_nb(char c, char *base)
+int		strmaxint(char *str)
 {
-	long i;
-
-	i = 0;
-	while (base[i] && base[i] != c)
-		i++;
-	return (i);
+	if (ft_strlen(str) > 11)
+		return (1);
+	if (ft_atoll(str) < (long)-2147483648)
+		return (1);
+	if (ft_atoll(str) > (long)2147483647)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/31 16:56:15 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/07/31 23:43:20 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 #include "../../includes/op.h"
-#include "../libft/includes/libft.h"
-
-# include <stdio.h>
+#include "../libft/libft.h"
+#include "../libft/includes/ft_printf.h"
 
 # define DEBUG 1
 
@@ -50,10 +49,12 @@ typedef struct			s_op
 
 typedef struct          s_process
 {
-	char				*prog_name;
+	char				*name;
+	//char				*file_name;
 	char				*comment;
 	unsigned int		magic;
-	unsigned int		prog_size;
+	unsigned int		size;
+	unsigned char		code[CHAMP_MAX_SIZE];
 
     int                 reg[REG_NUMBER + 1];
     unsigned int        pc;
@@ -73,18 +74,19 @@ typedef struct          s_process
 
 typedef struct 			s_corewar
 {
-	unsigned char		ram[MEM_SIZE];
+	unsigned char		arena[MEM_SIZE];
 	unsigned int		head;
 	unsigned int		tail;
 	unsigned int 		ram_full;
 	int					count;
 	int					last_live_id;
+	int					nb_players;
 	char				*last_live_name;
 	unsigned int		current_live;
 
     struct s_op			instruction;
 
-	struct s_process	process[4];
+	struct s_process	process[MAX_PLAYERS];
 
 }						t_corewar;
 
@@ -118,16 +120,21 @@ int					parse_arguments(char *av);
 int					get_infos(int ac, char **av, t_corewar *cor);
 //swap_endian doublons, deja present dans asm
 uint32_t			swap_endian(uint32_t val);
+unsigned char		swap_endian_u(unsigned char val);
 
 /*
  * READ_PROCESS.c
 */
 
 void				read_process(char *name, t_corewar *cor, int i);
+void				stock_process_size(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_name(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_comment(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_magic(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_code(t_corewar *cor, int i, int fd);
 
 
-
-
+void				create_arena(t_corewar *cor);
 
 
 

@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/18 13:12:01 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:15:53 by saouas           ###   ########.fr       */
+/*   Created: 2018/11/15 15:41:25 by hlombard          #+#    #+#             */
+/*   Updated: 2018/11/15 16:16:25 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-int		ft_str_is_uppercase(char *str)
+void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 65 && str[i] <= 90)
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+	if ((*alst)->next)
+		ft_lstdel(&((*alst)->next), del);
+	ft_lstdelone(alst, del);
 }

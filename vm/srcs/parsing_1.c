@@ -26,19 +26,20 @@ int		get_infos(int ac, char **av, t_corewar *cor)
 		if (parse_arguments(av[i]) == -1)
 		{
 			if (DEBUG)
-				printf("[%s]\t--> Not a valid .cor file\n", av[i]);
+				ft_printf("[%s]\t--> Not a valid .cor file\n", av[i]);
 			return (-1);
-			player_nb++;
 		}
 		if (player_nb <= MAX_PLAYERS)
 		{
 			read_process(av[i], cor, player_nb);
 			if (DEBUG)
 				print_process_data(cor, player_nb);
+			player_nb++;
 		}
 		else
 			corewar_quit("\t=> Too many champions (maximum 4)");
 	}
+	cor->nb_players = player_nb;
 	return (1);
 }
 
@@ -46,6 +47,12 @@ int		get_infos(int ac, char **av, t_corewar *cor)
 
 
 uint32_t	swap_endian(uint32_t val)
+{
+	val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
+	return ((val << 16) | (val >> 16));
+}
+
+unsigned char swap_endian_u(unsigned char val)
 {
 	val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
 	return ((val << 16) | (val >> 16));

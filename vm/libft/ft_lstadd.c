@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/18 13:00:33 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:15:19 by saouas           ###   ########.fr       */
+/*   Created: 2018/11/14 21:33:27 by hlombard          #+#    #+#             */
+/*   Updated: 2018/11/19 12:10:55 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-int		ft_str_is_numeric(char *str)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(ft_isdigit(str[i])))
-			return (0);
-		i++;
-	}
-	return (1);
+	new->next = *alst;
+	*alst = new;
 }

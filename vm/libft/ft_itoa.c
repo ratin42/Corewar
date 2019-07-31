@@ -3,70 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:08 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:09:01 by saouas           ###   ########.fr       */
+/*   Created: 2018/11/15 15:26:08 by hlombard          #+#    #+#             */
+/*   Updated: 2019/03/27 13:04:49 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-static int			len(int nb)
+int		nbr_len(int nb)
 {
-	long	nb2;
-	int		len_ret;
+	int len;
 
-	nb2 = nb;
-	len_ret = 0;
-	if (nb2 < 0)
-	{
-		nb2 = nb2 * -1;
-		len_ret++;
-	}
-	while (nb2 > 0)
-	{
-		nb2 = nb2 / 10;
-		len_ret++;
-	}
-	return (len_ret);
-}
-
-static	void		count(char *str, long *nb2, int *i)
-{
-	while (*nb2 > 0)
-	{
-		str[*i] = '0' + (*nb2 % 10);
-		*nb2 = *nb2 / 10;
-		*i -= 1;
-	}
-}
-
-char				*ft_itoa(int nb)
-{
-	char	*str;
-	int		i;
-	long	nb2;
-
-	nb2 = nb;
+	len = 0;
 	if (nb == 0)
-		i = 1;
-	else
-		i = len(nb2);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	if (nb2 == 0)
+		return (1);
+	if (nb < 0)
 	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
+		len++;
+		nb *= -1;
 	}
-	str[i--] = '\0';
-	if (nb2 < 0)
+	while (nb)
 	{
-		nb2 = nb2 * -1;
+		len++;
+		nb /= 10;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int nb)
+{
+	long	nbr;
+	int		len;
+	char	*str;
+
+	len = nbr_len(nb);
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	str[len--] = '\0';
+	nbr = nb;
+	if (nbr == 0)
+		return ("0");
+	if (nbr < 0)
+	{
+		nbr *= -1;
 		str[0] = '-';
 	}
-	count(str, &nb2, &i);
+	while (nbr)
+	{
+		str[len--] = nbr % 10 + '0';
+		nbr /= 10;
+	}
 	return (str);
 }

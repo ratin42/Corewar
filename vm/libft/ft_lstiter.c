@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 22:41:22 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/25 22:56:37 by saouas           ###   ########.fr       */
+/*   Created: 2018/11/14 21:35:10 by hlombard          #+#    #+#             */
+/*   Updated: 2018/11/14 21:35:13 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strndup(const char *s, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	char			*res;
-	unsigned int	i;
-
-	i = 0;
-	res = malloc(sizeof(char) * (n + 1));
-	if (res == NULL)
-		return (NULL);
-	while (i < n)
+	if (lst && f)
 	{
-		res[i] = s[i];
-		i++;
+		ft_lstiter(lst->next, f);
+		(*f)(lst);
 	}
-	res[i] = '\0';
-	return (res);
 }

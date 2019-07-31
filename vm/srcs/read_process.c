@@ -2,38 +2,82 @@
 
 void	read_process(char *name, t_corewar *cor, int i)
 {
+	t_header			header;
 	int					fd;
-	unsigned int		size;
-	unsigned int		file;
-	unsigned int		size_cpy;
 
-	t_header			*header;
-
-	if (!(header = (t_header*)malloc(sizeof(t_header))))
-		corewar_quit("Couldn't allocate t_header");
 	if ((fd = open(name, O_RDONLY)) < 0)
 		corewar_quit("Open error");
-	if ((read(fd, header, sizeof(t_header)) < 0))
+	if ((read(fd, &header, sizeof(t_header)) < 0))
 		corewar_quit("Read error");
+	stock_process_name(cor, &header, name, i);
+	stock_process_size(cor, &header, name, i);
+	stock_process_comment(cor, &header, name, i);
+	stock_process_magic(cor, &header, name, i);
+	stock_process_code(cor, i, fd);	
+}
+
+
+void	stock_process_code(t_corewar *cor, int i, int fd)
+{
+	ft_bzero((unsigned char *)cor->process[i].code, cor->process[i].size);
+	if ((read(fd, cor->process[i].code, cor->process[i].size) < 0))
+			corewar_quit("Read error");
+}
+
+
+void	stock_process_size(t_corewar *cor, t_header *header, char *name, int i)
+{
+	int size;
+
 	size = swap_endian(header->prog_size);
-	//Reste a connaitre la taille minimum du champion;
 	if (size > CHAMP_MAX_SIZE)
 	{
-		printf("Champion [%s] = %d bytes, maximum is : %d bytes", name, size, CHAMP_MAX_SIZE);
+		ft_printf("Champion [%s] = %d bytes, maximum is : %d bytes", name, size, CHAMP_MAX_SIZE);
 		corewar_quit("");
 	}
-	size_cpy = size;
-	while ((int)size > 0)
-	{
-		if ((read(fd, &file, sizeof(unsigned int))) < 0)
-			corewar_quit("Read error");
-		file = swap_endian(file);
-		//printf("%x\n", file);
-		size -= sizeof(unsigned int);
-	}
-	cor->process[i].prog_name = header->prog_name;
-	cor->process[i].comment = header->comment;
-	cor->process[i].magic = COREWAR_EXEC_MAGIC;
-	cor->process[i].prog_size = size_cpy;
-	free(header);
+	cor->process[i].size = size;
 }
+
+void	stock_process_name(t_corewar *cor, t_header *header, char *name, int i)
+{
+	int size;
+
+	size = ft_strlen(header->prog_name);
+	if (size > PROG_NAME_LENGTH)
+	{
+		ft_printf("Champion named [%s] has a too big .name value : [%d], maximum is : %d", name, size, PROG_NAME_LENGTH);
+		corewar_quit("");
+	}
+	cor->process[i].name = header->prog_name;
+}
+
+void	stock_process_comment(t_corewar *cor, t_header *header, char *name, int i)
+{
+	int size;
+
+	size = ft_strlen(header->comment); 
+	if (size > COMMENT_LENGTH)
+	{
+		ft_printf("Champion [%s] has a too big .comment value : [%d], maximum is %d", name, size, COMMENT_LENGTH);
+		corewar_quit("");
+	}
+	cor->process[i].comment = header->comment;
+}
+
+void	stock_process_magic(t_corewar *cor, t_header *header, char *name, int i)
+{
+	unsigned int magic;
+
+	magic = swap_endian(header->magic);
+
+	if (magic != COREWAR_EXEC_MAGIC)
+	{
+		ft_printf("Champion [%s], has wrong magic : [%u], has to be : %u\n", name, header->magic, COREWAR_EXEC_MAGIC);
+	}
+	cor->process[i].magic = magic;
+}
+
+
+
+
+
