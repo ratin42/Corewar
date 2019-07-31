@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/30 22:14:52 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/07/31 16:56:15 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ typedef struct          s_process
     unsigned int        pc;
     unsigned int        carry;
     unsigned int        live;
-
+	int					id;
 }                       t_process;
 
-typedef struct          s_champion
-{
-    char                *name;
-    char                *comment;
-    int                 id;
-    unsigned int        magic;
-    unsigned int        prog_size;
-}                       t_champion;
+// typedef struct          s_champion
+// {
+//     char                *name;
+//     char                *comment;
+//     int                 id;
+//     unsigned int        magic;
+//     unsigned int        prog_size;
+// }                       t_champion;
 
 typedef struct 			s_corewar
 {
@@ -78,6 +78,10 @@ typedef struct 			s_corewar
 	unsigned int		tail;
 	unsigned int 		ram_full;
 	int					count;
+	int					last_live_id;
+	char				*last_live_name;
+	unsigned int		current_live;
+
     struct s_op			instruction;
 
 	struct s_process	process[4];
