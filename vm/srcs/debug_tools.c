@@ -12,7 +12,7 @@ void	print_process_data(t_corewar *cor, int player_nb)
 	ft_printf("\t=>comment   = [%s]\n", cor->process[player_nb].comment);
 	ft_printf("\t=>prog_size = [%u]\n", cor->process[player_nb].size);
 	ft_printf("\t=>magic     = [%u]\n", cor->process[player_nb].magic);
-	
+
 	ft_printf("\t=>Code:     =\n\n");
 	while (++i < cor->process[player_nb].size)
 	{
@@ -24,4 +24,41 @@ void	print_process_data(t_corewar *cor, int player_nb)
 
 	ft_printf("\n-------------------------------------------------------");
 	ft_printf("\n\n\n");
+}
+
+void	print_arena_state(t_corewar *cor)
+{
+	int p;
+	int j;
+	int i;
+
+	j = 0;
+	p = 0;
+	i = -1;
+	while (++i < MEM_SIZE)
+	{
+		if (j == 64 || i == 0)
+		{
+			ft_putchar('\n');
+			ft_printf("0x%.4x : ", p);
+			p += 64;
+			j = 0;
+		}
+		ft_printf("%.2x ", cor->arena[i]);
+		j++;
+
+	}
+	ft_printf("\n");
+}
+
+void	corewar_usage(void)
+{
+	ft_printf("USAGE:\n");
+}
+
+void	corewar_quit(char *str)
+{
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\n', 2);
+	exit(EXIT_SUCCESS);
 }
