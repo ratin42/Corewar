@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/30 22:14:52 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/01 19:54:23 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 #include "../../includes/op.h"
-#include "../libft/includes/libft.h"
+#include "../libft/libft.h"
+#include "../libft/includes/ft_printf.h"
 
-# include <stdio.h>
-
-# define DEBUG 1
+# define DEBUG 0
 
 typedef struct			s_type
 {
@@ -50,37 +49,39 @@ typedef struct			s_op
 
 typedef struct          s_process
 {
-	char				*prog_name;
+	char				*name;
 	char				*comment;
 	unsigned int		magic;
-	unsigned int		prog_size;
+	unsigned int		size;
+	unsigned char		code[CHAMP_MAX_SIZE];
+	
+	int					alive;
 
     int                 reg[REG_NUMBER + 1];
     unsigned int        pc;
     unsigned int        carry;
     unsigned int        live;
-
+	int					id;
 }                       t_process;
-
-typedef struct          s_champion
-{
-    char                *name;
-    char                *comment;
-    int                 id;
-    unsigned int        magic;
-    unsigned int        prog_size;
-}                       t_champion;
 
 typedef struct 			s_corewar
 {
-	unsigned char		ram[MEM_SIZE];
+	unsigned char		arena[MEM_SIZE];
 	unsigned int		head;
 	unsigned int		tail;
 	unsigned int 		ram_full;
 	int					count;
-    struct s_op			instruction;
+	int					last_live_id;
+	int					nb_players;
+	char				*last_live_name;
+	unsigned int		current_live;
 
-	struct s_process	process[4];
+    struct s_op			instruction;
+	struct s_process	process[MAX_PLAYERS];
+
+	int					cycle;
+
+	int					n_dump;
 
 }						t_corewar;
 
@@ -90,12 +91,16 @@ typedef struct 			s_corewar
 */
 
 void				print_process_data(t_corewar *cor, int player_nb);
+void				print_arena_state(t_corewar *cor);
+void				corewar_usage(void);
+void				corewar_quit(char *str);
 
 /*
  * COREWAR.c
 */
 
-void				corewar_quit(char *str);
+void				init_datas(t_corewar *cor);
+
 
 /*
  * GET_TYPE.c
@@ -107,19 +112,44 @@ int 				is_indirect(int octet);
 int 				is_direct(int octet);
 
 /*
- * PARSING_1.c
+ * PARSING.c
 */
 
-int					parse_arguments(char *av);
-int					get_infos(int ac, char **av, t_corewar *cor);
+int					cor_file(char *av);
+int					parse_arguments(int ac, char **av, t_corewar *cor);
+void				get_champion(t_corewar *cor, char **av, int i, int *player_nb);
+
 //swap_endian doublons, deja present dans asm
 uint32_t			swap_endian(uint32_t val);
+
+/*
+ * OPTIONS.C
+*/
+
+void				dump_option(t_corewar *cor, char **av, int *i);
+
 
 /*
  * READ_PROCESS.c
 */
 
 void				read_process(char *name, t_corewar *cor, int i);
+void				stock_process_size(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_name(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_comment(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_magic(t_corewar *cor, t_header *header, char *name, int i);
+void				stock_process_code(t_corewar *cor, int i, int fd);
+
+
+void				create_arena(t_corewar *cor);
+
+
+/*
+ * START_PLAYING.c
+*/
+
+void				start_playing(t_corewar *cor);
+int					process_alive(t_corewar *cor);
 
 
 
