@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/30 22:41:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 17:33:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,12 @@ int				get_label(t_asm *asmbly, char *str, int line)
 
 	i = 0;
 	y = 0;
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+	{
+		print_instruction(asmbly);
+		ft_putstr_fd("couldn't get instruction in get_label\n", 2);
+		printf("line = %d\n\n", line);
+	}
 	while ((str[y] == 32 || (str[y] >= 9 && str[y] <= 13)) && str[y])
 		y++;
 	while (str[i] && str[i] != (char)LABEL_CHAR)
@@ -95,21 +100,40 @@ static int		last_instru_cmplt(t_asm *asmbly)
 	return (1);
 }
 
+int				check_label_presence(char *str)
+{
+	int			i;
+
+	i = 0;
+	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+		i++;
+	while (str[i] && (ft_strchr(LABEL_CHARS, str[i]) != NULL
+		|| str[i] == LABEL_CHAR))
+	{
+		if (str[i] == LABEL_CHAR)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void			get_instruction(t_asm *asmbly, char *str, int line)
 {
 	int			indexer;
 	t_instru	*instru;
 
 	indexer = 0;
+	//print_instruction(asmbly);
 	if (last_instru_cmplt(asmbly) == 1)
 		add_instru(asmbly, line);
-	if (ft_strchr(str, LABEL_CHAR) != NULL)
+	if (check_label_presence(str) == 1)
 	{
 		if (last_instru_cmplt(asmbly) == -1)
-			line -= 1;
+			add_instru(asmbly, line);
 		if (get_label(asmbly, str, line) == -1)
 		{
-			instru = find_instru(asmbly, line);
+			if (!(instru = find_instru(asmbly, line)))
+				ft_putstr_fd("couldn't get instruction in get_instru\n", 2);
 			instru->line++;
 			return ;
 		}
@@ -117,4 +141,5 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 	indexer = get_opcode(asmbly, str, line);
 	get_params(asmbly, &str[indexer], line);
 	check_params_error(asmbly, str, line);
+	//printf("line %d -> str = %s\n", line, str);
 }

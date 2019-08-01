@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 17:02:21 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 14:10:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	t_instru	*instru;
 	t_param		*param;
 
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+{
+ft_putstr("couldn't get instruction from find_instru\n");
+}
 	param = instru->param;
 	while (param)
 	{

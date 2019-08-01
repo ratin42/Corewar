@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 14:36:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 17:03:55 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 	char		*param;
 
 	i = 0;
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+		ft_putstr_fd("couldn't get instruction in fill_params\n", 2);
 	while (str[i])
 	{
 		y = 0;
 		while ((str[i] == ',' || str[i] == 32
 			|| (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
-		if (str[i] == '\0' || str[i] == '#')
+		if (str[i] == '\0' || str[i] == COMMENT_CHAR)
 			return ;
 		if ((y = get_comma(str, i)) == -1)
 		{
@@ -83,6 +84,7 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		add_param(instru, line, param);
 		free(param);
 		i += y;
+		
 		if (str[i] == '\0')
 			break ;
 		i++;
@@ -95,7 +97,10 @@ void			get_params(t_asm *asmbly, char *str, int line)
 	int			i;
 
 	i = 0;
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+	{
+		ft_putstr("couldn't get instruction in get_params\n");
+	}
 	instru->nbr_of_params = get_nbr_of_params(instru->opcode);
 	while ((str[i] != 32 && (str[i] < 9 || str[i] > 13)) && str[i])
 		i++;

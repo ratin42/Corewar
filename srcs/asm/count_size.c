@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 17:25:39 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/28 17:37:21 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 15:56:39 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	count_size(t_asm *asmbly)
 	{
 		y = -1;
 		i = 0;
-		while (instru->conv_par[i])
+		while (instru->conv_par != NULL && instru->conv_par[i])
 		{
 			if (instru->conv_par[i] == ';')
 			{

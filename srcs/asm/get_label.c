@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/30 23:35:43 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 19:48:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,16 @@ void	replace_label(t_asm *asmbly)
 	t_instru	*instru;
 
 	instru = asmbly->instru;
-	//print_instruction(asmbly);
 	while (instru != NULL)
 	{
+		//if (instru->line == 77)
+		//printf("instru = %s line = %d\n"
+		//	, instru->opcode, instru->line);
 		if (instru->opcode != NULL)
 		{
 			if (ft_strchr(instru->conv_par, 'L') != NULL)
 				get_label_value(asmbly, instru);
 		}
-		//printf("passage instru = %s\n", instru->opcode);
 		instru = instru->next;
 	}
-	//printf("sortie\n");
 }
-
-//bloque par fois a l'instruction live apres sti sti sti sti fork
