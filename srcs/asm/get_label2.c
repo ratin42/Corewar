@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 00:21:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/27 01:31:27 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 07:35:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int			reverse_label(t_asm *asmbly, t_instru *instru, char *label)
 	int			distance;
 	int			max_dist = 65535;
 
+	//	printf()
 	count = asmbly->instru;
 	distance = 0;
 	instru->labelsrc = 1;

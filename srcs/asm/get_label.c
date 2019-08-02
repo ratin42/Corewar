@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 05:59:56 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:15:29 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int		compare_label(char *label1, char *label2)
 	int			i;
 
 	i = 0;
-	while (label1[i] != LABEL_CHAR)
-		i++;
-	i++;
 	if (ft_strcmp(label1, label2) == 0)
 		return (1);
 	return (0);
@@ -109,6 +106,7 @@ void	replace_label(t_asm *asmbly)
 	instru = asmbly->instru;
 	while (instru != NULL)
 	{
+		//print_instruction(asmbly);
 		if (instru->opcode != NULL)
 		{
 			if (ft_strchr(instru->conv_par, 'L') != NULL)
