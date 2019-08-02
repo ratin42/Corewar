@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:41:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:51:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			print_instruction(t_asm *asmbly)
 	t_instru	*instru;
 
 	instru = asmbly->instru;
-	instru = find_instru(asmbly, 67);
+	//instru = find_instru(asmbly, 67);
 /* 	printf("\n~~~ instruction are ~~~\n");
 	while (instru)
 	{ */
