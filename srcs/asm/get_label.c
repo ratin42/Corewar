@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 19:48:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 04:02:22 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,6 @@ void	replace_label(t_asm *asmbly)
 	instru = asmbly->instru;
 	while (instru != NULL)
 	{
-		//if (instru->line == 77)
-		//printf("instru = %s line = %d\n"
-		//	, instru->opcode, instru->line);
 		if (instru->opcode != NULL)
 		{
 			if (ft_strchr(instru->conv_par, 'L') != NULL)

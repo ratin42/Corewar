@@ -6,19 +6,20 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 20:17:47 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 04:50:26 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static char		*convert_params(t_instru *instru)
+char		*convert_params(t_instru **instru)
 {
 	t_param		*param;
 	char		*result;
 
-	result = NULL;
-	param = instru->param;
+	if (!(result = (char *)malloc(sizeof(char))))
+		exit(ERROR);
+	param = (*instru)->param;
 	while (param)
 	{
 		if (param->type == 1)
@@ -28,12 +29,12 @@ static char		*convert_params(t_instru *instru)
 		}
 		if (param->type == 2)
 		{
-			if (!(result = ft_strjoin_free(result, dir_conver(param, instru), 1)))
+			if (!(result = ft_strjoin_free(result, dir_conver(param, *instru), 1)))
 				exit(ERROR);
 		}
 		if (param->type == 4)
 		{
-			if (!(result = ft_strjoin_free(result, ind_conver(param, instru), 1)))
+			if (!(result = ft_strjoin_free(result, ind_conver(param, *instru), 1)))
 				exit(ERROR);
 		}
 		if (!(result = ft_strjoin_free(result, ";", 1)))
@@ -90,7 +91,6 @@ void			convert_instruction(t_asm *asmbly)
 
 	i = 0;
 	instru = asmbly->instru;
-	print_instruction(asmbly);
 	while (instru)
 	{
 		if (instru->opcode == NULL)
@@ -98,8 +98,6 @@ void			convert_instruction(t_asm *asmbly)
 			instru = instru->next;
 			continue ;
 		}
-		printf("->%s line = %d param = %s\n"
-			, instru->opcode, instru->line, instru->param->param);
 		op_index = find_op_index(instru->opcode);
 		instru->conv_par = convert_opcode(instru);
 		if (g_op_tab[op_index].coding_opcode == 1)
@@ -108,7 +106,7 @@ void			convert_instruction(t_asm *asmbly)
 				, get_ocp(instru), 1);
 		}
 		instru->conv_par = ft_strjoin_free(instru->conv_par
-			, convert_params(instru), 1);
+			, convert_params(&instru), 1);
 		instru->byte_size = add_byte_size(instru);
 		instru = instru->next;
 	}

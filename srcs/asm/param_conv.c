@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 20:21:02 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 04:46:52 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,31 +85,23 @@ char			*dir_conver(t_param *param, t_instru *instru)
 	char		*conv;
 	int			size;
 	int			op_index;
-	char		*nbr_cpy;
 
 	conv = NULL;
 	op_index = find_op_index(instru->opcode);
-	printf("=>instru = %s param = %s\n", instru->opcode, param->param);
 	if (g_op_tab[op_index].direct_size == 1)
 		size = 4;
 	else
 		size = 8;
-
-
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
-
-	nbr_cpy = ft_strdup(&param->param[1]);
-
-	conv = ft_ul_convert_base(&param->param[1], "0123456789abcdef");
-
+	char *cpy;
+	cpy = ft_strdup(&param->param[1]);
+	conv = ft_ul_convert_base(cpy, "0123456789abcdef");
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);
 	else if (size < 0)
 		conv = reduce_conv(size, &conv);
-	printf("passage\n");
-	free(nbr_cpy);
 	return (conv);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/30 19:05:16 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/01 15:22:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			check_comment(char *str);
 int			name_presence(char *str);
 int			comment_presence(char *str);
 int			is_empty(char *str);
+int			check_label_presence(char *str);
 
 /*
 ** instruction

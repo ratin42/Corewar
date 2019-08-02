@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 15:51:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 04:02:18 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	i = 0;
 	y = 0;
 	if (!(instru = find_instru(asmbly, line)))
-	{
-		//print_instruction(asmbly);
 		ft_putstr_fd("couldn't get instruction in get_opcode\n", 2);
-		printf("line = %d\n\n", line);
-	}
 	i = pass_label_char(str);
 	if (str[i] == ':')
 		i++;
@@ -80,7 +76,6 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	if (!(opcode = ft_strsub(str, i, y)))
 		exit(ERROR);
 	check_opcode(opcode, line, str, i);
-	//printf("----sortie str = %s label |%s|\n", str, instru->label);
 	instru->opcode = opcode;
 	return (i);
 }
