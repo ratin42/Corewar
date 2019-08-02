@@ -96,6 +96,12 @@ typedef struct 			s_corewar
 */
 
 void				print_process_data(t_corewar *cor, int player_nb);
+void print_byte(uint8_t byte);
+
+/*
+** Operations/
+*/
+	uint8_t ft_get_ocp(uint16_t ins);
 
 /*
  * COREWAR.c

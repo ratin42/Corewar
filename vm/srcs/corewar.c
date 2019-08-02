@@ -25,6 +25,7 @@ int main(int ac, char **av)
 				ft_printf("\nERROR get_infos == -1\n");
 			return (0);
 		}
+		print_process_data(&cor, 0);
 		create_arena(&cor);
 
 	}
@@ -44,8 +45,8 @@ void	create_arena(t_corewar *cor)
 		ft_memcpy((void*)&cor->arena + ((MEM_SIZE / cor->nb_players) * i),
 				cor->process[i].code, cor->process[i].size);
 	}
-	
-	p = 0;	
+
+	p = 0;
 	i = -1;
 
 	while (++i < MEM_SIZE)

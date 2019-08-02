@@ -20,4 +20,10 @@
 ** 0x03 (T_REG) (T_REG | T_IND) -
 */
 
-//int op_st(t_corewar *corewar, )
+int op_st(t_corewar *cor, t_process *process, uint16_t ins)
+{
+  uint8_t ocp;
+
+  ocp = ft_get_ocp(ins);
+
+}
