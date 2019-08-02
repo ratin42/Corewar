@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 05:55:09 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 07:11:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,14 @@ void			delete_instru(t_instru **instru)
 		free((*instru)->param);
 	}
 	free(*instru);
+}
+
+t_instru		*get_last_instru(t_asm *asmbly)
+{
+	t_instru	*last;
+
+	last = asmbly->instru;
+	while(last->next)
+		last = last->next;
+	return (last);
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 14:36:11 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 07:15:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ void			check_params_error(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*current;
 
-	current = find_instru(asmbly, line);
+	if (!(current = find_instru(asmbly, line)))
+		current = get_last_instru(asmbly);
 	check_nbr_of_param(current, str, line);
 	check_type_of_param(current, str, line);
 }
