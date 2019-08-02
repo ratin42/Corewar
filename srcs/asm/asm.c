@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:12:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:11:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			main(int ac, char **av)
 	init_prog(&asmbly);
 	parse_file(&asmbly, av[ac - 1]);
 	dlt_lst_empty_lbl(&asmbly);
+	//print_instruction(&asmbly);
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
