@@ -6,18 +6,18 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 04:50:26 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 05:22:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-char		*convert_params(t_instru **instru)
+char		*convert_params(t_asm *asmbly, t_instru **instru)
 {
 	t_param		*param;
 	char		*result;
 
-	if (!(result = (char *)malloc(sizeof(char))))
+	if (!(result = (char *)ft_memalloc(sizeof(char))))
 		exit(ERROR);
 	param = (*instru)->param;
 	while (param)
@@ -42,6 +42,7 @@ char		*convert_params(t_instru **instru)
 		param = param->next;
 	}
 	return (result);
+	(void)asmbly;
 }
 
 static char		*convert_opcode(t_instru *instru)
@@ -106,7 +107,7 @@ void			convert_instruction(t_asm *asmbly)
 				, get_ocp(instru), 1);
 		}
 		instru->conv_par = ft_strjoin_free(instru->conv_par
-			, convert_params(&instru), 1);
+			, convert_params(asmbly, &instru), 1);
 		instru->byte_size = add_byte_size(instru);
 		instru = instru->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 19:20:37 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/29 20:21:35 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 05:44:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,10 @@ long long int *size)
 		i++;
 	}
 	ret[i] = '\0';
-	if (tab[2] == 1)
-	{
-		ret = ft_realloc(ret, ++(*size));
-		ret[i++] = '-';
-	}
 	ret[i] = '\0';
 	return (ret);
 }
 
-#include <stdio.h>
 char				*ft_convert_base_finale(char *nbr, char *base_to)
 {
 	long long int	calcul;

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 15:22:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 05:07:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			check_label_presence(char *str);
 t_instru	*find_instru(t_asm *asmbly, int line);
 void		get_instruction(t_asm *asmbly, char *str, int line);
 void		add_instru(t_asm *asmbly, int line);
+void		delete_instru(t_instru **instru);
 void		get_params(t_asm *asmbly, char *str, int line);
 void		check_params_error(t_asm *asmbly, char *str, int line);
 void		print_erro_param(char *str, int line, int error);

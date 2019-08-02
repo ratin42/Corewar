@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 04:02:22 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 05:59:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
 		if (count == NULL)
 			distance = reverse_label(asmbly, instru, label);
 	}
+	if (count != NULL && count->added_label == 1)
+		distance += count->byte_size;
 	fill_label(instru, distance);
 }
 

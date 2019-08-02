@@ -6,11 +6,37 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 04:49:43 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 06:00:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+void		move_label(t_asm *asmbly, t_instru **instru)
+{
+	char		*label_cpy;
+	t_instru	*last;
+
+	last = asmbly->instru;
+	label_cpy = ft_strdup((*instru)->label);
+	while (last->next->next)
+		last = last->next;
+	last->next = NULL;
+	delete_instru(instru);
+	last->label = label_cpy;
+	last->added_label = 1;
+}
+
+void		dlt_lst_empty_lbl(t_asm *asmbly)
+{
+	t_instru	*instru;
+
+	instru = asmbly->instru;
+	while (instru->next)
+		instru = instru->next;
+	if (instru->opcode == NULL && instru->label != NULL)
+		move_label(asmbly, &instru);
+}
 
 void		init_prog(t_asm *asmbly)
 {
@@ -30,6 +56,7 @@ int			main(int ac, char **av)
 	}
 	init_prog(&asmbly);
 	parse_file(&asmbly, av[ac - 1]);
+	dlt_lst_empty_lbl(&asmbly);
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
