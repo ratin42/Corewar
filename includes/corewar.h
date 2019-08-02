@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:11:27 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:24:51 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			name_presence(char *str);
 int			comment_presence(char *str);
 int			is_empty(char *str);
 int			check_label_presence(char *str);
+void		dlt_lst_empty_lbl(t_asm *asmbly);
 
 /*
 ** instruction
@@ -55,6 +56,7 @@ void		add_param(t_instru *instru, int line, char *param);
 int			get_opcode(t_asm *asbly, char *str, int line);
 int			is_register(char *param);
 int			find_op_index(char *opcode);
+
 
 /*
 ** conversion

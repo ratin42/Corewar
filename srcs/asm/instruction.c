@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:00:55 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:44:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_instru		*create_instuction(int line)
 {
 	t_instru	*new_instru;
 
-	if (!(new_instru = malloc(sizeof(*new_instru))))
+	if (!(new_instru = ft_memalloc(sizeof(*new_instru))))
 		exit(ERROR);
 	new_instru->conv_par = NULL;
 	new_instru->param = NULL;

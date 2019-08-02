@@ -6,43 +6,33 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:11:20 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:48:33 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void		move_label(t_asm *asmbly, t_instru **instru)
-{
-	char		*label_cpy;
-	t_instru	*last;
-
-	last = asmbly->instru;
-	label_cpy = ft_strdup((*instru)->label);
-	while (last->next->next)
-		last = last->next;
-	last->next = NULL;
-	delete_instru(instru);
-	last->label = label_cpy;
-	last->added_label = 1;
-}
-
-void		dlt_lst_empty_lbl(t_asm *asmbly)
-{
-	t_instru	*instru;
-
-	instru = asmbly->instru;
-	while (instru->next)
-		instru = instru->next;
-	if (instru->opcode == NULL && instru->label != NULL)
-		move_label(asmbly, &instru);
-}
 
 void		init_prog(t_asm *asmbly)
 {
 	asmbly->name = NULL;
 	asmbly->comment = NULL;
 	asmbly->instru = NULL;
+}
+
+void		print_writing(char *str)
+{
+	int		i;
+
+	i = 0;
+	ft_putstr("Writing output program to ");
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		if (str[i] == '.')
+			break ;
+		i++;
+	}
+	ft_putstr("cor\n");
 }
 
 int			main(int ac, char **av)
@@ -57,11 +47,10 @@ int			main(int ac, char **av)
 	init_prog(&asmbly);
 	parse_file(&asmbly, av[ac - 1]);
 	dlt_lst_empty_lbl(&asmbly);
-	//print_instruction(&asmbly);
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
-	ft_putstr("Writing output program\n");
+	print_writing(av[ac -1]);
 	//print_instruction(&asmbly);
 	return (0);
 }

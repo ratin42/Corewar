@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 16:12:57 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:45:58 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			write_bytecode(t_asm *asmbly, int fd)
 
 	instru = asmbly->instru;
 	
-	header = malloc(sizeof(t_header));
+	header = ft_memalloc(sizeof(t_header));
 	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
 	header->prog_size = swap_endian(asmbly->size);
 	ft_strcpy(header->prog_name, asmbly->name);

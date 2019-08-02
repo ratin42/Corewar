@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/07/30 19:07:03 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/02 08:25:24 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_NAME1		:=	op.c \
 					param_conv2.c \
 					instruction.c \
 					param_error.c \
+					label_correc.c \
 					param_creation.c \
 					get_instruction.c \
 					convert_instruction.c \

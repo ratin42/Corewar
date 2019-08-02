@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 04:46:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:45:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*fill_direct(int size, char **conv)
 	if (!(tmp = ft_strdup(*conv)))
 		exit(ERROR);
 	free(*conv);
-	if (!(*conv = (char *)malloc(sizeof(char)
+	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
 		exit(ERROR);
 	while (size - i)
@@ -65,7 +65,7 @@ char			*reduce_conv(int size, char **conv)
 	tmp_size = ft_strlen(tmp) - 1;
 	new_size = size + (int)ft_strlen(tmp) - 1;
 	free(*conv);
-	if (!(*conv = (char *)malloc(sizeof(char)
+	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
 		exit(ERROR);
 	(*conv)[new_size + 1] = '\0';
