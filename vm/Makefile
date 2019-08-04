@@ -6,7 +6,7 @@
 #    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/01 18:54:37 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/04 18:59:56 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ SRC_NAME1		:=	corewar.c \
 					read_process.c \
 					debug_tools.c \
 					live.c \
+					utils_1.c \
+					game.c \
+					cycles.c \
 
 INC_NAME		:=	corewar.h
 LIB				:=	$(LIB_PATH)/libft.a

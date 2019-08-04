@@ -13,7 +13,12 @@ void	read_process(char *name, t_corewar *cor, int i)
 	stock_process_size(cor, &header, name, i);
 	stock_process_comment(cor, &header, name, i);
 	stock_process_magic(cor, &header, name, i);
-	stock_process_code(cor, i, fd);	
+	stock_process_code(cor, i, fd);
+	if (cor->order != 0)
+		cor->process[i].order = cor->order;
+	else
+		cor->process[i].order = -1;
+	cor->order = 0;	
 }
 
 
