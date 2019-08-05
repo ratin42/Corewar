@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:51:09 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 20:56:24 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ int			main(int ac, char **av)
 		exit(ERROR);
 	}
 	init_prog(&asmbly);
+
 	parse_file(&asmbly, av[ac - 1]);
 	dlt_lst_empty_lbl(&asmbly);
-	//print_instruction(&asmbly);
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
 	print_writing(av[ac -1]);
-	//print_instruction(&asmbly);
+	//jprint_instruction(&asmbly);
 	return (0);
 }
 

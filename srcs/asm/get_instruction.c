@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:15:22 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 20:55:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,6 @@ int				get_label(t_asm *asmbly, char *str, int line)
 	return (0);
 }
 
-static int		last_instru_cmplt(t_asm *asmbly)
-{
-	t_instru	*last;
-
-	last = asmbly->instru;
-	if (last == NULL)
-		return (1);
-	while (last->next)
-		last = last->next;
-	if (last->label != NULL && last->opcode == NULL)
-		return (-1);
-	if (last->opcode == NULL)
-		return (0);
-	return (1);
-}
-
 int				check_label_presence(char *str)
 {
 	int			i;
@@ -113,6 +97,22 @@ int				check_label_presence(char *str)
 	return (0);
 }
 
+static int		last_instru_cmplt(t_asm *asmbly)
+{
+	t_instru	*last;
+
+	last = asmbly->instru;
+	if (last == NULL)
+		return (1);
+	while (last->next)
+		last = last->next;
+	if (last->label != NULL && last->opcode == NULL)
+		return (-1);
+	if (last->opcode == NULL)
+		return (0);
+	return (1);
+}
+
 void			get_instruction(t_asm *asmbly, char *str, int line)
 {
 	int			indexer;
@@ -122,20 +122,25 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 	if (last_instru_cmplt(asmbly) == 1)
 	{
 		add_instru(asmbly, line);
-
 	}
 	if (check_label_presence(str) == 1)
 	{
 		if (last_instru_cmplt(asmbly) == -1)
+		{
 			add_instru(asmbly, line);
+				//printf("str = %s\n", str);
+		}
+
 		if (get_label(asmbly, str, line) == -1)
 		{
 			if (!(instru = find_instru(asmbly, line)))
 				instru = get_last_instru(asmbly);
-			instru->line++;
+//			instru->line++;
 			return ;
 		}
 	}
+			if (line == 36)
+				print_instruction(asmbly);
 	indexer = get_opcode(asmbly, str, line);
 	get_params(asmbly, &str[indexer], line);
 	check_params_error(asmbly, str, line);
