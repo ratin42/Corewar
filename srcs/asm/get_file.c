@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/01 15:16:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:22:05 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	open_file(char *str)
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr("our Can't read source file ");
+		ft_putstr("Can't read source file ");
 		ft_putstr(str);
 		ft_putchar('\n');
 		exit(ERROR);

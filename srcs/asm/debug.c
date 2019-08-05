@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/05 20:36:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:21:31 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void			print_instruction(t_asm *asmbly)
 
 	instru = asmbly->instru;
 	//instru = find_instru(asmbly, 37);
-	printf("\n~~~ instruction are ~~~\n");
+/* 	printf("\n~~~ instruction are ~~~\n");
 	while (instru)
-	{
+	{ */
 		printf("___________________________________\n");
 		printf("\nopcode = %s\n", instru->opcode);
 		printf("line = %d\n", instru->line);
@@ -73,9 +73,9 @@ void			print_instruction(t_asm *asmbly)
 	//	ft_putnbr(instru->byte_size);
 	//	printf("\n");
 		instru = instru->next;
-	}
+/* 	}
 	printf("___________________________________\n");
-	printf("\n~~~       FIN       ~~~\n");
+	printf("\n~~~       FIN       ~~~\n"); */
 	
 /* 	printf("\n~~~ Header ~~~\n");
 	header_t *header;

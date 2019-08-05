@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/05 21:02:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:24:21 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,22 +120,15 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 
 	indexer = 0;
 	if (last_instru_cmplt(asmbly) == 1)
-	{
 		add_instru(asmbly, line);
-	}
 	if (check_label_presence(str) == 1)
 	{
 		if (last_instru_cmplt(asmbly) == -1)
-		{
 			add_instru(asmbly, line);
-				//printf("str = %s\n", str);
-		}
-
 		if (get_label(asmbly, str, line) == -1)
 		{
 			if (!(instru = find_instru(asmbly, line)))
 				instru = get_last_instru(asmbly);
-//			instru->line++;
 			return ;
 		}
 	}
