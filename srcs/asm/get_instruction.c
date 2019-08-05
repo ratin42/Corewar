@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/05 20:55:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/05 21:02:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,6 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 			return ;
 		}
 	}
-			if (line == 36)
-				print_instruction(asmbly);
 	indexer = get_opcode(asmbly, str, line);
 	get_params(asmbly, &str[indexer], line);
 	check_params_error(asmbly, str, line);
