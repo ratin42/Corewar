@@ -12,6 +12,6 @@ void	update_pc(t_corewar *cor, int i)
 	if (arg >= 2)
 		pc += cor->instru.type_of_param.param2;
 	if (arg == 3)
-		pc += cor-.instru.type_of_param.param3;
+		pc += cor->instru.type_of_param.param3;
 	cor->process[i].pc = pc;
 }
