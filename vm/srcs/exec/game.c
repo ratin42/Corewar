@@ -12,8 +12,8 @@ void	create_arena(t_corewar *cor)
 				cor->process[i].code, cor->process[i].size);
 		cor->process[i].alive = 1;
 		cor->process[i].pc = (MEM_SIZE / cor->nb_players) * i;
-	}	
-	//Init PC de chaque process;
+		//ft_printf("process[%d] pc = %d\n", i, cor->process[i].pc);
+	}
 }
 
 void    play(t_corewar *cor)

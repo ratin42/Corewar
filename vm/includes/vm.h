@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/06 17:26:50 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/06 18:22:28 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct 			s_corewar
 	char				*last_live_name;
 	unsigned int		current_live;
 
-    struct s_op			instruction;
+    struct s_op			instru;
 	struct s_process	process[MAX_PLAYERS];
 
 	int					cycle;
@@ -186,6 +186,11 @@ void				reset_process_nb_live(t_corewar *cor);
 void				check_process_to_kill(t_corewar *cor);
 
 
+/*
+ * UTILITY
+*/
+
+void				update_pc(t_corewar *cor, int i);
 
 
 /*						INSTRUCTIONS						*/
