@@ -34,18 +34,16 @@ void	order_option(t_corewar *cor, char **av, int *i)
 	if (!av[*i + 1])
 	{
 		corewar_usage();
-		corewar_quit("Need to specify [number] after -n option");
+		corewar_quit("\nNeed to specify [number] after -n option");
 	}
 	(*i)++;
-	order = ft_atoi(av[*i]);
-	if (order < 1 || order > MAX_PLAYERS)
+	if (ft_strcmp(av[*i], "1") && ft_strcmp(av[*i], "2")
+		&& ft_strcmp(av[*i], "3") && ft_strcmp(av[*i], "4"))
 	{
 		corewar_usage();
-		corewar_quit("-n [number] option has to be between 1 and 4 (included)");
+		corewar_quit("\n-n [number] option has to be between 1 and 4 (included)");
 	}
-	else
-	{
-		cor->order = order;
-		cor->order_option = 1;
-	}
+	order = ft_atoi(av[*i]);
+	cor->order = order;
+	cor->order_option = 1;
 }

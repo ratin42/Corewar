@@ -55,10 +55,16 @@ void	print_arena_state(t_corewar *cor)
 void	debug_order(t_corewar *cor)
 {
 	int i;
+	
+	int x;
 
-	i = -1;
-	while (++i < cor->nb_players)
-		ft_printf("Process: [%d]\tOrder: [%d]\n", i, cor->process[i].order);
+	x = 1;
+	i = cor->nb_players;
+	while (--i >= 0)
+	{
+		ft_printf("[%d] : Process named: [%s]\n\t Order: [%d]\n", x, cor->process[i].name, cor->process[i].order);
+		x++;
+	}
 }
 
 void	corewar_usage(void)

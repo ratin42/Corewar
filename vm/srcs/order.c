@@ -33,7 +33,7 @@ int		order_available(t_corewar *cor, int one, int two, int three)
 
 }
 
-void	adjust_order(t_corewar *cor)
+void	attribute_order(t_corewar *cor)
 {
 	int i;
 	int nb;
@@ -60,13 +60,32 @@ int		check_doubles_order(t_corewar *cor)
 		j = i;
 		while (++j < cor->nb_players)
 		{
-			if (cor->process[i].order == cor->process[j].order && cor->process[i].order != -1)
+			if (cor->process[i].order == cor->process[j].order
+					&& cor->process[i].order != -1)
 				return (0);
-			else if (cor->process[i].order != -1 && cor->process[i].order > cor->process[j].order)
-				swap_process(cor, i, j);
 		}
 	}
 	return (1);
+}
+
+void	reorder_process(t_corewar *cor)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < cor->nb_players)
+	{
+		j = i;
+		while (++j < cor->nb_players)
+		{
+			if (cor->process[i].order != -1 &&
+					cor->process[i].order < cor->process[j].order)
+			{
+				swap_process(cor, i, j);
+			}
+		}
+	}
 }
 
 

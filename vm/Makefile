@@ -6,7 +6,7 @@
 #    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/04 18:59:56 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/05 20:32:22 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_NAME1		:=	corewar.c \
 					read_process.c \
 					debug_tools.c \
 					live.c \
-					utils_1.c \
+					order.c \
 					game.c \
 					cycles.c \
 

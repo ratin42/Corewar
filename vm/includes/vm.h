@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/04 19:24:25 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/05 22:22:43 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct			s_op
 
 typedef struct          s_process
 {
-	char				*name;
-	char				*comment;
+	char				name[PROG_NAME_LENGTH];
+	char				comment[COMMENT_LENGTH];
 	unsigned int		magic;
 	unsigned int		size;
 	unsigned char		code[CHAMP_MAX_SIZE];
@@ -141,13 +141,15 @@ void				verbosity_option(t_corewar *cor, char **av, int *i);
 void				order_option(t_corewar *cor, char **av, int *i);
 
 /*
- * UTILS.c
+ * ORDERS.c
 */
 
+int					check_doubles_order(t_corewar *cor);
 void				swap_process(t_corewar *cor, int i, int j);
 int					order_available(t_corewar *cor, int one, int two, int three);
-void				adjust_order(t_corewar *cor);
-int					check_doubles_order(t_corewar *cor);
+void				attribute_order(t_corewar *cor);
+void				reorder_process(t_corewar *cor);
+
 
 //swap_endian doublons, deja present dans asm
 uint32_t			swap_endian(uint32_t val);

@@ -22,8 +22,8 @@ int main(int ac, char **av)
 		init_datas(&cor);
 		parse_arguments(ac, av, &cor);
 		create_arena(&cor);	
-		// debug_order(&cor);
-		// print_arena_state(&cor);
+		debug_order(&cor);
+		//print_arena_state(&cor);
 
 	}
 	return (1);

@@ -60,20 +60,8 @@ void		get_champion(t_corewar *cor, char **av, int i)
 
 void	order_process(t_corewar *cor)
 {
-	int i;
-	int j;
-
 	if (!check_doubles_order(cor))
 		corewar_quit("Cannot give multiple same [number] with -n option");
-	adjust_order(cor);
-	i = -1;
-	while (++i < cor->nb_players)
-	{
-		j = i;
-		while (++j < cor->nb_players)
-		{
-			if (cor->process[i].order != -1 && cor->process[i].order > cor->process[j].order)
-				swap_process(cor, i, j);
-		}
-	}
+	attribute_order(cor);
+	reorder_process(cor);	
 }

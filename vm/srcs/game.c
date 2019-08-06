@@ -17,6 +17,7 @@ void	create_arena(t_corewar *cor)
 void    play(t_corewar *cor)
 {
 	cor->ctd = CYCLE_TO_DIE;
+	//Init PC de chaque process;
 	while (process_alive(cor) > 0)
 	{
 		cor->cycle++;
@@ -65,3 +66,43 @@ void    exec_process(t_corewar *cor)
 		}
 	}
 }
+
+/*
+
+void	execute_code(t_corewar *cor)
+{
+	int	reader;
+
+	reader = 0;
+	get_opcode = cor->arena[cor->process[i].pc];
+	//tableau de pointeur de fonction, qu irentre dans la fonction de lopcode;
+	//selon la fct on rcpr un  nb de parametre
+	//
+	//dans la meme fct a la fin on augmente le pc du process;
+	//
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
