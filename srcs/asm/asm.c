@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/05 23:26:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:08:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			main(int ac, char **av)
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
 	print_writing(av[ac -1]);
+	free_prog(&asmbly);
 	//print_instruction(&asmbly);
 	return (0);
 }

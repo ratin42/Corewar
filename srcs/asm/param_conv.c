@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:45:16 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:08:47 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char			*reduce_conv(int size, char **conv)
 	return (*conv);
 }
 
-char			*dir_conver(t_param *param, t_instru *instru)
+char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
 	char		*conv;
@@ -95,8 +95,10 @@ char			*dir_conver(t_param *param, t_instru *instru)
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
 	char *cpy;
-	cpy = ft_strdup(&param->param[1]);
+	if (!(cpy = ft_strdup(&param->param[1])))
+		quit_prog(asmbly);
 	conv = ft_ul_convert_base(cpy, "0123456789abcdef");
+	free(cpy);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);

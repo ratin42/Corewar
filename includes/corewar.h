@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Raphael <Raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/03 16:18:42 by Raphael          ###   ########.fr       */
+/*   Updated: 2019/08/06 18:08:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			find_op_index(char *opcode);
 ** conversion
 */
 char		*reg_conver(t_param *param);
-char		*dir_conver(t_param *param, t_instru *instru);
+char		*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru);
 char		*ind_conver(t_param *param, t_instru *instru);
 char		*fill_direct(int size, char **conv);
 char		*reduce_conv(int size, char **conv);
@@ -78,6 +78,9 @@ int			compare_label(char *label1, char *label2);
 */
 uint32_t	swap_endian(uint32_t val);
 void		write_file(t_asm *asmbly, char *file);
+
+void		free_prog(t_asm *asmbly);
+void		quit_prog(t_asm *asmbly);
 
 /*
 ** debug
