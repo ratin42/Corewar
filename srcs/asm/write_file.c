@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:45:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 17:49:47 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void			write_bytecode(t_asm *asmbly, int fd)
 			atoi_hex(instru->conv_par, fd);
 		instru = instru->next;
 	}
+	free(header);
 }
 
 void			write_file(t_asm *asmbly, char *file)

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 15:29:31 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/29 21:54:56 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:16:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned long long int *tab, unsigned long long int *size)
 	unsigned long long int		tmp;
 	char						*ret;
 
-	if (!(ret = (char *)malloc(sizeof(char) * 1)))
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
 		return (NULL);
 	tmp = 0;
 	i = 0;

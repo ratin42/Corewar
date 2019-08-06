@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 20:26:08 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:09:01 by saouas           ###   ########.fr       */
+/*   Updated: 2019/08/06 18:14:32 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char				*ft_itoa(int nb)
 		i = 1;
 	else
 		i = len(nb2);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (nb2 == 0)
 	{

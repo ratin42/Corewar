@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:28:35 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:09:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ char		*convert_params(t_asm *asmbly, t_instru **instru)
 	{
 		if (param->type == 1)
 		{
-			if (!(result = ft_strjoin_free(result, reg_conver(param), 1)))
+			if (!(result = ft_strjoin_free(result, reg_conver(param), 3)))
 				exit(ERROR);
 		}
 		if (param->type == 2)
 		{
-			if (!(result = ft_strjoin_free(result, dir_conver(param, *instru), 1)))
+			if (!(result = ft_strjoin_free(result, dir_conver(asmbly, param, *instru), 3)))
 				exit(ERROR);
 		}
 		if (param->type == 4)
 		{
-			if (!(result = ft_strjoin_free(result, ind_conver(param, *instru), 1)))
+			if (!(result = ft_strjoin_free(result, ind_conver(param, *instru), 3)))
 				exit(ERROR);
 		}
 		if (!(result = ft_strjoin_free(result, ";", 1)))
@@ -104,10 +104,10 @@ void			convert_instruction(t_asm *asmbly)
 		if (g_op_tab[op_index].coding_opcode == 1)
 		{
 			instru->conv_par = ft_strjoin_free(instru->conv_par
-				, get_ocp(instru), 1);
+				, get_ocp(instru), 3);
 		}
 		instru->conv_par = ft_strjoin_free(instru->conv_par
-			, convert_params(asmbly, &instru), 1);
+			, convert_params(asmbly, &instru), 3);
 		instru->byte_size = add_byte_size(instru);
 		instru = instru->next;
 	}

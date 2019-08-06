@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 20:30:08 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/21 20:22:10 by saouas           ###   ########.fr       */
+/*   Updated: 2019/08/06 18:16:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char			*ft_strtrim(char const *str)
 	len--;
 	while (str[len] && is_white_spaces(str[len]))
 		len--;
-	if (!(str_ret = (char *)malloc(sizeof(char) * ((len - i) + 2))))
+	if (!(str_ret = (char *)ft_memalloc(sizeof(char) * ((len - i) + 2))))
 		return (NULL);
 	while (i <= len)
 		str_ret[j++] = str[i++];

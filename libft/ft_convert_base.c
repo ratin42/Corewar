@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 19:20:37 by saouas            #+#    #+#             */
-/*   Updated: 2019/08/02 05:44:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:14:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long long int *size)
 	long long int	tmp;
 	char			*ret;
 
-	if (!(ret = (char *)malloc(sizeof(char) * 1)))
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
 		return (NULL);
 	tmp = 0;
 	i = 0;

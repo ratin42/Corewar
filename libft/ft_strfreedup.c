@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 20:51:51 by ratin             #+#    #+#             */
-/*   Updated: 2019/02/24 20:57:08 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:16:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strfreedup(char *s1)
 
 	dest = NULL;
 	size = ft_strlen(s1);
-	if (!(dest = (char *)malloc(sizeof(*dest) * (size + 1))))
+	if (!(dest = (char *)ft_memalloc(sizeof(*dest) * (size + 1))))
 		return (NULL);
 	if (dest != NULL)
 		ft_strcpy(dest, s1);

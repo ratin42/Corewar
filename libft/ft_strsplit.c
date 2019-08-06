@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 20:22:08 by saouas            #+#    #+#             */
-/*   Updated: 2018/12/08 23:05:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:16:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char			*ft_word(const char *str, char c, int *i)
 	char	*word;
 	int		j;
 
-	if (!(word = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
+	if (!(word = (char *)ft_memalloc(sizeof(char) * (ft_strlen(str) + 1))))
 		return (NULL);
 	j = 0;
 	while (str[*i] != c && str[*i])
@@ -64,7 +64,7 @@ char				**ft_strsplit(const char *str, char c)
 	i = 0;
 	j = 0;
 	nb_words = count_words(str, c);
-	if (!(tab = (char **)malloc(sizeof(tab) * (nb_words + 1))))
+	if (!(tab = (char **)ft_memalloc(sizeof(tab) * (nb_words + 1))))
 		return (NULL);
 	while (str[i] == c && str[i])
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 08:15:29 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:04:00 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	fill_label(t_instru *instru, int distance)
 
 	i = 0;
 	size = 1;
+	conv = NULL;
 	if (!(addr = ft_itoa(distance)))
 		exit(ERROR);
 	while (instru->conv_par[i] && instru->conv_par[i] != 'L')
@@ -46,6 +47,7 @@ void	fill_label(t_instru *instru, int distance)
 		conv = reduce_conv(size, &conv);
 	free(addr);
 	write_label(instru, conv);
+	free(conv);
 }
 
 void	distance_label(t_asm *asmbly, t_instru *instru, char *label)

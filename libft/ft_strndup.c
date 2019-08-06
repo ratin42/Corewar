@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saouas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 22:41:22 by saouas            #+#    #+#             */
-/*   Updated: 2018/11/25 22:56:37 by saouas           ###   ########.fr       */
+/*   Updated: 2019/08/06 18:16:26 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strndup(const char *s, size_t n)
 	unsigned int	i;
 
 	i = 0;
-	res = malloc(sizeof(char) * (n + 1));
+	res = ft_memalloc(sizeof(char) * (n + 1));
 	if (res == NULL)
 		return (NULL);
 	while (i < n)
