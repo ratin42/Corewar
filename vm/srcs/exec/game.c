@@ -120,12 +120,13 @@ t_op	g_op_tab[17] =
 void	execute_code(t_corewar *cor, int i)
 {
 	unsigned char	type;
-	int index;
+	int				index;
 
 	//Gerer ici aussi la dure/le freeze des processus
-	//en fonctions des instructions;
-	//ADJUST PC OVERFLOW...
+
+	//adjust_pc_overflow(cor, i);
 	index = -1;
+
 	type = cor->arena[cor->process[i].pc];
 	while (++index < 17)
 	{

@@ -2,9 +2,7 @@
 
 void	inst_live(t_corewar *cor, int i)
 {
-	(void)cor;
 	ft_printf("process[%d] : LIVE\n", i);
-
 	cor->instru.nbr_of_param = 1;
 	if (is_direct(cor->instru.type_of_param.param1) == T_DIR)
 		cor->instru.type_of_param.param1 = DIR_SIZE;

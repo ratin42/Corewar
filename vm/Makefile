@@ -6,7 +6,7 @@
 #    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/06 17:54:36 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/06 19:13:41 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ SRC = srcs/corewar.c \
 	  srcs/debug/debug_tools.c \
 	  srcs/exec/game.c \
 	  srcs/exec/cycles.c \
+	  srcs/utility/get_type.c \
+	  srcs/utility/update_pc.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_and.c \

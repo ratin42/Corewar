@@ -25,7 +25,7 @@ int main(int ac, char **av)
 		//debug_order(&cor);
 		//print_arena_state(&cor);
 		
-		//play(&cor);
+		play(&cor);
 
 	}
 	return (1);
