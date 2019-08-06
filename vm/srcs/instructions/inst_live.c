@@ -1,6 +1,4 @@
 #include "../../includes/vm.h"
-#include "../utility/update_pc.c"
-#include "../utility/get_type.c"
 
 void	inst_live(t_corewar *cor, int i)
 {
