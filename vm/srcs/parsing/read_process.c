@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 void	read_process(char *name, t_corewar *cor, int i)
 {
@@ -15,10 +15,12 @@ void	read_process(char *name, t_corewar *cor, int i)
 	stock_process_magic(cor, &header, name, i);
 	stock_process_code(cor, i, fd);
 	if (cor->order != 0)
+	{
 		cor->process[i].order = cor->order;
+		cor->order = 0;
+	}
 	else
 		cor->process[i].order = -1;
-	cor->order = 0;	
 }
 
 
@@ -53,7 +55,7 @@ void	stock_process_name(t_corewar *cor, t_header *header, char *name, int i)
 		ft_printf("Champion named [%s] has a too big .name value : [%d], maximum is : %d", name, size, PROG_NAME_LENGTH);
 		corewar_quit("");
 	}
-	cor->process[i].name = header->prog_name;
+	ft_strcpy(cor->process[i].name, header->prog_name);
 }
 
 void	stock_process_comment(t_corewar *cor, t_header *header, char *name, int i)
@@ -66,7 +68,8 @@ void	stock_process_comment(t_corewar *cor, t_header *header, char *name, int i)
 		ft_printf("Champion [%s] has a too big .comment value : [%d], maximum is %d", name, size, COMMENT_LENGTH);
 		corewar_quit("");
 	}
-	cor->process[i].comment = header->comment;
+	ft_bzero((char*)cor->process[i].comment, sizeof(COMMENT_LENGTH));
+	ft_strcpy(cor->process[i].comment, header->comment);
 }
 
 void	stock_process_magic(t_corewar *cor, t_header *header, char *name, int i)

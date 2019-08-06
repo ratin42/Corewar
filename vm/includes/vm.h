@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/04 19:24:25 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/06 17:26:50 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct			s_type
 	int					param1;
 	int					param2;
 	int					param3;
+
 }                       t_type;
 
 typedef struct			s_op
@@ -47,8 +48,8 @@ typedef struct			s_op
 
 typedef struct          s_process
 {
-	char				*name;
-	char				*comment;
+	char				name[PROG_NAME_LENGTH];
+	char				comment[COMMENT_LENGTH];
 	unsigned int		magic;
 	unsigned int		size;
 	unsigned char		code[CHAMP_MAX_SIZE];
@@ -69,8 +70,6 @@ typedef struct          s_process
 typedef struct 			s_corewar
 {
 	unsigned char		arena[MEM_SIZE];
-	unsigned int		head;
-	unsigned int		tail;
 	unsigned int 		ram_full;
 	int					count;
 	int					last_live_id;
@@ -141,13 +140,15 @@ void				verbosity_option(t_corewar *cor, char **av, int *i);
 void				order_option(t_corewar *cor, char **av, int *i);
 
 /*
- * UTILS.c
+ * ORDERS.c
 */
 
+int					check_doubles_order(t_corewar *cor);
 void				swap_process(t_corewar *cor, int i, int j);
 int					order_available(t_corewar *cor, int one, int two, int three);
-void				adjust_order(t_corewar *cor);
-int					check_doubles_order(t_corewar *cor);
+void				attribute_order(t_corewar *cor);
+void				reorder_process(t_corewar *cor);
+
 
 //swap_endian doublons, deja present dans asm
 uint32_t			swap_endian(uint32_t val);
@@ -173,6 +174,8 @@ void				play(t_corewar *cor);
 int					process_alive(t_corewar *cor);
 void				exec_process(t_corewar *cor);
 
+void				execute_code(t_corewar *cor, int i);
+
 
 /*
  * CYCLE.C
@@ -185,8 +188,26 @@ void				check_process_to_kill(t_corewar *cor);
 
 
 
+/*						INSTRUCTIONS						*/
 
 
+
+void				inst_add(t_corewar *cor, int i);
+void				inst_aff(t_corewar *cor, int i);
+void				inst_and(t_corewar *cor, int i);
+void				inst_fork(t_corewar *cor, int i);
+void				inst_ld(t_corewar *cor, int i);
+void				inst_ldi(t_corewar *cor, int i);
+void				inst_lfork(t_corewar *cor, int i);
+void				inst_live(t_corewar *cor, int i);
+void				inst_lld(t_corewar *cor, int i);
+void				inst_lldi(t_corewar *cor, int i);
+void				inst_or(t_corewar *cor, int i);
+void				inst_st(t_corewar *cor, int i);
+void				inst_sti(t_corewar *cor, int i);
+void				inst_sub(t_corewar *cor, int i);
+void				inst_xor(t_corewar *cor, int i);
+void				inst_zjmp(t_corewar *cor, int i);
 
 
 

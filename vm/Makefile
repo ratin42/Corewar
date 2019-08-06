@@ -3,69 +3,75 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
+#    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/04 18:59:56 by hlombard         ###   ########.fr        #
+#    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
+#    Updated: 2019/08/06 17:37:34 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME1 = corewar
+NAME = corewar
 
-SRC_PATH1		:=	srcs/
-OBJ_PATH		:=	obj
-INC_PATH		:=	includes
-LIB_PATH		:=	libft
+CC = gcc
 
-SRC_NAME1		:=	corewar.c \
-					parsing.c \
-					options.c \
-					read_process.c \
-					debug_tools.c \
-					live.c \
-					utils_1.c \
-					game.c \
-					cycles.c \
+CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
 
-INC_NAME		:=	corewar.h
-LIB				:=	$(LIB_PATH)/libft.a
-LIB_LINK		:=	-L $(LIB_PATH) -lft
-OBJ1			:=	$(addprefix $(OBJ_PATH)/,$(SRC_NAME1:.c=.o))
-INCS			:=	-I $(LIB_PATH)/$(INC_DIR) -I $(INC_DIR)
-CC				:=	gcc
-CFLAGS			:=	-Wall -Wextra -Werror -g
-C_GREEN			:=	"\033[32m"
-C_BLUE			:=	"\033[36m"
-C_BASE			:=	"\033[00m"
-PRINTF=test $(VERBOSE)$(TRAVIS) || printf
+LIBFT = libft/
+
+LIBFT.a = libft/libft.a
+
+INC_FOLD = includes/
+
+INC = includes/vm.h
+
+SRC = srcs/corewar.c \
+	  srcs/parsing/parsing.c \
+	  srcs/parsing/read_process.c \
+	  srcs/parsing/order.c \
+	  srcs/options/options.c \
+	  srcs/debug/debug_tools.c \
+	  srcs/live.c \
+	  srcs/exec/game.c \
+	  srcs/exec/cycles.c \
+	  srcs/instructions/inst_add.c \
+	  srcs/instructions/inst_aff.c \
+	  srcs/instructions/inst_and.c \
+	  srcs/instructions/inst_fork.c \
+	  srcs/instructions/inst_ld.c \
+	  srcs/instructions/inst_ldi.c \
+	  srcs/instructions/inst_lfork.c \
+	  srcs/instructions/inst_live.c \
+	  srcs/instructions/inst_lld.c \
+	  srcs/instructions/inst_lldi.c \
+	  srcs/instructions/inst_or.c \
+	  srcs/instructions/inst_st.c \
+	  srcs/instructions/inst_sti.c \
+	  srcs/instructions/inst_sub.c \
+	  srcs/instructions/inst_xor.c \
+	  srcs/instructions/inst_zjmp.c \
 
 
-all: obj $(LIB) $(NAME1)
+OBJ = $(SRC:.c=.o)
 
-$(LIB):
-	@make -C $(LIB_PATH)
-	@ @$(PRINTF) "Libft:	"
-	@ @$(PRINTF) "\x1b[32m✔\x1b[0m\n\n"
+all: $(NAME) $(LIBFT)
 
-$(NAME1): $(OBJ1) ../srcs/asm/op.c
-	@$(CC) $(CFLAGS) $(OBJ1) $(LIB) -o $@
+$(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
+	@make -C $(LIBFT)
+	$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
+	@echo "\033[32mReady ?\033[0m"
 
-$(OBJ_PATH)/%.o: $(SRC_PATH1)/%.c $(INC_PATH)/*
-	@$(CC) $(CFLAGS) -o $@ -c $< -I $(INC_PATH)/
-	@ @echo "file =" $(C_BLUE){ $< } $(C_BASE)
-
-obj:
-	@mkdir -p obj
+%.o: %.c $(INC)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJ) $(LIB_PATH)/*.o
-	@rm -rf obj
+	@make -C $(LIBFT) clean
+	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME1)
-	@rm -f $(NAME2)
-	@make -C $(LIB_PATH) fclean
+	@make -C $(LIBFT) fclean
+	@/bin/rm -f $(NAME)
+	@echo "\033[31m$(NAME) deleted\033[0m"
 
 re: fclean all
 
-.PHONY: all fclean clean re norme
+.PHONY: all fclean clean re

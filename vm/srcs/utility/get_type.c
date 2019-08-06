@@ -6,11 +6,11 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:01:45 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/31 19:13:56 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/06 16:34:50 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../../includes/vm.h"
 
 int		register_range(int value, int min, int max)
 {
