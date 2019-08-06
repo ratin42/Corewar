@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/05 23:22:05 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:22:22 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	parse_error(t_asm *asmbly)
 {
 	ft_putstr_fd("error no comment or no name found\n", 2);
-	(void)asmbly;
-	exit(ERROR);
+	quit_prog(asmbly);
 }
 
 void	parse(t_asm *asmbly, char *str, int turn)

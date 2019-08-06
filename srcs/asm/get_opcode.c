@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:10:56 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:43:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			check_opcode(char *opcode, int line, char *str, int i_opcode)
+void			check_opcode(t_asm *asmbly, char *opcode, int line)
 {
 	extern t_op	g_op_tab[17];
 	int			i;
@@ -26,10 +26,8 @@ void			check_opcode(char *opcode, int line, char *str, int i_opcode)
 	}
 	ft_putstr("Lexical error for opcode at line ");
 	ft_putnbr(line);
-	ft_putstr(" ->");
-	ft_putstr(&str[i_opcode]);
 	ft_putchar('\n');
-	exit(ERROR);
+	quit_prog(asmbly);
 }
 
 int				pass_label_char(char *str)
@@ -75,7 +73,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
 		exit(ERROR);
-	check_opcode(opcode, line, str, i);
+	check_opcode(asmbly, opcode, line);
 	instru->opcode = opcode;
 	return (i);
 }

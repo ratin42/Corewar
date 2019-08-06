@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 17:50:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:27:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			verify_label(char *label, int line)
+void			verify_label(t_asm *asmbly, char *label, int line)
 {
 	int			i;
 
@@ -28,7 +28,7 @@ void			verify_label(char *label, int line)
 			ft_putstr("] ->");
 			ft_putstr(&label[i]);
 			ft_putchar('\n');
-			exit(ERROR);
+			quit_prog(asmbly);
 		}
 		i++;
 	}
@@ -71,8 +71,8 @@ int				get_label(t_asm *asmbly, char *str, int line)
 		i++;
 	}
 	if (!(label = ft_strsub(str, y, i)))
-		exit(ERROR);
-	verify_label(label, line);
+		quit_prog(asmbly);
+	verify_label(asmbly, label, line);
 	if (instru->label == NULL)
 		instru->label = label;
 	if (check_opc_presence(str) == 0)
