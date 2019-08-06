@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 15:37:44 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/29 20:53:06 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:15:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char							*ft_lutoa(unsigned long long int nb)
 		i = 1;
 	else
 		i = len(nb2);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (nb2 == 0)
 	{

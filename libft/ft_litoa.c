@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:44:43 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 01:37:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:14:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char					*ft_litoa(long long int nb)
 		i = 1;
 	else
 		i = len(nb2);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (nb2 == 0)
 	{

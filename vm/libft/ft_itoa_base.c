@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlombard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 12:56:42 by hlombard          #+#    #+#             */
-/*   Updated: 2019/04/02 22:11:18 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/06 18:17:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa_base(int value, int base)
 
 	basestring = "0123456789ABCDEF";
 	len = ft_getlen(value, base);
-	str = (char*)malloc(sizeof(char) * (len + 1));
+	str = (char*)ft_memalloc(sizeof(char) * (len + 1));
 	str[len--] = '\0';
 	nb = value;
 	if (nb == 0)
