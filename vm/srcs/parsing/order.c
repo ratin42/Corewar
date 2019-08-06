@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 void	swap_process(t_corewar *cor, int i, int j)
 {

@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 void    update_cycles(t_corewar *cor)
 {
@@ -12,7 +12,6 @@ void    update_cycles(t_corewar *cor)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;
 		reset_process_nb_live(cor);
-		cor->live_declared = 0;
 	}
 }
 
@@ -26,6 +25,7 @@ void    reset_process_nb_live(t_corewar *cor)
 		if (cor->process[i].alive == 1)
 			cor->process[i].live = 0;
 	}
+	cor->live_declared = 0;
 }
 
 void    check_process_to_kill(t_corewar *cor)
