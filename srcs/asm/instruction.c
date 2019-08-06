@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 17:50:39 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:23:04 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ t_instru		*find_instru(t_asm *asmbly, int line)
 	return (NULL);
 }
 
-t_instru		*create_instuction(int line)
+t_instru		*create_instuction(t_asm *asmbly, int line)
 {
 	t_instru	*new_instru;
 
 	if (!(new_instru = ft_memalloc(sizeof(*new_instru))))
-		exit(ERROR);
+		quit_prog(asmbly);
 	new_instru->conv_par = NULL;
 	new_instru->param = NULL;
 	new_instru->label = NULL;
@@ -51,7 +51,7 @@ void			add_instru(t_asm *asmbly, int line)
 	t_instru	*last;
 
 	last = asmbly->instru;
-	new_instru = create_instuction(line);
+	new_instru = create_instuction(asmbly, line);
 	if (asmbly->instru == NULL)
 		asmbly->instru = new_instru;
 	else
