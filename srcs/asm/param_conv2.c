@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 04:38:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:47:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 08:45:51 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		*reg_conver(t_param *param)
 		if (!(tmp = ft_strdup(result)))
 			exit(ERROR);
 		free(result);
-		if (!(result = (char *)malloc(sizeof(char) * 3)))
+		if (!(result = (char *)ft_memalloc(sizeof(char) * 3)))
 			exit(ERROR);
 		result[0] = '0';
 		result[1] = tmp[0];

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 00:16:02 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/02 07:16:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ static int		check_ind(char *param)
 		return (check_label(param));
 	while (param[i])
 	{
+		if ((param[i] == '-' || param[i] == '+')
+			&& (param[i + 1]) && ft_isdigit(param[i + 1]))
+			i++;
 		if (ft_isdigit(param[i]) == 0)
 			return (0);
 		i++;
@@ -59,8 +62,13 @@ static int		check_dir(char *param)
 		return (check_label(&param[i]));
 	while (param[i])
 	{
+		if ((param[i] == '-' || param[i] == '+')
+			&& (param[i + 1]) && ft_isdigit(param[i + 1]))
+			i++;
 		if (ft_isdigit(param[i]) == 0)
+		{
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -81,7 +89,8 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	t_instru	*instru;
 	t_param		*param;
 
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+		instru = get_last_instru(asmbly);
 	param = instru->param;
 	while (param)
 	{

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 19:20:37 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 19:05:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:14:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long long int *size)
 	long long int	tmp;
 	char			*ret;
 
-	if (!(ret = (char *)malloc(sizeof(char) * 1)))
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
 		return (NULL);
 	tmp = 0;
 	i = 0;
@@ -50,11 +50,6 @@ long long int *size)
 		i++;
 	}
 	ret[i] = '\0';
-	if (tab[2] == 1)
-	{
-		ret = ft_realloc(ret, ++(*size));
-		ret[i++] = '-';
-	}
 	ret[i] = '\0';
 	return (ret);
 }
@@ -75,7 +70,8 @@ char				*ft_convert_base_finale(char *nbr, char *base_to)
 		tab[2] = 1;
 	}
 	tab[1] = calcul;
-	ret = treat(base_to, tab, &size);
+	if (!(ret = treat(base_to, tab, &size)))
+		return (NULL);
 	ft_reverse_str(ret, ft_strlen(ret));
 	return (ret);
 }

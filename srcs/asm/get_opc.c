@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 20:20:02 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 20:33:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 20:57:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,72 @@ int					binary_to_decimal(long long n)
     return (decimalNumber);
 }
 
-char				*get_opc(t_instru *instru)
+int        nbr_len(int nb)
+{
+    int len;
+
+    len = 0;
+    if (nb == 0)
+        return (1);
+    if (nb < 0)
+    {
+        len++;
+        nb *= -1;
+    }
+    while (nb)
+    {
+        len++;
+        nb /= 10;
+    }
+    return (len);
+}
+
+char				*fill_bincode(char *bin_code)
+{
+	while (ft_strlen(bin_code) < 8)
+	{
+		if (!(bin_code = ft_strjoin_free(bin_code, "00", 1)))
+			exit(ERROR);
+	}
+	return (bin_code);
+}
+
+char				*get_ocp(t_instru *instru)
 {
 	t_param			*param;
 	int				decimal_code;
-	long long		bin_code;
+	char			*bin_code;
 	char			*result;
 	char			*d_code;
 
 	param = instru->param;
-	bin_code = 0;
+	if (!(bin_code = ft_strnew(0)))
+		exit(ERROR);
 	while (param)
 	{
 		if (param->type == 1)
-			bin_code = bin_code * 100 + 01;
+		{
+			if (!(bin_code = ft_strjoin_free(bin_code, "01", 1)))
+				exit(ERROR);
+		}
 		if (param->type == 2)
-			bin_code = bin_code * 100 + 10;
+		{
+			if (!(bin_code = ft_strjoin_free(bin_code, "10", 1)))
+				exit(ERROR);
+		}
 		if (param->type == 4)
-			bin_code = bin_code * 100 + 11;
+		{
+			if (!(bin_code = ft_strjoin_free(bin_code, "11", 1)))
+				exit(ERROR);
+		}
 		param = param->next;
 	}
-	bin_code = bin_code * 100;
-	decimal_code = binary_to_decimal(bin_code);
+	if (ft_strlen(bin_code) < 8)
+		bin_code = fill_bincode(bin_code);
+	decimal_code = binary_to_decimal(ft_atoi(bin_code));
 	d_code = ft_itoa(decimal_code);
-	result = ft_convert_base_finale(d_code, "0123456789abcdef");
+	result = ft_ul_convert_base(d_code, "0123456789abcdef");
 	free(d_code);
+	free(bin_code);
 	return (result);
 }

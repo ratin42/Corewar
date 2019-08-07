@@ -6,58 +6,60 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/23 21:48:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:21:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+void	print_error(char *str)
+{
+	ft_putstr("Lexical error for");
+	ft_putstr(str);
+	ft_putstr("\n");
+	
+	(void)str;
+	exit(ERROR);
+}
+
 void	get_name(t_asm *asmbly, char *str)
 {
 	size_t	i;
-	char	*name;
+	size_t	y;
 
-	name = NAME_CMD_STRING;
 	i = 0;
-	while (str[i] && i < ft_strlen(NAME_CMD_STRING))
-	{
-		if (str[i] != name[i])
-		{
-			ft_putstr("Lexical error for name at [1:");
-			ft_putnbr(i);
-			ft_putstr("]\n");
-			exit(ERROR);
-		}
+	y = 0;
+	while (str[i] && str[i] != '"')
 		i++;
-	}
-	if (!(asmbly->name = ft_strdup(&str[i])))
-	{
-		free(str);
-		exit(ERROR);
-	}
+	i++;
+	if (!(str[i]))
+		print_error(str);
+	while (str[i + y] && str[i + y] != '"')
+		y++;
+	if (!(str[i + y]))
+		print_error(str);
+	if (!(asmbly->name = ft_strsub(str, i, y)))
+		quit_prog(asmbly);
+	asmbly->got_name = 1;
 }
 
 void	get_comment(t_asm *asmbly, char *str)
 {
 	size_t	i;
-	char	*comment;
+	size_t	y;
 
-	comment = COMMENT_CMD_STRING;
 	i = 0;
-	while (str[i] && i < ft_strlen(COMMENT_CMD_STRING))
-	{
-		if (str[i] != comment[i])
-		{
-			ft_putstr("Lexical error for comment at [2:");
-			ft_putnbr(i);
-			ft_putstr("]\n");
-			exit(ERROR);
-		}
+	y = 0;
+	while (str[i] && str[i] != '"')
 		i++;
-	}
-	if (!(asmbly->comment = ft_strdup(&str[i])))
-	{
-		free(str);
-		exit(ERROR);
-	}
+	i++;
+	if (!(str[i]))
+		print_error(str);
+	while (str[i + y] && str[i + y] != '"')
+		y++;
+	if (!(str[i + y]))
+		print_error(str);
+	if (!(asmbly->comment = ft_strsub(str, i, y)))
+		quit_prog(asmbly);
+	asmbly->got_comment = 1;
 }

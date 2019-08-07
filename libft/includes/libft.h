@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 20:16:47 by saouas            #+#    #+#             */
-/*   Updated: 2019/07/25 19:28:32 by ratin            ###   ########.fr       */
+/*   Updated: 2019/07/29 20:52:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,9 @@ void			*ft_memalloc(size_t size);
 void			ft_print_words_tables(char **tab);
 void			ft_reverse_str(char *str, int len);
 char			*ft_convert_base_finale(char *nbr, char *base_to);
+char			*ft_ul_convert_base(char *nbr, char *base_to);
+char			*ft_lutoa(unsigned long long int nb);
+unsigned 
+long long int	atoul_base(char *str, char *base);
 
 #endif

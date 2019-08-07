@@ -6,47 +6,43 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/24 19:46:17 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:22:22 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int	is_empty(char *str)
+void	parse_error(t_asm *asmbly)
 {
-	int		i;
-
-	i = 0;
-	if (ft_strcmp(str, "") == 0)
-		return (1);
-	while (str[i])
-	{
-		if (str[i] != 32 && (str[i] < 9 || str[i] > 13))
-			return (0);
-		i++;
-	}
-	return (1);
+	ft_putstr_fd("error no comment or no name found\n", 2);
+	quit_prog(asmbly);
 }
 
-void		parse(t_asm *asmbly, char *str, int turn)
+void	parse(t_asm *asmbly, char *str, int turn)
 {
 	if (is_empty(str) == 1)
 		return ;
-	if (str[0] == COMMENT_CHAR)
+	if (check_comment(str) == 1)
 		return ;
-	else if (turn == 0)
+	else if (name_presence(str) == 1 && asmbly->got_name == 0)
 		get_name(asmbly, str);
-	else if (turn == 1)
+	else if (comment_presence(str) == 1 && asmbly->got_comment == 0)
 		get_comment(asmbly, str);
-	else
+	else if (asmbly->got_name == 1 && asmbly->got_comment == 1)
 		get_instruction(asmbly, str, turn + 1);
+	else
+	{
+		free(str);
+		parse_error(asmbly);
+	}
 }
 
 static int	open_file(char *str)
 {
 	int		fd;
 
-	if ((fd = open(str, O_RDONLY)) == -1)
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
 	{
 		ft_putstr("Can't read source file ");
 		ft_putstr(str);
@@ -54,6 +50,27 @@ static int	open_file(char *str)
 		exit(ERROR);
 	}
 	return (fd);
+}
+
+void		check_name(char *file)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strlen(file) < 2)
+	{
+		ft_putstr("bad file name\n");
+		exit(ERROR);
+	}
+	while (file[i])
+		i++;
+	if (file[i - 1] == 's' && file[i - 2] == '.')
+		return ;
+	else
+	{
+		ft_putstr("bad file name\n");
+		exit(ERROR);
+	}
 }
 
 int			parse_file(t_asm *asmbly, char *file)
@@ -64,6 +81,7 @@ int			parse_file(t_asm *asmbly, char *file)
 
 	turn = 0;
 	fd_file = open_file(file);
+	check_name(file);
 	while (get_next_line(fd_file, &str) > 0)
 	{
 		parse(asmbly, str, turn);
@@ -71,5 +89,6 @@ int			parse_file(t_asm *asmbly, char *file)
 			free(str);
 		turn++;
 	}
+	//print_instruction(asmbly);
 	return (SUCCESS);
 }

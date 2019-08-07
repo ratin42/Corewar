@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 20:33:08 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:08:47 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*fill_direct(int size, char **conv)
 	if (!(tmp = ft_strdup(*conv)))
 		exit(ERROR);
 	free(*conv);
-	if (!(*conv = (char *)malloc(sizeof(char)
+	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
 		exit(ERROR);
 	while (size - i)
@@ -65,7 +65,7 @@ char			*reduce_conv(int size, char **conv)
 	tmp_size = ft_strlen(tmp) - 1;
 	new_size = size + (int)ft_strlen(tmp) - 1;
 	free(*conv);
-	if (!(*conv = (char *)malloc(sizeof(char)
+	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
 		exit(ERROR);
 	(*conv)[new_size + 1] = '\0';
@@ -79,15 +79,13 @@ char			*reduce_conv(int size, char **conv)
 	return (*conv);
 }
 
-char			*dir_conver(t_param *param, t_instru *instru)
+char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
 	char		*conv;
 	int			size;
 	int			op_index;
-	int			i;
 
-	i = 0;
 	conv = NULL;
 	op_index = find_op_index(instru->opcode);
 	if (g_op_tab[op_index].direct_size == 1)
@@ -96,7 +94,11 @@ char			*dir_conver(t_param *param, t_instru *instru)
 		size = 8;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
-	conv = ft_convert_base_finale(&param->param[1], "0123456789abcdef");
+	char *cpy;
+	if (!(cpy = ft_strdup(&param->param[1])))
+		quit_prog(asmbly);
+	conv = ft_ul_convert_base(cpy, "0123456789abcdef");
+	free(cpy);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);
@@ -116,7 +118,7 @@ char			*ind_conver(t_param *param, t_instru *instru)
 	size = 4;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(size));
-	conv = ft_convert_base_finale(param->param, "0123456789abcdef");
+	conv = ft_ul_convert_base(param->param, "0123456789abcdef");
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);

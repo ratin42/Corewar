@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 04:49:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:19:24 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct			s_asm
 {
 	char				*name;
 	char				*comment;
+	int					size;
+	int					got_name;
+	int					got_comment;
 	struct s_op			op_tab[17];
 	struct s_instru		*instru;
 }						t_asm;
@@ -50,9 +53,12 @@ typedef struct			s_param
 
 typedef struct			s_instru
 {
-	char				*converted_params;
+	char				*conv_par;
 	char				*label;
 	char				*opcode;
+	int					added_label;
+	int					labelsrc;
+	int					byte_size;
 	int					line;
 	int					nbr_of_params;
 	struct s_param		*param;

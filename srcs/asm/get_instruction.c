@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/25 01:50:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:27:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			verify_label(char *label, int line)
+void			verify_label(t_asm *asmbly, char *label, int line)
 {
 	int			i;
 
@@ -28,7 +28,7 @@ void			verify_label(char *label, int line)
 			ft_putstr("] ->");
 			ft_putstr(&label[i]);
 			ft_putchar('\n');
-			exit(ERROR);
+			quit_prog(asmbly);
 		}
 		i++;
 	}
@@ -43,6 +43,8 @@ int				check_opc_presence(char *str)
 		i++;
 	while (str[++i])
 	{
+		if (str[i] == COMMENT_CHAR)
+			return (0);
 		if (str[i] && str[i] != 32 && (str[i] < 9 || str[i] > 13))
 			return (1);
 	}
@@ -58,7 +60,8 @@ int				get_label(t_asm *asmbly, char *str, int line)
 
 	i = 0;
 	y = 0;
-	instru = find_instru(asmbly, line);
+	if (!(instru = find_instru(asmbly, line)))
+		instru = get_last_instru(asmbly);
 	while ((str[y] == 32 || (str[y] >= 9 && str[y] <= 13)) && str[y])
 		y++;
 	while (str[i] && str[i] != (char)LABEL_CHAR)
@@ -68,11 +71,29 @@ int				get_label(t_asm *asmbly, char *str, int line)
 		i++;
 	}
 	if (!(label = ft_strsub(str, y, i)))
-		exit(ERROR);
-	verify_label(label, line);
-	instru->label = label;
+		quit_prog(asmbly);
+	verify_label(asmbly, label, line);
+	if (instru->label == NULL)
+		instru->label = label;
 	if (check_opc_presence(str) == 0)
 		return (-1);
+	return (0);
+}
+
+int				check_label_presence(char *str)
+{
+	int			i;
+
+	i = 0;
+	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+		i++;
+	while (str[i] && (ft_strchr(LABEL_CHARS, str[i]) != NULL
+		|| str[i] == LABEL_CHAR))
+	{
+		if (str[i] == LABEL_CHAR)
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
@@ -85,6 +106,8 @@ static int		last_instru_cmplt(t_asm *asmbly)
 		return (1);
 	while (last->next)
 		last = last->next;
+	if (last->label != NULL && last->opcode == NULL)
+		return (-1);
 	if (last->opcode == NULL)
 		return (0);
 	return (1);
@@ -98,12 +121,14 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 	indexer = 0;
 	if (last_instru_cmplt(asmbly) == 1)
 		add_instru(asmbly, line);
-	if (ft_strchr(str, LABEL_CHAR) != NULL)
+	if (check_label_presence(str) == 1)
 	{
+		if (last_instru_cmplt(asmbly) == -1)
+			add_instru(asmbly, line);
 		if (get_label(asmbly, str, line) == -1)
 		{
-			instru = find_instru(asmbly, line);
-			instru->line++;
+			if (!(instru = find_instru(asmbly, line)))
+				instru = get_last_instru(asmbly);
 			return ;
 		}
 	}

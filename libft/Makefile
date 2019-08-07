@@ -19,6 +19,7 @@ SRC = ft_strlen.c ft_strdup.c ft_atoi.c ft_isalnum.c ft_isalpha.c \
 		ft_putendl_fd.c ft_str_is_printable.c ft_strndup.c ft_strdjoin.c \
 		ft_strfreedup.c ft_abs.c ft_convert_base.c ft_atoi_base.c \
 		ft_litoa.c get_nb.c ft_realloc.c ft_reverse_str.c \
+		ft_ul_convert_base.c ft_lutoa.c atoul.c\
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"
