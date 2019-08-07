@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/06 19:25:10 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/07 14:17:48 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void				init_datas(t_corewar *cor);
 */
 
 int					register_range(int value, int min, int max);
-int 				is_register(unsigned char octet);
+int 				is_register(int octet);
 int 				is_indirect(int octet);
 int 				is_direct(int octet);
 
