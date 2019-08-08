@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:08:08 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 21:30:33 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char		*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru);
 char		*ind_conver(t_param *param, t_instru *instru);
 char		*fill_direct(int size, char **conv);
 char		*reduce_conv(int size, char **conv);
-char		*get_ocp(t_instru *instru);
+char		*get_ocp(t_asm *asmbly, t_instru *instru);
 void		replace_label(t_asm *asmbly);
 void		convert_instruction(t_asm *asmbly);
 void		write_label(t_instru *instru, char *conv);

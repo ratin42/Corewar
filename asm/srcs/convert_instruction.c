@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 20:12:14 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 21:30:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void			convert_instruction(t_asm *asmbly)
 		if (g_op_tab[op_index].coding_opcode == 1)
 		{
 			instru->conv_par = ft_strjoin_free(instru->conv_par
-				, get_ocp(instru), 3);
+				, get_ocp(asmbly, instru), 3);
 		}
 		instru->conv_par = ft_strjoin_free(instru->conv_par
 			, convert_params(asmbly, &instru), 3);

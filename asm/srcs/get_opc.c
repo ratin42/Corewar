@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 20:20:02 by ratin             #+#    #+#             */
-/*   Updated: 2019/07/29 20:57:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 21:30:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ int        nbr_len(int nb)
     return (len);
 }
 
-char				*fill_bincode(char *bin_code)
+char				*fill_bincode(t_asm *asmbly, char *bin_code)
 {
 	while (ft_strlen(bin_code) < 8)
 	{
 		if (!(bin_code = ft_strjoin_free(bin_code, "00", 1)))
-			exit(ERROR);
+			quit_prog(asmbly);
 	}
 	return (bin_code);
 }
 
-char				*get_ocp(t_instru *instru)
+char				*get_ocp(t_asm *asmbly, t_instru *instru)
 {
 	t_param			*param;
 	int				decimal_code;
@@ -86,28 +86,28 @@ char				*get_ocp(t_instru *instru)
 
 	param = instru->param;
 	if (!(bin_code = ft_strnew(0)))
-		exit(ERROR);
+		quit_prog(asmbly);
 	while (param)
 	{
 		if (param->type == 1)
 		{
 			if (!(bin_code = ft_strjoin_free(bin_code, "01", 1)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		if (param->type == 2)
 		{
 			if (!(bin_code = ft_strjoin_free(bin_code, "10", 1)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		if (param->type == 4)
 		{
 			if (!(bin_code = ft_strjoin_free(bin_code, "11", 1)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		param = param->next;
 	}
 	if (ft_strlen(bin_code) < 8)
-		bin_code = fill_bincode(bin_code);
+		bin_code = fill_bincode(asmbly, bin_code);
 	decimal_code = binary_to_decimal(ft_atoi(bin_code));
 	d_code = ft_itoa(decimal_code);
 	result = ft_ul_convert_base(d_code, "0123456789abcdef");

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 17:49:47 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 21:31:50 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void			write_file(t_asm *asmbly, char *file)
 	if (fd == -1)
 	{
 		ft_putstr("eror when creating the file\n");
-		exit(ERROR);
+		quit_prog(asmbly);
 	}
 	free(new_file);
 	write_bytecode(asmbly, fd);
