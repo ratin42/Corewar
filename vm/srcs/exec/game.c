@@ -133,6 +133,8 @@ void	execute_code(t_corewar *cor, int i)
 		if (g_op_tab[index].opcode == type)
 		{
 			g_func[index](cor, i);
+			
+			exit(-1);
 		}
 	}
 

@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/07 14:17:48 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/08/08 15:09:55 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,10 @@ void				check_process_to_kill(t_corewar *cor);
 */
 
 void				update_pc(t_corewar *cor, int i);
+
+int					pc_modulo(int pc);
+int					get_reg(t_corewar *cor, int i);
+
 
 
 /*						INSTRUCTIONS						*/
