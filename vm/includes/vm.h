@@ -6,7 +6,7 @@
 /*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/06 18:22:28 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/08 15:09:55 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void				init_datas(t_corewar *cor);
 */
 
 int					register_range(int value, int min, int max);
-int 				is_register(unsigned char octet);
+int 				is_register(int octet);
 int 				is_indirect(int octet);
 int 				is_direct(int octet);
 
@@ -191,6 +191,10 @@ void				check_process_to_kill(t_corewar *cor);
 */
 
 void				update_pc(t_corewar *cor, int i);
+
+int					pc_modulo(int pc);
+int					get_reg(t_corewar *cor, int i);
+
 
 
 /*						INSTRUCTIONS						*/
