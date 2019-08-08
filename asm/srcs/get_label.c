@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:04:00 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 21:27:09 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		compare_label(char *label1, char *label2)
 	return (0);
 }
 
-void	fill_label(t_instru *instru, int distance)
+void	fill_label(t_asm *asmbly, t_instru *instru, int distance)
 {
 	int			i;
 	int			size;
@@ -33,13 +33,13 @@ void	fill_label(t_instru *instru, int distance)
 	size = 1;
 	conv = NULL;
 	if (!(addr = ft_itoa(distance)))
-		exit(ERROR);
+		quit_prog(asmbly);
 	while (instru->conv_par[i] && instru->conv_par[i] != 'L')
 		i++;
 	while (instru->conv_par[++i] && instru->conv_par[i] == 'L')
 		size++;
 	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
-		exit(ERROR);
+		quit_prog(asmbly);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(size, &conv);
@@ -71,7 +71,7 @@ void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
 	}
 	if (count != NULL && count->added_label == 1)
 		distance += count->byte_size;
-	fill_label(instru, distance);
+	fill_label(asmbly, instru, distance);
 }
 
 void	get_label_value(t_asm *asmbly, t_instru *instru)

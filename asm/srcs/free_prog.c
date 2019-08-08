@@ -6,17 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:23:48 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:07:55 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:30:11 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void			quit_prog(t_asm *asmbly)
-{
-	exit(1);
-	(void)asmbly;
-}
 
 void			free_param(t_instru *instru)
 {
@@ -58,4 +52,10 @@ void	free_prog(t_asm *asmbly)
 	free(asmbly->name);
 	free(asmbly->comment);
 	free_instru(asmbly);
+}
+
+void			quit_prog(t_asm *asmbly)
+{
+	free_prog(asmbly);
+	exit(1);
 }

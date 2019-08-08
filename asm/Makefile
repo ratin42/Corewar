@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/08 17:29:18 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/08 19:53:00 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ LIB_LINK		:=	-L $(LIB_PATH) -lft
 OBJ1			:=	$(addprefix $(OBJ_PATH)/,$(SRC_NAME1:.c=.o))
 INCS			:=	-I $(LIB_PATH)/$(INC_DIR) -I $(INC_DIR)
 CC				:=	gcc
-CFLAGS			:=	-Wall -Wextra -g
+CFLAGS			:=	-Wall -Wextra -Werror -g
 C_GREEN			:=	"\033[32m"
 C_BLUE			:=	"\033[36m"
 C_BASE			:=	"\033[00m"

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:22:22 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:14:14 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	parse(t_asm *asmbly, char *str, int turn)
 	}
 }
 
-static int	open_file(char *str)
+static int	open_file(t_asm *asmbly, char *str)
 {
 	int		fd;
 
@@ -47,12 +47,12 @@ static int	open_file(char *str)
 		ft_putstr("Can't read source file ");
 		ft_putstr(str);
 		ft_putchar('\n');
-		exit(ERROR);
+		quit_prog(asmbly);
 	}
 	return (fd);
 }
 
-void		check_name(char *file)
+void		check_name(t_asm *asmbly, char *file)
 {
 	int		i;
 
@@ -60,7 +60,7 @@ void		check_name(char *file)
 	if (ft_strlen(file) < 2)
 	{
 		ft_putstr("bad file name\n");
-		exit(ERROR);
+		quit_prog(asmbly);
 	}
 	while (file[i])
 		i++;
@@ -69,7 +69,7 @@ void		check_name(char *file)
 	else
 	{
 		ft_putstr("bad file name\n");
-		exit(ERROR);
+		quit_prog(asmbly);
 	}
 }
 
@@ -80,8 +80,8 @@ int			parse_file(t_asm *asmbly, char *file)
 	int		turn;
 
 	turn = 0;
-	fd_file = open_file(file);
-	check_name(file);
+	fd_file = open_file(asmbly, file);
+	check_name(asmbly, file);
 	while (get_next_line(fd_file, &str) > 0)
 	{
 		parse(asmbly, str, turn);

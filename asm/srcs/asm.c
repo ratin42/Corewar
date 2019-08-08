@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 17:12:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:12:30 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,4 @@ int			main(int ac, char **av)
 //Référence à un label inexistant depuis un direct ou un indirect 
 //checker la presence d'au moins une instruction
 // remetre le error
+//problem when file is in subfolder

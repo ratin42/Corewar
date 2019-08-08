@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:43:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 19:59:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void			check_opcode(t_asm *asmbly, char *opcode, int line)
 	ft_putstr("Lexical error for opcode at line ");
 	ft_putnbr(line);
 	ft_putchar('\n');
+	free(opcode);
 	quit_prog(asmbly);
 }
 

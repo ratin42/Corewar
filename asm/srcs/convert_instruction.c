@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:09:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:12:14 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,34 @@ char		*convert_params(t_asm *asmbly, t_instru **instru)
 	char		*result;
 
 	if (!(result = (char *)ft_memalloc(sizeof(char))))
-		exit(ERROR);
+		quit_prog(asmbly);
 	param = (*instru)->param;
 	while (param)
 	{
 		if (param->type == 1)
 		{
 			if (!(result = ft_strjoin_free(result, reg_conver(param), 3)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		if (param->type == 2)
 		{
 			if (!(result = ft_strjoin_free(result, dir_conver(asmbly, param, *instru), 3)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		if (param->type == 4)
 		{
 			if (!(result = ft_strjoin_free(result, ind_conver(param, *instru), 3)))
-				exit(ERROR);
+				quit_prog(asmbly);
 		}
 		if (!(result = ft_strjoin_free(result, ";", 1)))
-			exit(ERROR);
+				quit_prog(asmbly);
 		param = param->next;
 	}
 	return (result);
 	(void)asmbly;
 }
 
-static char		*convert_opcode(t_instru *instru)
+static char		*convert_opcode(t_asm *asmbly, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
 	char		*conv;
@@ -57,7 +57,7 @@ static char		*convert_opcode(t_instru *instru)
 	op_index = find_op_index(instru->opcode);
 	c_opcode = ft_itoa(g_op_tab[op_index].opcode);
 	if (!(conv = ft_ul_convert_base(c_opcode, "0123456789abcdef")))
-		exit(ERROR);
+		quit_prog(asmbly);
 	free(c_opcode);
 	size -= ft_strlen(conv);
 	if (size > 0)
@@ -100,7 +100,7 @@ void			convert_instruction(t_asm *asmbly)
 			continue ;
 		}
 		op_index = find_op_index(instru->opcode);
-		instru->conv_par = convert_opcode(instru);
+		instru->conv_par = convert_opcode(asmbly, instru);
 		if (g_op_tab[op_index].coding_opcode == 1)
 		{
 			instru->conv_par = ft_strjoin_free(instru->conv_par
