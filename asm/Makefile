@@ -6,13 +6,13 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/06 18:33:21 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/08 17:29:18 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1 = asm
 
-SRC_PATH1		:=	srcs/asm
+SRC_PATH1		:=	srcs
 OBJ_PATH		:=	obj
 INC_PATH		:=	includes
 LIB_PATH		:=	libft
