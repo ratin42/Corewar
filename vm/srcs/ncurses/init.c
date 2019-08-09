@@ -22,17 +22,24 @@ void	init_colors(t_corewar *cor)
 {
 	(void)cor;
 	use_default_colors();
+	init_pair
 }
 
 void	draw_default_mem(t_corewar *cor)
 {
 	int i;
+	int j;
 	
 	(void)cor;
 	i = -1;
+	j = 0;
 	while (++i < MEM_SIZE)
 	{
-
+		if (i == 64)
+		{
+			j++;
+		}
+		mvwaddchr(cor->render.main, i + 1, j, cor->render.mem_owner[i]);
 	}
 }
 

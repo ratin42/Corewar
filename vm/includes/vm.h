@@ -1,18 +1,3 @@
-<<<<<<< Updated upstream
-=======
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/09 15:56:20 by hlombard         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
->>>>>>> Stashed changes
 #ifndef VM_H
 # define VM_H
 
@@ -93,7 +78,7 @@ typedef struct			s_plst
 {
 	struct s_plst		*next;
 	t_process			p;
-}
+}						t_plst;
 
 typedef struct 			s_corewar
 {
@@ -272,4 +257,4 @@ void				inst_zjmp(t_corewar *cor, int i);
 
 
 
-endif
+#endif
