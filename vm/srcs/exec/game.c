@@ -1,61 +1,39 @@
 #include "../../includes/vm.h"
 
-void	print_memowner_state(t_corewar *cor)
+
+static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
-	int p;
-	int j;
-	int i;
-
-	j = 0;
-	p = 0;
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		if (j == 64 || i == 0)
-		{
-			ft_putchar('\n');
-			ft_printf("0x%.4x : ", p);
-			p += 64;
-			j = 0;
-		}
-		ft_printf("%.2x ", cor->render.mem_owner[i]);
-		j++;
-
-	}
-	ft_printf("\n");
+	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 0)
+		plst->p.opcode = cor->arena[plst->p.pc];
 }
 
-
-void	create_arena(t_corewar *cor)
+static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
-	int i;
-
-	i = -1;
-	if (cor->visu)
-		init_ncurse(cor);
-	ft_bzero(cor->arena, MEM_SIZE);
-	while (++i < cor->nb_players)
-	{
-		ft_memcpy((void*)&cor->arena + ((MEM_SIZE / cor->nb_players) * i),
-				cor->process[i].code, cor->process[i].size);
-		cor->process[i].alive = 1;
-		cor->process[i].pc = (MEM_SIZE / cor->nb_players) * i;
-		if (cor->visu)
-		{
-			ft_memset(cor->render.mem_owner + ((MEM_SIZE / cor->nb_players)
-				* i), (char)(i + 1), cor->process[i].size);
-		}
-	}
-	//print_memowner_state(cor);
-	if (cor->visu)
-	{
-		draw_default_mem(cor);
-		close_ncurse(cor);
-	}
-
+	g_func[plst->p.opcode - 1](cor, plst);
+	plst->p.opcode = 0;
 }
 
-void    play(t_corewar *cor)
+static inline void	exec_process(t_corewar *cor)
+{
+	t_plst	*plst;
+
+	plst = cor->plst;
+	while (plst != NULL)
+	{
+		plst->p.no_live++;
+		if (plst->p.opcode == 0)
+			ft_get_instru(cor, plst);
+		else
+		{
+			plst->p.wait--;
+			if (plst->p.wait == 0)
+				execute_code(cor, plst);
+		}
+		plst = plst->next;
+	}
+}
+
+void				play(t_corewar *cor)
 {
 	t_plst	*plst;
 
@@ -79,36 +57,6 @@ void    play(t_corewar *cor)
 	}
 	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
 			cor->process[cor->winner_id].name); //need change
-}
-
-int		process_alive(t_corewar *cor)
-{
-	int		i;
-	int		nb;
-
-	nb = 0;
-	i = -1;
-	while (++i < cor->nb_players)
-	{
-		if (cor->process[i].alive == 1)
-			nb++;	
-	}
-	return (nb);
-}
-
-void    exec_process(t_corewar *cor)
-{
-	t_plst	*plst;
-
-	plst = cor->plst;
-	while (plst != NULL)
-	{
-		plst->p.no_live++;
-		plst->p.wait--;
-		if (plst->p.wait == 0)
-			execute_code(cor, i);
-		plst = plst->next;
-	}
 }
 
 void (*g_func[17])(t_corewar *cor, int i) =
@@ -159,24 +107,3 @@ t_op	g_op_tab[17] =
 	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0}
 };
 
-
-void	execute_code(t_corewar *cor, int i)
-{
-	unsigned char	type;
-	int				index;
-
-	//adjust_pc_overflow(cor, i);
-	index = -1;
-
-	type = cor->arena[cor->process[i].pc];
-	while (++index < 17)
-	{
-		if (g_op_tab[index].opcode == type)
-		{
-			g_func[index](cor, i);
-
-			exit(-1);
-		}
-	}
-
-}
