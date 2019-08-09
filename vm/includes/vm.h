@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/09 14:48:21 by gly              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef VM_H
 # define VM_H
 
@@ -25,6 +13,8 @@
 #include "../libft/includes/ft_printf.h"
 
 # define DEBUG 0
+# define SUCCESS 1
+# define FAIL -1
 
 typedef struct			s_type
 {
@@ -55,8 +45,6 @@ typedef struct          s_process
 	unsigned char		code[CHAMP_MAX_SIZE];
 	
 	int					order;
-
-	int					alive;
 	
 	int					id;
     int                 reg[REG_NUMBER + 1];
@@ -64,7 +52,6 @@ typedef struct          s_process
     unsigned int        carry;
     unsigned int        live;
 
-	int					freeze;
 	int					no_live;
 
 	unsigned int		wait;
@@ -84,7 +71,7 @@ typedef struct 			s_corewar
 	int					count;
 	int					last_live_id;
 	int					nb_players;
-	char				*last_live_name;
+	char				*player_name[4];
 	unsigned int		current_live;
 
     struct s_op			instru;
@@ -95,7 +82,6 @@ typedef struct 			s_corewar
 	int					ctd;
 	int					live_declared;
 	int					check_cycle;
-	
 
 	//option
 
