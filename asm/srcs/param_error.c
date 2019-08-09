@@ -6,28 +6,28 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:15:53 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 11:45:09 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			print_erro_param(char *str, int line, int error)
+void			print_erro_param(t_asm *asmbly, char *str, int line, int error)
 {
 	if (error == 1)
-		ft_putstr("Lexical error for param [");
+		ft_putstr_fd("Lexical error for param [", 2);
 	else if (error == 2)
-		ft_putstr("bad number of parameter at [");
+		ft_putstr_fd("bad number of parameter at [", 2);
 	ft_putnbr(line);
 	ft_putchar(':');
 	ft_putnbr(0);
-	ft_putstr("] ->");
-	ft_putstr(str);
+	ft_putstr_fd("] ->", 2);
+	ft_putstr_fd(str, 2);
 	ft_putchar('\n');
-	exit(ERROR);
+	quit_prog(asmbly);
 }
 
-int				check_nbr_of_param(t_instru *instru, char *str, int line)
+int				nbr_prm(t_asm *asmbly, t_instru *instru, char *str, int line)
 {
 	t_param		*last;
 	int			i;
@@ -40,30 +40,28 @@ int				check_nbr_of_param(t_instru *instru, char *str, int line)
 		i++;
 	}
 	if (i != instru->nbr_of_params)
-		print_erro_param(str, line, 2);
+		print_erro_param(asmbly, str, line, 2);
 	return (0);
 }
 
-void			type_p_error(t_param *param, int line, t_instru *ins, int p_in)
+void			p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
 {
-	ft_putstr("bad parameter at line: ");
+	ft_putstr_fd("bad parameter at line: ", 2);
 	ft_putnbr(line);
-	ft_putstr(" for instruction ");
-	ft_putstr(ins->opcode);
-	ft_putstr(".\nGot ");
+	ft_putstr_fd(" for instruction ", 2);
+	ft_putstr_fd(ins->opcode, 2);
+	ft_putstr_fd(".\nGot ", 2);
 	if (param->type == 1)
-		ft_putstr("register");
+		ft_putstr_fd("register", 2);
 	if (param->type == 2)
-		ft_putstr("direct");
+		ft_putstr_fd("direct", 2);
 	if (param->type == 4)
-		ft_putstr("indirect");
-	ft_putstr(" for parameter number ");
-	ft_putnbr(p_in);
-	ft_putstr("\n");
-	exit(ERROR);
+		ft_putstr_fd("indirect", 2);
+	ft_putstr_fd("\n", 2);
+	quit_prog(asmbly);
 }
 
-int				check_type_of_param(t_instru *instru, char *str, int line)
+int				check_type(t_asm *asmbly, t_instru *instru, char *str, int line)
 {
 	extern t_op	g_op_tab[17];
 	t_param		*last;
@@ -85,12 +83,12 @@ int				check_type_of_param(t_instru *instru, char *str, int line)
 		if (checker == 1 || checker == 2 || checker == 4)
 		{
 			if (last->type != checker)
-				type_p_error(last, line, instru, para_index);
+				p_error(asmbly, last, line, instru);
 		}
 		else
 		{
 			if (last->type > checker)
-				type_p_error(last, line, instru, para_index);
+				p_error(asmbly, last, line, instru);
 		}
 		para_index++;
 		last = last->next;
@@ -105,6 +103,6 @@ void			check_params_error(t_asm *asmbly, char *str, int line)
 
 	if (!(current = find_instru(asmbly, line)))
 		current = get_last_instru(asmbly);
-	check_nbr_of_param(current, str, line);
-	check_type_of_param(current, str, line);
+	nbr_prm(asmbly, current, str, line);
+	check_type(asmbly, current, str, line);
 }

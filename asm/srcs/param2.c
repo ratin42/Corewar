@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 21:31:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 13:41:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ static int		check_dir(char *param)
 	return (1);
 }
 
-void			error_type(t_param *param)
+void			error_type(t_asm *asmbly, t_param *param)
 {
-	ft_putstr("Lexical error of type for param at line ");
+	ft_putstr_fd("Lexical error of type for param at line ", 2);
 	ft_putnbr(param->line);
-	ft_putstr(" ->");
-	ft_putstr(param->param);
+	ft_putstr_fd(" ->", 2);
+	ft_putstr_fd(param->param, 2);
 	ft_putchar('\n');
-	exit(ERROR);
+	quit_prog(asmbly);
 }
 
 void			get_params_type(t_asm *asmbly, char *str, int line)
@@ -101,7 +101,7 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 		else if (check_ind(param->param) == 1)
 			param->type = T_IND;
 		else
-			error_type(param);
+			error_type(asmbly, param);
 		param = param->next;
 	}
 	(void)str;

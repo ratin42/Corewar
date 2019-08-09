@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/09 14:44:38 by gly              ###   ########.fr       */
+/*   Updated: 2019/08/09 14:48:21 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct          s_process
     unsigned int        pc;
     unsigned int        carry;
     unsigned int        live;
+
+	int					freeze;
 	int					no_live;
 
 	unsigned int		wait;
@@ -93,11 +95,16 @@ typedef struct 			s_corewar
 	int					ctd;
 	int					live_declared;
 	int					check_cycle;
+	
+
+	//option
 
 	int					n_dump;
 	int					verbosity;
 	int					order;
 	int					order_option;
+	int					stealth;
+	int					visu;
 	
 	int					winner_id;
 

@@ -13,6 +13,10 @@ int		parse_arguments(int ac, char **av, t_corewar *cor)
 			verbosity_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-n"))
 			order_option(cor, av, &i);
+		else if (!ft_strcmp(av[i], "-visu"))
+			cor->visu = 1;
+		else if (!ft_strcmp(av[i], "--stealth"))
+			cor->stealth = 1;
 		else if (cor_file(av[i]) == 1)
 			get_champion(cor, av, i);
 		else
