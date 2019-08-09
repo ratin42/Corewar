@@ -1,10 +1,38 @@
 #include "../../includes/vm.h"
 
+void	print_memowner_state(t_corewar *cor)
+{
+	int p;
+	int j;
+	int i;
+
+	j = 0;
+	p = 0;
+	i = -1;
+	while (++i < MEM_SIZE)
+	{
+		if (j == 64 || i == 0)
+		{
+			ft_putchar('\n');
+			ft_printf("0x%.4x : ", p);
+			p += 64;
+			j = 0;
+		}
+		ft_printf("%.2x ", cor->render.mem_owner[i]);
+		j++;
+
+	}
+	ft_printf("\n");
+}
+
+
 void	create_arena(t_corewar *cor)
 {
 	int i;
 
 	i = -1;
+	if (cor->visu)
+		init_ncurse(cor);
 	ft_bzero(cor->arena, MEM_SIZE);
 	while (++i < cor->nb_players)
 	{
@@ -12,8 +40,19 @@ void	create_arena(t_corewar *cor)
 				cor->process[i].code, cor->process[i].size);
 		cor->process[i].alive = 1;
 		cor->process[i].pc = (MEM_SIZE / cor->nb_players) * i;
-		//ft_printf("process[%d] pc = %d\n", i, cor->process[i].pc);
+		if (cor->visu)
+		{
+			ft_memset(cor->render.mem_owner + ((MEM_SIZE / cor->nb_players)
+				* i), (char)(i + 1), cor->process[i].size);
+		}
 	}
+	//print_memowner_state(cor);
+	if (cor->visu)
+	{
+		draw_default_mem(cor);
+		close_ncurse(cor);
+	}
+
 }
 
 void    play(t_corewar *cor)

@@ -1,3 +1,5 @@
+<<<<<<< Updated upstream
+=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,10 +8,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/09 14:48:21 by gly              ###   ########.fr       */
+/*   Updated: 2019/08/09 15:56:20 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+>>>>>>> Stashed changes
 #ifndef VM_H
 # define VM_H
 
@@ -23,6 +26,11 @@
 #include "../../asm/includes/op.h"
 #include "../libft/libft.h"
 #include "../libft/includes/ft_printf.h"
+#include <ncurses.h>
+
+#define	COL_MAIN	((COLS / 2) + (COLS / 3))
+#define	LINES_MAIN	((LINES / 3) + (LINES / 2))
+
 
 # define DEBUG 0
 
@@ -33,6 +41,16 @@ typedef struct			s_type
 	int					param3;
 
 }                       t_type;
+
+typedef struct			s_render
+{
+	WINDOW			*main;
+	WINDOW			*menu;
+	
+	char			*color_types;
+	unsigned char	mem_owner[MEM_SIZE];
+
+}						t_render;
 
 typedef struct			s_op
 {
@@ -89,6 +107,7 @@ typedef struct 			s_corewar
 
     struct s_op			instru;
 	struct s_process	process[MAX_PLAYERS];
+	struct s_render		render;
 
 	int					cycle;
 	int					total;
@@ -111,6 +130,7 @@ typedef struct 			s_corewar
 }						t_corewar;
 
 
+
 /*
  * DEBUG_TOOLS.c
 */
@@ -120,6 +140,19 @@ void				print_arena_state(t_corewar *cor);
 void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
+
+/*
+ * NCURSES
+*/
+
+
+void				init_ncurse(t_corewar *cor);
+void				print_memowner_state(t_corewar *cor); //DEBUG
+void				init_colors(t_corewar *cor);
+void				draw_default_mem(t_corewar *cor);
+void				close_ncurse(t_corewar *cor);
+
+
 
 /*
  * COREWAR.c
