@@ -18,24 +18,28 @@ void	create_arena(t_corewar *cor)
 
 void    play(t_corewar *cor)
 {
+	t_plst	*plst;
+
+	if (!(plst = ft_plst_init(cor)))
+		corewarquit("Malloc error");
 	cor->ctd = CYCLE_TO_DIE;
-	while (process_alive(cor) > 0)
+	while (cor->plst != NULL)
 	{
 		cor->cycle++;
 		cor->total++;
 		if (cor->verbosity)
 			ft_printf("It is now cycle %d\n", cor->total);
+		exec_process(cor);
 		if (cor->total == cor->n_dump)
 		{
 			print_arena_state(cor);
-			break;
+			break; //Est ce qu'il faut afficher le gagnant ?
 		}
-		exec_process(cor);
-		if (cor->cycle > CYCLE_TO_DIE)
+		if (cor->cycle > cor->ctd) // je mettrais >=
 			update_cycles(cor);
 	}
 	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
-			cor->process[cor->winner_id].name);
+			cor->process[cor->winner_id].name); //need change
 }
 
 int		process_alive(t_corewar *cor)
@@ -55,16 +59,16 @@ int		process_alive(t_corewar *cor)
 
 void    exec_process(t_corewar *cor)
 {
-	int i;
+	t_plst	*plst;
 
-	i = cor->nb_players;
-	while (--i >= 0)
+	plst = cor->plst;
+	while (plst != NULL)
 	{
-		if (cor->process[i].alive == 1)
-		{
-			++cor->process[i].no_live;
+		plst->p.no_live++;
+		plst->p.wait--;
+		if (plst->p.wait == 0)
 			execute_code(cor, i);
-		}
+		plst = plst->next;
 	}
 }
 
@@ -122,8 +126,6 @@ void	execute_code(t_corewar *cor, int i)
 	unsigned char	type;
 	int				index;
 
-	//Gerer ici aussi la dure/le freeze des processus
-
 	//adjust_pc_overflow(cor, i);
 	index = -1;
 
@@ -133,27 +135,9 @@ void	execute_code(t_corewar *cor, int i)
 		if (g_op_tab[index].opcode == type)
 		{
 			g_func[index](cor, i);
-			
+
 			exit(-1);
 		}
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

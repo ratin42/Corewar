@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/08 17:33:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 14:44:38 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,15 @@ typedef struct          s_process
     unsigned int        live;
 	int					no_live;
 
+	unsigned int		wait;
+	int					opcode;
 }                       t_process;
+
+typedef struct			s_plst
+{
+	struct s_plst		*next;
+	t_process			p;
+}
 
 typedef struct 			s_corewar
 {
@@ -201,7 +209,7 @@ int					get_reg(t_corewar *cor, int i);
 
 
 
-void				inst_add(t_corewar *cor, int i);
+void				inst_add(t_corewar *cor, t_plst *plst);
 void				inst_aff(t_corewar *cor, int i);
 void				inst_and(t_corewar *cor, int i);
 void				inst_fork(t_corewar *cor, int i);
@@ -224,6 +232,4 @@ void				inst_zjmp(t_corewar *cor, int i);
 
 
 
-
-
-#endif
+endif

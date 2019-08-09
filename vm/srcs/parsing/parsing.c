@@ -7,7 +7,7 @@ int		parse_arguments(int ac, char **av, t_corewar *cor)
 	i = 0;
 	while (++i < ac)
 	{
-		if (!ft_strcmp(av[i], "-d"))
+		if (!ft_strcmp(av[i], "-dump"))
 			dump_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-v"))
 			verbosity_option(cor, av, &i);
