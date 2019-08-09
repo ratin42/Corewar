@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 21:30:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 11:26:00 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char		*convert_params(t_asm *asmbly, t_instru **instru)
 	{
 		if (param->type == 1)
 		{
-			if (!(result = ft_strjoin_free(result, reg_conver(param), 3)))
+			if (!(result = ft_strjoin_free(result, reg_conver(asmbly, param), 3)))
 				quit_prog(asmbly);
 		}
 		if (param->type == 2)
@@ -34,7 +34,7 @@ char		*convert_params(t_asm *asmbly, t_instru **instru)
 		}
 		if (param->type == 4)
 		{
-			if (!(result = ft_strjoin_free(result, ind_conver(param, *instru), 3)))
+			if (!(result = ft_strjoin_free(result, ind_conver(asmbly, param, *instru), 3)))
 				quit_prog(asmbly);
 		}
 		if (!(result = ft_strjoin_free(result, ";", 1)))
@@ -61,9 +61,9 @@ static char		*convert_opcode(t_asm *asmbly, t_instru *instru)
 	free(c_opcode);
 	size -= ft_strlen(conv);
 	if (size > 0)
-		conv = fill_direct(size, &conv);
+		conv = fill_direct(asmbly, size, &conv);
 	else if (size < 0)
-		conv = reduce_conv(size, &conv);
+		conv = reduce_conv(asmbly, size, &conv);
 	return (conv);
 }
 

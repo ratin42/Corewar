@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 21:30:33 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 11:38:33 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void		add_instru(t_asm *asmbly, int line);
 void		delete_instru(t_instru **instru);
 void		get_params(t_asm *asmbly, char *str, int line);
 void		check_params_error(t_asm *asmbly, char *str, int line);
-void		print_erro_param(char *str, int line, int error);
+void		print_erro_param(t_asm *asmbly, char *str, int line, int error);
 void		get_params_type(t_asm *asmbly, char *str, int line);
-void		add_param(t_instru *instru, int line, char *param);
+void		add_param(t_asm *asmbly, t_instru *instru, int line, char *param);
 int			get_opcode(t_asm *asbly, char *str, int line);
 int			is_register(char *param);
 int			find_op_index(char *opcode);
@@ -61,11 +61,11 @@ int			find_op_index(char *opcode);
 /*
 ** conversion
 */
-char		*reg_conver(t_param *param);
+char		*reg_conver(t_asm *asmbly, t_param *param);
 char		*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru);
-char		*ind_conver(t_param *param, t_instru *instru);
-char		*fill_direct(int size, char **conv);
-char		*reduce_conv(int size, char **conv);
+char		*ind_conver(t_asm *asmbly, t_param *param, t_instru *instru);
+char		*fill_direct(t_asm *asmbly, int size, char **conv);
+char		*reduce_conv(t_asm *asmbly, int size, char **conv);
 char		*get_ocp(t_asm *asmbly, t_instru *instru);
 void		replace_label(t_asm *asmbly);
 void		convert_instruction(t_asm *asmbly);

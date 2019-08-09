@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/02 07:16:15 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 11:35:50 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,19 @@ int				get_comma(char *str, int i)
 	return (y);
 }
 
-void			get_last_param(char *str, int i, t_instru *instru, int line)
+void			get_last_param(t_asm *asmbly, char *str, int i, int line)
 {
 	int			y;
 	char		*param;
+	t_instru	*instru;
 
 	y = 0;
+	if (!(instru = find_instru(asmbly, line)))
+		instru = get_last_instru(asmbly);
 	while (str[i + y] && str[i + y] != '#')
 		y++;
 	param = ft_strsub(str, i, y);
-	add_param(instru, line, param);
+	add_param(asmbly, instru, line, param);
 	free(param);
 }
 
@@ -77,11 +80,11 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 			return ;
 		if ((y = get_comma(str, i)) == -1)
 		{
-			get_last_param(str, i, instru, line);
+			get_last_param(asmbly, str, i, line);
 			return ;
 		}
 		param = ft_strsub(str, i, y);
-		add_param(instru, line, param);
+		add_param(asmbly, instru, line, param);
 		free(param);
 		i += y;
 		
