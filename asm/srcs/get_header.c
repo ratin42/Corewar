@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 20:28:40 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 13:46:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_error(t_asm *asmbly, char *str)
 {
-	ft_putstr("Lexical error for");
-	ft_putstr(str);
-	ft_putstr("\n");
+	ft_putstr_fd("Lexical error for", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	
 	(void)str;
 	quit_prog(asmbly);
