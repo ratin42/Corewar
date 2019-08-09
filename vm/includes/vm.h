@@ -99,6 +99,8 @@ typedef struct 			s_corewar
 	int					live_declared;
 	int					check_cycle;
 
+	t_plst				*plst;
+
 	//option
 
 	int					n_dump;
@@ -140,9 +142,6 @@ void				close_ncurse(t_corewar *cor);
 /*
  * COREWAR.c
 */
-
-void				init_datas(t_corewar *cor);
-
 
 /*
  * GET_TYPE.c
@@ -199,22 +198,13 @@ void				stock_process_code(t_corewar *cor, int i, int fd);
  * GAME.c
 */
 
-void				create_arena(t_corewar *cor);
-
 void				play(t_corewar *cor);
-int					process_alive(t_corewar *cor);
-void				exec_process(t_corewar *cor);
-
-void				execute_code(t_corewar *cor, int i);
-
 
 /*
  * CYCLE.C
 */
 
 void				update_cycles(t_corewar *cor);
-void				reset_process_nb_live(t_corewar *cor);
-void				check_process_to_kill(t_corewar *cor);
 
 
 /*
@@ -225,7 +215,7 @@ void				update_pc(t_corewar *cor, int i);
 
 int					pc_modulo(int pc);
 int					get_reg(t_corewar *cor, int i);
-
+t_plst				*ft_plst_init(t_corewar *cor);
 
 
 /*						INSTRUCTIONS						*/
@@ -233,21 +223,21 @@ int					get_reg(t_corewar *cor, int i);
 
 
 void				inst_add(t_corewar *cor, t_plst *plst);
-void				inst_aff(t_corewar *cor, int i);
-void				inst_and(t_corewar *cor, int i);
-void				inst_fork(t_corewar *cor, int i);
-void				inst_ld(t_corewar *cor, int i);
-void				inst_ldi(t_corewar *cor, int i);
-void				inst_lfork(t_corewar *cor, int i);
-void				inst_live(t_corewar *cor, int i);
-void				inst_lld(t_corewar *cor, int i);
-void				inst_lldi(t_corewar *cor, int i);
-void				inst_or(t_corewar *cor, int i);
-void				inst_st(t_corewar *cor, int i);
-void				inst_sti(t_corewar *cor, int i);
-void				inst_sub(t_corewar *cor, int i);
-void				inst_xor(t_corewar *cor, int i);
-void				inst_zjmp(t_corewar *cor, int i);
+void				inst_aff(t_corewar *cor, t_plst *plst);
+void				inst_and(t_corewar *cor, t_plst *plst);
+void				inst_fork(t_corewar *cor, t_plst *plst);
+void				inst_ld(t_corewar *cor, t_plst *plst);
+void				inst_ldi(t_corewar *cor, t_plst *plst);
+void				inst_lfork(t_corewar *cor, t_plst *plst);
+void				inst_live(t_corewar *cor, t_plst *plst);
+void				inst_lld(t_corewar *cor, t_plst *plst);
+void				inst_lldi(t_corewar *cor, t_plst *plst);
+void				inst_or(t_corewar *cor, t_plst *plst);
+void				inst_st(t_corewar *cor, t_plst *plst);
+void				inst_sti(t_corewar *cor, t_plst *plst);
+void				inst_sub(t_corewar *cor, t_plst *plst);
+void				inst_xor(t_corewar *cor, t_plst *plst);
+void				inst_zjmp(t_corewar *cor, t_plst *plst);
 
 
 

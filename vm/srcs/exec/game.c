@@ -1,5 +1,25 @@
 #include "../../includes/vm.h"
 
+void (*g_func[17])(t_corewar *cor, t_plst *plst) =
+{
+	inst_live,
+	inst_ld,
+	inst_st,
+	inst_add,
+	inst_sub,
+	inst_and,
+	inst_or,
+	inst_xor,
+	inst_zjmp,
+	inst_ldi,
+	inst_sti,
+	inst_fork,
+	inst_lld,
+	inst_lldi,
+	inst_lfork,
+	inst_aff
+};
+
 
 static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
@@ -38,7 +58,7 @@ void				play(t_corewar *cor)
 	t_plst	*plst;
 
 	if (!(plst = ft_plst_init(cor)))
-		corewarquit("Malloc error");
+		corewar_quit("Malloc error");
 	cor->ctd = CYCLE_TO_DIE;
 	while (cor->plst != NULL)
 	{
@@ -58,28 +78,6 @@ void				play(t_corewar *cor)
 	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
 			cor->process[cor->winner_id].name); //need change
 }
-
-void (*g_func[17])(t_corewar *cor, int i) =
-{
-	inst_live,
-	inst_ld,
-	inst_st,
-	inst_add,
-	inst_sub,
-	inst_and,
-	inst_or,
-	inst_xor,
-	inst_zjmp,
-	inst_ldi,
-	inst_sti,
-	inst_fork,
-	inst_lld,
-	inst_lldi,
-	inst_lfork,
-	inst_aff
-};
-
-
 t_op	g_op_tab[17] =
 {
 	{"live", 1, {T_DIR, 0, 0}, 1, 10, "alive", 0, 0},

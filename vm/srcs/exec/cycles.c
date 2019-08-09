@@ -10,7 +10,7 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 	{
 		if (cor->verbosity)
 			ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					i, cor->process[i].no_live, cor->ctd);
+					plst->p.id, plst->p.no_live, cor->ctd);
 		cor->plst = plst->next;
 		free(plst);
 		plst = cor->plst;
@@ -19,11 +19,11 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 	}
 	while (plst->next != NULL)
 	{
-		if (plst->p->live == 0)
+		if (plst->p.live == 0)
 		{
 			if (cor->verbosity)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-						i, cor->process[i].no_live, cor->ctd);
+					plst->p.id, plst->p.no_live, cor->ctd);
 			elem = plst->next;
 			plst->next = plst->next->next;
 			free(elem);
@@ -39,7 +39,7 @@ static inline void    reset_process_nb_live(t_corewar *cor)
 	plst = cor->plst;
 	while (plst != NULL)
 	{
-		plst->p->live = 0;
+		plst->p.live = 0;
 		plst = plst->next;
 	}
 	cor->live_declared = 0;
@@ -56,6 +56,6 @@ void    update_cycles(t_corewar *cor)
 		if (cor->verbosity)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;
-		reset_process_nb_live(cor->plst);
+		reset_process_nb_live(cor);
 	}
 }
