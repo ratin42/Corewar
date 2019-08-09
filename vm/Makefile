@@ -6,7 +6,7 @@
 #    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/08 15:09:06 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/09 16:28:40 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC = srcs/corewar.c \
 	  srcs/utility/get_type.c \
 	  srcs/utility/update_pc.c \
 	  srcs/utility/inst_tool.c \
+	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_and.c \
@@ -51,6 +52,7 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_xor.c \
 	  srcs/instructions/inst_zjmp.c \
+	  srcs/ncurses/init.c \
 
 
 OBJ = $(SRC:.c=.o)
@@ -59,7 +61,7 @@ all: $(NAME) $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
 	@echo "\033[32mReady ?\033[0m"
 
 %.o: %.c $(INC)

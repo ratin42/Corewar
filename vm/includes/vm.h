@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/09 14:48:21 by gly              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef VM_H
 # define VM_H
 
@@ -23,8 +11,15 @@
 #include "../../asm/includes/op.h"
 #include "../libft/libft.h"
 #include "../libft/includes/ft_printf.h"
+#include <ncurses.h>
+
+#define	COL_MAIN	((COLS / 2) + (COLS / 3))
+#define	LINES_MAIN	((LINES / 3) + (LINES / 2))
+
 
 # define DEBUG 0
+# define SUCCESS 1
+# define FAIL -1
 
 typedef struct			s_type
 {
@@ -33,6 +28,16 @@ typedef struct			s_type
 	int					param3;
 
 }                       t_type;
+
+typedef struct			s_render
+{
+	WINDOW			*main;
+	WINDOW			*menu;
+	
+	char			*color_types;
+	unsigned char	mem_owner[MEM_SIZE];
+
+}						t_render;
 
 typedef struct			s_op
 {
@@ -55,8 +60,6 @@ typedef struct          s_process
 	unsigned char		code[CHAMP_MAX_SIZE];
 	
 	int					order;
-
-	int					alive;
 	
 	int					id;
     int                 reg[REG_NUMBER + 1];
@@ -64,7 +67,6 @@ typedef struct          s_process
     unsigned int        carry;
     unsigned int        live;
 
-	int					freeze;
 	int					no_live;
 
 	unsigned int		wait;
@@ -75,7 +77,7 @@ typedef struct			s_plst
 {
 	struct s_plst		*next;
 	t_process			p;
-}
+}						t_plst;
 
 typedef struct 			s_corewar
 {
@@ -84,18 +86,20 @@ typedef struct 			s_corewar
 	int					count;
 	int					last_live_id;
 	int					nb_players;
-	char				*last_live_name;
+	char				*player_name[4];
 	unsigned int		current_live;
 
     struct s_op			instru;
 	struct s_process	process[MAX_PLAYERS];
+	struct s_render		render;
 
 	int					cycle;
 	int					total;
 	int					ctd;
 	int					live_declared;
 	int					check_cycle;
-	
+
+	t_plst				*plst;
 
 	//option
 
@@ -111,6 +115,7 @@ typedef struct 			s_corewar
 }						t_corewar;
 
 
+
 /*
  * DEBUG_TOOLS.c
 */
@@ -122,11 +127,21 @@ void				corewar_usage(void);
 void				corewar_quit(char *str);
 
 /*
- * COREWAR.c
+ * NCURSES
 */
 
-void				init_datas(t_corewar *cor);
 
+void				init_ncurse(t_corewar *cor);
+void				print_memowner_state(t_corewar *cor); //DEBUG
+void				init_colors(t_corewar *cor);
+void				draw_default_mem(t_corewar *cor);
+void				close_ncurse(t_corewar *cor);
+
+
+
+/*
+ * COREWAR.c
+*/
 
 /*
  * GET_TYPE.c
@@ -183,22 +198,13 @@ void				stock_process_code(t_corewar *cor, int i, int fd);
  * GAME.c
 */
 
-void				create_arena(t_corewar *cor);
-
 void				play(t_corewar *cor);
-int					process_alive(t_corewar *cor);
-void				exec_process(t_corewar *cor);
-
-void				execute_code(t_corewar *cor, int i);
-
 
 /*
  * CYCLE.C
 */
 
 void				update_cycles(t_corewar *cor);
-void				reset_process_nb_live(t_corewar *cor);
-void				check_process_to_kill(t_corewar *cor);
 
 
 /*
@@ -209,7 +215,7 @@ void				update_pc(t_corewar *cor, int i);
 
 int					pc_modulo(int pc);
 int					get_reg(t_corewar *cor, int i);
-
+t_plst				*ft_plst_init(t_corewar *cor);
 
 
 /*						INSTRUCTIONS						*/
@@ -217,21 +223,21 @@ int					get_reg(t_corewar *cor, int i);
 
 
 void				inst_add(t_corewar *cor, t_plst *plst);
-void				inst_aff(t_corewar *cor, int i);
-void				inst_and(t_corewar *cor, int i);
-void				inst_fork(t_corewar *cor, int i);
-void				inst_ld(t_corewar *cor, int i);
-void				inst_ldi(t_corewar *cor, int i);
-void				inst_lfork(t_corewar *cor, int i);
-void				inst_live(t_corewar *cor, int i);
-void				inst_lld(t_corewar *cor, int i);
-void				inst_lldi(t_corewar *cor, int i);
-void				inst_or(t_corewar *cor, int i);
-void				inst_st(t_corewar *cor, int i);
-void				inst_sti(t_corewar *cor, int i);
-void				inst_sub(t_corewar *cor, int i);
-void				inst_xor(t_corewar *cor, int i);
-void				inst_zjmp(t_corewar *cor, int i);
+void				inst_aff(t_corewar *cor, t_plst *plst);
+void				inst_and(t_corewar *cor, t_plst *plst);
+void				inst_fork(t_corewar *cor, t_plst *plst);
+void				inst_ld(t_corewar *cor, t_plst *plst);
+void				inst_ldi(t_corewar *cor, t_plst *plst);
+void				inst_lfork(t_corewar *cor, t_plst *plst);
+void				inst_live(t_corewar *cor, t_plst *plst);
+void				inst_lld(t_corewar *cor, t_plst *plst);
+void				inst_lldi(t_corewar *cor, t_plst *plst);
+void				inst_or(t_corewar *cor, t_plst *plst);
+void				inst_st(t_corewar *cor, t_plst *plst);
+void				inst_sti(t_corewar *cor, t_plst *plst);
+void				inst_sub(t_corewar *cor, t_plst *plst);
+void				inst_xor(t_corewar *cor, t_plst *plst);
+void				inst_zjmp(t_corewar *cor, t_plst *plst);
 
 
 
@@ -239,4 +245,4 @@ void				inst_zjmp(t_corewar *cor, int i);
 
 
 
-endif
+#endif
