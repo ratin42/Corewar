@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 13:52:07 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/09 14:08:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,4 @@ int			main(int ac, char **av)
 }
 
 //TODO
-//Mauvais caractères dans un label 
 //taille du label du name et comment
-//Référence à un label inexistant depuis un direct ou un indirect 
-//checker la presence d'au moins une instruction
