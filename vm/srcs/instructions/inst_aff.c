@@ -28,7 +28,7 @@
 
 void	inst_aff(t_corewar *cor, int i)
 {
-	int reg;
+/* 	int reg;
 
 	ft_printf("process[%d] : AFF\n", i);
 	cor->process[i].pc = pc_modulo(cor->process[i].pc + 1);
@@ -37,7 +37,7 @@ void	inst_aff(t_corewar *cor, int i)
 	if (reg < 1 || reg > 16)
 		ft_printf("Reg: %d not valid, process[%d]", reg, i);
 
-	ft_printf("aff: = [%c]\n", cor->process[i].reg[reg] % 256);
+	ft_printf("aff: = [%c]\n", cor->process[i].reg[reg] % 256); */
 
 	cor->process[i].pc = pc_modulo(cor->process[i].pc + 1);
 }
