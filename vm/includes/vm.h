@@ -8,42 +8,39 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-#include "../../asm/includes/op.h"
-#include "../libft/libft.h"
-#include "../libft/includes/ft_printf.h"
-#include <ncurses.h>
+# include "../../asm/includes/op.h"
+# include "../libft/libft.h"
+# include "../libft/includes/ft_printf.h"
+# include <ncurses.h>
 
-#define	COL_MAIN	((COLS / 2) + (COLS / 3))
-#define	LINES_MAIN	((LINES / 3) + (LINES / 2))
+# define COL_MAIN		((COLS / 2) + (COLS / 3))
+# define LINES_MAIN		((LINES / 3) + (LINES / 2))
+# define DEBUG			0
+# define SUCCESS		1
+# define FAIL			-1
 
-
-# define DEBUG 0
-# define SUCCESS 1
-# define FAIL -1
+# define pr		ft_printf
 
 typedef struct			s_type
 {
 	int					param1;
 	int					param2;
 	int					param3;
-
-}                       t_type;
+}						t_type;
 
 typedef struct			s_render
 {
-	WINDOW			*main;
-	WINDOW			*menu;
-	
-	char			*color_types;
-	unsigned char	mem_owner[MEM_SIZE];
-
+	WINDOW				*main;
+	WINDOW				*menu;
+	char				*color_types;
+	unsigned char		mem_owner[MEM_SIZE];
 }						t_render;
 
 typedef struct			s_op
 {
 	char				*name;
 	int					nbr_of_param;
-	t_type	        	type_of_param;
+	t_type				type_of_param;
 	int					opcode;
 	int					nbr_of_cycle;
 	char				*description;
@@ -51,24 +48,20 @@ typedef struct			s_op
 	unsigned int		direct_size;
 }						t_op;
 
-typedef struct          s_process
+typedef struct			s_process
 {
 	char				name[PROG_NAME_LENGTH];
 	char				comment[COMMENT_LENGTH];
 	unsigned int		magic;
 	unsigned int		size;
 	unsigned char		code[CHAMP_MAX_SIZE];
-	
 	int					order;
-	
 	int					id;
-    int                 reg[REG_NUMBER + 1];
-    unsigned int        pc;
-    unsigned int        carry;
-    unsigned int        live;
-
+	int					reg[REG_NUMBER + 1];
+	unsigned int		pc;
+	unsigned int		carry;
+	unsigned int		live;
 	int					no_live;
-
 	unsigned int		wait;
 	int					opcode;
 }                       t_process;
@@ -114,14 +107,13 @@ typedef struct 			s_corewar
 
 }						t_corewar;
 
-
-
 /*
  * DEBUG_TOOLS.c
 */
 
 void				print_process_data(t_corewar *cor, int player_nb);
 void				print_arena_state(t_corewar *cor);
+void				pcode(t_corewar *cor, int pc);
 void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
@@ -130,14 +122,11 @@ void				corewar_quit(char *str);
  * NCURSES
 */
 
-
 void				init_ncurse(t_corewar *cor);
 void				print_memowner_state(t_corewar *cor); //DEBUG
 void				init_colors(t_corewar *cor);
 void				draw_default_mem(t_corewar *cor);
 void				close_ncurse(t_corewar *cor);
-
-
 
 /*
  * COREWAR.c
@@ -180,7 +169,9 @@ void				attribute_order(t_corewar *cor);
 void				reorder_process(t_corewar *cor);
 
 
-//swap_endian doublons, deja present dans asm
+/*
+ * swap_endian doublons, deja present dans asm
+*/
 uint32_t			swap_endian(uint32_t val);
 
 /*
@@ -210,17 +201,14 @@ void				update_cycles(t_corewar *cor);
 /*
  * UTILITY
 */
-
 void				update_pc(t_corewar *cor, int i);
-
 int					pc_modulo(int pc);
-int					get_reg(t_corewar *cor, int i);
+int					get_reg_index(t_corewar *cor, t_plst *plst);
+int					*check_opcode(t_corewar *cor, t_plst *plst);
 t_plst				*ft_plst_init(t_corewar *cor);
-
+int		check_registre_index(int reg_1, int reg_2, int reg_3, t_plst *plst);
 
 /*						INSTRUCTIONS						*/
-
-
 
 void				inst_add(t_corewar *cor, t_plst *plst);
 void				inst_aff(t_corewar *cor, t_plst *plst);
@@ -238,11 +226,5 @@ void				inst_sti(t_corewar *cor, t_plst *plst);
 void				inst_sub(t_corewar *cor, t_plst *plst);
 void				inst_xor(t_corewar *cor, t_plst *plst);
 void				inst_zjmp(t_corewar *cor, t_plst *plst);
-
-
-
-
-
-
 
 #endif

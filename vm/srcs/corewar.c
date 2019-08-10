@@ -32,8 +32,8 @@ static inline void	create_arena(t_corewar *cor)
 	int		i;
 
 	i = -1;
-	if (cor->visu)
-		init_ncurse(cor);
+/* 	if (cor->visu)
+		init_ncurse(cor); */
 	ft_bzero(cor->arena, MEM_SIZE);
 	while (++i < cor->nb_players)
 	{
@@ -47,11 +47,11 @@ static inline void	create_arena(t_corewar *cor)
 		}
 	}
 	//print_memowner_state(cor);
-	if (cor->visu)
+/* 	if (cor->visu)
 	{
 		draw_default_mem(cor);
 		close_ncurse(cor);
-	}
+	} */
 }
 
 static inline void	init_datas(t_corewar *cor)
@@ -101,11 +101,15 @@ int					main(int ac, char **av)
 		if (ft_get_player_name(&cor) == FAIL)
 			return (0);
 		create_arena(&cor);	
+
 		//debug_order(&cor);
 		//print_arena_state(&cor);
 
-		//	play(&cor);
+		play(&cor);
 
 	}
 	return (1);
 }
+
+//TODO
+//BONUS faire un man

@@ -82,3 +82,8 @@ void	corewar_quit(char *str)
 	ft_putchar_fd('\n', 2);
 	exit(EXIT_SUCCESS);
 }
+
+void	pcode(t_corewar *cor, int pc)
+{
+	ft_printf("code = |%02x|\n", cor->arena[pc]);
+}

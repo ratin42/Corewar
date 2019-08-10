@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/09 16:28:40 by gly              ###   ########.fr        #
+#    Updated: 2019/08/10 19:40:39 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,10 @@ SRC = srcs/corewar.c \
 	  srcs/utility/inst_tool.c \
 	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/instructions/inst_add.c \
+	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
-	  srcs/instructions/inst_and.c \
+	  srcs/instructions/inst_sti.c \
+#	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_ld.c \
 	  srcs/instructions/inst_ldi.c \
@@ -48,8 +50,6 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_lldi.c \
 	  srcs/instructions/inst_or.c \
 	  srcs/instructions/inst_st.c \
-	  srcs/instructions/inst_sti.c \
-	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_xor.c \
 	  srcs/instructions/inst_zjmp.c \
 	  srcs/ncurses/init.c \

@@ -26,18 +26,19 @@
 
 //Le cheat sheet doit pas etre bon pour aff, ils parlent pas du carry dans le sujet;
 
-void	inst_aff(t_corewar *cor, int i)
+void	inst_aff(t_corewar *cor, t_plst *plst)
 {
-/* 	int reg;
+	int reg_i;
 
-	ft_printf("process[%d] : AFF\n", i);
-	cor->process[i].pc = pc_modulo(cor->process[i].pc + 1);
-	reg = get_reg(cor, i);
-	//comment gerer ce cas d'erreur ?
-	if (reg < 1 || reg > 16)
-		ft_printf("Reg: %d not valid, process[%d]", reg, i);
+	ft_printf("process[%d] : AFF FINISHED\n", plst->p.id);
 
-	ft_printf("aff: = [%c]\n", cor->process[i].reg[reg] % 256); */
-
-	cor->process[i].pc = pc_modulo(cor->process[i].pc + 1);
+	//saute l'OCP
+	plst->p.pc = pc_modulo(plst->p.pc + 1);
+	//recupere l'index du registre
+	reg_i = get_reg_index(cor, plst);
+	plst->p.pc = pc_modulo(plst->p.pc + 1);
+	//gere le cas d'erreur de l'index du registre
+	if (!(check_registre_index(reg_i, 1, 1, plst)))
+		return ;
+	ft_printf("%c\n", plst->p.reg[reg_i] % 256);
 }

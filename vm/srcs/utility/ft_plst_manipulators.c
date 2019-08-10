@@ -13,7 +13,7 @@ t_plst	*ft_plst_init(t_corewar *cor)
 		if (!(elem = malloc(sizeof(t_plst))))
 			return (NULL);
 		ft_memcpy(&(elem->p), cor->process + i, sizeof(t_process));
-		elem->next = plst;
+		elem->next = NULL;
 		plst = elem;
 		i++;
 	}

@@ -1,83 +1,5 @@
 #include "../../includes/vm.h"
 
-void (*g_func[17])(t_corewar *cor, t_plst *plst) =
-{
-	inst_live,
-	inst_ld,
-	inst_st,
-	inst_add,
-	inst_sub,
-	inst_and,
-	inst_or,
-	inst_xor,
-	inst_zjmp,
-	inst_ldi,
-	inst_sti,
-	inst_fork,
-	inst_lld,
-	inst_lldi,
-	inst_lfork,
-	inst_aff
-};
-
-
-static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
-{
-	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 0)
-		plst->p.opcode = cor->arena[plst->p.pc];
-}
-
-static inline void	execute_code(t_corewar *cor, t_plst *plst)
-{
-	g_func[plst->p.opcode - 1](cor, plst);
-	plst->p.opcode = 0;
-}
-
-static inline void	exec_process(t_corewar *cor)
-{
-	t_plst	*plst;
-
-	plst = cor->plst;
-	while (plst != NULL)
-	{
-		plst->p.no_live++;
-		if (plst->p.opcode == 0)
-			ft_get_instru(cor, plst);
-		else
-		{
-			plst->p.wait--;
-			if (plst->p.wait == 0)
-				execute_code(cor, plst);
-		}
-		plst = plst->next;
-	}
-}
-
-void				play(t_corewar *cor)
-{
-	t_plst	*plst;
-
-	if (!(plst = ft_plst_init(cor)))
-		corewar_quit("Malloc error");
-	cor->ctd = CYCLE_TO_DIE;
-	while (cor->plst != NULL)
-	{
-		cor->cycle++;
-		cor->total++;
-		if (cor->verbosity)
-			ft_printf("It is now cycle %d\n", cor->total);
-		exec_process(cor);
-		if (cor->total == cor->n_dump)
-		{
-			print_arena_state(cor);
-			break; //Est ce qu'il faut afficher le gagnant ?
-		}
-		if (cor->cycle > cor->ctd) // je mettrais >=
-			update_cycles(cor);
-	}
-	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
-			cor->process[cor->winner_id].name); //need change
-}
 t_op	g_op_tab[17] =
 {
 	{"live", 1, {T_DIR, 0, 0}, 1, 10, "alive", 0, 0},
@@ -105,3 +27,91 @@ t_op	g_op_tab[17] =
 	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0}
 };
 
+void (*g_func[17])(t_corewar *cor, t_plst *plst) =
+{
+	NULL,//inst_live,
+	NULL,//inst_ld,
+	NULL,//inst_st,
+	inst_add,
+	inst_sub,
+	NULL,//inst_and,
+	NULL,//inst_or,
+	NULL,//inst_xor,
+	NULL,//inst_zjmp,
+	NULL,//inst_ldi,
+	inst_sti,
+	NULL,//inst_fork,
+	NULL,//inst_lld,
+	NULL,//inst_lldi,
+	NULL,//inst_lfork,
+	inst_aff
+};
+
+static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
+{
+	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 0)
+	{
+		plst->p.opcode = cor->arena[plst->p.pc];
+		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle; //wait
+	}
+	else
+	{
+		plst->p.pc = pc_modulo(plst->p.pc + 1);
+		plst->p.opcode = 0;
+	}
+}
+
+static inline void	execute_code(t_corewar *cor, t_plst *plst)
+{
+		g_func[plst->p.opcode - 1](cor, plst);
+	plst->p.opcode = 0;
+}
+
+static inline void	exec_process(t_corewar *cor)
+{
+	t_plst	*plst;
+
+	plst = cor->plst;
+	while (plst != NULL)
+	{
+		pr("wait = %d\n", plst->p.wait);
+		plst->p.no_live++;
+		if (plst->p.opcode == 0)
+			ft_get_instru(cor, plst);
+		else
+		{
+			plst->p.wait--;
+			//plst->p.wait = 0; // pour la compilation
+			if (plst->p.wait == 0)
+				execute_code(cor, plst);
+		}
+		plst = plst->next;
+	}
+}
+
+void				play(t_corewar *cor)
+{
+	t_plst	*plst;
+
+	if (!(plst = ft_plst_init(cor)))
+		corewar_quit("Malloc error");
+	cor->ctd = CYCLE_TO_DIE;
+	cor->plst = plst; // j'ai rajoute ca pour que ca compile
+	while (cor->plst != NULL)
+	{
+		cor->cycle++;
+		cor->total++;
+		if (cor->verbosity)
+			ft_printf("It is now cycle %d\n", cor->total);
+		exec_process(cor);
+		if (cor->total == cor->n_dump)
+		{
+			print_arena_state(cor);
+			break; //Est ce qu'il faut afficher le gagnant ?
+		}
+		if (cor->cycle > cor->ctd) // je mettrais >=
+			update_cycles(cor);
+	}
+	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
+			cor->process[cor->winner_id].name); //need change
+}
