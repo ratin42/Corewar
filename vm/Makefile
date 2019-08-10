@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/10 19:40:39 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/10 20:20:23 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
+	  srcs/ncurses/init.c \
 #	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_ld.c \
@@ -52,7 +53,6 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_st.c \
 	  srcs/instructions/inst_xor.c \
 	  srcs/instructions/inst_zjmp.c \
-	  srcs/ncurses/init.c \
 
 
 OBJ = $(SRC:.c=.o)

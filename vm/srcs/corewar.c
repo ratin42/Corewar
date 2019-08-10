@@ -2,38 +2,13 @@
 
 //Connaitre le size min d'un champion pour rejeter comme zaz;
 
-void	print_memowner_state(t_corewar *cor)
-{
-	int p;
-	int j;
-	int i;
-
-	j = 0;
-	p = 0;
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		if (j == 64 || i == 0)
-		{
-			ft_putchar('\n');
-			ft_printf("0x%.4x : ", p);
-			p += 64;
-			j = 0;
-		}
-		ft_printf("%.2x ", cor->render.mem_owner[i]);
-		j++;
-
-	}
-	ft_printf("\n");
-}
-
 static inline void	create_arena(t_corewar *cor)
 {
 	int		i;
 
 	i = -1;
-/* 	if (cor->visu)
-		init_ncurse(cor); */
+ 	if (cor->visu)
+		init_ncurse(cor);
 	ft_bzero(cor->arena, MEM_SIZE);
 	while (++i < cor->nb_players)
 	{
@@ -43,15 +18,12 @@ static inline void	create_arena(t_corewar *cor)
 		if (cor->visu)
 		{
 			ft_memset(cor->render.mem_owner + ((MEM_SIZE / cor->nb_players)
-						* i), (char)(i + 1), cor->process[i].size);
+						* i), (char)(i + 2), cor->process[i].size);
 		}
 	}
 	//print_memowner_state(cor);
-/* 	if (cor->visu)
-	{
-		draw_default_mem(cor);
-		close_ncurse(cor);
-	} */
+ 	if (cor->visu)
+		draw_window(cor);
 }
 
 static inline void	init_datas(t_corewar *cor)
@@ -112,6 +84,7 @@ int					main(int ac, char **av)
 }
 
 //TODO
+
 // Voir pour le numereau des joueurs qui est negatif sur la vm de zazz
 
 //BONUS faire un man
@@ -120,3 +93,6 @@ int					main(int ac, char **av)
 // 4 : Show operations (Params are NOT litteral ...)
 // 8 : Show deaths
 // 16 : Show PC movements (Except for jumps)
+
+//BONUS faire un man
+

@@ -13,13 +13,19 @@
 # include "../libft/includes/ft_printf.h"
 # include <ncurses.h>
 
-# define COL_MAIN		((COLS / 2) + (COLS / 3))
-# define LINES_MAIN		((LINES / 3) + (LINES / 2))
+
 # define DEBUG			0
 # define SUCCESS		1
 # define FAIL			-1
 
-# define pr		ft_printf
+//	VISU DEFINES //
+
+# define BOX_COL_1		COLS / 2 + 15
+# define BOX_COL_2		COLS / 5
+# define BOX_LINES_1	((LINES / 3) + (LINES / 2)) - 2
+
+# define DARK_GREY		6
+# define LIGHT_GREY		7
 
 typedef struct			s_type
 {
@@ -123,9 +129,15 @@ void				corewar_quit(char *str);
 */
 
 void				init_ncurse(t_corewar *cor);
-void				print_memowner_state(t_corewar *cor); //DEBUG
 void				init_colors(t_corewar *cor);
-void				draw_default_mem(t_corewar *cor);
+
+void				draw_window(t_corewar *cor);
+
+void				draw_arena(t_corewar *cor);
+void				fill_border_main(t_corewar *cor);
+void				fill_border_menu(t_corewar *cor);
+
+
 void				close_ncurse(t_corewar *cor);
 
 /*
