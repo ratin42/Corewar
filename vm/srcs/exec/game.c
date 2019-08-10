@@ -74,7 +74,6 @@ static inline void	exec_process(t_corewar *cor)
 	plst = cor->plst;
 	while (plst != NULL)
 	{
-		pr("wait = %d\n", plst->p.wait);
 		plst->p.no_live++;
 		if (plst->p.opcode == 0)
 			ft_get_instru(cor, plst);

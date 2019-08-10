@@ -29,15 +29,36 @@ int		get_small_dir(t_corewar *cor, t_plst *plst)
 	return (direct);
 }
 
+int		get_ind(t_corewar *cor, t_plst *plst)
+{
+	int	addr;
+	int	pc;
+
+	pc = plst->p.pc;
+	addr = get_small_dir(cor, plst);
+	return (cor->arena[pc + addr]);
+}
+
 int		get_param(t_corewar *cor, t_plst *plst, int type)
 {
 	if (type == REG_CODE)
 		return (get_reg_value(cor, plst));
 	if (type == DIR_CODE)
 		return (get_small_dir(cor, plst));
-//	if (type == IND_CODE)
-//		return (get_ind(cor, plst));
+	if (type == IND_CODE)
+		return (get_ind(cor, plst));
 	return (0);
+}
+
+void	print_value(t_corewar *cor, int value, int addr)
+{
+	cor->arena[addr] = value >> 6;
+	addr = pc_modulo(addr + 1);
+	cor->arena[addr] = value >> 4;
+	addr = pc_modulo(addr + 1);
+	cor->arena[addr] = value >> 2;
+	addr = pc_modulo(addr + 1);
+	cor->arena[addr] = value;
 }
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
@@ -47,22 +68,19 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 	
-	plst->p.reg[1] = 42; //debug
-	ft_printf("process[%d] : STI\n", plst->p.id);
+	ft_printf("process[%d] : STI FINISHED\n", plst->p.id);
 	
 	//passe l'opcode
+	plst->p.reg[1] = -1;
 	plst->p.pc =  pc_modulo(plst->p.pc + 1);
 	type_param = check_opcode(cor, plst);
-/* 	ft_printf("type param 1 = %d\n", type_param[0]);
-	ft_printf("type param 2 = %d\n", type_param[1]);
-	ft_printf("type param 3 = %d\n", type_param[2]); */
-
 	param1 = get_param(cor, plst, type_param[0]);
+	pcode(cor, plst->p.pc + 3);
 	param2 = get_param(cor, plst, type_param[1]);
 	param3 = get_param(cor, plst, type_param[2]);
 	ft_printf("param 1 = %d\n", param1);
 	ft_printf("param 2 = %d\n", param2);
 	ft_printf("param 3 = %d\n", param3);
-	pcode(cor, plst->p.pc);
-	//print_value(cor, plst, param1, param1 + param2);
+	print_value(cor, param1, param2 + param3);
+	print_arena_state(cor);
 }

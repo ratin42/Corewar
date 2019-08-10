@@ -8,7 +8,7 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	int reg_3;
 
 	//debug
-	ft_printf("process[%d] : funct: ADD FINISHED\n", plst->p.id);
+	ft_printf("\nprocess[%d] : funct: ADD FINISHED\n", plst->p.id);
 
 	//saute l'opcode et l'OCP
 	plst->p.pc = pc_modulo(plst->p.pc + 2);
@@ -18,8 +18,6 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	reg_2 = get_reg_index(cor, plst);
 	reg_3 = get_reg_index(cor, plst);
 
-	//Replace le pc sur l'opcode suivant
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
 
 	//verifie les index des registres
 	if (check_registre_index(reg_1, reg_2, reg_3, plst))
