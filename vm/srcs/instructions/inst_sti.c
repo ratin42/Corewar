@@ -9,35 +9,6 @@
 // l'addition des deux derniers paramametres. Si cette valeur est nulle,
 // alors le carry passe a l'etat un, sinon a l'ettat zero.
 
-int		get_reg_value(t_corewar *cor, t_plst *plst)
-{
-	int	reg_index;
-
-	reg_index = get_reg_index(cor, plst);
-	return (plst->p.reg[reg_index]);
-}
-
-int		get_small_dir(t_corewar *cor, t_plst *plst)
-{
-	int	direct;
-
-	direct = cor->arena[plst->p.pc];
-	direct = direct << 2;
-	plst->p.pc =  pc_modulo(plst->p.pc + 1);
-	direct = cor->arena[plst->p.pc];
-	plst->p.pc =  pc_modulo(plst->p.pc + 1);
-	return (direct);
-}
-
-int		get_ind(t_corewar *cor, t_plst *plst)
-{
-	int	addr;
-	int	pc;
-
-	pc = plst->p.pc;
-	addr = get_small_dir(cor, plst);
-	return (cor->arena[pc + addr]);
-}
 
 int		get_param(t_corewar *cor, t_plst *plst, int type)
 {
@@ -68,19 +39,17 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 	
-	ft_printf("process[%d] : STI FINISHED\n", plst->p.id);
-	
-	//passe l'opcode
-	plst->p.reg[1] = -1;
 	plst->p.pc =  pc_modulo(plst->p.pc + 1);
 	type_param = check_opcode(cor, plst);
 	param1 = get_param(cor, plst, type_param[0]);
-	pcode(cor, plst->p.pc + 3);
 	param2 = get_param(cor, plst, type_param[1]);
 	param3 = get_param(cor, plst, type_param[2]);
+	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
+		!= DIR_CODE && type_param[2] != REG_CODE))
+		return ;
 	ft_printf("param 1 = %d\n", param1);
 	ft_printf("param 2 = %d\n", param2);
 	ft_printf("param 3 = %d\n", param3);
 	print_value(cor, param1, param2 + param3);
-	print_arena_state(cor);
+	free(type_param);
 }

@@ -8,8 +8,44 @@
 // valeur du premier parametre est egale a zero, alors le carry passe a
 // l'etat un, sinon a l'etat zero.
 
-void	inst_st(t_corewar *cor, int i)
+static int	get_param(t_corewar *cor, t_plst *plst, int type)
 {
-	(void)cor;
-	ft_printf("process[%d] : ST\n", i);
+	if (type == REG_CODE)
+		return (get_reg_value(cor, plst));
+	if (type == IND_CODE)
+		return (get_small_dir(cor, plst));
+	return (0);
+}
+
+void		fill_value(t_corewar *cor, t_plst *plst, int param[2] , int type)
+{
+	if (type == REG_CODE)
+		plst->p.reg[param[1]] = param[0];
+	else
+		print_value(cor, param[0], param[1]);	
+}
+
+void		inst_st(t_corewar *cor, t_plst *plst)
+{
+	int		*instru_type;
+	int		param[2];
+
+	ft_printf("process[%d] : ST\n", plst->p.id);
+	plst->p.reg[1] = -1;
+	plst->p.pc = pc_modulo(plst->p.pc + 1);
+	instru_type = check_opcode(cor, plst);
+	param[0] = get_param(cor, plst, instru_type[0]);
+	if (instru_type[1] == IND_CODE)
+		param[1] = get_param(cor, plst, instru_type[1]);
+	else
+	{
+		param[1] = get_reg_index(cor, plst);
+		if (check_registre_index(param[1], 1, 1) == 0)
+			return ;
+	}
+	if (instru_type[0] != REG_CODE || (instru_type[1] != REG_CODE
+		&& instru_type[1] != IND_CODE))
+		return ;
+	fill_value(cor, plst, param, instru_type[1]);
+	free(instru_type);
 }

@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/10 20:20:23 by hlombard         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = corewar
 
 CC = gcc
@@ -37,12 +25,15 @@ SRC = srcs/corewar.c \
 	  srcs/utility/inst_tool.c \
 	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/utility/ft_arg_manipulators.c \
+	  srcs/instructions/inst_get_params.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
 	  srcs/ncurses/init.c \
+	  srcs/ncurses/arena.c \
 	  srcs/instructions/inst_and.c \
+	  srcs/instructions/inst_st.c \
 #	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_ld.c \
 	  srcs/instructions/inst_ldi.c \
@@ -51,7 +42,6 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_lld.c \
 	  srcs/instructions/inst_lldi.c \
 	  srcs/instructions/inst_or.c \
-	  srcs/instructions/inst_st.c \
 	  srcs/instructions/inst_xor.c \
 	  srcs/instructions/inst_zjmp.c \
 
