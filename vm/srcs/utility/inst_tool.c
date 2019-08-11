@@ -36,8 +36,8 @@ int		*check_opcode(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 
-	type_param = malloc(sizeof(int) * 3);
-	//malloc non protege
+	if (!(type_param = ft_memalloc(sizeof(int) * 3)))
+		corewar_quit("malloc error in check_opcode\n");
 	param1 = ((cor->arena[plst->p.pc] >> 6) & 0x3);
 	type_param[0] = param1;
 	param2 = ((cor->arena[plst->p.pc] >> 4) & 0x3);
@@ -63,22 +63,13 @@ int		ft_check_reg_index(t_arg arg)
 	return (SUCCESS);
 }
 
-int	check_registre_index(int reg_1, int reg_2, int reg_3, t_plst *plst)
+int		check_registre_index(int reg_1, int reg_2, int reg_3)
 {
 	if (reg_1 < 1 || reg_1 > 16)
-	{
-		ft_printf("Reg_1: %d not valid for process[%d]\n", reg_1, plst->p.id);
 		return (0);
-	}
 	if (reg_2 < 1 || reg_2 > 16)
-	{
-		ft_printf("Reg_2: %d not valid for process[%d]\n", reg_2, plst->p.id);
 		return (0);
-	}
 	if (reg_3 < 1 || reg_3 > 16)
-	{
-		ft_printf("Reg_3: %d not valid for process[%d]\n", reg_3, plst->p.id);
 		return (0);
-	}
 	return (1);
 }

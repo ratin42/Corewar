@@ -31,7 +31,7 @@ void (*g_func[17])(t_corewar *cor, t_plst *plst) =
 {
 	NULL,//inst_live,
 	NULL,//inst_ld,
-	NULL,//inst_st,
+	inst_st,
 	inst_add,
 	inst_sub,
 	NULL,//inst_and,

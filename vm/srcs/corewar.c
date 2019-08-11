@@ -76,7 +76,6 @@ int					main(int ac, char **av)
 
 		//debug_order(&cor);
 		//print_arena_state(&cor);
-
 		play(&cor);
 
 	}
@@ -85,7 +84,7 @@ int					main(int ac, char **av)
 
 //TODO
 
-// Voir pour le numereau des joueurs qui est negatif sur la vm de zazz
+// Voir pour le numero des joueurs qui est negatif sur la vm de zazz
 
 //BONUS faire un man
 // 1 : Show lives

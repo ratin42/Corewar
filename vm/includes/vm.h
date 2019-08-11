@@ -223,14 +223,18 @@ void				update_cycles(t_corewar *cor);
 /*
  * UTILITY
 */
+t_plst				*ft_plst_init(t_corewar *cor);
 void				update_pc(t_corewar *cor, int i);
+void				pc_modulo2(t_plst *plst, int i);
 int					pc_modulo(int pc);
-void	pc_modulo2(t_plst *plst, int i);
 int					get_reg_index(t_corewar *cor, t_plst *plst);
 int					*check_opcode(t_corewar *cor, t_plst *plst);
-t_plst				*ft_plst_init(t_corewar *cor);
-int		check_registre_index(int reg_1, int reg_2, int reg_3, t_plst *plst);
-int		ft_check_reg_index(t_arg arg);
+int					check_registre_index(int reg_1, int reg_2, int reg_3);
+int					ft_check_reg_index(t_arg arg);
+int					get_reg_value(t_corewar *cor, t_plst *plst);
+int					get_small_dir(t_corewar *cor, t_plst *plst);
+int					get_ind(t_corewar *cor, t_plst *plst);
+void				print_value(t_corewar *cor, int value, int addr);
 
 /*						INSTRUCTIONS						*/
 
