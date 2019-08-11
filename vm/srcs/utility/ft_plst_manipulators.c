@@ -16,6 +16,8 @@ t_plst	*ft_plst_init(t_corewar *cor)
 		elem->next = NULL;
 		plst = elem;
 		i++;
+		plst->p.id = plst->p.order == -1 ? i : plst->p.order;
+		plst->p.reg[1] = plst->p.id;
 	}
 	return (plst);
 }
