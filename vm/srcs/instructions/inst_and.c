@@ -15,7 +15,7 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 	//ft_printf("process[%d] : AND\n", i);
 
 	arg.nb_arg = 3;
-	arg.dir_size = HALF;
+	arg.dir_size = FULL;
 	ft_get_opcode(cor, plst->p.pc, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || arg.type[1] == 0 || arg.type[2] != REG_CODE)
