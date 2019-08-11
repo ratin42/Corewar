@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/08 22:09:10 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/11 19:26:17 by ratin            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = corewar
 
 CC = gcc
@@ -43,6 +31,7 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
 	  srcs/ncurses/init.c \
+	  srcs/ncurses/arena.c \
 	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_st.c \
 #	  srcs/instructions/inst_fork.c \

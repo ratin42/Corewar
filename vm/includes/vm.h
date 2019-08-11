@@ -139,11 +139,14 @@ void				corewar_quit(char *str);
 */
 
 void				init_ncurse(t_corewar *cor);
-void				init_colors(t_corewar *cor);
+void				init_colors(void);
 
 void				draw_window(t_corewar *cor);
-
 void				draw_arena(t_corewar *cor);
+void				set_attributes(t_corewar *cor, unsigned char color);
+void				unset_attributes(t_corewar *cor, unsigned char color);
+
+
 void				fill_border_main(t_corewar *cor);
 void				fill_border_menu(t_corewar *cor);
 
