@@ -49,7 +49,7 @@ void (*g_func[17])(t_corewar *cor, t_plst *plst) =
 
 static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
-	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 0)
+	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 1)
 	{
 		plst->p.opcode = cor->arena[plst->p.pc];
 		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle; //wait

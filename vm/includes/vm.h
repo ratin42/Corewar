@@ -17,6 +17,8 @@
 # define DEBUG			0
 # define SUCCESS		1
 # define FAIL			-1
+# define FULL			1
+# define HALF			2
 
 //	VISU DEFINES //
 
@@ -113,6 +115,14 @@ typedef struct 			s_corewar
 
 }						t_corewar;
 
+typedef	struct			s_arg
+{
+	int					nb_arg;
+	t_arg_type			type[4];
+	unsigned int		size[4];
+	int					value[4];
+	int					dir_size;
+}						t_arg;
 /*
  * DEBUG_TOOLS.c
 */
@@ -215,10 +225,12 @@ void				update_cycles(t_corewar *cor);
 */
 void				update_pc(t_corewar *cor, int i);
 int					pc_modulo(int pc);
+void	pc_modulo2(t_plst *plst, int i);
 int					get_reg_index(t_corewar *cor, t_plst *plst);
 int					*check_opcode(t_corewar *cor, t_plst *plst);
 t_plst				*ft_plst_init(t_corewar *cor);
 int		check_registre_index(int reg_1, int reg_2, int reg_3, t_plst *plst);
+int		ft_check_reg_index(t_arg arg);
 
 /*						INSTRUCTIONS						*/
 
@@ -238,5 +250,14 @@ void				inst_sti(t_corewar *cor, t_plst *plst);
 void				inst_sub(t_corewar *cor, t_plst *plst);
 void				inst_xor(t_corewar *cor, t_plst *plst);
 void				inst_zjmp(t_corewar *cor, t_plst *plst);
+
+/*
+ * ARG MANIPULATORS
+*/
+
+void	ft_get_opcode(t_corewar *cor, unsigned int pc, t_arg *arg);
+void	ft_get_args_size(t_arg *arg);
+void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
+
 
 #endif

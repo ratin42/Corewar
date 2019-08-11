@@ -36,13 +36,14 @@ SRC = srcs/corewar.c \
 	  srcs/utility/update_pc.c \
 	  srcs/utility/inst_tool.c \
 	  srcs/utility/ft_plst_manipulators.c \
+	  srcs/utility/ft_arg_manipulators.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
 	  srcs/ncurses/init.c \
-#	  srcs/instructions/inst_and.c \
-	  srcs/instructions/inst_fork.c \
+	  srcs/instructions/inst_and.c \
+#	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_ld.c \
 	  srcs/instructions/inst_ldi.c \
 	  srcs/instructions/inst_lfork.c \
