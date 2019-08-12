@@ -38,7 +38,7 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 	reg_i = get_reg_index(cor, plst);
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	//gere le cas d'erreur de l'index du registre
-	if (!(check_registre_index(reg_i, 1, 1, plst)))
+	if (!(check_registre_index(reg_i, 1, 1)))
 		return ;
 	ft_printf("%c\n", plst->p.reg[reg_i] % 256);
 }

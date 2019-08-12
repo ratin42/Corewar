@@ -11,8 +11,10 @@ void	init_ncurse(t_corewar *cor)
 	init_colors();
 
 	//
+
 	noecho();
 	nocbreak();
+
 	//
 
 	curs_set(0);
@@ -34,7 +36,6 @@ void	init_colors(void)
 	init_pair(7, LIGHT_GREY, COLOR_BLACK);
 
 }
-
 
 void	fill_border_main(t_corewar *cor)
 {
@@ -78,8 +79,6 @@ void	fill_border_menu(t_corewar *cor)
 
 void    close_ncurse(t_corewar *cor)
 {
-	(void)cor;
-	getch();
 	delwin(cor->render.main);
 	delwin(cor->render.menu);
 	endwin();

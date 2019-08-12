@@ -69,11 +69,13 @@ void	debug_order(t_corewar *cor)
 
 void	corewar_usage(void)
 {
-	ft_putstr_fd("Usage: ./corewar [-d N -v -n N] <champion.cor> <...>\n", 2);
+	ft_putstr_fd("Usage: ./corewar [-d N -v -n N] <champion.cor> <...>\n\n", 2);
 	ft_putstr_fd("#### TEXT OUTPUT MODE ##########################################################\n", 2);
 	ft_putstr_fd("    -n N      : Assign order N to next champion, default is : first champ is first to play\n", 2);
-	ft_putstr_fd("    -d N      : Dumps memory after N cycles then exits\n", 2);
+	ft_putstr_fd("    -dump N   : Dumps memory after N cycles then exits\n", 2);
 	ft_putstr_fd("    -v        : Verbosity, print game informations\n", 2);	
+	ft_putstr_fd("    -visu     : Ncurse visual\n", 2);
+	ft_putstr_fd("    --stealth : Competition mode, hide code with visual\n", 2);
 }
 
 void	corewar_quit(char *str)

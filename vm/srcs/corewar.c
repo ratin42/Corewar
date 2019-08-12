@@ -21,9 +21,6 @@ static inline void	create_arena(t_corewar *cor)
 						* i), (char)(i + 2), cor->process[i].size);
 		}
 	}
-	//print_memowner_state(cor);
- 	if (cor->visu)
-		draw_window(cor);
 }
 
 static inline void	init_datas(t_corewar *cor)

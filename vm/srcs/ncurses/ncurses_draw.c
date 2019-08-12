@@ -48,8 +48,31 @@ void	unset_attributes(t_corewar *cor, unsigned char color)
 
 void	draw_window(t_corewar *cor)
 {
+	wclear(cor->render.main);
 	draw_arena(cor);
 	fill_border_main(cor);
-	fill_border_menu(cor);
-	close_ncurse(cor);
+	//draw_menu(cor);
+	if (cor->pause == 1)
+	{
+		wclear(cor->render.menu);
+		draw_menu(cor);
+		draw_pause(cor);
+		//wrefresh(cor->render.menu);
+		pause_game(cor);
+	}
+	else
+	{
+		wclear(cor->render.menu);
+		draw_menu(cor);
+		draw_play(cor);
+		//ncurse_events(cor);
+		wrefresh(cor->render.main);
+	}
+	//doupdate();
 }
+
+
+
+
+
+

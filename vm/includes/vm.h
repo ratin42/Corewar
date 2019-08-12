@@ -25,9 +25,10 @@
 # define BOX_COL_1		COLS / 2 + 15
 # define BOX_COL_2		COLS / 5
 # define BOX_LINES_1	((LINES / 3) + (LINES / 2)) - 2
-
 # define DARK_GREY		6
 # define LIGHT_GREY		7
+#define SPACE_BAR		' '
+#define QUIT			'q'
 
 typedef struct			s_type
 {
@@ -99,7 +100,7 @@ typedef struct 			s_corewar
 	int					ctd;
 	int					live_declared;
 	int					check_cycle;
-
+	
 	t_plst				*plst;
 
 	//option
@@ -110,7 +111,8 @@ typedef struct 			s_corewar
 	int					order_option;
 	int					stealth;
 	int					visu;
-	
+	int					pause;
+
 	int					winner_id;
 
 }						t_corewar;
@@ -143,12 +145,25 @@ void				init_colors(void);
 
 void				draw_window(t_corewar *cor);
 void				draw_arena(t_corewar *cor);
+void				fill_border_main(t_corewar *cor);
 void				set_attributes(t_corewar *cor, unsigned char color);
 void				unset_attributes(t_corewar *cor, unsigned char color);
 
 
-void				fill_border_main(t_corewar *cor);
 void				fill_border_menu(t_corewar *cor);
+void				draw_infos(t_corewar *cor);
+void				draw_menu(t_corewar *cor);
+void				draw_infos(t_corewar *cor);
+
+void				draw_play(t_corewar *cor);
+void				draw_play_1(t_corewar *cor, int x, int x1, int y1);
+void				draw_play_2(t_corewar *cor, int x, int x1, int y);
+void				draw_pause(t_corewar *cor);
+
+
+void				ncurse_events(t_corewar *cor);
+void				pause_game(t_corewar *cor);
+
 
 
 void				close_ncurse(t_corewar *cor);

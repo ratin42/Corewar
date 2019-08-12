@@ -30,8 +30,11 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
-	  srcs/ncurses/init.c \
-	  srcs/ncurses/arena.c \
+	  srcs/ncurses/ncurses_init.c \
+	  srcs/ncurses/ncurses_draw.c \
+	  srcs/ncurses/ncurses_button.c \
+	  srcs/ncurses/ncurses_menu.c \
+	  srcs/ncurses/ncurses_events.c \
 	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_st.c \
 #	  srcs/instructions/inst_fork.c \

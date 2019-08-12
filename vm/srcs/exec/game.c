@@ -63,7 +63,7 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
-		g_func[plst->p.opcode - 1](cor, plst);
+	g_func[plst->p.opcode - 1](cor, plst);
 	plst->p.opcode = 0;
 }
 
@@ -96,8 +96,16 @@ void				play(t_corewar *cor)
 		corewar_quit("Malloc error");
 	cor->ctd = CYCLE_TO_DIE;
 	cor->plst = plst; // j'ai rajoute ca pour que ca compile
+	if (cor->visu)
+		cor->pause = 1; // si le visu alors la partie commence en pause
 	while (cor->plst != NULL)
 	{
+		if (cor->visu)
+		{
+			//ncurse_events(cor);
+			//draw_window(cor);
+		}
+		ft_printf("%d\n", cor->total);
 		cor->cycle++;
 		cor->total++;
 		if (cor->verbosity)
@@ -106,7 +114,9 @@ void				play(t_corewar *cor)
 		if (cor->total == cor->n_dump)
 		{
 			print_arena_state(cor);
-			break; //Est ce qu'il faut afficher le gagnant ?
+			return; //Est ce qu'il faut afficher le gagnant ?
+			//Non mais du coup il faudrait pas free en dessous j'ai return
+			//il faut free dans la fonction d'apres du main;
 		}
 		if (cor->cycle > cor->ctd) // je mettrais >=
 			update_cycles(cor);
