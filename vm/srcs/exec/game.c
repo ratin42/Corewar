@@ -51,11 +51,14 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
 	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 1)
 	{
-		ft_printf("pc exec = %u\n", plst->p.pc);
+		if (DEBUG)
+			ft_printf("pc exec = %u\n", plst->p.pc);
 		plst->p.opcode = cor->arena[plst->p.pc];
-		ft_printf("opcode = %d\n", plst->p.opcode);
+		if (DEBUG)
+			ft_printf("opcode = %d\n", plst->p.opcode);
 		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle; //wait
-		ft_printf("wait = %d\n", plst->p.wait);
+		if (DEBUG)
+			ft_printf("wait = %d\n", plst->p.wait);
 	}
 	else
 		plst->p.opcode = 0;
@@ -64,7 +67,8 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
-	ft_printf("opcode exec = %d\n", plst->p.opcode);
+	if (DEBUG)
+		ft_printf("opcode exec = %d\n", plst->p.opcode);
 	g_func[plst->p.opcode - 1](cor, plst);
 	plst->p.opcode = 0;
 }
@@ -94,6 +98,7 @@ void				play(t_corewar *cor)
 {
 	t_plst	*plst;
 
+
 	if (!(plst = ft_plst_init(cor)))
 		corewar_quit("Malloc error");
 	cor->ctd = CYCLE_TO_DIE;
@@ -104,12 +109,12 @@ void				play(t_corewar *cor)
 		cor->pause = 1;
 		draw_window(cor);
 	}
-						// si le visu alors la partie commence en pause
+	// si le visu alors la partie commence en pause
 	while (cor->plst != NULL)
 	{
 		if (cor->visu)
 			update_window(cor);
-		if (!cor->visu)
+		if (!cor->visu && cor->verbosity)
 			ft_printf("%d\n", cor->total);
 		cor->cycle++;
 		cor->total++;

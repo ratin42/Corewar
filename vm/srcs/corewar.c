@@ -65,6 +65,7 @@ int					main(int ac, char **av)
 	}
 	else
 	{
+
 		init_datas(&cor);
 		parse_arguments(ac, av, &cor);
 		if (ft_get_player_name(&cor) == FAIL)

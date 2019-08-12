@@ -5,6 +5,7 @@ void	ncurse_events(t_corewar *cor)
 {
 	int keycode;
 	
+	nodelay(stdscr, 1);	
 	keycode = getch();
 	if (keycode == SPACE_BAR)
 	{
@@ -19,7 +20,7 @@ void	ncurse_events(t_corewar *cor)
 			pause_game(cor);
 		}
 	}
-	else if (keycode == QUIT)
+	if (keycode == QUIT)
 	{
 		//free_what_needed
 		close_ncurse(cor);

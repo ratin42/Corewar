@@ -29,8 +29,9 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 {
 	int		*instru_type;
 	int		param[2];
-
-	ft_printf("process[%d] : ST\n", plst->p.id);
+	
+	if (DEBUG)
+		ft_printf("process[%d] : ST\n", plst->p.id);
 	plst->p.reg[1] = -1;
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	instru_type = check_opcode(cor, plst);

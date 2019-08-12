@@ -15,14 +15,16 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 	if (ft_check_arg_type(arg, 0, IND_CODE, DIR_CODE) == FAIL
 			|| arg.type[1] != REG_CODE)
 	{
-		ft_printf("OCP error.\n");
+		if (!cor->visu && cor->verbosity)
+			ft_printf("OCP error.\n");
 		pc_modulo2(plst, 1);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(arg) == FAIL)
 	{
-		ft_printf("Register argument is not within the valid range.\n");
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
 	plst->p.reg[arg.value[1]] = arg.value[0];

@@ -18,14 +18,16 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, IND_CODE, DIR_CODE) == FAIL
 			|| arg.type[2] != REG_CODE)
 	{
-		ft_printf("OCP error.\n");
+		if (!cor->visu && cor->verbosity)
+			ft_printf("OCP error.\n");
 		pc_modulo2(plst, 1);//ou autre mouvement
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(arg) == FAIL)
 	{
-		ft_printf("Register argument is not within the valid range.\n");
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
 	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.pc

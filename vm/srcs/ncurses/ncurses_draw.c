@@ -23,8 +23,10 @@ void    draw_arena(t_corewar *cor)
 				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "ff");
 			else
 				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "%.2x", c);
-			mvwprintw(cor->render.main, y + 2, x * 3 + 5, " ");
+			
 			unset_attributes(cor, color);
+			mvwprintw(cor->render.main, y + 2, x * 3 + 5, " ");
+
 			i++;
 		}
 	}
@@ -57,6 +59,7 @@ void	update_window(t_corewar *cor)
 {
 	draw_arena(cor);
 	draw_menu(cor);
+	ncurse_events(cor);
 }
 
 

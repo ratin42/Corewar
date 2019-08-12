@@ -29,8 +29,9 @@
 void	inst_aff(t_corewar *cor, t_plst *plst)
 {
 	int reg_i;
-
-	ft_printf("process[%d] : AFF FINISHED\n", plst->p.id);
+	
+	if (DEBUG)
+		ft_printf("process[%d] : AFF FINISHED\n", plst->p.id);
 
 	//saute l'OCP
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
@@ -40,5 +41,6 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 	//gere le cas d'erreur de l'index du registre
 	if (!(check_registre_index(reg_i, 1, 1)))
 		return ;
-	ft_printf("%c\n", plst->p.reg[reg_i] % 256);
+	if (cor->verbosity && !cor->visu)
+		ft_printf("%c\n", plst->p.reg[reg_i] % 256);
 }

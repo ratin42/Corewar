@@ -13,7 +13,9 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 {
 	//(void)cor;
 	//ft_printf("process[%d] : ZJMP\n", i); 
-	ft_printf("ZJMP\n");
+	
+	if (DEBUG)
+		ft_printf("ZJMP\n");
 
 	t_arg	arg;
 
@@ -24,13 +26,16 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 	//plst->p.carry = 1;
 	if (plst->p.carry == 1)
 	{
-		ft_printf("pc before = %d\n", plst->p.pc);
+		if (DEBUG)
+			ft_printf("pc before = %d\n", plst->p.pc);
 		// plst->p.pc = ((plst->p.pc + 3) + (param1 % IDX_MOD)) % MEM_SIZE;
 		plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
 	}
 	else
 		plst->p.pc %= MEM_SIZE;
-	
-	ft_printf("param1 = %d\n", arg.value[0]);
-	ft_printf("pc after = %d\n", plst->p.pc);
+	if (DEBUG)
+	{
+		ft_printf("param1 = %d\n", arg.value[0]);
+		ft_printf("pc after = %d\n", plst->p.pc);
+	}
 }

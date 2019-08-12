@@ -16,7 +16,8 @@ void	inst_sub(t_corewar *cor, t_plst *plst)
 	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE || type_param[2]
 		!= REG_CODE)
 	{
-		ft_printf("sub error.\n");
+		if (!cor->visu && cor->verbosity)
+			ft_printf("sub error.\n");
 		return ;
 	}
 	if (check_registre_index(reg_1, reg_2, reg_3))
