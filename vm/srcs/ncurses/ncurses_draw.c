@@ -26,10 +26,10 @@ void    draw_arena(t_corewar *cor)
 			
 			unset_attributes(cor, color);
 			mvwprintw(cor->render.main, y + 2, x * 3 + 5, " ");
-
 			i++;
 		}
 	}
+	wrefresh(cor->render.main);
 }
 
 void	set_attributes(t_corewar *cor, unsigned char color)

@@ -2,11 +2,13 @@
 
 void	draw_play(t_corewar *cor)
 {
-	wclear(cor->render.menu);
+	werase(cor->render.menu);
 	fill_border_menu(cor);
 	draw_menu(cor);
+	wattron(cor->render.menu, A_BOLD | COLOR_PAIR(2));
 	draw_play_1(cor, 49, 24, 6);
 	draw_play_2(cor, 49, 24, 10);
+	wattroff(cor->render.menu, A_BOLD | COLOR_PAIR(2));
 	wattron(cor->render.menu, COLOR_PAIR(3) | A_BOLD);
 	mvwprintw(cor->render.menu, 1, 28, "***  LIVE  ***");
 	wattroff(cor->render.menu, COLOR_PAIR(3) | A_BOLD);
@@ -47,9 +49,10 @@ void	draw_pause(t_corewar *cor)
 {
 	int y;
 	
-	wclear(cor->render.menu);
+	werase(cor->render.menu);
 	fill_border_menu(cor);
 	draw_menu(cor);
+	wattron(cor->render.menu, COLOR_PAIR(4) | A_BOLD);
 	y = 3;
 	while (y++ < 14)
 		mvwprintw(cor->render.menu, y, 23, "#");
@@ -62,6 +65,7 @@ void	draw_pause(t_corewar *cor)
 	y = 3;
 	while (y++ < 14)
 		mvwprintw(cor->render.menu, y, 46, "#");
+	wattroff(cor->render.menu, COLOR_PAIR(4) | A_BOLD);
 	wattron(cor->render.menu, COLOR_PAIR(3) | A_BOLD);
 	mvwprintw(cor->render.menu, 1, 27, "***  PAUSED  ***");
 	wattroff(cor->render.menu, COLOR_PAIR(3) | A_BOLD);
