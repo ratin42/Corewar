@@ -40,7 +40,7 @@ void	init_colors(void)
 	init_pair(9, COLOR_BLACK, COLOR_GREEN);
 	init_pair(10, COLOR_BLACK, COLOR_BLUE);
 	init_pair(11, COLOR_BLACK, COLOR_RED);
-	init_pair(12, COLOR_BLACK, COLOR_YELLOW);
+	init_pair(12, COLOR_BLACK, LIGHT_CYAN);
 
 
 	init_pair(13, COLOR_YELLOW, COLOR_BLACK);

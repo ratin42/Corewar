@@ -169,8 +169,8 @@ void				fill_border_menu(t_corewar *cor);
 void				draw_window(t_corewar *cor);
 void				draw_arena(t_corewar *cor);
 void				update_window(t_corewar *cor);
-void				set_attributes(t_corewar *cor, unsigned char color);
-void				unset_attributes(t_corewar *cor, unsigned char color);
+void				set_attributes(t_corewar *cor, unsigned char color, int i);
+void				unset_attributes(t_corewar *cor, unsigned char color, int i);
 
 
 void				draw_infos(t_corewar *cor);
@@ -191,6 +191,13 @@ void				pause_game(t_corewar *cor);
 
 
 void				close_ncurse(t_corewar *cor);
+
+
+
+
+int					is_a_player_pc(t_corewar *cor, int i);
+
+
 
 /*
  * COREWAR.c

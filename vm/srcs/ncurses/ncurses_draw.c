@@ -18,13 +18,13 @@ void    draw_arena(t_corewar *cor)
 		{
 			c = cor->arena[i];
 			color = cor->render.mem_owner[i];
-			set_attributes(cor, color);
+			set_attributes(cor, color, i);
 			if (cor->stealth)
 				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "ff");
 			else
 				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "%.2x", c);
 			
-			unset_attributes(cor, color);
+			unset_attributes(cor, color, i);
 			mvwprintw(cor->render.main, y + 2, x * 3 + 5, " ");
 			i++;
 		}
@@ -32,18 +32,52 @@ void    draw_arena(t_corewar *cor)
 	wrefresh(cor->render.main);
 }
 
-void	set_attributes(t_corewar *cor, unsigned char color)
+int		is_a_player_pc(t_corewar *cor, int i)
 {
+	/*
+	t_plst	*p;
+
+	p = cor->plst;
+	while (p)
+	{
+		if (p->p.id == i + 1)
+			return (p->p.id);
+		p = p->next;
+	}
+	*/
+	(void)i;
+	(void)cor;
+	return (0);
+	
+}
+
+
+void	set_attributes(t_corewar *cor, unsigned char color, int i)
+{
+	int ret;
+	
+	ret = is_a_player_pc(cor, i);
 	if (color == 0)
 		wattron(cor->render.main, COLOR_PAIR(7));
+	else if (ret != 0)
+	{
+		wattron(cor->render.main, COLOR_PAIR(ret + 8 ));
+	}
 	else
 		wattron(cor->render.main, COLOR_PAIR(color));
 }
 
-void	unset_attributes(t_corewar *cor, unsigned char color)
+void	unset_attributes(t_corewar *cor, unsigned char color, int i)
 {
+	int ret;
+
+	ret = is_a_player_pc(cor, i);
 	if (color == 0)
 		wattroff(cor->render.main, COLOR_PAIR(7));
+	else if (ret != 0)
+	{
+		wattroff(cor->render.main, COLOR_PAIR(ret + 8));
+	}
 	else
 		wattroff(cor->render.main, COLOR_PAIR(color));
 }

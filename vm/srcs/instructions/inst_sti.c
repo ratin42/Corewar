@@ -39,14 +39,16 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 	
-	plst->p.pc =  pc_modulo(plst->p.pc + 1);
+	//plst->p.pc =  pc_modulo(plst->p.pc + 1);
 	type_param = check_opcode(cor, plst);
 	param1 = get_param(cor, plst, type_param[0]);
 	param2 = get_param(cor, plst, type_param[1]);
 	param3 = get_param(cor, plst, type_param[2]);
+	/*
 	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
 		!= DIR_CODE && type_param[2] != REG_CODE))
 		return ;
+		*/
 	if (DEBUG)
 	{
 		ft_printf("param 1 = %d\n", param1);
