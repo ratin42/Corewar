@@ -32,6 +32,13 @@
 #define SPACE_BAR		' '
 #define QUIT			'q'
 
+#define STR1 " _____ ___________ _____ _    _  ___ ______ "
+#define STR2 "/  __ \\  _  | ___ \\  ___| |  | |/ _ \\| ___ \\"
+#define STR3 "| /  \\/ | | | |_/ / |__ | |  | / /_\\ \\ |_/ /"
+#define STR4 "| |   | | | |    /|  __|| |/\\| |  _  |    / "
+#define STR5 "| \\__/\\ \\_/ / |\\ \\| |___\\  /\\  / | | | |\\ \\ "
+#define STR6 " \\____/\\___/\\_| \\_\\____/ \\/  \\/\\_| |_|_| \\_|"
+
 typedef struct			s_type
 {
 	int					param1;
@@ -154,6 +161,8 @@ void				corewar_quit(char *str);
 void				init_ncurse(t_corewar *cor);
 void				init_colors(void);
 
+
+
 void				draw_window(t_corewar *cor);
 void				draw_arena(t_corewar *cor);
 void				fill_border_main(t_corewar *cor);
@@ -166,10 +175,14 @@ void				draw_infos(t_corewar *cor);
 void				draw_menu(t_corewar *cor);
 void				draw_infos(t_corewar *cor);
 
+void				update_window(t_corewar *cor);
+
 void				draw_play(t_corewar *cor);
 void				draw_play_1(t_corewar *cor, int x, int x1, int y1);
 void				draw_play_2(t_corewar *cor, int x, int x1, int y);
 void				draw_pause(t_corewar *cor);
+
+void				draw_player_info(t_corewar *cor);
 
 
 void				ncurse_events(t_corewar *cor);

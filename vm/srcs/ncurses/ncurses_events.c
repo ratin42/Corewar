@@ -4,14 +4,20 @@
 void	ncurse_events(t_corewar *cor)
 {
 	int keycode;
-
+	
 	keycode = getch();
 	if (keycode == SPACE_BAR)
 	{
 		if (cor->pause == 1)
+		{
 			cor->pause = 0;
+			draw_play(cor);
+		}
 		else
+		{
 			cor->pause = 1;
+			pause_game(cor);
+		}
 	}
 	else if (keycode == QUIT)
 	{
@@ -25,17 +31,18 @@ void	ncurse_events(t_corewar *cor)
 void	pause_game(t_corewar *cor)
 {
 	int keycode;
-
+	
+	draw_pause(cor);
 	while (42)
 	{
 		keycode = getch();
 		if (keycode == SPACE_BAR)
 		{
 			cor->pause = 0;
-			draw_window(cor);
+			draw_play(cor);
 			return;
 		}
-		else if (keycode == QUIT)
+		if (keycode == QUIT)
 		{
 			//free_what_needed
 			close_ncurse(cor);
