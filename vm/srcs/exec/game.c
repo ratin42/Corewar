@@ -37,7 +37,7 @@ void (*g_func[17])(t_corewar *cor, t_plst *plst) =
 	inst_and,
 	NULL,//inst_or,
 	NULL,//inst_xor,
-	NULL,//inst_zjmp,
+	inst_zjmp,
 	inst_ldi,
 	inst_sti,
 	inst_fork,
@@ -51,18 +51,20 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
 	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 1)
 	{
+		ft_printf("pc exec = %u\n", plst->p.pc);
 		plst->p.opcode = cor->arena[plst->p.pc];
+		ft_printf("opcode = %d\n", plst->p.opcode);
 		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle; //wait
+		ft_printf("wait = %d\n", plst->p.wait);
 	}
 	else
-	{
-		plst->p.pc = pc_modulo(plst->p.pc + 1);
 		plst->p.opcode = 0;
-	}
+	plst->p.pc = pc_modulo(plst->p.pc + 1);
 }
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
+	ft_printf("opcode exec = %d\n", plst->p.opcode);
 	g_func[plst->p.opcode - 1](cor, plst);
 	plst->p.opcode = 0;
 }

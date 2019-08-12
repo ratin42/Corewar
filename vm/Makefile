@@ -48,9 +48,10 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_lfork.c \
 	  srcs/instructions/inst_lldi.c \
+	  srcs/instructions/inst_zjmp.c \
 #	  srcs/instructions/inst_or.c \
 	  srcs/instructions/inst_xor.c \
-	  srcs/instructions/inst_zjmp.c \
+	  
 
 
 OBJ = $(SRC:.c=.o)

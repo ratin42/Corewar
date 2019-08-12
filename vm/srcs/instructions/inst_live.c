@@ -21,7 +21,8 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 
 	//debug
 	//ft_printf("process[%d] : AND\n", i);
-
+	ft_printf("LIVE\n");
+	ft_printf("live : pc before = %u\n", plst->p.pc);
 	ft_arg_init(&arg, 1, FULL, FALSE);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 4;
@@ -36,4 +37,5 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	cor->last_live_id = arg.value[0];
 	cor->live_declared++;
 	plst->p.no_live = 0;
+	ft_printf("live : pc after = %u\n", plst->p.pc);
 }
