@@ -11,13 +11,17 @@ void	init_ncurse(t_corewar *cor)
 	init_colors();
 
 	//
+	
 
 	noecho();
-	nocbreak();
+	cbreak();
+	//keypad(stdscr, TRUE);
 
 	//
-
-	curs_set(0);
+	
+	//later
+	
+	//curs_set(0);
 }
 
 void	init_colors(void)
@@ -34,6 +38,7 @@ void	init_colors(void)
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 	init_pair(6, LIGHT_GREY, LIGHT_GREY);
 	init_pair(7, LIGHT_GREY, COLOR_BLACK);
+	init_pair(8, COLOR_MAGENTA, COLOR_BLACK);
 
 }
 

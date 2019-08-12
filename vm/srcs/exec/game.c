@@ -100,18 +100,21 @@ void				play(t_corewar *cor)
 	cor->plst = plst; // j'ai rajoute ca pour que ca compile
 	ft_player_init(cor);
 	if (cor->visu)
-		cor->pause = 1; // si le visu alors la partie commence en pause
+	{
+		cor->pause = 1;
+		draw_window(cor);
+	}
+						// si le visu alors la partie commence en pause
 	while (cor->plst != NULL)
 	{
 		if (cor->visu)
-		{
-			//ncurse_events(cor);
-			//draw_window(cor);
-		}
-		ft_printf("%d\n", cor->total);
+			update_window(cor);
+		if (!cor->visu)
+			ft_printf("%d\n", cor->total);
 		cor->cycle++;
 		cor->total++;
-		if (cor->verbosity)
+
+		if (cor->verbosity && !cor->visu)
 			ft_printf("It is now cycle %d\n", cor->total);
 		exec_process(cor);
 		if (cor->total == cor->n_dump)

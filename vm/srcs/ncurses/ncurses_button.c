@@ -2,9 +2,13 @@
 
 void	draw_play(t_corewar *cor)
 {
+	wclear(cor->render.menu);
+	fill_border_menu(cor);
+	draw_menu(cor);
 	draw_play_1(cor, 49, 24, 6);
 	draw_play_2(cor, 49, 24, 10);
-	mvwprintw(cor->render.menu, 1, 28, "*** LIVE ***");
+	mvwprintw(cor->render.menu, 1, 28, "***  LIVE  ***");
+	wrefresh(cor->render.menu);
 }
 
 void	draw_play_1(t_corewar *cor, int x, int x1, int y1)
@@ -39,8 +43,12 @@ void	draw_play_2(t_corewar *cor, int x, int x1, int y)
 
 void	draw_pause(t_corewar *cor)
 {
-	int y;
 
+	int y;
+	
+	wclear(cor->render.menu);
+	fill_border_menu(cor);
+	draw_menu(cor);
 	y = 3;
 	while (y++ < 14)
 		mvwprintw(cor->render.menu, y, 23, "#");
@@ -53,8 +61,8 @@ void	draw_pause(t_corewar *cor)
 	y = 3;
 	while (y++ < 14)
 		mvwprintw(cor->render.menu, y, 46, "#");
-
-	mvwprintw(cor->render.menu, 1, 28, "*** PAUSED ***");
+	mvwprintw(cor->render.menu, 1, 27, "***  PAUSED  ***");
+	wrefresh(cor->render.menu);
 
 
 
