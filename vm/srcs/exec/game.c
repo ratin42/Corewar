@@ -96,6 +96,7 @@ void				play(t_corewar *cor)
 		corewar_quit("Malloc error");
 	cor->ctd = CYCLE_TO_DIE;
 	cor->plst = plst; // j'ai rajoute ca pour que ca compile
+	ft_player_init(cor);
 	if (cor->visu)
 		cor->pause = 1; // si le visu alors la partie commence en pause
 	while (cor->plst != NULL)
