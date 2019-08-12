@@ -13,8 +13,8 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 
 	//debug
 	//ft_printf("process[%d] : AND\n", i);
-	printf("AND\n");
-	printf("and : pc before = %u\n", plst->p.pc);
+	//printf("AND\n");
+	//printf("and : pc before = %u\n", plst->p.pc);
 	ft_arg_init(&arg, 3, FULL, TRUE);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
@@ -31,5 +31,5 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 	}
 	plst->p.reg[arg.value[2]] = arg.value[0] & arg.value[1];
 	plst->p.carry = !(arg.value[0] & arg.value[1]);
-	ft_printf("and : pc after = %u\n", plst->p.pc);
+	//ft_printf("and : pc after = %u\n", plst->p.pc);
 }
