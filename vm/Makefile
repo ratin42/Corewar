@@ -28,6 +28,7 @@ SRC = srcs/corewar.c \
 	  srcs/utility/ft_arg_manipulators2.c \
 	  srcs/utility/ft_check_arg_type.c \
 	  srcs/utility/ft_player_init.c \
+	  srcs/utility/ft_get_restricted_addr.c \
 	  srcs/instructions/inst_get_params.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_sub.c \
@@ -44,10 +45,10 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_lld.c \
 	  srcs/instructions/inst_ldi.c \
 	  srcs/instructions/inst_live.c \
-#	  srcs/instructions/inst_fork.c \
+	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_lfork.c \
 	  srcs/instructions/inst_lldi.c \
-	  srcs/instructions/inst_or.c \
+#	  srcs/instructions/inst_or.c \
 	  srcs/instructions/inst_xor.c \
 	  srcs/instructions/inst_zjmp.c \
 

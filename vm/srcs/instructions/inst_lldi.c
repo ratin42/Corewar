@@ -5,8 +5,27 @@
 // OCP : Oui Adressage Restreint : Non Modifie le carry : Oui
 // Identique a Indirect Load mais sans restriction de l'adressage.
 
-void	inst_lldi(t_corewar *cor, int i)
+void	inst_lldi(t_corewar *cor, t_plst *plst)
 {
-	(void)cor;
-	ft_printf("process[%d] : LLDI\n", i);
+	t_arg	arg;
+
+	ft_arg_init(&arg, 3, HALF, FALSE);
+	ft_get_opcode(cor, plst->p.pc, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, IND_CODE, DIR_CODE) == FAIL
+			|| arg.type[2] != REG_CODE)
+	{
+		ft_printf("OCP error.\n");
+		pc_modulo2(plst, 1);//ou autre mouvement
+		return ;
+	}
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
+	{
+		ft_printf("Register argument is not within the valid range.\n");
+		return ;
+	}
+	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.pc
+		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
+	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0);
 }

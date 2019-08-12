@@ -28,10 +28,11 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	ft_get_args(cor, plst, &arg);
 	if ((index = ft_get_player_index(cor, arg.value[0])) == -1)
 	{
-		ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
+		if (cor->verbosity)
+			ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
 	}
 	ft_printf("Player %s (id: %d) is alive.\n", cor->player[index].name, arg.value[0]);
-		(plst->p.live)++;
+	(plst->p.live)++;
 	cor->last_live_id = arg.value[0];
 	cor->live_declared++;
 	plst->p.no_live = 0;

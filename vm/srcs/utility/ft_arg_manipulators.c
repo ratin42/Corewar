@@ -50,8 +50,10 @@ t_arg *arg, int i)
 	}
 	if (arg->type[i] == IND_CODE)
 	{
-		arg->value[i] = arg->addr_restrict == 1 ? cor->arena[arg->value[i] % IDX_MOD]
-			: cor->arena[arg->value[i]];
+		arg->value[i] = cor->arena[pc_modulo(plst->p.pc
+			+ (arg->addr_restrict == 1
+			? ft_get_restricted_addr(arg->value[i])
+			: arg->value[i]))];
 	}
 }
 

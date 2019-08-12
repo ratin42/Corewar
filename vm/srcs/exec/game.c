@@ -29,21 +29,21 @@ t_op	g_op_tab[17] =
 
 void (*g_func[17])(t_corewar *cor, t_plst *plst) =
 {
-	NULL,//inst_live,
-	NULL,//inst_ld,
+	inst_live,
+	inst_ld,
 	inst_st,
 	inst_add,
 	inst_sub,
-	NULL,//inst_and,
+	inst_and,
 	NULL,//inst_or,
 	NULL,//inst_xor,
 	NULL,//inst_zjmp,
-	NULL,//inst_ldi,
+	inst_ldi,
 	inst_sti,
-	NULL,//inst_fork,
-	NULL,//inst_lld,
-	NULL,//inst_lldi,
-	NULL,//inst_lfork,
+	inst_fork,
+	inst_lld,
+	inst_lldi,
+	inst_lfork,
 	inst_aff
 };
 

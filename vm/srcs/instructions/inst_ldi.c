@@ -28,6 +28,7 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 		ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	plst->p.reg[arg.value[2]] = cor->arena[(arg.value[0] + arg.value[1]) % IDX_MOD];
+	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.pc
+		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
 	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0);
 }
