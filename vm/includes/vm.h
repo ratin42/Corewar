@@ -15,6 +15,8 @@
 
 
 # define DEBUG			0
+# define TRUE			1
+# define FALSE			0
 # define SUCCESS		1
 # define FAIL			-1
 # define FULL			1
@@ -59,7 +61,7 @@ typedef struct			s_op
 
 typedef struct			s_process
 {
-	char				name[PROG_NAME_LENGTH];
+	char				name[PROG_NAME_LENGTH];// il faudrait pas un +1 ici ?
 	char				comment[COMMENT_LENGTH];
 	unsigned int		magic;
 	unsigned int		size;
@@ -81,6 +83,12 @@ typedef struct			s_plst
 	t_process			p;
 }						t_plst;
 
+typedef struct			s_player
+{
+	char				name[PROG_NAME_LENGTH + 1];
+	int					id;
+}						t_player;
+
 typedef struct 			s_corewar
 {
 	unsigned char		arena[MEM_SIZE];
@@ -88,6 +96,7 @@ typedef struct 			s_corewar
 	int					count;
 	int					last_live_id;
 	int					nb_players;
+	t_player			player[4];
 	char				*player_name[4];
 	unsigned int		current_live;
 
@@ -124,7 +133,9 @@ typedef	struct			s_arg
 	unsigned int		size[4];
 	int					value[4];
 	int					dir_size;
+	int					addr_restrict;
 }						t_arg;
+
 /*
  * DEBUG_TOOLS.c
 */
@@ -254,6 +265,9 @@ int					get_small_dir(t_corewar *cor, t_plst *plst);
 int					get_ind(t_corewar *cor, t_plst *plst);
 void				print_value(t_corewar *cor, int value, int addr);
 
+int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
+void				ft_player_init(t_corewar *cor);
+
 /*						INSTRUCTIONS						*/
 
 void				inst_add(t_corewar *cor, t_plst *plst);
@@ -277,9 +291,9 @@ void				inst_zjmp(t_corewar *cor, t_plst *plst);
  * ARG MANIPULATORS
 */
 
+void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict);
 void	ft_get_opcode(t_corewar *cor, unsigned int pc, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
-
 
 #endif

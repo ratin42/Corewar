@@ -8,8 +8,26 @@
 // registre passé en troisieme parametre. Si cette valeur est nulle, alors le
 // carry passe a l'etat un, sinon a l'ettat zero.
 
-void	inst_ldi(t_corewar *cor, int i)
+void	inst_ldi(t_corewar *cor, t_plst *plst)
 {
-	(void)cor;
-	ft_printf("process[%d] : LDI\n", i);
+	t_arg	arg;
+
+	ft_arg_init(&arg, 3, HALF, TRUE);
+	ft_get_opcode(cor, plst->p.pc, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, IND_CODE, DIR_CODE) == FAIL
+			|| arg.type[2] != REG_CODE)
+	{
+		ft_printf("OCP error.\n");
+		pc_modulo2(plst, 1);//ou autre mouvement
+		return ;
+	}
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
+	{
+		ft_printf("Register argument is not within the valid range.\n");
+		return ;
+	}
+	plst->p.reg[arg.value[2]] = cor->arena[(arg.value[0] + arg.value[1]) % IDX_MOD];
+	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0);
 }

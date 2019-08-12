@@ -1,21 +1,38 @@
 #include "../../includes/vm.h"
 
-void	inst_live(t_corewar *cor, int i)
+static inline int   ft_get_player_index(t_corewar *cor, int i)
 {
-	ft_printf("process[%d] : LIVE\n", i);
-	cor->instru.nbr_of_param = 1;
-	//if (is_direct(cor->instru.type_of_param.param1) == T_DIR)
-		cor->instru.type_of_param.param1 = DIR_SIZE;
- 	if (cor->instru.type_of_param.param1 == DIR_SIZE)
-    {
-        if (cor->verbosity)
-            ft_printf("un processus dit que le joueur %d(%s) est en vie\n", i + 1, cor->process[i].name);
-        cor->process[i].live += 1;
-        cor->last_live_id = i;
-		//update_pc(cor, i);
-        cor->live_declared += 1;
-        cor->process[i].no_live = 0;
-        cor->process[i].pc = (cor->process[i].pc + 5) % MEM_SIZE;
-        //cor->process[i].pc = pc_modulo((cor->process[i].pc + 5) % MEM_SIZE);
-    }
+	int     j;
+
+	j = 0;
+	while (j < MAX_PLAYERS)
+	{
+		if (cor->player[j].id == i)
+			return (j);
+		j++;
+	}
+	return (-1);
+}
+
+void                inst_live(t_corewar *cor, t_plst *plst)
+{
+	t_arg	arg;
+	int     index;
+
+	//debug
+	//ft_printf("process[%d] : AND\n", i);
+
+	ft_arg_init(&arg, 1, FULL, FALSE);
+	arg.type[0] = DIR_CODE;
+	arg.size[0] = 4;
+	ft_get_args(cor, plst, &arg);
+	if ((index = ft_get_player_index(cor, arg.value[0])) == -1)
+	{
+		ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
+	}
+	ft_printf("Player %s (id: %d) is alive.\n", cor->player[index].name, arg.value[0]);
+		(plst->p.live)++;
+	cor->last_live_id = arg.value[0];
+	cor->live_declared++;
+	plst->p.no_live = 0;
 }

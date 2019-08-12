@@ -25,6 +25,9 @@ SRC = srcs/corewar.c \
 	  srcs/utility/inst_tool.c \
 	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/utility/ft_arg_manipulators.c \
+	  srcs/utility/ft_arg_manipulators2.c \
+	  srcs/utility/ft_check_arg_type.c \
+	  srcs/utility/ft_player_init.c \
 	  srcs/instructions/inst_get_params.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_sub.c \
@@ -37,12 +40,12 @@ SRC = srcs/corewar.c \
 	  srcs/ncurses/ncurses_events.c \
 	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_st.c \
-#	  srcs/instructions/inst_fork.c \
 	  srcs/instructions/inst_ld.c \
-	  srcs/instructions/inst_ldi.c \
-	  srcs/instructions/inst_lfork.c \
-	  srcs/instructions/inst_live.c \
 	  srcs/instructions/inst_lld.c \
+	  srcs/instructions/inst_ldi.c \
+	  srcs/instructions/inst_live.c \
+#	  srcs/instructions/inst_fork.c \
+	  srcs/instructions/inst_lfork.c \
 	  srcs/instructions/inst_lldi.c \
 	  srcs/instructions/inst_or.c \
 	  srcs/instructions/inst_xor.c \

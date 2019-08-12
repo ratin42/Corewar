@@ -48,6 +48,11 @@ t_arg *arg, int i)
 		pc_modulo2(plst, 1);
 		j++;
 	}
+	if (arg->type[i] == IND_CODE)
+	{
+		arg->value[i] = arg->addr_restrict == 1 ? cor->arena[arg->value[i] % IDX_MOD]
+			: cor->arena[arg->value[i]];
+	}
 }
 
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg)
