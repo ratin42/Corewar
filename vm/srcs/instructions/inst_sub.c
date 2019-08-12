@@ -8,7 +8,6 @@ void	inst_sub(t_corewar *cor, t_plst *plst)
 	int reg_3;
 	int	*type_param;
 
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	type_param = check_opcode(cor, plst);
 	reg_1 = get_reg_index(cor, plst);
 	reg_2 = get_reg_index(cor, plst);

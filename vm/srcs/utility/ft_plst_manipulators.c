@@ -21,3 +21,34 @@ t_plst	*ft_plst_init(t_corewar *cor)
 	}
 	return (plst);
 }
+
+void	add_plst(t_corewar *cor, int i)
+{
+	t_plst	*new_plst;
+	t_plst	*plst;
+
+	if (!(new_plst = malloc(sizeof(t_plst))))
+		corewar_quit("malloc error\n");
+	plst = cor->plst;
+	ft_memcpy(&(new_plst->p), cor->process + i, sizeof(t_process));
+	if (cor->plst == NULL)
+		cor->plst = new_plst;
+	else
+	{
+		while (plst->next)
+			plst = plst->next;
+		plst->next = new_plst;
+	}
+}
+
+void		init_plst(t_corewar *cor)
+{
+	int		i;
+	
+	i = 0;
+	while (i < cor->nb_players)
+	{
+		add_plst(cor, i);
+		i++;
+	}
+}

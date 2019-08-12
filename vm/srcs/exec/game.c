@@ -86,7 +86,6 @@ static inline void	exec_process(t_corewar *cor)
 		else
 		{
 			plst->p.wait--;
-			//plst->p.wait = 0; // pour la compilation
 			if (plst->p.wait == 0)
 				execute_code(cor, plst);
 		}
@@ -96,13 +95,15 @@ static inline void	exec_process(t_corewar *cor)
 
 void				play(t_corewar *cor)
 {
-	t_plst	*plst;
+/* 	t_plst	*plst;
 
 
 	if (!(plst = ft_plst_init(cor)))
-		corewar_quit("Malloc error");
+		corewar_quit("Malloc error"); */
+	//cor->plst = plst; // j'ai rajoute ca pour que ca compile
+
+	init_plst(cor);
 	cor->ctd = CYCLE_TO_DIE;
-	cor->plst = plst; // j'ai rajoute ca pour que ca compile
 	ft_player_init(cor);
 	if (cor->visu)
 	{

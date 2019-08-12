@@ -88,6 +88,7 @@ typedef struct			s_process
 typedef struct			s_plst
 {
 	struct s_plst		*next;
+	int					id;
 	t_process			p;
 }						t_plst;
 
@@ -281,6 +282,7 @@ void				print_value(t_corewar *cor, int value, int addr);
 int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
 void				ft_player_init(t_corewar *cor);
 int					ft_get_restricted_addr(int value);
+void				init_plst(t_corewar *cor);
 
 /*						INSTRUCTIONS						*/
 

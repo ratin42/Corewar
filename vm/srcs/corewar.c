@@ -83,8 +83,6 @@ int					main(int ac, char **av)
 //TODO
 
 // Voir pour le numero des joueurs qui est negatif sur la vm de zazz
-
-//BONUS faire un man
 // 1 : Show lives
 // 2 : Show cycles
 // 4 : Show operations (Params are NOT litteral ...)

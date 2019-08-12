@@ -32,8 +32,6 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 	
 	if (DEBUG)
 		ft_printf("process[%d] : ST\n", plst->p.id);
-	plst->p.reg[1] = -1;
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	instru_type = check_opcode(cor, plst);
 	param[0] = get_param(cor, plst, instru_type[0]);
 	if (instru_type[1] == IND_CODE)

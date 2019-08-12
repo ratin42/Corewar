@@ -39,7 +39,6 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 	
-	plst->p.pc =  pc_modulo(plst->p.pc + 1);
 	type_param = check_opcode(cor, plst);
 	param1 = get_param(cor, plst, type_param[0]);
 	param2 = get_param(cor, plst, type_param[1]);
