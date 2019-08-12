@@ -13,7 +13,7 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_arg_init(&arg, 3, HALF, TRUE);
-	ft_get_opcode(cor, plst->p.pc, &arg);
+	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, IND_CODE, DIR_CODE) == FAIL
 			|| arg.type[2] != REG_CODE)

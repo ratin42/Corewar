@@ -10,7 +10,7 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_arg_init(&arg, 2, FULL, FALSE);
-	ft_get_opcode(cor, plst->p.pc, &arg);
+	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (ft_check_arg_type(arg, 0, IND_CODE, DIR_CODE) == FAIL
 			|| arg.type[1] != REG_CODE)

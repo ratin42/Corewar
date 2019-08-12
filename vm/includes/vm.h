@@ -293,7 +293,7 @@ void				inst_zjmp(t_corewar *cor, t_plst *plst);
 */
 
 void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict);
-void	ft_get_opcode(t_corewar *cor, unsigned int pc, t_arg *arg);
+void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
 

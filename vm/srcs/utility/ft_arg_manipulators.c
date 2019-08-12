@@ -1,14 +1,17 @@
 #include "../../includes/vm.h"
 
-void	ft_get_opcode(t_corewar *cor, unsigned int pc, t_arg *arg)
+void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 {
 	unsigned char	bmask;
+	unsigned int	pc;
 
 	bmask = 3;
+	pc = plst->p.pc;
 	arg->type[0] = ((bmask << 6) & cor->arena[pc]) >> 6;
 	arg->type[1] = ((bmask << 4) & cor->arena[pc]) >> 4;
 	arg->type[2] = ((bmask << 2) & cor->arena[pc]) >> 2;
 	arg->type[3] = bmask & cor->arena[pc];
+	pc_modulo2(plst, 1);
 }
 
 static inline int		ft_get_arg_size(t_arg_type arg_type, int dir_size)
