@@ -35,6 +35,8 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_aff.c \
 	  srcs/instructions/inst_sti.c \
 	  srcs/ncurses/ncurses_init.c \
+	  srcs/ncurses/ncurses_fill_border.c \
+	  srcs/ncurses/ncurses_utility.c \
 	  srcs/ncurses/ncurses_draw.c \
 	  srcs/ncurses/ncurses_button.c \
 	  srcs/ncurses/ncurses_menu.c \

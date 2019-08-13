@@ -20,6 +20,10 @@ void	ncurse_events(t_corewar *cor)
 			pause_game(cor);
 		}
 	}
+	if (keycode == '+' && cor->sleep > 0)
+		cor->sleep -= 500;
+	if (keycode == '-' && cor->sleep < 100000)
+		cor->sleep += 500;
 	if (keycode == QUIT)
 	{
 		//free_what_needed

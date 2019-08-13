@@ -22,7 +22,7 @@ void		fill_value(t_corewar *cor, t_plst *plst, int param[2] , int type)
 	if (type == REG_CODE)
 		plst->p.reg[param[1]] = param[0];
 	else
-		print_value(cor, param[0], ft_get_restricted_addr(plst->p.og_pc + param[1]));	
+		print_value(cor, param[0], ft_get_restricted_addr(plst->p.og_pc + param[1]), plst);	
 }
 
 void		inst_st(t_corewar *cor, t_plst *plst)

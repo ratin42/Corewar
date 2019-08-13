@@ -1,17 +1,16 @@
 #ifndef VM_H
 # define VM_H
 
-# include <unistd.h>
 # include <fcntl.h>
 # include <locale.h>
 # include <stdint.h>
-# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+
 # include "../../asm/includes/op.h"
 # include "../libft/libft.h"
 # include "../libft/includes/ft_printf.h"
-# include <ncurses.h>
+# include "struct.h"
 
 
 # define DEBUG			0
@@ -21,8 +20,6 @@
 # define FAIL			-1
 # define FULL			1
 # define HALF			2
-
-//	VISU DEFINES //
 
 # define BOX_COL_1		COLS / 2 + 15
 # define BOX_COL_2		COLS / 5
@@ -35,6 +32,7 @@
 # define DARK_GREY		6
 # define LIGHT_GREY		7
 # define LIGHT_CYAN		5
+
 #define SPACE_BAR		' '
 #define QUIT			'q'
 
@@ -45,114 +43,6 @@
 #define STR5 "| \\__/\\ \\_/ / |\\ \\| |___\\  /\\  / | | | |\\ \\ "
 #define STR6 " \\____/\\___/\\_| \\_\\____/ \\/  \\/\\_| |_|_| \\_|"
 
-typedef struct			s_type
-{
-	int					param1;
-	int					param2;
-	int					param3;
-}						t_type;
-
-typedef struct			s_render
-{
-	WINDOW				*main;
-	WINDOW				*menu;
-	WINDOW				*commands;
-	char				*color_types;
-	unsigned char		mem_owner[MEM_SIZE];
-}						t_render;
-
-typedef struct			s_op
-{
-	char				*name;
-	int					nbr_of_param;
-	t_type				type_of_param;
-	int					opcode;
-	int					nbr_of_cycle;
-	char				*description;
-	unsigned int		coding_opcode;
-	unsigned int		direct_size;
-}						t_op;
-
-typedef struct			s_process
-{
-	char				name[PROG_NAME_LENGTH];// il faudrait pas un +1 ici ?
-	char				comment[COMMENT_LENGTH];
-	unsigned int		magic;
-	unsigned int		size;
-	unsigned char		code[CHAMP_MAX_SIZE];
-	int					order;
-	int					id;
-	int					reg[REG_NUMBER + 1];
-	unsigned int		pc;
-	unsigned int		og_pc;
-	unsigned int		carry;
-	unsigned int		live;
-	int					no_live;
-	unsigned int		wait;
-	int					opcode;
-}                       t_process;
-
-typedef struct			s_plst
-{
-	struct s_plst		*next;
-	int					id;
-	t_process			p;
-}						t_plst;
-
-typedef struct			s_player
-{
-	char				name[PROG_NAME_LENGTH + 1];
-	int					id;
-}						t_player;
-
-typedef struct 			s_corewar
-{
-	unsigned char		arena[MEM_SIZE];
-	unsigned int 		ram_full;
-	int					count;
-	int					last_live_id;
-	int					nb_players;
-	t_player			player[4];
-	int					nb_process;
-	char				*player_name[4];
-	unsigned int		current_live;
-
-    struct s_op			instru;
-	struct s_process	process[MAX_PLAYERS];
-	struct s_render		render;
-
-	int					cycle;
-	int					total;
-	int					ctd;
-	int					live_declared;
-	int					check_cycle;
-	
-	t_plst				*plst;
-
-	//option
-
-	int					n_dump;
-	int					verbosity;
-	int					order;
-	int					order_option;
-	int					stealth;
-	int					visu;
-	int					pause;
-	int					sleep;
-
-	int					winner_id;
-
-}						t_corewar;
-
-typedef	struct			s_arg
-{
-	int					nb_arg;
-	t_arg_type			type[4];
-	unsigned int		size[4];
-	int					value[4];
-	int					dir_size;
-	int					addr_restrict;
-}						t_arg;
 
 /*
  * DEBUG_TOOLS.c
@@ -165,56 +55,58 @@ void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
 
-void	ft_print_process(t_process p);
-void	ft_print_debug(t_plst *plst, char *op_name, int end);
-void	ft_print_plst(t_plst *plst);
+void				ft_print_process(t_process p);
+void				ft_print_debug(t_plst *plst, char *op_name, int end);
+void				ft_print_plst(t_plst *plst);
 
 /*
  * NCURSES
 */
 
-
-void				init_ncurse(t_corewar *cor);
-void				init_colors(void);
-void				fill_border_main(t_corewar *cor);
-void				fill_border_menu(t_corewar *cor);
-void				fill_border_cmd(t_corewar *cor);
-
-
-void				draw_window(t_corewar *cor);
-void				draw_arena(t_corewar *cor);
-void				draw_command(t_corewar *cor);
-void				update_window(t_corewar *cor);
-void				set_attributes(t_corewar *cor, unsigned char color);
-void				unset_attributes(t_corewar *cor, unsigned char color);
-
-
-void				draw_infos(t_corewar *cor);
-void				draw_banner(t_corewar *cor);
-void				draw_menu(t_corewar *cor);
-void				draw_player_info(t_corewar *cor);
-
+//ncurses_button.c
 
 void				draw_play(t_corewar *cor);
 void				draw_play_1(t_corewar *cor, int x, int x1, int y1);
 void				draw_play_2(t_corewar *cor, int x, int x1, int y);
 void				draw_pause(t_corewar *cor);
 
+//ncurses_draw.c
 
+void				draw_arena(t_corewar *cor);
+void				draw_window(t_corewar *cor);
+void				draw_menu(t_corewar *cor);
+void				update_window(t_corewar *cor);
+
+//ncurses_events.c
 
 void				ncurse_events(t_corewar *cor);
 void				pause_game(t_corewar *cor);
 
+//ncurses_fill_border.c
 
+void				fill_border_main(t_corewar *cor);
+void				fill_border_menu(t_corewar *cor);
+void				fill_border_cmd(t_corewar *cor);
+
+//ncurses_init.c
+
+void				init_ncurse(t_corewar *cor);
+void				init_colors(void);
 void				close_ncurse(t_corewar *cor);
 
+//ncurses_menu.c
 
-int					is_a_process_pc(t_corewar *cor, unsigned int i);
-// a supprimer is_a_process_pc
-void				highlight_it(t_corewar *cor, unsigned int i, int id);
+void				draw_player_info(t_corewar *cor);
+void				draw_infos(t_corewar *cor);
+void				draw_banner(t_corewar *cor);
+void				draw_command(t_corewar *cor);
+
+//ncurses_utility.c
+
 void				highlight_process_pc(t_corewar *cor);
-
-
+void				highlight_it(t_corewar *cor, unsigned int i, int id);
+void				set_attributes(t_corewar *cor, unsigned char color, int i);
+void				unset_attributes(t_corewar *cor, unsigned char color, int i);
 
 /*
  * COREWAR.c
@@ -300,7 +192,7 @@ int					ft_check_reg_index(t_arg arg);
 int					get_reg_value(t_corewar *cor, t_plst *plst);
 int					get_small_dir(t_corewar *cor, t_plst *plst);
 int					get_ind(t_corewar *cor, t_plst *plst);
-void				print_value(t_corewar *cor, int value, int addr);
+void				print_value(t_corewar *cor, int value, int addr, t_plst *plst);
 
 int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
 void				ft_player_init(t_corewar *cor);

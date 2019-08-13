@@ -21,15 +21,26 @@ int		get_param(t_corewar *cor, t_plst *plst, int type)
 	return (0);
 }
 
-void	print_value(t_corewar *cor, int value, int addr)
+void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 {
 	cor->arena[addr] = value >> 24;
+	cor->render.bold[addr] = 50;
+	cor->render.mem_owner[addr] = plst->p.id + 1;
+	
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value >> 16;
+	cor->render.bold[addr] = 50;
+	cor->render.mem_owner[addr] = plst->p.id + 1;
+
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value >> 8;
+	cor->render.bold[addr] = 50;
+	cor->render.mem_owner[addr] = plst->p.id + 1;
+
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value;
+	cor->render.bold[addr] = 50;
+	cor->render.mem_owner[addr] = plst->p.id + 1;
 }
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
@@ -57,7 +68,7 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 		ft_printf("param 2 = %d\n", param2);
 		ft_printf("param 3 = %d\n", param3);
 	}
-	print_value(cor, param1, ft_get_restricted_addr(plst->p.og_pc + param2 + param3));
+	print_value(cor, param1, ft_get_restricted_addr(plst->p.og_pc + param2 + param3), plst);
 	free(type_param);
 	ft_print_debug(plst, "STI", 1);
 }

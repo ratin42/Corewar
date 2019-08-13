@@ -1,31 +1,21 @@
 #include "../../includes/vm.h"
 
-void	draw_menu(t_corewar *cor)
-{
-	draw_infos(cor);
-	draw_player_info(cor);
-	wrefresh(cor->render.menu);
-}
-
 void	draw_player_info(t_corewar *cor)
 {
 	int i;
 	int y;
-	
+
 	y = 40;
 	i = -1;
 	while (++i < cor->nb_players)
 	{
-
 		wattron(cor->render.menu, COLOR_PAIR(i + 2));
 		mvwprintw(cor->render.menu, y, 3, "Player_%d : %.35s",
-			i + 1, cor->process[i].name);
+				i + 1, cor->process[i].name);
 		wattroff(cor->render.menu, COLOR_PAIR(i + 2));
 		y += 4;
-
 	}
 }
-
 
 void	draw_infos(t_corewar *cor)
 {
@@ -39,7 +29,9 @@ void	draw_infos(t_corewar *cor)
 	wattron(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
 	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d   ", cor->total);
 	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d   ", cor->nb_process);
-	mvwprintw(cor->render.menu, 33, 30, "Total lives / round: %d   ", cor->live_declared);
+	mvwprintw(cor->render.menu, 33, 30, "Total lives / round:  %d   ", cor->live_declared);
+
+	mvwprintw(cor->render.menu, 34, 30, "Speed (usleep/cycle): %d   ", cor->sleep);
 	wattroff(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
 }
 
@@ -65,4 +57,21 @@ void	draw_banner(t_corewar *cor)
 	mvwprintw(cor->render.menu, 24, 12, STR6);
 	wattroff(cor->render.menu, COLOR_PAIR(2));
 	wattroff(cor->render.menu, A_BOLD);
+}
+
+void	draw_command(t_corewar *cor)
+{
+	wattron(cor->render.commands, COLOR_PAIR(13));
+	wattron(cor->render.commands, A_BOLD);
+	mvwprintw(cor->render.commands, 2, 17, "COMMANDS MENU");
+	wattroff(cor->render.commands, A_BOLD);
+	mvwprintw(cor->render.commands, 5, 8, "SPACE :  PAUSE / UNPAUSE");
+	wattroff(cor->render.commands, COLOR_PAIR(13));
+	wattron(cor->render.commands, COLOR_PAIR(8));
+	mvwprintw(cor->render.commands, 7, 8, "'+' :  Speed UP");
+	mvwprintw(cor->render.commands, 9, 8, "'-' :  Slow DOWN");
+	wattroff(cor->render.commands, COLOR_PAIR(8));
+	wattron(cor->render.commands, COLOR_PAIR(4));
+	mvwprintw(cor->render.commands, 11, 8, "Q :  QUIT");
+	wattroff(cor->render.commands, COLOR_PAIR(4));
 }
