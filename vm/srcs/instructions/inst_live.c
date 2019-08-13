@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-static inline int   ft_get_player_index(t_corewar *cor, int i)
+int   ft_get_player_index(t_corewar *cor, int i)
 {
 	int     j;
 

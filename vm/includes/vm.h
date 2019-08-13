@@ -14,7 +14,7 @@
 # include <ncurses.h>
 
 
-# define DEBUG			1
+# define DEBUG			0
 # define TRUE			1
 # define FALSE			0
 # define SUCCESS		1
@@ -138,6 +138,7 @@ typedef struct 			s_corewar
 	int					stealth;
 	int					visu;
 	int					pause;
+	int					sleep;
 
 	int					winner_id;
 
@@ -184,8 +185,8 @@ void				draw_window(t_corewar *cor);
 void				draw_arena(t_corewar *cor);
 void				draw_command(t_corewar *cor);
 void				update_window(t_corewar *cor);
-void				set_attributes(t_corewar *cor, unsigned char color, int i);
-void				unset_attributes(t_corewar *cor, unsigned char color, int i);
+void				set_attributes(t_corewar *cor, unsigned char color);
+void				unset_attributes(t_corewar *cor, unsigned char color);
 
 
 void				draw_infos(t_corewar *cor);
@@ -208,9 +209,10 @@ void				pause_game(t_corewar *cor);
 void				close_ncurse(t_corewar *cor);
 
 
-
-
-int					is_a_player_pc(t_corewar *cor, int i);
+int					is_a_process_pc(t_corewar *cor, unsigned int i);
+// a supprimer is_a_process_pc
+void				highlight_it(t_corewar *cor, unsigned int i, int id);
+void				highlight_process_pc(t_corewar *cor);
 
 
 
@@ -314,7 +316,10 @@ void				inst_fork(t_corewar *cor, t_plst *plst);
 void				inst_ld(t_corewar *cor, t_plst *plst);
 void				inst_ldi(t_corewar *cor, t_plst *plst);
 void				inst_lfork(t_corewar *cor, t_plst *plst);
+
 void				inst_live(t_corewar *cor, t_plst *plst);
+int					ft_get_player_index(t_corewar *cor, int i);
+
 void				inst_lld(t_corewar *cor, t_plst *plst);
 void				inst_lldi(t_corewar *cor, t_plst *plst);
 void				inst_or(t_corewar *cor, t_plst *plst);

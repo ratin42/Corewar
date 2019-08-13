@@ -18,7 +18,7 @@ void	draw_player_info(t_corewar *cor)
 	{
 
 		wattron(cor->render.menu, COLOR_PAIR(i + 2));
-		mvwprintw(cor->render.menu, y, 3, "Player_%d : %s",
+		mvwprintw(cor->render.menu, y, 3, "Player_%d : %.35s",
 			i + 1, cor->process[i].name);
 		wattroff(cor->render.menu, COLOR_PAIR(i + 2));
 		y += 4;
@@ -38,7 +38,7 @@ void	draw_infos(t_corewar *cor)
 	wattroff(cor->render.menu, COLOR_PAIR(8) | A_BOLD);
 	wattron(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
 	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d   ", cor->total);
-	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d   ", 0);
+	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d   ", cor->nb_process);
 	mvwprintw(cor->render.menu, 33, 30, "Total lives / round: %d   ", cor->live_declared);
 	wattroff(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
 }
