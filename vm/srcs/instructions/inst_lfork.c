@@ -20,4 +20,5 @@ void	inst_lfork(t_corewar *cor, t_plst *plst)
 	elem->p.pc = pc_modulo(plst->p.pc + arg.value[0]);
 	elem->next = cor->plst;
 	cor->plst = elem;
+	cor->nb_process++;
 }

@@ -14,6 +14,7 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 		cor->plst = plst->next;
 		free(plst);
 		plst = cor->plst;
+		cor->nb_process--;
 		if (plst == NULL)
 			return ;
 	}
@@ -27,6 +28,7 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 			elem = plst->next;
 			plst->next = plst->next->next;
 			free(elem);
+			cor->nb_process--;
 		}
 		plst = plst->next;
 	}

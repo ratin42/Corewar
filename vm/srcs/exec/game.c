@@ -54,9 +54,11 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 		if (DEBUG)
 			ft_printf("pc exec = %u\n", plst->p.pc);
 		plst->p.opcode = cor->arena[plst->p.pc];
+		plst->p.og_pc = plst->p.pc;
 		if (DEBUG)
 			ft_printf("opcode = %d\n", plst->p.opcode);
-		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle; //wait
+		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle - 1; //wait
+		// verifier s'il faut vraiment le -1 ou pas.
 		if (DEBUG)
 			ft_printf("wait = %d\n", plst->p.wait);
 	}
@@ -67,8 +69,9 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
-	if (DEBUG)
-		ft_printf("opcode exec = %d\n", plst->p.opcode);
+	//if (DEBUG)
+	//	ft_printf("opcode exec = %d\n", plst->p.opcode);
+	
 	g_func[plst->p.opcode - 1](cor, plst);
 	plst->p.opcode = 0;
 }
@@ -95,14 +98,11 @@ static inline void	exec_process(t_corewar *cor)
 
 void				play(t_corewar *cor)
 {
-/* 	t_plst	*plst;
 
 
-	if (!(plst = ft_plst_init(cor)))
-		corewar_quit("Malloc error"); */
-	//cor->plst = plst; // j'ai rajoute ca pour que ca compile
-
-	init_plst(cor);
+	if (!(cor->plst = ft_plst_init(cor)))
+		corewar_quit("Malloc error");
+	//init_plst(cor);
 	cor->ctd = CYCLE_TO_DIE;
 	ft_player_init(cor);
 	if (cor->visu)
