@@ -9,6 +9,7 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
+	ft_print_debug(plst, "LLD", 0);
 	ft_arg_init(&arg, 2, FULL, FALSE);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
@@ -29,4 +30,5 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 	}
 	plst->p.reg[arg.value[1]] = arg.value[0];
 	plst->p.carry = !(arg.value[0]);
+	ft_print_debug(plst, "LLD", 1);
 }
