@@ -49,6 +49,7 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_lfork.c \
 	  srcs/instructions/inst_lldi.c \
 	  srcs/instructions/inst_zjmp.c \
+	  srcs/debug/ft_print_process.c \
 #	  srcs/instructions/inst_or.c \
 	  srcs/instructions/inst_xor.c \
 	  

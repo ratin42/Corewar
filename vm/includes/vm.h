@@ -78,6 +78,7 @@ typedef struct			s_process
 	int					id;
 	int					reg[REG_NUMBER + 1];
 	unsigned int		pc;
+	unsigned int		og_pc;
 	unsigned int		carry;
 	unsigned int		live;
 	int					no_live;
@@ -106,6 +107,7 @@ typedef struct 			s_corewar
 	int					last_live_id;
 	int					nb_players;
 	t_player			player[4];
+	int					nb_process;
 	char				*player_name[4];
 	unsigned int		current_live;
 
@@ -155,6 +157,9 @@ void				pcode(t_corewar *cor, int pc);
 void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
+
+void	ft_print_process(t_process p);
+void	ft_print_debug(t_plst *plst, char *op_name, int end);
 
 /*
  * NCURSES
