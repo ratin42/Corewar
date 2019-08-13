@@ -10,6 +10,9 @@
 
 void	inst_fork(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("FORK\n");
+
 	t_arg	arg;
 	t_plst	*elem;
 

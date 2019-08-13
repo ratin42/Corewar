@@ -11,11 +11,11 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
-	//ft_printf("process[%d] : OR\n", i);
+	if (DEBUG)
+		ft_printf("OR \n pc before = %u\n", plst->p.pc);
 
-	arg.nb_arg = 3;
-	arg.dir_size = FULL;
-	ft_get_opcode(cor, plst->p.pc, &arg);
+	ft_arg_init(&arg, 3, FULL, TRUE);
+	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || arg.type[1] == 0 || arg.type[2] != REG_CODE)
 	{
@@ -33,4 +33,6 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 	}
 	plst->p.reg[arg.value[2]] = arg.value[0] & arg.value[1];
 	plst->p.carry = !(arg.value[0] | arg.value[1]);
+	if (DEBUG)
+		ft_printf("pc after = %u\n", plst->p.pc);
 }

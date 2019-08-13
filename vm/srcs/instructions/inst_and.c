@@ -11,7 +11,6 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
-	
 	//ft_print_debug(plst, "AND", 0);
 	ft_arg_init(&arg, 3, FULL, TRUE);
 	ft_get_opcode(cor, plst, &arg);
