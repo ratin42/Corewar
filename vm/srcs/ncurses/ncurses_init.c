@@ -44,6 +44,7 @@ void    close_ncurse(t_corewar *cor)
 {
 	delwin(cor->render.main);
 	delwin(cor->render.menu);
+	delwin(cor->render.commands);
 	endwin();
 }
 
