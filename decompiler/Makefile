@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/13 21:20:59 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/13 23:27:09 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ LIB_PATH		:=	libft
 SRC_NAME1		:=	decompiler.c \
 					read_process.c \
 					debug.c \
+					create_file.c \
+					print_file.c \
 		
 
 INC_NAME		:=	decompiler.h

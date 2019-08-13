@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   print_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 21:18:53 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/13 23:03:11 by ratin            ###   ########.fr       */
+/*   Created: 2019/08/13 23:26:51 by ratin             #+#    #+#             */
+/*   Updated: 2019/08/13 23:30:36 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/decompile.h"
+#include "decompile.h"
 
-void	print_champion(t_corewar *cor)
+void	print_header(t_corewar *cor)
 {
-	printf("champion name = %s\n", cor->name);
-	printf("champion size = %u\n", cor->size);
-	printf("champion comment = %s\n", cor->comment);
-	printf("champion magic = %u\n", cor->magic);
-	printf("champion code = %x\n", cor->code[0]);
+	ft_putstr_fd("name: \"", cor->fd);
+	ft_putstr_fd(cor->name, cor->fd);
+	ft_putstr_fd("\"\n", cor->fd);
+	ft_putstr_fd("comment: \"", cor->fd);
+	ft_putstr_fd(cor->comment, cor->fd);
+	ft_putstr_fd("\"\n", cor->fd);
+	ft_putstr_fd("\n", cor->fd);
+}
+
+void	print_file(t_corewar *cor)
+{
+	print_header(cor);
 }

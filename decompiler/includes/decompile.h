@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/13 21:53:02 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/13 23:29:43 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct 			s_corewar
 	unsigned int		size;
 	unsigned int		magic;
 	unsigned int 		pc;
+	int					fd;
 }						t_corewar;
 
 typedef struct			s_plst
@@ -45,6 +46,8 @@ typedef struct			s_plst
 uint32_t	swap_endian(uint32_t val);
 void		read_process(char *name, t_corewar *cor);
 void		decomp_quit(char *str);
+void		create_file(t_corewar *cor, char *name);
+void		print_file(t_corewar *cor);
 
 void		stock_process_name(t_corewar *cor, t_header *header);
 void		stock_process_size(t_corewar *cor, t_header *header);
