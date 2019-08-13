@@ -24,7 +24,7 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	if (DEBUG)
 	{
 		ft_printf("LIVE\n");
-		ft_printf("live : pc before = %u\n", plst->p.pc);
+		//ft_printf("live : pc before = %u\n", plst->p.pc);
 	}
 	ft_arg_init(&arg, 1, FULL, FALSE);
 	arg.type[0] = DIR_CODE;

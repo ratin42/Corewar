@@ -10,6 +10,9 @@
 
 void	inst_ldi(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("LDI\n");
+
 	t_arg	arg;
 
 	ft_arg_init(&arg, 3, HALF, TRUE);

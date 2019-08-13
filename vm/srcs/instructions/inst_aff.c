@@ -28,6 +28,9 @@
 
 void	inst_aff(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("AFF\n");
+
 	int reg_i;
 	
 	if (DEBUG)

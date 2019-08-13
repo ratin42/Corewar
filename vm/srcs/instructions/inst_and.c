@@ -11,9 +11,8 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
-	//debug
-	//ft_printf("process[%d] : AND\n", i);
-	//printf("AND\n");
+	if (DEBUG)
+		ft_printf("AND\n");
 	//printf("and : pc before = %u\n", plst->p.pc);
 	ft_arg_init(&arg, 3, FULL, TRUE);
 	ft_get_opcode(cor, plst, &arg);

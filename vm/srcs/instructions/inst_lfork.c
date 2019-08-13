@@ -7,6 +7,9 @@
 
 void	inst_lfork(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("LFORK\n");
+
 	t_arg	arg;
 	t_plst	*elem;
 

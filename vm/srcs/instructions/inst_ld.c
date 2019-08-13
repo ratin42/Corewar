@@ -10,6 +10,9 @@
 
 void	inst_ld(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("LD\n");
+
 	t_arg	arg;
 
 	ft_arg_init(&arg, 2, FULL, TRUE);

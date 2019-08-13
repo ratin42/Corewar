@@ -7,6 +7,9 @@
 
 void	inst_lldi(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("LLDI\n");
+
 	t_arg	arg;
 
 	ft_arg_init(&arg, 3, HALF, FALSE);

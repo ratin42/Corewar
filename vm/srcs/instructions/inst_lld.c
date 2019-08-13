@@ -7,6 +7,9 @@
 
 void	inst_lld(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("LLD\n");
+
 	t_arg	arg;
 
 	ft_arg_init(&arg, 2, FULL, FALSE);

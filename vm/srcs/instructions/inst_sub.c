@@ -3,6 +3,9 @@
 
 void	inst_sub(t_corewar *cor, t_plst *plst)
 {
+	if (DEBUG)
+		ft_printf("SUB\n");
+
 	int reg_1;
 	int reg_2;
 	int reg_3;
