@@ -81,7 +81,7 @@ int					main(int ac, char **av)
 }
 
 //TODO
-
+// probleme sti quand plusieurs process
 // Voir pour le numero des joueurs qui est negatif sur la vm de zazz
 // 1 : Show lives
 // 2 : Show cycles

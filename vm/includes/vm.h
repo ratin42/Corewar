@@ -7,7 +7,6 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# include "../../asm/includes/op.h"
 # include "../libft/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include "struct.h"

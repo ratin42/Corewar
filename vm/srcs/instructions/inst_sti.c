@@ -45,8 +45,6 @@ void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
 {
-	// if (DEBUG)
-	// 	ft_printf("STI\n");
 	ft_print_debug(plst, "STI", 0);
 	int	param1;
 	int	param2;
@@ -57,18 +55,17 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	param1 = get_param(cor, plst, type_param[0]);
 	param2 = get_param(cor, plst, type_param[1]);
 	param3 = get_param(cor, plst, type_param[2]);
-	/*
 	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
 		!= DIR_CODE && type_param[2] != REG_CODE))
 		return ;
-		*/
 	if (DEBUG)
 	{
 		ft_printf("param 1 = %d\n", param1);
 		ft_printf("param 2 = %d\n", param2);
 		ft_printf("param 3 = %d\n", param3);
 	}
-	print_value(cor, param1, ft_get_restricted_addr(plst->p.og_pc + param2 + param3), plst);
+	print_value(cor, param1, plst->p.og_pc + ft_get_restricted_addr(param2
+		+ param3), plst);
 	free(type_param);
 	ft_print_debug(plst, "STI", 1);
 }

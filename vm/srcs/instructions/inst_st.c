@@ -22,7 +22,8 @@ void		fill_value(t_corewar *cor, t_plst *plst, int param[2] , int type)
 	if (type == REG_CODE)
 		plst->p.reg[param[1]] = param[0];
 	else
-		print_value(cor, param[0], ft_get_restricted_addr(plst->p.og_pc + param[1]), plst);	
+		print_value(cor, param[0], plst->p.og_pc
+			+ ft_get_restricted_addr(param[1]), plst);	
 }
 
 void		inst_st(t_corewar *cor, t_plst *plst)
@@ -30,10 +31,7 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 	int		*instru_type;
 	int		param[2];
 	
-	// if (DEBUG)
-	// 	ft_printf("process[%d] : ST\n", plst->p.id);
 	ft_print_debug(plst, "ST", 0);
-	
 	instru_type = check_opcode(cor, plst);
 	param[0] = get_param(cor, plst, instru_type[0]);
 	if (instru_type[1] == IND_CODE)
