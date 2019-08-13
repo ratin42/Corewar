@@ -30,5 +30,5 @@ int		get_ind(t_corewar *cor, t_plst *plst)
 
 	pc = plst->p.pc;
 	addr = get_small_dir(cor, plst);
-	return (cor->arena[pc + addr] % 512);
+	return (cor->arena[ft_get_restricted_addr(pc + addr)]);
 }

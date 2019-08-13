@@ -3,9 +3,10 @@
 
 void	inst_add(t_corewar *cor, t_plst *plst)
 {
-	if (DEBUG)
-		ft_printf("ADD\n");
+	// if (DEBUG)
+	// 	ft_printf("ADD\n");
 
+	ft_print_debug(plst, "ADD", 0);
 	int reg_1;
 	int reg_2;
 	int reg_3;
@@ -22,8 +23,9 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 			ft_printf("add error.\n");
 		return ;
 	}
-	if (check_registre_index(reg_1, reg_2, reg_3))
+	if (!check_registre_index(reg_1, reg_2, reg_3))
 		return ;
 	plst->p.reg[reg_3] = plst->p.reg[reg_1] + plst->p.reg[reg_2];
 	plst->p.carry = (plst->p.reg[reg_3] == 0);
+	ft_print_debug(plst, "ADD", 1);
 }

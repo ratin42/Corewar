@@ -30,8 +30,10 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 	int		*instru_type;
 	int		param[2];
 	
-	if (DEBUG)
-		ft_printf("process[%d] : ST\n", plst->p.id);
+	// if (DEBUG)
+	// 	ft_printf("process[%d] : ST\n", plst->p.id);
+	ft_print_debug(plst, "ST", 0);
+	
 	instru_type = check_opcode(cor, plst);
 	param[0] = get_param(cor, plst, instru_type[0]);
 	if (instru_type[1] == IND_CODE)
@@ -47,4 +49,5 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 		return ;
 	fill_value(cor, plst, param, instru_type[1]);
 	free(instru_type);
+	ft_print_debug(plst, "ST", 1);
 }

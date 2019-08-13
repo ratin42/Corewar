@@ -11,7 +11,7 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
-	//ft_print_debug(plst, "AND", 0);
+	ft_print_debug(plst, "AND", 0);
 	ft_arg_init(&arg, 3, FULL, TRUE);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
@@ -31,5 +31,5 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 	}
 	plst->p.reg[arg.value[2]] = arg.value[0] & arg.value[1];
 	plst->p.carry = !(arg.value[0] & arg.value[1]);
-	//ft_print_debug(plst, "AND", 1);
+	ft_print_debug(plst, "AND", 1);
 }
