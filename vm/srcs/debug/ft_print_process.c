@@ -33,3 +33,12 @@ void	ft_print_process(t_process p)
 		i++;
 	}
 }
+
+void	ft_print_plst(t_plst *plst)
+{
+	while (plst != NULL)
+	{
+		ft_print_process(plst->p);
+		plst = plst->next;
+	}
+}

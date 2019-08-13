@@ -14,7 +14,7 @@
 # include <ncurses.h>
 
 
-# define DEBUG			0
+# define DEBUG			1
 # define TRUE			1
 # define FALSE			0
 # define SUCCESS		1
@@ -160,6 +160,7 @@ void				corewar_quit(char *str);
 
 void	ft_print_process(t_process p);
 void	ft_print_debug(t_plst *plst, char *op_name, int end);
+void	ft_print_plst(t_plst *plst);
 
 /*
  * NCURSES

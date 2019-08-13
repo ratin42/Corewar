@@ -9,6 +9,7 @@ void	inst_lldi(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
+	ft_print_debug(plst, "LLDI", 0);
 	ft_arg_init(&arg, 3, HALF, FALSE);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
@@ -27,7 +28,8 @@ void	inst_lldi(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.pc
-		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
+	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.og_pc
+		+ arg.value[0] + arg.value[1])];
 	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0);
+	ft_print_debug(plst, "LLDI", 1);
 }

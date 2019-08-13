@@ -10,9 +10,6 @@
 
 void	inst_fork(t_corewar *cor, t_plst *plst)
 {
-	if (DEBUG)
-		ft_printf("FORK\n");
-
 	t_arg	arg;
 	t_plst	*elem;
 
@@ -23,8 +20,13 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	if (!(elem = malloc(sizeof(t_plst))))
 		corewar_quit("Fail malloc");//voir si on met autre chose ou pas
 	ft_memcpy(elem, plst, sizeof(t_plst));
-	elem->p.pc = pc_modulo(plst->p.pc + ft_get_restricted_addr(arg.value[0]));
+	elem->p.pc = pc_modulo(plst->p.og_pc + ft_get_restricted_addr(arg.value[0]));
 	elem->next = cor->plst;
 	cor->plst = elem;
 	cor->nb_process++;
+	if (DEBUG)
+	{
+		printf("##########  DEBUG FORK  ##########\n");
+		ft_print_plst(cor->plst);
+	}
 }
