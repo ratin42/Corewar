@@ -27,6 +27,11 @@
 # define BOX_COL_1		COLS / 2 + 15
 # define BOX_COL_2		COLS / 5
 # define BOX_LINES_1	((LINES / 3) + (LINES / 2)) - 2
+# define CMD_LINES		(BOX_LINES_1 / 4)
+# define CMD_COLS		(BOX_COL_2 / 2) / 2
+# define CMD_STARTY		((CMD_LINES / 2) - 8) - 1
+# define CMD_STARTX		(BOX_COL_1 + BOX_COL_2)
+
 # define DARK_GREY		6
 # define LIGHT_GREY		7
 # define LIGHT_CYAN		5
@@ -51,6 +56,7 @@ typedef struct			s_render
 {
 	WINDOW				*main;
 	WINDOW				*menu;
+	WINDOW				*commands;
 	char				*color_types;
 	unsigned char		mem_owner[MEM_SIZE];
 }						t_render;
@@ -171,10 +177,12 @@ void				init_ncurse(t_corewar *cor);
 void				init_colors(void);
 void				fill_border_main(t_corewar *cor);
 void				fill_border_menu(t_corewar *cor);
+void				fill_border_cmd(t_corewar *cor);
 
 
 void				draw_window(t_corewar *cor);
 void				draw_arena(t_corewar *cor);
+void				draw_command(t_corewar *cor);
 void				update_window(t_corewar *cor);
 void				set_attributes(t_corewar *cor, unsigned char color, int i);
 void				unset_attributes(t_corewar *cor, unsigned char color, int i);

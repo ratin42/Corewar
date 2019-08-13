@@ -86,6 +86,8 @@ void	draw_window(t_corewar *cor)
 {
 	draw_arena(cor);
 	fill_border_main(cor);
+	fill_border_cmd(cor);
+	draw_command(cor);
 	pause_game(cor);
 }
 

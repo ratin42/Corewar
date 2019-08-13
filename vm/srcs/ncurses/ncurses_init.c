@@ -5,8 +5,10 @@ void	init_ncurse(t_corewar *cor)
 	initscr();
 	cor->render.main = subwin(stdscr, BOX_LINES_1, BOX_COL_1, 0, 0);
 	cor->render.menu = subwin(stdscr, BOX_LINES_1, BOX_COL_2, 0, BOX_COL_1);
+	cor->render.commands = subwin(stdscr, 15, 50, CMD_STARTY, CMD_STARTX);
 	wborder(cor->render.main, '*', '*', '*', '*', '*', '*', '*', '*');
 	wborder(cor->render.menu, ' ', '*', '*', '*', '*', '*', '*', '*');
+	wborder(cor->render.commands, ' ', '*', '*', '*', '*', '*', '*', '*');
 	ft_bzero(cor->render.mem_owner, MEM_SIZE);
 	init_colors();
 	noecho();
@@ -87,6 +89,34 @@ void	fill_border_menu(t_corewar *cor)
 	}
 	wattroff(cor->render.menu, COLOR_PAIR(6));
 
+}
+
+void	fill_border_cmd(t_corewar *cor)
+{
+	int i;
+	
+	i = -1;
+	wattron(cor->render.commands, COLOR_PAIR(6));
+	while (++i < 50)
+	{
+		mvwaddch(cor->render.commands, 0, i, '*');
+		mvwaddch(cor->render.commands, 14, i, '*');
+	}
+	i = - 1;
+	while (++i < 15)
+		mvwaddch(cor->render.commands, i, 49, '*');
+	wattroff(cor->render.commands, COLOR_PAIR(6));
+}
+
+void	draw_command(t_corewar *cor)
+{
+	wattron(cor->render.commands, COLOR_PAIR(13));
+	wattron(cor->render.commands, A_BOLD);
+	mvwprintw(cor->render.commands, 2, 17, "COMMANDS MENU");
+	wattroff(cor->render.commands, A_BOLD);
+	mvwprintw(cor->render.commands, 6, 10, "SPACE :  PAUSE / UNPAUSE");
+	mvwprintw(cor->render.commands, 8, 10, "Q :  QUIT");
+	wattroff(cor->render.commands, COLOR_PAIR(13));
 }
 
 void    close_ncurse(t_corewar *cor)

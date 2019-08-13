@@ -31,14 +31,15 @@ void	draw_infos(t_corewar *cor)
 {
 	draw_banner(cor);
 	wattron(cor->render.menu, COLOR_PAIR(8) | A_BOLD);
-	mvwprintw(cor->render.menu, 28, 3, "CYCLE_TO_DIE:  { %d }", CYCLE_TO_DIE);
-	mvwprintw(cor->render.menu, 29, 3, "CYCLE_DELTA:   { %d }", CYCLE_DELTA);
-	mvwprintw(cor->render.menu, 30, 3, "MAX_CHECKS:    { %d }", MAX_CHECKS);
-	mvwprintw(cor->render.menu, 31, 3, "NBR_LIVE:      { %d }", NBR_LIVE);
+	mvwprintw(cor->render.menu, 28, 3, "CYCLE_TO_DIE:  %d   ", cor->ctd);
+	mvwprintw(cor->render.menu, 29, 3, "CYCLE_DELTA:   %d   ", CYCLE_DELTA);
+	mvwprintw(cor->render.menu, 30, 3, "MAX_CHECKS:    %d   ", MAX_CHECKS);
+	mvwprintw(cor->render.menu, 31, 3, "NBR_LIVE:      %d   ", NBR_LIVE);
 	wattroff(cor->render.menu, COLOR_PAIR(8) | A_BOLD);
 	wattron(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
-	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d", cor->total);
-	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d", 0);
+	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d   ", cor->total);
+	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d   ", 0);
+	mvwprintw(cor->render.menu, 33, 30, "Total lives / round: %d   ", cor->live_declared);
 	wattroff(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
 }
 
