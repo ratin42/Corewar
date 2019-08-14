@@ -33,6 +33,8 @@ void	set_attributes(t_corewar *cor, unsigned char color, int i)
 {
 	if (color == 0)
 		wattron(cor->render.main, COLOR_PAIR(7));
+	else if (color == 5 && cor->render.bold[i] != 0)
+		wattron(cor->render.main, COLOR_PAIR(14));
 	else
 		wattron(cor->render.main, COLOR_PAIR(color));
 	if (cor->render.bold[i] != 0)

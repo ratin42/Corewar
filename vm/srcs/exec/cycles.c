@@ -37,6 +37,7 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 static inline void    reset_process_nb_live(t_corewar *cor)
 {
 	t_plst	*plst;
+	int		i;
 
 	plst = cor->plst;
 	while (plst != NULL)
@@ -44,6 +45,9 @@ static inline void    reset_process_nb_live(t_corewar *cor)
 		plst->p.live = 0;
 		plst = plst->next;
 	}
+	i = -1;
+	while (++i < cor->nb_players)
+		cor->process[i].live_round = 0;
 	cor->live_declared = 0;
 }
 

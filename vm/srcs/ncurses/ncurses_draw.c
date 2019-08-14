@@ -38,7 +38,7 @@ void	draw_window(t_corewar *cor)
 	fill_border_cmd(cor);
 	draw_command(cor);
 	pause_game(cor);
-	cor->sleep = 10000;
+	nodelay(stdscr, 1);
 }
 
 void	draw_menu(t_corewar *cor)

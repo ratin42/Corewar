@@ -98,19 +98,8 @@ static inline void	exec_process(t_corewar *cor)
 
 void				play(t_corewar *cor)
 {
-
-
-	if (!(cor->plst = ft_plst_init(cor)))
-		corewar_quit("Malloc error");
-	//init_plst(cor);
-	cor->ctd = CYCLE_TO_DIE;
-	ft_player_init(cor);
 	if (cor->visu)
-	{
-		cor->pause = 1;
 		draw_window(cor);
-	}
-	// si le visu alors la partie commence en pause
 	while (cor->plst != NULL)
 	{
 		if (cor->visu)
@@ -119,20 +108,38 @@ void				play(t_corewar *cor)
 			ft_printf("%d\n", cor->total);
 		cor->cycle++;
 		cor->total++;
-
 		if (cor->verbosity && !cor->visu)
 			ft_printf("It is now cycle %d\n", cor->total);
 		exec_process(cor);
 		if (cor->total == cor->n_dump)
 		{
 			print_arena_state(cor);
-			return; //Est ce qu'il faut afficher le gagnant ?
-			//Non mais du coup il faudrait pas free en dessous j'ai return
-			//il faut free dans la fonction d'apres du main;
+			cor->hide_winner = 1;
+			return;
 		}
 		if (cor->cycle > cor->ctd) // je mettrais >=
 			update_cycles(cor);
 	}
-	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
-			cor->process[cor->winner_id].name); //need change
+}
+
+void			introducing_contestants(t_corewar *cor)
+{
+	int		i;
+	
+	i = -1;
+	if (!cor->visu)
+	{
+		ft_printf("Introducing contestants...\n");
+		while (++i < cor->nb_players)
+		{
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+				i + 1, cor->process[i].size, cor->process[i].name,
+					cor->process[i].comment);
+		}
+	}
+	if (!(cor->plst = ft_plst_init(cor)))
+		corewar_quit("Malloc error");
+	//init_plst(cor);
+	cor->ctd = CYCLE_TO_DIE;
+	ft_player_init(cor);
 }

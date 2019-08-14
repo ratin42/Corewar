@@ -79,7 +79,9 @@ void				update_window(t_corewar *cor);
 //ncurses_events.c
 
 void				ncurse_events(t_corewar *cor);
+void				manage_events(t_corewar *cor, int keycode);
 void				pause_game(t_corewar *cor);
+void				manage_pause(t_corewar *cor, int keycode);
 
 //ncurses_fill_border.c
 
@@ -228,5 +230,13 @@ void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict);
 void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
+
+
+
+
+void			corewar_end(t_corewar *cor);
+void			introducing_contestants(t_corewar *cor);
+
+
 
 #endif

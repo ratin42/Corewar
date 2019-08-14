@@ -9,11 +9,19 @@ void	draw_player_info(t_corewar *cor)
 	i = -1;
 	while (++i < cor->nb_players)
 	{
-		wattron(cor->render.menu, COLOR_PAIR(i + 2));
+		wattron(cor->render.menu, COLOR_PAIR(i + 2) | A_BOLD);
+		if (i == 3)
+			wattron(cor->render.menu, COLOR_PAIR(14));
 		mvwprintw(cor->render.menu, y, 3, "Player_%d : %.35s",
 				i + 1, cor->process[i].name);
+		mvwprintw(cor->render.menu, y + 2, 3, "Size : %d bytes  -", cor->process[i].size);
+		mvwprintw(cor->render.menu, y + 2, 22, " Total lives : %d  -", cor->process[i].live);
+		mvwprintw(cor->render.menu, y + 2, 43, "Lives / round : %d ", cor->process[i].live_round);
 		wattroff(cor->render.menu, COLOR_PAIR(i + 2));
-		y += 4;
+		if (i == 3)
+			wattroff(cor->render.menu, COLOR_PAIR(14));
+		wattroff(cor->render.menu, A_BOLD);
+		y += 6;
 	}
 }
 
@@ -63,15 +71,16 @@ void	draw_command(t_corewar *cor)
 {
 	wattron(cor->render.commands, COLOR_PAIR(13));
 	wattron(cor->render.commands, A_BOLD);
-	mvwprintw(cor->render.commands, 2, 17, "COMMANDS MENU");
-	wattroff(cor->render.commands, A_BOLD);
-	mvwprintw(cor->render.commands, 5, 8, "SPACE :  PAUSE / UNPAUSE");
+	mvwprintw(cor->render.commands, 2, 17, "-[ COMMANDS MENU ]-");
+
+	mvwprintw(cor->render.commands, 5, 3, "SPACE :  PAUSE / UNPAUSE");
 	wattroff(cor->render.commands, COLOR_PAIR(13));
 	wattron(cor->render.commands, COLOR_PAIR(8));
-	mvwprintw(cor->render.commands, 7, 8, "'+' :  Speed UP");
-	mvwprintw(cor->render.commands, 9, 8, "'-' :  Slow DOWN");
+	mvwprintw(cor->render.commands, 7, 3, "'+' :  Speed UP");
+	mvwprintw(cor->render.commands, 9, 3, "'-' :  Slow DOWN");
 	wattroff(cor->render.commands, COLOR_PAIR(8));
 	wattron(cor->render.commands, COLOR_PAIR(4));
-	mvwprintw(cor->render.commands, 11, 8, "Q :  QUIT");
+	mvwprintw(cor->render.commands, 11, 3, "Q :  QUIT");
 	wattroff(cor->render.commands, COLOR_PAIR(4));
+	wattroff(cor->render.commands, A_BOLD);
 }

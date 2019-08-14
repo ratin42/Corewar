@@ -57,6 +57,8 @@ static inline int	ft_get_player_name(t_corewar *cor)
 int					main(int ac, char **av)
 {
 	t_corewar	cor;
+	
+
 
 	if (ac < 2)
 	{
@@ -70,15 +72,37 @@ int					main(int ac, char **av)
 		parse_arguments(ac, av, &cor);
 		if (ft_get_player_name(&cor) == FAIL)
 			return (0);
-		create_arena(&cor);	
+		create_arena(&cor);
+	
+		//ft_printf("ok\n");
+		introducing_contestants(&cor);	
+
 
 		//debug_order(&cor);
 		//print_arena_state(&cor);
 		play(&cor);
+		
+		corewar_end(&cor);
 
 	}
 	return (1);
 }
+
+void			corewar_end(t_corewar *cor)
+{
+	int		winner;
+
+	if (cor->visu)
+		close_ncurse(cor);
+
+	//FREE_CE_QU'IL FAUT;	
+
+	winner = cor->last_live_id;
+	if (!cor->hide_winner)
+		ft_printf("Contestant %d, \"%s\", has won !\n", winner,
+			cor->process[winner - 1].name);
+}
+
 
 //TODO
 // probleme sti quand plusieurs process

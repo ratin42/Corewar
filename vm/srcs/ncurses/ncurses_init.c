@@ -15,6 +15,8 @@ void	init_ncurse(t_corewar *cor)
 	noecho();
 	cbreak();	
 	curs_set(0);
+	cor->pause = 1;
+	cor->sleep = 10000;
 }
 
 void	init_colors(void)
@@ -38,14 +40,22 @@ void	init_colors(void)
 	init_pair(11, COLOR_BLACK, COLOR_RED);
 	init_pair(12, COLOR_BLACK, LIGHT_CYAN);
 	init_pair(13, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(14, COLOR_CYAN, COLOR_BLACK);
 }
 
 void    close_ncurse(t_corewar *cor)
 {
+	wclear(cor->render.main);
 	delwin(cor->render.main);
+	wclear(cor->render.menu);
 	delwin(cor->render.menu);
+	wclear(cor->render.commands);
 	delwin(cor->render.commands);
 	endwin();
+	//checker les leaks sans le visu et avec,
+	//pour voir si j'oublie de free des choses,
+	//mais a part peut etre certaines fonctions ncurse
+	//je malloc rien du tout;
 }
 
 

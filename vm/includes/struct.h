@@ -47,6 +47,8 @@ typedef struct			s_process
 	unsigned int		og_pc;
 	unsigned int		carry;
 	unsigned int		live;
+	unsigned int		live_round;
+
 	int					no_live;
 	unsigned int		wait;
 	int					opcode;
@@ -94,6 +96,7 @@ typedef struct 			s_corewar
 	int					sleep;
 
 	int					winner_id; //on garde ou pas ?
+	int					hide_winner;
 
 	struct s_op			instru;
 	struct s_process	process[MAX_PLAYERS];

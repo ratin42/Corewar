@@ -18,6 +18,7 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 	int     index;
+	int		player;
 
 	//ft_print_debug(plst, "LIVE", 0);
 	ft_arg_init(&arg, 1, FULL, FALSE);
@@ -32,6 +33,13 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	if (cor->verbosity && !cor->visu)
 		ft_printf("Player %s (id: %d) is alive.\n", cor->player[index].name, arg.value[0]);
 	(plst->p.live)++;
+
+	player = ft_get_player_index(cor, arg.value[0]);
+	if (player != -1)
+	{
+		cor->process[player].live++;
+		cor->process[player].live_round++;
+	}
 	cor->last_live_id = arg.value[0];
 	cor->live_declared++;
 	plst->p.no_live = 0;

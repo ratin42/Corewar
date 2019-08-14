@@ -10,7 +10,8 @@ LIBFT.a = libft/libft.a
 
 INC_FOLD = includes/
 
-INC = includes/vm.h
+INC = includes/vm.h \
+	  includes/struct.h \
 
 SRC = srcs/corewar.c \
 	  srcs/parsing/parsing.c \
