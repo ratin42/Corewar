@@ -48,7 +48,7 @@ Competition mode, hide code with visual
 No related manpage.
 .SH BUGS
 No known bugs.
-.SH AUTHOR
+.SH AUTHORS
 syzhang, ratin, hlombard, gly.
 .SH COPYRIGHT
 Copyright (c) 2019 Sylvie Zhang.
