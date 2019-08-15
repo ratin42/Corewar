@@ -20,17 +20,19 @@ static inline void    ft_kill_no_live_process(t_corewar *cor)
 	}
 	while (plst->next != NULL)
 	{
-		if (plst->p.live == 0)
+		if (plst->next->p.live == 0)
 		{
 			if (cor->verbosity)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					plst->p.id, plst->p.no_live, cor->ctd);
+					plst->next->p.id, plst->next->p.no_live, cor->ctd);
 			elem = plst->next;
 			plst->next = plst->next->next;
 			free(elem);
 			cor->nb_process--;
 		}
 		plst = plst->next;
+		if (plst == NULL)
+			return ;
 	}
 }
 

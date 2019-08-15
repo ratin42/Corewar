@@ -35,7 +35,7 @@ void	draw_infos(t_corewar *cor)
 	mvwprintw(cor->render.menu, 31, 3, "NBR_LIVE:      %d   ", NBR_LIVE);
 	wattroff(cor->render.menu, COLOR_PAIR(8) | A_BOLD);
 	wattron(cor->render.menu, COLOR_PAIR(2) | A_BOLD);
-	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d   ", cor->total);
+	mvwprintw(cor->render.menu, 33, 3, "CYCLE:           %d   ", cor->total_cycle);
 	mvwprintw(cor->render.menu, 34, 3, "PROCESSES:       %d   ", cor->nb_process);
 	mvwprintw(cor->render.menu, 33, 30, "Total lives / round:  %d   ", cor->live_declared);
 
