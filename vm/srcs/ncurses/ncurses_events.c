@@ -25,18 +25,10 @@ void	ncurse_events(t_corewar *cor)
 		cor->sleep += 500;
 	if (keycode == QUIT)
 	{
-		//free_what_needed
-		close_ncurse(cor);
+		close_ncurses(cor);
 		corewar_quit("Game closed, \"Q\" has been pressed.");
 	}
 }
-
-/*
-void	manage_events(t_corewar *cor, int keycode)
-{
-	//CA RALENTIT CONSIDERABLEMENT du coup
-}
-*/
 
 void	pause_game(t_corewar *cor)
 {
@@ -60,18 +52,17 @@ void	manage_pause(t_corewar *cor, int keycode)
 {
 	if (keycode == QUIT)
 	{
-		//free_what_needed
-		close_ncurse(cor);
+		close_ncurses(cor);
 		corewar_quit("Game closed, \"Q\" has been pressed.");
 	}
 	else if (keycode == '+' && cor->sleep > 0)
 	{
 		cor->sleep -= 500;
-		update_window(cor);
+		draw_menu(cor);
 	}
 	else if (keycode == '-' && cor->sleep < 100000)
 	{
 		cor->sleep += 500;
-		update_window(cor);
+		draw_menu(cor);
 	}
 }

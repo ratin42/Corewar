@@ -93,7 +93,6 @@ void				fill_border_cmd(t_corewar *cor);
 
 void				init_ncurse(t_corewar *cor);
 void				init_colors(void);
-void				close_ncurse(t_corewar *cor);
 
 //ncurses_menu.c
 
@@ -108,6 +107,14 @@ void				highlight_process_pc(t_corewar *cor);
 void				highlight_it(t_corewar *cor, unsigned int i, int id);
 void				set_attributes(t_corewar *cor, unsigned char color, int i);
 void				unset_attributes(t_corewar *cor, unsigned char color, int i);
+
+//ncurses_close.c
+
+void				wait_and_close(int wait);
+void				ncurses_show_winner(t_corewar *cor);
+void				close_ncurses(t_corewar *cor);
+void				end_visu(t_corewar *cor);
+
 
 /*
  * COREWAR.c

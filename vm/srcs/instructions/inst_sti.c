@@ -57,7 +57,10 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	param3 = get_param(cor, plst, type_param[2]);
 	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
 		!= DIR_CODE && type_param[2] != REG_CODE))
+	{
+		free(type_param);
 		return ;
+	}
 	if (DEBUG)
 	{
 		ft_printf("param 1 = %d\n", param1);

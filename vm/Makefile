@@ -42,6 +42,7 @@ SRC = srcs/corewar.c \
 	  srcs/ncurses/ncurses_button.c \
 	  srcs/ncurses/ncurses_menu.c \
 	  srcs/ncurses/ncurses_events.c \
+	  srcs/ncurses/ncurses_close.c \
 	  srcs/instructions/inst_and.c \
 	  srcs/instructions/inst_st.c \
 	  srcs/instructions/inst_ld.c \

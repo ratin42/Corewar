@@ -61,6 +61,8 @@ void    update_cycles(t_corewar *cor)
 	if (cor->live_declared >= NBR_LIVE || cor->check_cycle == MAX_CHECKS)
 	{
 		cor->ctd -= CYCLE_DELTA;
+		if (cor->visu)
+			cor->round_end = cor->ctd;
 		if (cor->verbosity)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;

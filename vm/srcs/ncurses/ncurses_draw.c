@@ -33,6 +33,7 @@ void    draw_arena(t_corewar *cor)
 
 void	draw_window(t_corewar *cor)
 {
+	cor->round_end = cor->ctd;
 	draw_arena(cor);
 	fill_border_main(cor);
 	fill_border_cmd(cor);
@@ -53,5 +54,6 @@ void	update_window(t_corewar *cor)
 	draw_arena(cor);
 	draw_menu(cor);
 	ncurse_events(cor);
+	cor->round_end--;
 	usleep(cor->sleep);
 }

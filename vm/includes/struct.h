@@ -83,6 +83,8 @@ typedef struct 			s_corewar
 	int					live_declared;
 	int					check_cycle;
 
+	int					round_end;
+
 	t_plst				*plst;
 
 	int					n_dump;
