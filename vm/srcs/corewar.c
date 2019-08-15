@@ -65,11 +65,8 @@ void			corewar_end(t_corewar *cor)
 	winner = cor->last_live_id;
 	if (!cor->hide_winner)
 	{
-		if (winner == 0)
-			ft_printf("No contestant managed to make a succesful live. DRAW\n");
-		else
-			ft_printf("Contestant %d, \"%s\", has won !\n", winner,
-				cor->player[ft_get_player_index(cor, winner)].name);
+		ft_printf("Contestant %d, \"%s\", has won !\n", winner,
+			cor->player[ft_get_player_index(cor, winner)].name);
 	}
 }
 
