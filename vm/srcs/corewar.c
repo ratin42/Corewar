@@ -15,6 +15,7 @@ static inline void	create_arena(t_corewar *cor)
 		ft_memcpy((void*)&cor->arena + ((MEM_SIZE / cor->nb_players) * i),
 				cor->process[i].code, cor->process[i].size);
 		cor->process[i].pc = (MEM_SIZE / cor->nb_players) * i;
+		cor->process[i].og_pc = cor->process[i].pc;
 		if (cor->visu)
 		{
 			ft_memset(cor->render.mem_owner + ((MEM_SIZE / cor->nb_players)

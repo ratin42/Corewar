@@ -64,6 +64,6 @@ void    update_cycles(t_corewar *cor)
 		if (cor->verbosity)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;
-		reset_process_nb_live(cor);
 	}
+	reset_process_nb_live(cor);
 }

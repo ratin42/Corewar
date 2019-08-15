@@ -54,7 +54,7 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 		// if (DEBUG)
 		// 	ft_printf("pc exec = %u\n", plst->p.pc);
 		plst->p.opcode = cor->arena[plst->p.pc];
-		// plst->p.og_pc = plst->p.pc;
+		plst->p.og_pc = plst->p.pc;
 		// if (DEBUG)
 		// 	ft_printf("opcode = %d\n", plst->p.opcode);
 		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle - 1; //wait
