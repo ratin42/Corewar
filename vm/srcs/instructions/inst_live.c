@@ -5,7 +5,7 @@ int   ft_get_player_index(t_corewar *cor, int i)
 	int     j;
 
 	j = 0;
-	while (j < MAX_PLAYERS)
+	while (j < cor->nb_players)
 	{
 		if (cor->player[j].id == i)
 			return (j);
@@ -18,7 +18,6 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 	int     index;
-	int		player;
 
 	//ft_print_debug(plst, "LIVE", 0);
 	ft_arg_init(&arg, 1, FULL, FALSE);
@@ -29,16 +28,16 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	{
 		if (cor->verbosity && !cor->visu)
 			ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
+		return ;
 	}
 	if (cor->verbosity && !cor->visu)
 		ft_printf("Player %s (id: %d) is alive.\n", cor->player[index].name, arg.value[0]);
 	(plst->p.live)++;
-
-	player = ft_get_player_index(cor, arg.value[0]);
-	if (player != -1)
+	if (index != -1)
 	{
-		cor->process[player].live++;
-		cor->process[player].live_round++;
+		cor->process[cor->nb_players - 1 - index].live++;
+		cor->process[cor->nb_players - 1 - index].live_round++;
+		// l'index est a l'envers donc il faut faire comme ca.
 	}
 	cor->last_live_id = arg.value[0];
 	cor->live_declared++;
