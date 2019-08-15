@@ -4,9 +4,13 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
 
-LIBFT = libft/
+C_GREEN = "\033[32m"
+C_BLUE = "\033[36m"
+C_BASE = "\033[00m"
 
-LIBFT.a = libft/libft.a
+LIBFT = ../common_files/libft/
+
+LIBFT.a = ../common_files/libft/libft.a
 
 INC_FOLD = includes/
 
@@ -58,18 +62,18 @@ SRC = srcs/corewar.c \
 	  srcs/instructions/inst_xor.c \
 	  
 
-
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME) $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
-	@echo "\033[32mReady ?\033[0m"
+	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
+	@printf "\x1b[32mVM Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 
 clean:
 	@make -C $(LIBFT) clean

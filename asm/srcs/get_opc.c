@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 20:20:02 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 21:30:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/15 22:40:07 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,6 @@ int					binary_to_decimal(long long n)
         ++i;
     }
     return (decimalNumber);
-}
-
-int        nbr_len(int nb)
-{
-    int len;
-
-    len = 0;
-    if (nb == 0)
-        return (1);
-    if (nb < 0)
-    {
-        len++;
-        nb *= -1;
-    }
-    while (nb)
-    {
-        len++;
-        nb /= 10;
-    }
-    return (len);
 }
 
 char				*fill_bincode(t_asm *asmbly, char *bin_code)

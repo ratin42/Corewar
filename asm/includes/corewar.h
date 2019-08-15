@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:38:33 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/15 21:46:42 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include "struct.h"
-# include "op.h"
-# include "../libft/includes/libft.h"
+
+# include "../../common_files/op.h"
+# include "../../common_files/libft/libft.h"
+# include "../../common_files/libft/includes/ft_printf.h"
 
 # include <stdio.h>
 

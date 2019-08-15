@@ -7,8 +7,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# include "../libft/libft.h"
-# include "../libft/includes/ft_printf.h"
+# include "../../common_files/libft/libft.h"
+# include "../../common_files/libft/includes/ft_printf.h"
 # include "struct.h"
 
 

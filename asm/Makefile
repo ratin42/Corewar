@@ -1,87 +1,70 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/08 21:42:46 by ratin            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = asm
 
-NAME1 = asm
+CC = gcc
 
-SRC_PATH1		:=	srcs
-OBJ_PATH		:=	obj
-INC_PATH		:=	includes
-LIB_PATH		:=	libft
+CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
 
-SRC_NAME1		:=	op.c \
-					asm.c \
-					debug.c \
-					param.c \
-					param2.c \
-					param3.c \
-					swap_endian.c \
-					get_opc.c \
-					get_file.c \
-					get_label.c \
-					free_prog.c \
-					parse_func.c \
-					count_size.c \
-					get_label2.c \
-					get_opcode.c \
-					write_file.c \
-					get_header.c \
-					param_conv.c \
-					param_conv2.c \
-					instruction.c \
-					param_error.c \
-					label_correc.c \
-					param_creation.c \
-					get_instruction.c \
-					convert_instruction.c \
+C_GREEN = "\033[32m"
+C_BLUE = "\033[36m"
+C_BASE = "\033[00m"
 
-INC_NAME		:=	corewar.h
-LIB				:=	$(LIB_PATH)/libft.a
-LIB_LINK		:=	-L $(LIB_PATH) -lft
-OBJ1			:=	$(addprefix $(OBJ_PATH)/,$(SRC_NAME1:.c=.o))
-INCS			:=	-I $(LIB_PATH)/$(INC_DIR) -I $(INC_DIR)
-CC				:=	gcc
-CFLAGS			:=	-Wall -Wextra -Werror -g
-C_GREEN			:=	"\033[32m"
-C_BLUE			:=	"\033[36m"
-C_BASE			:=	"\033[00m"
-PRINTF=test $(VERBOSE)$(TRAVIS) || printf
+LIBFT = ../common_files/libft/
 
+LIBFT.a = ../common_files/libft/libft.a
 
-all: obj $(LIB) $(NAME1)
+INC_FOLD = includes/
 
-$(LIB):
-	@make -C $(LIB_PATH)
-	@ @$(PRINTF) "Libft:	"
-	@ @$(PRINTF) "\x1b[32m✔\x1b[0m\n\n"
+INC = includes/corewar.h \
+	  includes/struct.h \
 
-$(NAME1): $(OBJ1)
-	@$(CC) $(CFLAGS) $(OBJ1) $(LIB) -o $@
+SRC = srcs/op.c \
+	  srcs/asm.c \
+	  srcs/debug.c \
+	  srcs/param.c \
+	  srcs/param2.c \
+	  srcs/param3.c \
+	  srcs/swap_endian.c \
+	  srcs/get_opc.c \
+	  srcs/get_file.c \
+	  srcs/get_label.c \
+	  srcs/free_prog.c \
+	  srcs/parse_func.c \
+	  srcs/count_size.c \
+	  srcs/get_label2.c \
+	  srcs/get_opcode.c \
+	  srcs/write_file.c \
+	  srcs/get_header.c \
+	  srcs/param_conv.c \
+	  srcs/param_conv2.c \
+	  srcs/instruction.c \
+	  srcs/param_error.c \
+	  srcs/label_correc.c \
+	  srcs/param_creation.c \
+	  srcs/get_instruction.c \
+	  srcs/convert_instruction.c
 
-$(OBJ_PATH)/%.o: $(SRC_PATH1)/%.c $(INC_PATH)/*
-	@$(CC) $(CFLAGS) -o $@ -c $< -I $(INC_PATH)/
-	@ @echo "file =" $(C_BLUE){ $< } $(C_BASE)
+OBJ = $(SRC:.c=.o)
 
-obj:
-	@mkdir -p obj
+all: $(NAME) $(LIBFT)
+
+$(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
+	@make -C $(LIBFT)
+	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
+	@printf "\x1b[32mASM Ready ✔\x1b[0m\n\n"
+
+%.o: %.c $(INC)
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 
 clean:
-	@rm -rf $(OBJ) $(LIB_PATH)/*.o
-	@rm -rf obj
+	@make -C $(LIBFT) clean
+	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME1)
-	@rm -f $(NAME2)
-	@make -C $(LIB_PATH) fclean
+	@make -C $(LIBFT) fclean
+	@/bin/rm -f $(NAME)
+	@echo "\033[31m$(NAME) deleted\033[0m"
 
 re: fclean all
 
-.PHONY: all fclean clean re norme
+.PHONY: all fclean clean re
