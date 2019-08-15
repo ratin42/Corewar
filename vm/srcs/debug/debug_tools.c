@@ -40,7 +40,8 @@ void	print_arena_state(t_corewar *cor)
 	{
 		if (j == 64 || i == 0)
 		{
-			ft_putchar('\n');
+			if (i != 0)
+				ft_putchar('\n');
 			ft_printf("0x%.4x : ", p);
 			p += 64;
 			j = 0;

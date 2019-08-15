@@ -100,6 +100,7 @@ void				play(t_corewar *cor)
 {
 	if (cor->visu)
 		draw_window(cor);
+	cor->last_live_id = cor->plst->p.id;
 	while (cor->plst != NULL)
 	{
 		if (cor->visu)
