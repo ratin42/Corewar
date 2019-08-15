@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 17:07:03 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 20:10:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/15 21:52:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void (*g_func[17])(t_corewar *cor) =
 {
-	NULL,//inst_live,
+	inst_live,
 	NULL,//inst_ld,
 	NULL,//inst_st,
 	NULL,//inst_add,
@@ -22,7 +22,7 @@ void (*g_func[17])(t_corewar *cor) =
 	inst_and,
 	NULL,//inst_or,
 	NULL,//inst_xor,
-	NULL,//inst_zjmp,
+	inst_zjmp,
 	NULL,//inst_ldi,
 	inst_sti,
 	NULL,//inst_fork,

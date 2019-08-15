@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/15 17:46:12 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/15 22:12:24 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRC_NAME1		:=	decompiler.c \
 					inst_tool.c \
 					inst_sti.c \
 					inst_and.c \
+					inst_live.c \
+					inst_zjmp.c \
 
 INC_NAME		:=	decompiler.h
 LIB				:=	$(LIB_PATH)/libft.a

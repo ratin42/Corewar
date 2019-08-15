@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 20:10:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 20:10:05 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/15 21:42:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ void		inst_sti(t_corewar *cor)
 	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
 		!= DIR_CODE && type_param[2] != REG_CODE))
 		decomp_quit("Bad parameter for sti\n");
-	printf("param 1 = %s\n", param1);
-	printf("param 2 = %s\n", param2);
-	printf("param 3 = %s\n", param3);
 	write(cor->fd, "sti ", 4);
 	write(cor->fd, param1, ft_strlen(param1));
 	write(cor->fd, ", ", 2);
@@ -47,5 +44,8 @@ void		inst_sti(t_corewar *cor)
 	write(cor->fd, ", ", 2);
 	write(cor->fd, param3, ft_strlen(param3));
 	write(cor->fd, "\n", 1);
+	free(param1);
+	free(param2);
+	free(param3);
 	free(type_param);
 }

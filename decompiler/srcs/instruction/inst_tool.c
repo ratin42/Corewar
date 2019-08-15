@@ -60,7 +60,6 @@ char		*get_small_dir(t_corewar *cor)
 	cor->pc++;
 	direct += cor->code[cor->pc];
 	cor->pc++;
-	pcode(cor, cor->pc);
 	result = ft_strjoin_free("%", ft_itoa((char)direct), 2);
 	return (result);
 }

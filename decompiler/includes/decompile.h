@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 20:10:30 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/15 22:02:22 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ void		stock_process_magic(t_corewar *cor, t_header *header);
 */
 void		inst_sti(t_corewar *cor);
 void		inst_and(t_corewar *cor);
+void		inst_live(t_corewar *cor);
+void		inst_zjmp(t_corewar *cor);
 
 char		*get_small_dir(t_corewar *cor);
 char		*get_big_dir(t_corewar *cor);
 char		*get_reg_index(t_corewar *cor);
-int			*check_opcode(t_corewar *cor);
 char		*get_ind(t_corewar *cor);
 char		*get_small_param(t_corewar *cor, int type);
+int			*check_opcode(t_corewar *cor);
 
 
 //DEBUG
