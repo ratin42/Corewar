@@ -24,22 +24,22 @@ void                inst_live(t_corewar *cor, t_plst *plst)
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 4;
 	ft_get_args(cor, plst, &arg);
-	if ((index = ft_get_player_index(cor, arg.value[0])) == -1)
-	{
-		if (cor->verbosity && !cor->visu)
-			ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
-		return ;
-	}
+	index = ft_get_player_index(cor, arg.value[0]);
 	if (cor->verbosity && !cor->visu)
-		ft_printf("Player %s (id: %d) is alive.\n", cor->player[index].name, arg.value[0]);
+	{
+		if (index == -1)
+			ft_printf("Live: Player with id %d does not exist.\n", arg.value[0]);
+		else
+			ft_printf("Player %s (id: %d) is alive.\n",
+				cor->player[index].name, arg.value[0]);
+	}
 	(plst->p.live)++;
 	if (index != -1)
 	{
 		cor->process[cor->nb_players - 1 - index].live++;
 		cor->process[cor->nb_players - 1 - index].live_round++;
-		// l'index est a l'envers donc il faut faire comme ca.
+		cor->last_live_id = arg.value[0];
 	}
-	cor->last_live_id = arg.value[0];
 	cor->live_declared++;
 	plst->p.no_live = 0;
 	//ft_print_debug(plst, "LIVE", 1);
