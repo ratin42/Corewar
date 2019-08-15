@@ -20,10 +20,14 @@ void	inst_sub(t_corewar *cor, t_plst *plst)
 	{
 		if (!cor->visu && cor->verbosity)
 			ft_printf("sub error.\n");
+		free(type_param);
 		return ;
 	}
 	if (!check_registre_index(reg_1, reg_2, reg_3))
+	{
+		free(type_param);
 		return ;
+	}
 	plst->p.reg[reg_3] = plst->p.reg[reg_1] - plst->p.reg[reg_2];
 	plst->p.carry = (plst->p.reg[reg_3] == 0);
 	ft_print_debug(plst, "SUB", 1);

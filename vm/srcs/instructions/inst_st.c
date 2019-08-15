@@ -40,11 +40,19 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 	{
 		param[1] = get_reg_index(cor, plst);
 		if (check_registre_index(param[1], 1, 1) == 0)
+		{	
+			free(instru_type);
 			return ;
+		}
+
 	}
 	if (instru_type[0] != REG_CODE || (instru_type[1] != REG_CODE
 		&& instru_type[1] != IND_CODE))
+	{
+
+		free(instru_type);
 		return ;
+	}
 	fill_value(cor, plst, param, instru_type[1]);
 	free(instru_type);
 	ft_print_debug(plst, "ST", 1);

@@ -21,11 +21,13 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	{
 		if (!cor->visu)
 			ft_printf("add error.\n");
+		free(type_param);
 		return ;
 	}
 	if (!check_registre_index(reg_1, reg_2, reg_3))
 		return ;
 	plst->p.reg[reg_3] = plst->p.reg[reg_1] + plst->p.reg[reg_2];
 	plst->p.carry = (plst->p.reg[reg_3] == 0);
+	free(type_param);
 	ft_print_debug(plst, "ADD", 1);
 }

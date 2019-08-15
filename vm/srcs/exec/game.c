@@ -116,7 +116,7 @@ void				play(t_corewar *cor)
 			cor->hide_winner = 1;
 			return;
 		}
-		if (cor->cycle > cor->ctd) // je mettrais >=
+		if (cor->cycle > cor->ctd)
 			update_cycles(cor);
 	}
 }
@@ -138,7 +138,6 @@ void			introducing_contestants(t_corewar *cor)
 	}
 	if (!(cor->plst = ft_plst_init(cor)))
 		corewar_quit("Malloc error");
-	//init_plst(cor);
 	cor->ctd = CYCLE_TO_DIE;
 	ft_player_init(cor);
 }

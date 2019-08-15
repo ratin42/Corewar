@@ -7,7 +7,7 @@ static inline void	create_arena(t_corewar *cor)
 	int		i;
 
 	i = -1;
- 	if (cor->visu)
+	if (cor->visu)
 		init_ncurse(cor);
 	ft_bzero(cor->arena, MEM_SIZE);
 	while (++i < cor->nb_players)
@@ -33,7 +33,7 @@ static inline void	init_datas(t_corewar *cor)
 int					main(int ac, char **av)
 {
 	t_corewar	cor;
-	
+
 	if (ac < 2)
 	{
 		corewar_usage();
@@ -58,27 +58,16 @@ void			corewar_end(t_corewar *cor)
 	int		winner;
 
 	if (cor->visu)
-		close_ncurse(cor);
+		end_visu(cor);
+	winner = cor->last_live_id;
+	if (!cor->hide_winner && !cor->visu)
+	{
+		if (winner == 0)
+			ft_printf("No contestant managed to make a succesful live. DRAW\n");
+		else
+			ft_printf("Contestant %d, \"%s\", has won !\n", winner,
+					cor->player[ft_get_player_index(cor, winner)].name);
+	}
 
 	//FREE_CE_QU'IL FAUT;	
-
-	winner = cor->last_live_id;
-	if (!cor->hide_winner)
-	{
-		ft_printf("Contestant %d, \"%s\", has won !\n", winner,
-			cor->player[ft_get_player_index(cor, winner)].name);
-	}
 }
-
-
-//TODO
-// probleme sti quand plusieurs process
-// Voir pour le numero des joueurs qui est negatif sur la vm de zazz
-// 1 : Show lives
-// 2 : Show cycles
-// 4 : Show operations (Params are NOT litteral ...)
-// 8 : Show deaths
-// 16 : Show PC movements (Except for jumps)
-
-//BONUS faire un man
-

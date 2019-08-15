@@ -30,6 +30,7 @@ void	draw_infos(t_corewar *cor)
 	draw_banner(cor);
 	wattron(cor->render.menu, COLOR_PAIR(8) | A_BOLD);
 	mvwprintw(cor->render.menu, 28, 3, "CYCLE_TO_DIE:  %d   ", cor->ctd);
+	mvwprintw(cor->render.menu, 30, 30, "Current round ends in: %d  Cycles ", cor->round_end);
 	mvwprintw(cor->render.menu, 29, 3, "CYCLE_DELTA:   %d   ", CYCLE_DELTA);
 	mvwprintw(cor->render.menu, 30, 3, "MAX_CHECKS:    %d   ", MAX_CHECKS);
 	mvwprintw(cor->render.menu, 31, 3, "NBR_LIVE:      %d   ", NBR_LIVE);
