@@ -16,9 +16,9 @@ int		get_small_dir(t_corewar *cor, t_plst *plst)
 	int	direct;
 
 	direct = cor->arena[plst->p.pc];
-	direct = direct << 8;
+	direct = direct << 2;
 	plst->p.pc =  pc_modulo(plst->p.pc + 1);
-	direct += cor->arena[plst->p.pc];
+	direct = cor->arena[plst->p.pc];
 	plst->p.pc =  pc_modulo(plst->p.pc + 1);
 	return (direct);
 }
