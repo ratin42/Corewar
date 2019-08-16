@@ -6,20 +6,19 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:22:44 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:33:25 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DISASSEMBLER_H
 # define DISASSEMBLER_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <fcntl.h>
 # include <sys/stat.h>
-# include "struct.h"
-# include "../libft/includes/libft.h"
+# include "../../common_files/libft/libft.h"
 # include "../../common_files/op.h"
+
+
 # include <stdio.h>
 
 # define ERROR				-1

@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/16 14:20:52 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/16 14:39:01 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRC = srcs/disassembler.c \
 	srcs/parsing/create_file.c \
 	srcs/parsing/print_file.c \
 	srcs/parsing/create_list.c \
+	srcs/parsing/get_params.c \
+	srcs/parsing/get_arg.c \
 	srcs/instructions/inst_tool.c \
 	srcs/instructions/inst_sti.c \
 	srcs/instructions/inst_and.c \
@@ -47,11 +49,11 @@ all: $(NAME) $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@make -C $(LIBFT)
-	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME) -I $(INC_FOLD)
 	@printf "\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $< -I $(INC_FOLD)
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 
 clean:
