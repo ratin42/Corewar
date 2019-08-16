@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // lfork | Long Fork | 0x0F
 // Usage : lfork S(D2) Durée : 1000

@@ -1,5 +1,5 @@
 
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	inst_add(t_corewar *cor, t_plst *plst)
 {

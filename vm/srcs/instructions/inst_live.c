@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int   ft_get_player_index(t_corewar *cor, int i)
 {

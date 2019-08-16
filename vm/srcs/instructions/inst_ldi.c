@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // ldi | Indirect Load | 0x0A
 // Usage : ldi S(RG/ID/D2), S(ID/D2), D(RG) Durée : 25

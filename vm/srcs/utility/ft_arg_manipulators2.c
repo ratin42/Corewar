@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict)
 {

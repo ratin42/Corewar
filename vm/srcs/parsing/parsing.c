@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int		parse_arguments(int ac, char **av, t_corewar *cor)
 {

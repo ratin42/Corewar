@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	pc_modulo2(t_plst *plst, int i)
 {

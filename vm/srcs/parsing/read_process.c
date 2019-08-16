@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	read_process(char *name, t_corewar *cor, int i)
 {

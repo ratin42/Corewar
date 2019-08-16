@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // xor | Logical XOR | 0x08
 // Usage : xor S(RG/ID/D4), S(RG/ID/D4), D(RG) Durée : 6

@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int		ft_check_arg_type(t_arg arg, int i, int code1, int code2)
 {

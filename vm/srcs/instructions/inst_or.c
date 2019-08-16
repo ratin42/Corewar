@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // or | Logical OR | 0x07
 // Usage : or S(RG/ID/D4), S(RG/ID/D4), D(RG) Durée : 6

@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	print_process_data(t_corewar *cor, int player_nb)
 {

@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void    draw_arena(t_corewar *cor)
 {

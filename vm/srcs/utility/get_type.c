@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_type.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:01:45 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/07 14:19:24 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/08/16 15:25:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int	register_range(int value, int min, int max)
 {

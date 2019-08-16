@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	highlight_process_pc(t_corewar *cor)
 {

@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // lldi | Long Indirect Load | 0x0E
 // Usage : lldi S(RG/ID/D2), S(ID/D2), D(RG) Durée : 50

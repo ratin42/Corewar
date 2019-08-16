@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 static inline void    ft_kill_no_live_process(t_corewar *cor)
 {

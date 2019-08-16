@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	ft_print_debug(t_plst *plst, char *op_name, int end)
 {

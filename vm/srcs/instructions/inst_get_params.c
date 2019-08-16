@@ -1,5 +1,5 @@
 
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int		get_reg_value(t_corewar *cor, t_plst *plst)
 {

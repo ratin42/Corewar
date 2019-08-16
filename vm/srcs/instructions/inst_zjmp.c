@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // zjmp | Jump if zero | 0x09
 // Usage : zjmp S(D2) Durée : 20

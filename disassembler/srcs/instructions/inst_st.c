@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // st | Direct Store | 0x03
 // Usage : st S(RG), D(RG/ID) Durée : 5

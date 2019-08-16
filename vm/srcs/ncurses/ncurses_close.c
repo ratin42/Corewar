@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void    close_ncurses(t_corewar *cor)
 {

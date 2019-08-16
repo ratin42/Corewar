@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 {

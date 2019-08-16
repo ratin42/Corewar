@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int		ft_get_restricted_addr(int value)
 {

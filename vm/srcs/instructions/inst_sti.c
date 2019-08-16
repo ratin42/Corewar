@@ -1,5 +1,5 @@
 
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // sti | Indirect Store | 0x0B
 // Usage : sti S(RG), S(RG/ID/D2), S(ID/D2) Durée : 25

@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // and | Logical AND | 0x06
 // Usage : and S(RG/ID/D4), S(RG/ID/D4), D(RG) Durée : 6
