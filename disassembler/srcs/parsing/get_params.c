@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:21:54 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 15:21:32 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 15:44:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_get_opcode(t_corewar *cor, t_arg *arg)
 	unsigned char	bmask;
 
 	bmask = 3;
-	printf("have ocp\n");
 	arg->type[0] = ((bmask << 6) & cor->code[cor->pc]) >> 6;
 	arg->type[1] = ((bmask << 4) & cor->code[cor->pc]) >> 4;
 	arg->type[2] = ((bmask << 2) & cor->code[cor->pc]) >> 2;
@@ -42,7 +41,6 @@ void			init_arg(t_arg *arg, int opcode)
 
 static inline int		ft_get_arg_size(t_arg_type arg_type, int dir_size)
 {
-	printf("arg type = %d\n", arg_type);
 	if (arg_type == REG_CODE)
 		return (1);
 	if (arg_type == IND_CODE)
@@ -63,26 +61,20 @@ void	ft_get_args_size(t_arg *arg)
 	{
 		while (i < arg->nb_arg)
 		{
-			printf("passage\n");
 			arg->size[i] = ft_get_arg_size(arg->type[i], arg->dir_size);
 			i++;
 		}
 	}
 	else
-		arg->size[0] = 4;
+		arg->size[0] = arg->dir_size;
 }
 
 void		get_params(t_corewar *cor, t_arg *arg, int opcode)
 {
-	printf("pour %d-----pc = %d---------------------\n", opcode, cor->pc);
 	ft_bzero(arg, sizeof(arg));
 	init_arg(arg, opcode);
-	printf("il y a %d argument\n", arg->nb_arg);
 	if (arg->ocp == 1)
 		ft_get_opcode(cor, arg);
 	ft_get_args_size(arg);
-	printf("size p1 = %d p2 = %d p3 = %d\n", arg->size[0], arg->size[1]
-		, arg->size[2]);
-	pcode(cor, cor->pc);
 	ft_get_args(cor, arg);
 }

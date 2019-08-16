@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 17:07:03 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 14:48:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 15:45:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,10 @@ void		create_list(t_corewar *cor)
 
 	while (cor->pc < cor->size)
 	{
-		printf("\n\n");
-		pcode(cor, cor->pc);
 		opcode = cor->code[cor->pc++];
 		ft_putstr_fd(g_op_tab[opcode - 1].name, cor->fd);
 		ft_putchar_fd(' ', cor->fd);
 		get_params(cor, &arg, opcode);
-		//g_func[opcode - 1](cor);
 		ft_putchar_fd('\n', cor->fd);
 	}
 }
