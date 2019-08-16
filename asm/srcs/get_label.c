@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:17:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:06:15 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int		compare_label(char *label1, char *label2)
 {
-	int			i;
-
-	i = 0;
 	if (ft_strcmp(label1, label2) == 0)
 		return (1);
 	return (0);

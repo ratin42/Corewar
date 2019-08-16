@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 15:29:31 by saouas            #+#    #+#             */
-/*   Updated: 2019/08/15 22:12:43 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/16 14:04:56 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ static unsigned long long int	give_base_nbr(char *base)
 
 static unsigned long long int	u_base_to_decimal(char *nbr)
 {
-	unsigned long long int		len;
 	unsigned long long int		nbr2;
 	char						*str;
 
 	nbr2 = atoul_base(nbr, "0123456789");
 	str = ft_lutoa(nbr2);
-	len = ft_strlen(str);
 	free(str);
 	return (nbr2);
 }
