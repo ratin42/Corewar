@@ -49,7 +49,7 @@ all: $(NAME) $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@make -C $(LIBFT)
-	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\x1b[32mASM Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
