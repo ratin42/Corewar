@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   decompile.h                                        :+:      :+:    :+:   */
+/*   disassembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DECOMPILE_H
-# define DECOMPILE_H
+#ifndef DISASSEMBLER_H
+# define DISASSEMBLER_H
 
 # include <unistd.h>
 # include <stdlib.h>

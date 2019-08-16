@@ -1,4 +1,4 @@
-#include "decompile.h"
+#include "disassembler.h"
 
 void                inst_live(t_corewar *cor)
 {

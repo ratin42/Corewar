@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 23:10:08 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 22:46:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 char	*get_file_name(char *path)
 {

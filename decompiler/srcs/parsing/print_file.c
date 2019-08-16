@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 23:26:51 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 22:29:09 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:30 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 void	print_header(t_corewar *cor)
 {

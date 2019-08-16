@@ -1,4 +1,4 @@
-#include "../includes/decompile.h"
+#include "../includes/disassembler.h"
 
 void	read_process(char *name, t_corewar *cor)
 {

@@ -1,4 +1,4 @@
-#include "decompile.h"
+#include "disassembler.h"
 
 char		*get_reg_index(t_corewar *cor)
 {

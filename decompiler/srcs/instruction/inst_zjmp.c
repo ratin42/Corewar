@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 21:52:53 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 12:29:41 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:06 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 void	inst_zjmp(t_corewar *cor)
 {

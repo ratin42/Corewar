@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:45:32 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:56:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 static inline void	print_type(t_corewar *cor, t_arg_type arg_type)
 {

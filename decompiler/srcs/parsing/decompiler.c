@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:21:34 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:26 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 uint32_t	swap_endian(uint32_t val)
 {

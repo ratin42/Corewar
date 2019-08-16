@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 17:07:03 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:37:11 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:15 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 t_op	g_op_tab[17] =
 {

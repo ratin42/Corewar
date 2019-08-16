@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 21:18:53 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:21:17 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:24 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/decompile.h"
+#include "../includes/disassembler.h"
 
 void	print_champion(t_corewar *cor)
 {

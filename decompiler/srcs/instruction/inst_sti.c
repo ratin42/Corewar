@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 20:10:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 12:22:17 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:05 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 char		*get_small_param(t_corewar *cor, int type)
 {

@@ -6,11 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:21:54 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 13:57:33 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 14:14:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "decompile.h"
+#include "disassembler.h"
 
 void	ft_get_opcode(t_corewar *cor, t_arg *arg)
 {
