@@ -45,10 +45,12 @@ SRC = srcs/op.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) $(LIBFT)
+all: libft $(NAME)
+
+libft:
+	@Make -C $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
-	@make -C $(LIBFT)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\x1b[32mASM Ready ✔\x1b[0m\n\n"
 

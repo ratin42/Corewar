@@ -64,16 +64,20 @@ SRC = srcs/corewar.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) $(LIBFT)
+all: libft $(NAME)
+
+libft:
+	@Make -C $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
-	@make -C $(LIBFT)
 	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
 	@printf "\x1b[32mVM Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
+
+
 
 clean:
 	@make -C $(LIBFT) clean

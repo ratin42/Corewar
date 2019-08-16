@@ -6,7 +6,7 @@
 #    By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 22:03:59 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/15 22:45:54 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/16 16:47:50 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,11 +121,12 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME) includes/
 
 $(NAME): $(OBJ)
-	@ar rcs $(NAME) $^
+	@ar rcs $(NAME) $(OBJ)
 	@printf "\n\x1b[32mLIBFT Ready ✔\x1b[0m\n"
 
 %.o: %.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
+	@printf "\e[38;5;208m▒\e[0m"
 
 clean:
 	@/bin/rm -Rf $(OBJ)

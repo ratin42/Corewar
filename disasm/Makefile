@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/16 15:51:19 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/16 16:31:50 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,12 @@ SRC = srcs/disassembler.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) $(LIBFT)
+all: libft $(NAME)
+
+libft:
+	@Make -C $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
-	@make -C $(LIBFT)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
 
