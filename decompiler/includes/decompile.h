@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 22:02:22 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 13:22:44 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/stat.h>
 # include "struct.h"
 # include "../libft/includes/libft.h"
-# include "../../asm/includes/op.h"
+# include "../../common_files/op.h"
 # include <stdio.h>
 
 # define ERROR				-1
@@ -35,6 +35,35 @@ typedef struct 			s_corewar
 	unsigned int 		pc;
 	int					fd;
 }						t_corewar;
+
+typedef struct			s_type
+{
+	int					param1;
+	int					param2;
+	int					param3;
+}						t_type;
+
+typedef struct			s_op
+{
+	char				*name;
+	int					nbr_of_param;
+	t_type				type_of_param;
+	int					opcode;
+	int					nbr_of_cycle;
+	char				*description;
+	unsigned int		coding_opcode;
+	unsigned int		direct_size;
+}						t_op;
+
+typedef	struct			s_arg
+{
+	int					nb_arg;
+	t_arg_type			type[4];
+	unsigned int		size[4];
+	unsigned int		value[4];
+	int					dir_size;
+	int					ocp;
+}						t_arg;
 
 /*
 ** PARSING
@@ -59,6 +88,7 @@ void		inst_sti(t_corewar *cor);
 void		inst_and(t_corewar *cor);
 void		inst_live(t_corewar *cor);
 void		inst_zjmp(t_corewar *cor);
+void		inst_ld(t_corewar *cor);
 
 char		*get_small_dir(t_corewar *cor);
 char		*get_big_dir(t_corewar *cor);
@@ -66,6 +96,8 @@ char		*get_reg_index(t_corewar *cor);
 char		*get_ind(t_corewar *cor);
 char		*get_small_param(t_corewar *cor, int type);
 int			*check_opcode(t_corewar *cor);
+void		get_params(t_corewar *cor, t_arg *arg, int opcode);
+void		ft_get_args(t_corewar *cor, t_arg *arg);
 
 
 //DEBUG

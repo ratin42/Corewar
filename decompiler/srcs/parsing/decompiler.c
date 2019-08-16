@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 22:30:21 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/16 13:21:34 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int				main(int ac, char **av)
 	init_datas(&cor);
 	read_process(av[1], &cor);
 	create_file(&cor, av[1]);
-	//print_champion(&cor);
+	print_champion(&cor);
 }
+
+//get restricted address

@@ -1,37 +1,35 @@
-#include "../../includes/vm.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_ld.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/15 22:49:30 by ratin             #+#    #+#             */
+/*   Updated: 2019/08/15 22:53:15 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// ld | Direct Load | 0x02
-// Usage : ld S(ID/D4), D(RG) Durée : 5
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
-// Transfert direct RAM > Registre. Charge le premier parametre dans le
-// registre passé en second parametre. Si la valeur du premier
-// parametre est egale a zero, alors le carry passe a l'etat un, sinon a
-// l'etat zero.
+#include "decompile.h"
 
-void	inst_ld(t_corewar *cor, t_plst *plst)
+void	inst_ld(t_corewar *cor)
 {
-	t_arg	arg;
-
-	//ft_print_debug(plst, "LD", 0);
-	ft_arg_init(&arg, 2, FULL, TRUE);
-	ft_get_opcode(cor, plst, &arg);
-	ft_get_args_size(&arg);
-	if (ft_check_arg_type(arg, 0, IND_CODE, DIR_CODE) == FAIL
-			|| arg.type[1] != REG_CODE)
-	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("OCP error.\n");
-		pc_modulo2(plst, 1);
-		return ;
-	}
-	ft_get_args(cor, plst, &arg);
-	if (ft_check_reg_index(arg) == FAIL)
-	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("Register argument is not within the valid range.\n");
-		return ;
-	}
-	plst->p.reg[arg.value[1]] = arg.value[0];
-	plst->p.carry = !(arg.value[0]);
-	//ft_print_debug(plst, "LD", 1);
+	char	*param1;
+	char	*param2;
+	int		*type_param;
+	
+	type_param = check_opcode(cor);
+	param1 = get_small_param(cor, type_param[0]);
+	param2 = get_small_param(cor, type_param[1]);
+	if ((type_param[0] != DIR_CODE && type_param[0] == IND_CODE)
+		|| type_param[1] != REG_CODE)
+		decomp_quit("Bad parameter for ld\n");
+	write(cor->fd, "ld ", 4);
+	write(cor->fd, param1, ft_strlen(param1));
+	write(cor->fd, ", ", 2);
+	write(cor->fd, param2, ft_strlen(param2));
+	write(cor->fd, "\n", 1);
+	free(param1);
+	free(param2);
+	free(type_param);
 }
