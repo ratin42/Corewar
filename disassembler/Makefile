@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/16 15:36:22 by ratin            ###   ########.fr        #
+#    Updated: 2019/08/16 15:51:19 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,6 @@ SRC = srcs/disassembler.c \
 	srcs/parsing/create_list.c \
 	srcs/parsing/get_params.c \
 	srcs/parsing/get_arg.c \
-	srcs/instructions/inst_tool.c \
-	srcs/instructions/inst_sti.c \
-	srcs/instructions/inst_and.c \
-	srcs/instructions/inst_live.c \
-	srcs/instructions/inst_zjmp.c \
 
 OBJ = $(SRC:.c=.o)
 
