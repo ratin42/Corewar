@@ -24,7 +24,8 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 	{
 		if (DEBUG)
 			ft_printf("pc before = %d\n", plst->p.pc);
-		plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
+		//plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
+		plst->p.pc = pc_modulo(plst->p.pc - 3 + arg.value[0]);
 	}
 	else
 		plst->p.pc %= MEM_SIZE;
