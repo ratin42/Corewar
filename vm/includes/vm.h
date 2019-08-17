@@ -120,14 +120,6 @@ void				end_visu(t_corewar *cor);
  * COREWAR.c
 */
 
-/*
- * GET_TYPE.c
-*/
-
-int					register_range(int value, int min, int max);
-int 				is_register(int octet);
-int 				is_indirect(int octet);
-int 				is_direct(int octet);
 
 /*
  * PARSING.c

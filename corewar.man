@@ -4,11 +4,11 @@
 \fBCorewar\fR \-- Game in which programs fight against one another in a virtual "arena".
 .SH SYNOPSIS
 .PP
-\fB./asm\fR <\fIfile_name.s\fR>
+\fB./asm\fR \fIfile_name.s\fR
 .br
-\fB./corewar\fR [\fB-n\fR] [\fB-dump\fR] [\fB-v\fR] [\fB-visu\fR] [\fB--stealth\fR] <\fIfile_name.cor\fR> <\fI...\fR>
+\fB./corewar\fR [\fB-n\fR] [\fB-dump\fR] [\fB-v\fR] [\fB-visu\fR] [\fB--stealth\fR] \fIfile_name.cor\fR \fI...\fR
 .br
-\fB./decompiler\fR <\fIfile_name.cor\fR>
+\fB./decompiler\fR \fIfile_name.cor\fR
 .SH DESCRIPTION
 .PP
 The \fBCorewar\fR is a game that brings "players" together around a "virtual machine". 
