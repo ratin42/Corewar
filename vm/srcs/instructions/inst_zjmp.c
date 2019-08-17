@@ -10,10 +10,7 @@
 // totalité de ces cycles dans ce cas, a vous d'en decider
 
 void	inst_zjmp(t_corewar *cor, t_plst *plst)
-{
-	//(void)cor;
-	//ft_printf("process[%d] : ZJMP\n", i); 
-	
+{ 	
 	if (DEBUG)
 		ft_printf("ZJMP\n");
 
@@ -23,12 +20,10 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
-	//plst->p.carry = 1;
 	if (plst->p.carry == 1)
 	{
 		if (DEBUG)
 			ft_printf("pc before = %d\n", plst->p.pc);
-		// plst->p.pc = ((plst->p.pc + 3) + (param1 % IDX_MOD)) % MEM_SIZE;
 		plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
 	}
 	else
