@@ -23,6 +23,7 @@ int		get_param(t_corewar *cor, t_plst *plst, int type)
 
 void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 {
+	addr = pc_modulo(addr);
 	cor->arena[addr] = value >> 24;
 	cor->render.bold[addr] = 50;
 	cor->render.mem_owner[addr] = plst->p.id + 1;
@@ -67,8 +68,7 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 		ft_printf("param 2 = %d\n", param2);
 		ft_printf("param 3 = %d\n", param3);
 	}
-	print_value(cor, param1, plst->p.og_pc + ft_get_restricted_addr(param2
-		+ param3), plst);
+	print_value(cor, param1, plst->p.og_pc + ft_get_restricted_addr(param2 + param3), plst);
 	free(type_param);
 	ft_print_debug(plst, "STI", 1);
 }
