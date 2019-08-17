@@ -21,6 +21,8 @@ static int		check_label(char *param)
 		return (0);
 	if (param[i] == '\0')
 		return (0);
+	if (strmaxint(param))
+		return (0);
 	while (param[i])
 	{
 		if (ft_strchr(LABEL_CHARS, param[i]) == NULL)
@@ -37,6 +39,8 @@ static int		check_ind(char *param)
 	i = 0;
 	if (param[i] == ':')
 		return (check_label(param));
+	if (strmaxint(param))
+		return (0);
 	while (param[i])
 	{
 		if ((param[i] == '-' || param[i] == '+')
@@ -60,6 +64,8 @@ static int		check_dir(char *param)
 		return (0);
 	if (param[i] == ':')
 		return (check_label(&param[i]));
+	if (strmaxint(param))
+		return (0);
 	while (param[i])
 	{
 		if ((param[i] == '-' || param[i] == '+')
