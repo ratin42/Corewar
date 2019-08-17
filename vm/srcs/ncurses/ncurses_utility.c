@@ -11,9 +11,24 @@ void	highlight_process_pc(t_corewar *cor)
 	{
 		i = process->p.og_pc;
 		id = process->p.id;
+		id = re_adjust_id(id);
 		highlight_it(cor, i, id);
 		process = process->next;
 	}
+}
+
+int		re_adjust_id(int id)
+{
+	if (id == 1)
+		return (4);
+	else if (id == 3)
+		return (2);
+	else if (id == 2)
+		return (3);
+	else if (id == 4)
+		return (1);
+	else
+		return (0);
 }
 
 void	highlight_it(t_corewar *cor, unsigned int i, int id)

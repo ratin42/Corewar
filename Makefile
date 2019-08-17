@@ -1,5 +1,4 @@
 all:
-	@printf "Compiling libft...\n"
 	@Make -C assembler
 	@Make -C vm
 	@Make -C disasm

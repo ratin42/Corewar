@@ -26,22 +26,22 @@ void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 	addr = pc_modulo(addr);
 	cor->arena[addr] = value >> 24;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = plst->p.id + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 	
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value >> 16;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = plst->p.id + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value >> 8;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = plst->p.id + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 
 	addr = pc_modulo(addr + 1);
 	cor->arena[addr] = value;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = plst->p.id + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 }
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
