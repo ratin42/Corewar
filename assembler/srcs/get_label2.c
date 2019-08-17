@@ -12,8 +12,10 @@
 
 #include "corewar.h"
 
+
 void		write_label(t_instru *instru, char *conv)
 {
+	extern t_op	g_op_tab[17];
 	int		i;
 	int		y;
 

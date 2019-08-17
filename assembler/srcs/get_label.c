@@ -21,6 +21,7 @@ int		compare_label(char *label1, char *label2)
 
 void	fill_label(t_asm *asmbly, t_instru *instru, int distance)
 {
+	extern t_op	g_op_tab[17];
 	int			i;
 	int			size;
 	char		*conv;
@@ -37,6 +38,8 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance)
 		size++;
 	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
 		quit_prog(asmbly);
+	if (g_op_tab[instru->nbr_opcode - 1].direct_size == 0)
+		conv = ft_strjoin_free("ffff", conv, 2);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(asmbly, size, &conv);

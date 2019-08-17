@@ -58,8 +58,8 @@ int			main(int ac, char **av)
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
 	print_writing(av[ac -1]);
-	free_prog(&asmbly);
 	//print_instruction(&asmbly);
+	free_prog(&asmbly);
 	return (0);
 }
 

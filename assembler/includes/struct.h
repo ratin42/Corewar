@@ -56,6 +56,7 @@ typedef struct			s_instru
 	char				*conv_par;
 	char				*label;
 	char				*opcode;
+	int					nbr_opcode;
 	int					added_label;
 	int					labelsrc;
 	int					byte_size;

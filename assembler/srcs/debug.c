@@ -51,11 +51,12 @@ void			print_instruction(t_asm *asmbly)
 
 	instru = asmbly->instru;
 	//instru = find_instru(asmbly, 37);
-/* 	printf("\n~~~ instruction are ~~~\n");
+	printf("\n~~~ instruction are ~~~\n");
 	while (instru)
-	{ */
+	{
 		printf("___________________________________\n");
 		printf("\nopcode = %s\n", instru->opcode);
+		printf("nbr_opcode = %d\n", instru->nbr_opcode);
 		printf("line = %d\n", instru->line);
 		printf("label = %s\n", instru->label);
 		printf("nbr_of_param = %d\n", instru->nbr_of_params);
@@ -73,9 +74,9 @@ void			print_instruction(t_asm *asmbly)
 	//	ft_putnbr(instru->byte_size);
 	//	printf("\n");
 		instru = instru->next;
-/* 	}
+	}
 	printf("___________________________________\n");
-	printf("\n~~~       FIN       ~~~\n"); */
+	printf("\n~~~       FIN       ~~~\n");
 	
 /* 	printf("\n~~~ Header ~~~\n");
 	header_t *header;

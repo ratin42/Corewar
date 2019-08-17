@@ -117,8 +117,10 @@ static int		last_instru_cmplt(t_asm *asmbly)
 
 void			get_instruction(t_asm *asmbly, char *str, int line)
 {
+	extern t_op	g_op_tab[17];
 	int			indexer;
 	t_instru	*instru;
+	int			op_index;
 
 	indexer = 0;
 	if (last_instru_cmplt(asmbly) == 1)
@@ -135,6 +137,10 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 		}
 	}
 	indexer = get_opcode(asmbly, str, line);
+	if (!(instru = find_instru(asmbly, line)))
+		instru = get_last_instru(asmbly);
+	op_index = find_op_index(instru->opcode);
+	instru->nbr_opcode = g_op_tab[op_index].opcode;
 	get_params(asmbly, &str[indexer], line);
 	check_params_error(asmbly, str, line);
 }
