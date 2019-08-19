@@ -23,23 +23,37 @@ int		get_param(t_corewar *cor, t_plst *plst, int type)
 
 void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 {
+	char	a;
+	char	b;
+	char	c;
+	char	d;
+
+	//printf("size of int = %lu\n", sizeof(int));
+	a = ((value >> 24) & 0xFF);
+	b = ((value >> 16) & 0xFF);
+	c = ((value >> 8) & 0xFF);
+	d = value & 0xFF;
 	addr = pc_modulo(addr);
-	cor->arena[addr] = value >> 24;
+	//printf("stocking ->|%02x|\n", a);
+	cor->arena[addr] = a;
 	cor->render.bold[addr] = 50;
 	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 	
 	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = value >> 16;
+	//printf("stocking ->|%02x|\n", b);
+	cor->arena[addr] = b;
 	cor->render.bold[addr] = 50;
 	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 
 	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = value >> 8;
+	//printf("stocking ->|%02x|\n", c);
+	cor->arena[addr] = c;
 	cor->render.bold[addr] = 50;
 	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 
 	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = value;
+	//printf("stocking ->|%02x|\n", d);
+	cor->arena[addr] = d;
 	cor->render.bold[addr] = 50;
 	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
 }
@@ -52,6 +66,7 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param3;
 	int	*type_param;
 	
+	//printf("\nsti cycle = %d======================================\n", cor->total_cycle);
 	type_param = check_opcode(cor, plst);
 	param1 = get_param(cor, plst, type_param[0]);
 	param2 = get_param(cor, plst, type_param[1]);

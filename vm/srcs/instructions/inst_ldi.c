@@ -8,6 +8,22 @@
 // registre passé en troisieme parametre. Si cette valeur est nulle, alors le
 // carry passe a l'etat un, sinon a l'ettat zero.
 
+static int			fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
+{
+	unsigned int	j;
+	int				result;
+
+	result = 0;
+	j = 0;
+	while (j < REG_SIZE)
+	{	
+		result = (result << 8);
+		result += cor->arena[pc_modulo(plst->p.og_pc + ft_get_restricted_addr(arg->value[0] + arg->value[1]) + j)];
+		j++;
+	}
+	return (result);
+}
+
 void	inst_ldi(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
@@ -31,8 +47,10 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.og_pc
+	/* plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.og_pc
 		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
-	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0);
+	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0); */
+
+	plst->p.reg[arg.value[2]] = fill_value(cor, plst, &arg);
 	//ft_print_debug(plst, "LDI", 1);
 }
