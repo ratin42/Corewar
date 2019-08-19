@@ -1,99 +1,46 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 22:35:47 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/07 14:17:48 by syzhang          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef VM_H
 # define VM_H
 
-# include <unistd.h>
 # include <fcntl.h>
 # include <locale.h>
 # include <stdint.h>
-# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-#include "../../includes/op.h"
-#include "../libft/libft.h"
-#include "../libft/includes/ft_printf.h"
 
-# define DEBUG 0
+# include "../../common_files/libft/libft.h"
+# include "../../common_files/libft/includes/ft_printf.h"
+# include "struct.h"
 
-typedef struct			s_type
-{
-	int					param1;
-	int					param2;
-	int					param3;
 
-}                       t_type;
+# define DEBUG			0
+# define TRUE			1
+# define FALSE			0
+# define SUCCESS		1
+# define FAIL			-1
+# define FULL			1
+# define HALF			2
 
-typedef struct			s_op
-{
-	char				*name;
-	int					nbr_of_param;
-	t_type	        	type_of_param;
-	int					opcode;
-	int					nbr_of_cycle;
-	char				*description;
-	unsigned int		coding_opcode;
-	unsigned int		direct_size;
-}						t_op;
+# define BOX_COL_1		COLS / 2 + 15
+# define BOX_COL_2		COLS / 5
+# define BOX_LINES_1	((LINES / 3) + (LINES / 2)) - 2
+# define CMD_LINES		(BOX_LINES_1 / 4)
+# define CMD_COLS		(BOX_COL_2 / 2) / 2
+# define CMD_STARTY		((CMD_LINES / 2) - 8) - 1
+# define CMD_STARTX		(BOX_COL_1 + BOX_COL_2)
 
-typedef struct          s_process
-{
-	char				name[PROG_NAME_LENGTH];
-	char				comment[COMMENT_LENGTH];
-	unsigned int		magic;
-	unsigned int		size;
-	unsigned char		code[CHAMP_MAX_SIZE];
-	
-	int					order;
+# define DARK_GREY		6
+# define LIGHT_GREY		7
+# define LIGHT_CYAN		5
 
-	int					alive;
-	
-	int					id;
-    int                 reg[REG_NUMBER + 1];
-    unsigned int        pc;
-    unsigned int        carry;
-    unsigned int        live;
-	int					no_live;
+#define SPACE_BAR		' '
+#define QUIT			'q'
 
-}                       t_process;
-
-typedef struct 			s_corewar
-{
-	unsigned char		arena[MEM_SIZE];
-	unsigned int 		ram_full;
-	int					count;
-	int					last_live_id;
-	int					nb_players;
-	char				*last_live_name;
-	unsigned int		current_live;
-
-    struct s_op			instru;
-	struct s_process	process[MAX_PLAYERS];
-
-	int					cycle;
-	int					total;
-	int					ctd;
-	int					live_declared;
-	int					check_cycle;
-
-	int					n_dump;
-	int					verbosity;
-	int					order;
-	int					order_option;
-	
-	int					winner_id;
-
-}						t_corewar;
+#define STR1 " _____ ___________ _____ _    _  ___ ______ "
+#define STR2 "/  __ \\  _  | ___ \\  ___| |  | |/ _ \\| ___ \\"
+#define STR3 "| /  \\/ | | | |_/ / |__ | |  | / /_\\ \\ |_/ /"
+#define STR4 "| |   | | | |    /|  __|| |/\\| |  _  |    / "
+#define STR5 "| \\__/\\ \\_/ / |\\ \\| |___\\  /\\  / | | | |\\ \\ "
+#define STR6 " \\____/\\___/\\_| \\_\\____/ \\/  \\/\\_| |_|_| \\_|"
 
 
 /*
@@ -102,25 +49,78 @@ typedef struct 			s_corewar
 
 void				print_process_data(t_corewar *cor, int player_nb);
 void				print_arena_state(t_corewar *cor);
+void				pcode(t_corewar *cor, int pc);
 void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
+
+void				ft_print_process(t_process p);
+void				ft_print_debug(t_plst *plst, char *op_name, int end);
+void				ft_print_plst(t_plst *plst);
+
+/*
+ * NCURSES
+*/
+
+//ncurses_button.c
+
+void				draw_play(t_corewar *cor);
+void				draw_play_1(t_corewar *cor, int x, int x1, int y1);
+void				draw_play_2(t_corewar *cor, int x, int x1, int y);
+void				draw_pause(t_corewar *cor);
+
+//ncurses_draw.c
+
+void				draw_arena(t_corewar *cor);
+void				draw_window(t_corewar *cor);
+void				draw_menu(t_corewar *cor);
+void				update_window(t_corewar *cor);
+
+//ncurses_events.c
+
+void				ncurse_events(t_corewar *cor);
+void				manage_events(t_corewar *cor, int keycode);
+void				pause_game(t_corewar *cor);
+void				manage_pause(t_corewar *cor, int keycode);
+
+//ncurses_fill_border.c
+
+void				fill_border_main(t_corewar *cor);
+void				fill_border_menu(t_corewar *cor);
+void				fill_border_cmd(t_corewar *cor);
+
+//ncurses_init.c
+
+void				init_ncurse(t_corewar *cor);
+void				init_colors(void);
+
+//ncurses_menu.c
+
+void				draw_player_info(t_corewar *cor);
+void				draw_infos(t_corewar *cor);
+void				draw_banner(t_corewar *cor);
+void				draw_command(t_corewar *cor);
+
+//ncurses_utility.c
+
+void				highlight_process_pc(t_corewar *cor);
+void				highlight_it(t_corewar *cor, unsigned int i, int id);
+void				set_attributes(t_corewar *cor, unsigned char color, int i);
+void				unset_attributes(t_corewar *cor, unsigned char color, int i);
+int					re_adjust_id(int id);
+
+//ncurses_close.c
+
+void				wait_and_close(int wait);
+void				ncurses_show_winner(t_corewar *cor);
+void				close_ncurses(t_corewar *cor);
+void				end_visu(t_corewar *cor);
+
 
 /*
  * COREWAR.c
 */
 
-void				init_datas(t_corewar *cor);
-
-
-/*
- * GET_TYPE.c
-*/
-
-int					register_range(int value, int min, int max);
-int 				is_register(int octet);
-int 				is_indirect(int octet);
-int 				is_direct(int octet);
 
 /*
  * PARSING.c
@@ -150,7 +150,9 @@ void				attribute_order(t_corewar *cor);
 void				reorder_process(t_corewar *cor);
 
 
-//swap_endian doublons, deja present dans asm
+/*
+ * swap_endian doublons, deja present dans asm
+*/
 uint32_t			swap_endian(uint32_t val);
 
 /*
@@ -168,57 +170,72 @@ void				stock_process_code(t_corewar *cor, int i, int fd);
  * GAME.c
 */
 
-void				create_arena(t_corewar *cor);
-
 void				play(t_corewar *cor);
-int					process_alive(t_corewar *cor);
-void				exec_process(t_corewar *cor);
-
-void				execute_code(t_corewar *cor, int i);
-
 
 /*
  * CYCLE.C
 */
 
 void				update_cycles(t_corewar *cor);
-void				reset_process_nb_live(t_corewar *cor);
-void				check_process_to_kill(t_corewar *cor);
 
 
 /*
  * UTILITY
 */
-
+t_plst				*ft_plst_init(t_corewar *cor);
 void				update_pc(t_corewar *cor, int i);
+void				pc_modulo2(t_plst *plst, int i);
+int					pc_modulo(int pc);
+int					get_reg_index(t_corewar *cor, t_plst *plst);
+int					*check_opcode(t_corewar *cor, t_plst *plst);
+int					check_registre_index(int reg_1, int reg_2, int reg_3);
+int					ft_check_reg_index(t_arg arg);
+int					get_reg_value(t_corewar *cor, t_plst *plst);
+int					get_small_dir(t_corewar *cor, t_plst *plst);
+int					get_ind(t_corewar *cor, t_plst *plst);
+void				print_value(t_corewar *cor, int value, int addr, t_plst *plst);
 
+int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
+void				ft_player_init(t_corewar *cor);
+int					ft_get_restricted_addr(int value);
+void				init_plst(t_corewar *cor);
 
 /*						INSTRUCTIONS						*/
 
+void				inst_add(t_corewar *cor, t_plst *plst);
+void				inst_aff(t_corewar *cor, t_plst *plst);
+void				inst_and(t_corewar *cor, t_plst *plst);
+void				inst_fork(t_corewar *cor, t_plst *plst);
+void				inst_ld(t_corewar *cor, t_plst *plst);
+void				inst_ldi(t_corewar *cor, t_plst *plst);
+void				inst_lfork(t_corewar *cor, t_plst *plst);
+
+void				inst_live(t_corewar *cor, t_plst *plst);
+int					ft_get_player_index(t_corewar *cor, int i);
+
+void				inst_lld(t_corewar *cor, t_plst *plst);
+void				inst_lldi(t_corewar *cor, t_plst *plst);
+void				inst_or(t_corewar *cor, t_plst *plst);
+void				inst_st(t_corewar *cor, t_plst *plst);
+void				inst_sti(t_corewar *cor, t_plst *plst);
+void				inst_sub(t_corewar *cor, t_plst *plst);
+void				inst_xor(t_corewar *cor, t_plst *plst);
+void				inst_zjmp(t_corewar *cor, t_plst *plst);
+
+/*
+ * ARG MANIPULATORS
+*/
+
+void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict);
+void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
+void	ft_get_args_size(t_arg *arg);
+void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
 
 
-void				inst_add(t_corewar *cor, int i);
-void				inst_aff(t_corewar *cor, int i);
-void				inst_and(t_corewar *cor, int i);
-void				inst_fork(t_corewar *cor, int i);
-void				inst_ld(t_corewar *cor, int i);
-void				inst_ldi(t_corewar *cor, int i);
-void				inst_lfork(t_corewar *cor, int i);
-void				inst_live(t_corewar *cor, int i);
-void				inst_lld(t_corewar *cor, int i);
-void				inst_lldi(t_corewar *cor, int i);
-void				inst_or(t_corewar *cor, int i);
-void				inst_st(t_corewar *cor, int i);
-void				inst_sti(t_corewar *cor, int i);
-void				inst_sub(t_corewar *cor, int i);
-void				inst_xor(t_corewar *cor, int i);
-void				inst_zjmp(t_corewar *cor, int i);
 
 
-
-
-
-
+void			corewar_end(t_corewar *cor);
+void			introducing_contestants(t_corewar *cor);
 
 
 

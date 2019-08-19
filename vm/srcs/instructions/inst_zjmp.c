@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 // zjmp | Jump if zero | 0x09
 // Usage : zjmp S(D2) Durée : 20
@@ -9,16 +9,17 @@
 // l'instruction suivante. Rien ne precise si l'instruction consomme la
 // totalité de ces cycles dans ce cas, a vous d'en decider
 
-void	inst_zjmp(t_corewar *cor, int i)
+void	inst_zjmp(t_corewar *cor, t_plst *plst)
 {
-	// (void)cor;
-	ft_printf("process[%d] : ZJMP\n", i);
-	int pc;
+	t_arg	arg;
 
-	if (cor->process[i].carry == 1)
-	{
-		pc = (cor->process[i].pc + 2) % MEM_SIZE;
-		//PC = ( PC + ( param % IDXMOD ) ) % MEMSIZE
-		cor->process[i].pc = pc;
-	}
+	ft_arg_init(&arg, 1, HALF, FALSE);
+	arg.type[0] = DIR_CODE;
+	arg.size[0] = 2;
+	ft_get_args(cor, plst, &arg);
+	if (plst->p.carry == 1)
+		//plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
+		plst->p.pc = pc_modulo(plst->p.pc - 3 + arg.value[0]);
+	else
+		plst->p.pc %= MEM_SIZE;
 }

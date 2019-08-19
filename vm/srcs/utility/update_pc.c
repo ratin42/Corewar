@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	update_pc(t_corewar *cor, int i)
 {

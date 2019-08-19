@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	dump_option(t_corewar *cor, char **av, int *i)
 {

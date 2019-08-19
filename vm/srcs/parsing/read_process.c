@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 void	read_process(char *name, t_corewar *cor, int i)
 {
@@ -23,14 +23,12 @@ void	read_process(char *name, t_corewar *cor, int i)
 		cor->process[i].order = -1;
 }
 
-
 void	stock_process_code(t_corewar *cor, int i, int fd)
 {
 	ft_bzero((unsigned char *)cor->process[i].code, cor->process[i].size);
 	if ((read(fd, cor->process[i].code, cor->process[i].size) < 0))
 			corewar_quit("Read error");
 }
-
 
 void	stock_process_size(t_corewar *cor, t_header *header, char *name, int i)
 {
@@ -84,8 +82,3 @@ void	stock_process_magic(t_corewar *cor, t_header *header, char *name, int i)
 	}
 	cor->process[i].magic = magic;
 }
-
-
-
-
-

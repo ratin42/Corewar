@@ -1,4 +1,4 @@
-#include "../../includes/vm.h"
+#include "vm.h"
 
 int		parse_arguments(int ac, char **av, t_corewar *cor)
 {
@@ -7,12 +7,16 @@ int		parse_arguments(int ac, char **av, t_corewar *cor)
 	i = 0;
 	while (++i < ac)
 	{
-		if (!ft_strcmp(av[i], "-d"))
+		if (!ft_strcmp(av[i], "-dump"))
 			dump_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-v"))
 			verbosity_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-n"))
 			order_option(cor, av, &i);
+		else if (!ft_strcmp(av[i], "-visu"))
+			cor->visu = 1;
+		else if (!ft_strcmp(av[i], "--stealth"))
+			cor->stealth = 1;
 		else if (cor_file(av[i]) == 1)
 			get_champion(cor, av, i);
 		else

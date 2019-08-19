@@ -1,93 +1,4 @@
-#include "../../includes/vm.h"
-
-void	create_arena(t_corewar *cor)
-{
-	int i;
-
-	i = -1;
-	ft_bzero(cor->arena, MEM_SIZE);
-	while (++i < cor->nb_players)
-	{
-		ft_memcpy((void*)&cor->arena + ((MEM_SIZE / cor->nb_players) * i),
-				cor->process[i].code, cor->process[i].size);
-		cor->process[i].alive = 1;
-		cor->process[i].pc = (MEM_SIZE / cor->nb_players) * i;
-		//ft_printf("process[%d] pc = %d\n", i, cor->process[i].pc);
-	}
-}
-
-void    play(t_corewar *cor)
-{
-	cor->ctd = CYCLE_TO_DIE;
-	while (process_alive(cor) > 0)
-	{
-		cor->cycle++;
-		cor->total++;
-		if (cor->verbosity)
-			ft_printf("It is now cycle %d\n", cor->total);
-		if (cor->total == cor->n_dump)
-		{
-			print_arena_state(cor);
-			break;
-		}
-		exec_process(cor);
-		if (cor->cycle > CYCLE_TO_DIE)
-			update_cycles(cor);
-	}
-	ft_printf("Contestant %d, %s, has won !\n", cor->winner_id,
-			cor->process[cor->winner_id].name);
-}
-
-int		process_alive(t_corewar *cor)
-{
-	int		i;
-	int		nb;
-
-	nb = 0;
-	i = -1;
-	while (++i < cor->nb_players)
-	{
-		if (cor->process[i].alive == 1)
-			nb++;	
-	}
-	return (nb);
-}
-
-void    exec_process(t_corewar *cor)
-{
-	int i;
-
-	i = cor->nb_players;
-	while (--i >= 0)
-	{
-		if (cor->process[i].alive == 1)
-		{
-			++cor->process[i].no_live;
-			execute_code(cor, i);
-		}
-	}
-}
-
-void (*g_func[17])(t_corewar *cor, int i) =
-{
-	inst_live,
-	inst_ld,
-	inst_st,
-	inst_add,
-	inst_sub,
-	inst_and,
-	inst_or,
-	inst_xor,
-	inst_zjmp,
-	inst_ldi,
-	inst_sti,
-	inst_fork,
-	inst_lld,
-	inst_lldi,
-	inst_lfork,
-	inst_aff
-};
-
+#include "vm.h"
 
 t_op	g_op_tab[17] =
 {
@@ -116,42 +27,117 @@ t_op	g_op_tab[17] =
 	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0}
 };
 
-
-void	execute_code(t_corewar *cor, int i)
+void (*g_func[17])(t_corewar *cor, t_plst *plst) =
 {
-	unsigned char	type;
-	int				index;
+	inst_live,
+	inst_ld,
+	inst_st,
+	inst_add,
+	inst_sub,
+	inst_and,
+	inst_or,
+	inst_xor,
+	inst_zjmp,
+	inst_ldi,
+	inst_sti,
+	inst_fork,
+	inst_lld,
+	inst_lldi,
+	inst_lfork,
+	inst_aff
+};
 
-	//Gerer ici aussi la dure/le freeze des processus
-
-	//adjust_pc_overflow(cor, i);
-	index = -1;
-
-	type = cor->arena[cor->process[i].pc];
-	while (++index < 17)
+static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
+{
+	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 1)
 	{
-		if (g_op_tab[index].opcode == type)
-		{
-			g_func[index](cor, i);
-		}
+		// if (DEBUG)
+		// 	ft_printf("pc exec = %u\n", plst->p.pc);
+		plst->p.opcode = cor->arena[plst->p.pc];
+		plst->p.og_pc = plst->p.pc;
+		// if (DEBUG)
+		// 	ft_printf("opcode = %d\n", plst->p.opcode);
+		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle - 1; //wait
+		// // verifier s'il faut vraiment le -1 ou pas.
+		// if (DEBUG)
+		// 	ft_printf("wait = %d\n", plst->p.wait);
 	}
-
+	else
+		plst->p.opcode = 0;
+	plst->p.pc = pc_modulo(plst->p.pc + 1);
 }
 
+static inline void	execute_code(t_corewar *cor, t_plst *plst)
+{
+	//if (DEBUG)
+	//	ft_printf("opcode exec = %d\n", plst->p.opcode);
+	
+	g_func[plst->p.opcode - 1](cor, plst);
+	plst->p.opcode = 0;
+}
 
+static inline void	exec_process(t_corewar *cor)
+{
+	t_plst	*plst;
 
+	plst = cor->plst;
+	while (plst != NULL)
+	{
+		plst->p.no_live++;
+		if (plst->p.opcode == 0)
+			ft_get_instru(cor, plst);
+		else
+		{
+			plst->p.wait--;
+			if (plst->p.wait == 0)
+				execute_code(cor, plst);
+		}
+		plst = plst->next;
+	}
+}
 
+void				play(t_corewar *cor)
+{
+	if (cor->visu)
+		draw_window(cor);
+	cor->last_live_id = cor->plst->p.id;
+	while (cor->plst != NULL)
+	{
+		if (cor->visu)
+			update_window(cor);
+		cor->cycle++;
+		cor->total_cycle++;
+		if (cor->verbosity && !cor->visu)
+			ft_printf("It is now cycle %d\n", cor->total_cycle);
+		exec_process(cor);
+		if (cor->total_cycle == cor->n_dump)
+		{
+			print_arena_state(cor);
+			cor->hide_winner = 1;
+			return;
+		}
+		if (cor->cycle > cor->ctd)
+			update_cycles(cor);
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+void			introducing_contestants(t_corewar *cor)
+{
+	int		i;
+	
+	i = -1;
+	if (!cor->visu)
+	{
+		ft_printf("Introducing contestants...\n");
+		while (++i < cor->nb_players)
+		{
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+				i + 1, cor->process[i].size, cor->process[i].name,
+					cor->process[i].comment);
+		}
+	}
+	if (!(cor->plst = ft_plst_init(cor)))
+		corewar_quit("Malloc error");
+	cor->ctd = CYCLE_TO_DIE;
+	ft_player_init(cor);
+}
