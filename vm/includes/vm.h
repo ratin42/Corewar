@@ -19,6 +19,9 @@
 # define FAIL			-1
 # define FULL			1
 # define HALF			2
+# define FRST			1
+# define SCND			1 << 1
+# define THRD			1 << 2
 
 # define BOX_COL_1		COLS / 2 + 15
 # define BOX_COL_2		COLS / 5
@@ -57,6 +60,7 @@ void				corewar_quit(char *str);
 void				ft_print_process(t_process p);
 void				ft_print_debug(t_plst *plst, char *op_name, int end);
 void				ft_print_plst(t_plst *plst);
+void	ft_print_args(t_arg arg);
 
 /*
  * NCURSES

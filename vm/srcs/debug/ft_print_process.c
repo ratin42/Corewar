@@ -12,6 +12,20 @@ void	ft_print_debug(t_plst *plst, char *op_name, int end)
 			printf("##################  END  ##################\n");
 	}
 }
+
+void	ft_print_args(t_arg arg)
+{
+	int	i;
+
+	printf("Arg number: %d\n", arg.nb_arg);
+	i = 0;
+	while (i < arg.nb_arg)
+	{
+		printf("Arg %d: size: [%u], value: [%d]\n", i, arg.size[i], arg.value[i]);
+		i++;
+	}
+}
+
 void	ft_print_process(t_process p)
 {
 	int		i;

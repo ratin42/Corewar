@@ -37,6 +37,25 @@ void	ft_get_args_size(t_arg *arg)
 	}
 }
 
+static inline void	ft_get_ind(t_corewar *cor, t_plst *plst,
+t_arg *arg, int i)
+{
+	unsigned int	j;
+	int				pos;
+
+	j = 0;
+	pos = arg->addr_restrict == 1
+			? ft_get_restricted_addr(arg->value[i])
+			: pc_modulo(arg->value[i]);
+	arg->value[i] = 0;
+	while (j < 4)
+	{
+		arg->value[i] = (arg->value[i] << 8);
+		arg->value[i] += cor->arena[pc_modulo(plst->p.og_pc + pos + j)];
+		j++;
+	}
+}
+
 static inline void	ft_get_arg(t_corewar *cor, t_plst *plst,
 t_arg *arg, int i)
 {
@@ -52,12 +71,7 @@ t_arg *arg, int i)
 		j++;
 	}
 	if (arg->type[i] == IND_CODE)
-	{
-		arg->value[i] = cor->arena[pc_modulo(plst->p.og_pc
-			+ (arg->addr_restrict == 1
-			? ft_get_restricted_addr(arg->value[i])
-			: arg->value[i]))];
-	}
+		ft_get_ind(cor, plst, arg, i);
 }
 
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg)

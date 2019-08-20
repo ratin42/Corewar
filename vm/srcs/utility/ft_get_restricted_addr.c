@@ -2,9 +2,8 @@
 
 int		ft_get_restricted_addr(int value)
 {
-	value %= MEM_SIZE;
-	if (value >= MEM_SIZE - IDX_MOD)
-		return (value);
+	if (value >= 32768 && value % MEM_SIZE >= MEM_SIZE - IDX_MOD)
+		return (value %= MEM_SIZE);
 	else
 		return (value % IDX_MOD);
 }
