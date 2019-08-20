@@ -14,13 +14,13 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "ZJMP", 0);
-	ft_arg_init(&arg, 1, HALF, FALSE);
+	ft_arg_init(&arg, 1, HALF, TRUE);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
 	if (plst->p.carry == 1)
-		//plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
-		plst->p.pc = pc_modulo(plst->p.og_pc + arg.value[0]);
+		plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
+		//plst->p.pc = pc_modulo(plst->p.og_pc + arg.value[0]);
 	else
 		plst->p.pc %= MEM_SIZE;
 	ft_print_debug(plst, "ZJMP", 1);
