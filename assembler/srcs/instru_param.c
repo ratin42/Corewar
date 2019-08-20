@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 22:54:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 22:54:57 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 23:16:45 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-char		*get_result(t_asm *asmbly, t_param *param, t_instru **instru
+char			*get_result(t_asm *asmbly, t_param *param, t_instru **instru
 	, char **result)
 {
 	if (param->type == 1)
@@ -38,7 +38,7 @@ char		*get_result(t_asm *asmbly, t_param *param, t_instru **instru
 	return (*result);
 }
 
-char		*convert_params(t_asm *asmbly, t_instru **instru)
+char			*convert_params(t_asm *asmbly, t_instru **instru)
 {
 	t_param		*param;
 	char		*result;

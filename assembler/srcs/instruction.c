@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/06 18:23:04 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 22:59:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_instru		*get_last_instru(t_asm *asmbly)
 	t_instru	*last;
 
 	last = asmbly->instru;
-	while(last->next)
+	while (last->next)
 		last = last->next;
 	return (last);
 }

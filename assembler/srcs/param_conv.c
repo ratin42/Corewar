@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:22:17 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 23:09:29 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char			*fill_direct(t_asm *asmbly, int size, char **conv)
 	free(*conv);
 	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
-			quit_prog(asmbly);
+		quit_prog(asmbly);
 	while (size - i)
 	{
 		(*conv)[i] = '0';
@@ -67,7 +67,7 @@ char			*reduce_conv(t_asm *asmbly, int size, char **conv)
 	free(*conv);
 	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
-			quit_prog(asmbly);
+		quit_prog(asmbly);
 	(*conv)[new_size + 1] = '\0';
 	while (new_size >= 0)
 	{
@@ -83,6 +83,7 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
 	char		*conv;
+	char		*cpy;
 	int			size;
 	int			op_index;
 
@@ -94,7 +95,6 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 		size = 8;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(asmbly, size));
-	char *cpy;
 	if (!(cpy = ft_strdup(&param->param[1])))
 		quit_prog(asmbly);
 	conv = ft_ul_convert_base(cpy, "0123456789abcdef");

@@ -6,28 +6,25 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/13 23:06:34 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 23:04:32 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int         atoi_hex(char *str, int fd)
+int					atoi_hex(char *str, int fd)
 {
-	unsigned char res;
-	int     i;
-	int     y;
+	unsigned char	res;
+	int				i;
+	int				y;
 
-	i = 0;
+	i = -1;
 	y = -1;
 	res = 0;
-	while (str[i])
+	while (str[++i])
 	{
 		if (str[i] == ';')
-		{
-			i++;
 			continue ;
-		}
 		res = ((res >> 4) | (res << 4));
 		if (str[i] >= 48 && str[i] <= 57)
 			res = res + (str[i] - 48);
@@ -39,18 +36,16 @@ int         atoi_hex(char *str, int fd)
 			res = 0;
 		}
 		y++;
-		i++;
 	}
 	return (0);
 }
 
-void			write_bytecode(t_asm *asmbly, int fd)
+void				write_bytecode(t_asm *asmbly, int fd)
 {
-	t_instru	*instru;
-	t_header	*header;
+	t_instru		*instru;
+	t_header		*header;
 
 	instru = asmbly->instru;
-	
 	header = ft_memalloc(sizeof(t_header));
 	header->magic = swap_endian(COREWAR_EXEC_MAGIC);
 	header->prog_size = swap_endian(asmbly->size);
@@ -66,10 +61,10 @@ void			write_bytecode(t_asm *asmbly, int fd)
 	free(header);
 }
 
-void			write_file(t_asm *asmbly, char *file)
+void				write_file(t_asm *asmbly, char *file)
 {
-	int			fd;
-	char		*new_file;
+	int				fd;
+	char			*new_file;
 
 	new_file = ft_strndup(file, ft_strlen(file) - 2);
 	new_file = ft_strjoin_free(new_file, ".cor", 1);

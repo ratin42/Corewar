@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 20:20:02 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 22:40:07 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/20 23:22:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ long long int		ft_pow(int x, unsigned int y)
 
 int					binary_to_decimal(long long n)
 {
-    int				decimalNumber;
+	int				decimal_number;
 	int				i;
 	int				remain;
 
-	decimalNumber = 0;
+	decimal_number = 0;
 	i = 0;
-    while (n != 0)
-    {
-        remain = n % 10;
-        n = n / 10;
-        decimalNumber = decimalNumber + (remain * ft_pow(2, i));
-        ++i;
-    }
-    return (decimalNumber);
+	while (n != 0)
+	{
+		remain = n % 10;
+		n = n / 10;
+		decimal_number = decimal_number + (remain * ft_pow(2, i));
+		++i;
+	}
+	return (decimal_number);
 }
 
 char				*fill_bincode(t_asm *asmbly, char *bin_code)

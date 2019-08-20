@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:35:50 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 23:11:18 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				get_comma(char *str, int i)
 	int			y;
 
 	y = 0;
-	while (str[i + y] && str[i + y] != ',' &&  str[i + y] != 32
+	while (str[i + y] && str[i + y] != ',' && str[i + y] != 32
 		&& (str[i + y] < 9 || str[i + y] > 13))
 	{
 		if (str[i + y] == COMMENT_CHAR)
@@ -87,7 +87,6 @@ void			fill_params(t_asm *asmbly, char *str, int line)
 		add_param(asmbly, instru, line, param);
 		free(param);
 		i += y;
-		
 		if (str[i] == '\0')
 			break ;
 		i++;

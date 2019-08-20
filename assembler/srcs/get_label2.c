@@ -6,18 +6,17 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 00:21:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 14:06:19 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/20 23:20:14 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-
-void		write_label(t_instru *instru, char *conv)
+void			write_label(t_instru *instru, char *conv)
 {
 	extern t_op	g_op_tab[17];
-	int		i;
-	int		y;
+	int			i;
+	int			y;
 
 	i = 0;
 	y = 0;
@@ -30,7 +29,7 @@ void		write_label(t_instru *instru, char *conv)
 	}
 }
 
-void		error_no_label(t_asm *asmbly, t_instru *instru, char *label)
+void			error_no_label(t_asm *asmbly, t_instru *instru, char *label)
 {
 	ft_putstr_fd("No label ", 2);
 	ft_putstr_fd(label, 2);
@@ -42,14 +41,15 @@ void		error_no_label(t_asm *asmbly, t_instru *instru, char *label)
 	quit_prog(asmbly);
 }
 
-int			reverse_label(t_asm *asmbly, t_instru *instru, char *label)
+int				reverse_label(t_asm *asmbly, t_instru *instru, char *label)
 {
 	t_instru	*count;
 	int			distance;
-	int			max_dist = 65535;
+	int			max_dist;
 
-	count = asmbly->instru;
 	distance = 0;
+	max_dist = 65535;
+	count = asmbly->instru;
 	instru->labelsrc = 1;
 	while (count)
 	{
