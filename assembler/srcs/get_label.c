@@ -19,7 +19,7 @@ int		compare_label(char *label1, char *label2)
 	return (0);
 }
 
-void	fill_label(t_asm *asmbly, t_instru *instru, int distance)
+void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
 {
 	extern t_op	g_op_tab[17];
 	int			i;
@@ -38,8 +38,10 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance)
 		size++;
 	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
 		quit_prog(asmbly);
-	if (g_op_tab[instru->nbr_opcode - 1].direct_size == 0)
+
+	if (g_op_tab[instru->nbr_opcode - 1].direct_size == 0 && reverse == 1)
 		conv = ft_strjoin_free("ffff", conv, 2);
+
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(asmbly, size, &conv);
@@ -54,9 +56,11 @@ void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
 {
 	t_instru	*count;
 	int			distance;
+	int			reverse;
 
 	count = instru;
 	distance = 0;
+	reverse = 0;
 	while (count)
 	{
 		if (count->label != NULL)
@@ -67,11 +71,14 @@ void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
 		distance += count->byte_size;
 		count = count->next;
 		if (count == NULL)
+		{
 			distance = reverse_label(asmbly, instru, label);
+			reverse = 1;
+		}
 	}
 	if (count != NULL && count->added_label == 1)
 		distance += count->byte_size;
-	fill_label(asmbly, instru, distance);
+	fill_label(asmbly, instru, distance, reverse);
 }
 
 void	get_label_value(t_asm *asmbly, t_instru *instru)

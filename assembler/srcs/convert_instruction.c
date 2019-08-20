@@ -116,5 +116,4 @@ void			convert_instruction(t_asm *asmbly)
 		replace_label(asmbly);
 		i++;
 	}
-	print_instruction(asmbly);
 }
