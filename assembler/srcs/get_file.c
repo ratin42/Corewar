@@ -12,13 +12,13 @@
 
 #include "corewar.h"
 
-void	parse_error(t_asm *asmbly)
+void		parse_error(t_asm *asmbly)
 {
 	ft_putstr_fd("error no comment or no name found\n", 2);
 	quit_prog(asmbly);
 }
 
-void	parse(t_asm *asmbly, char *str, int turn)
+void		parse(t_asm *asmbly, char *str, int turn)
 {
 	if (is_empty(str) == 1)
 		return ;

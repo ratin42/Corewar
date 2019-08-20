@@ -37,11 +37,6 @@ void		print_writing(char *str)
 	ft_putstr("cor\n");
 }
 
-/* void end (void) __attribute__((destructor))
-{
-	while(1);
-} */
-
 int			main(int ac, char **av)
 {
 	t_asm	asmbly;
@@ -56,12 +51,10 @@ int			main(int ac, char **av)
 	dlt_lst_empty_lbl(&asmbly);
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
+	printf("il y a %d instru\n", asmbly.size);
 	write_file(&asmbly, av[ac - 1]);
 	print_writing(av[ac -1]);
-	//print_instruction(&asmbly);
+	print_instruction(&asmbly);
 	free_prog(&asmbly);
 	return (0);
 }
-
-//TODO
-//taille du label du name et comment

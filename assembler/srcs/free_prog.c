@@ -47,7 +47,7 @@ void			free_instru(t_asm *asmbly)
 	asmbly->instru = NULL;
 }
 
-void	free_prog(t_asm *asmbly)
+void			free_prog(t_asm *asmbly)
 {
 	free(asmbly->name);
 	free(asmbly->comment);

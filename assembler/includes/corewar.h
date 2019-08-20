@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/15 21:46:42 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/20 22:55:14 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int			get_opcode(t_asm *asbly, char *str, int line);
 int			is_register(char *param);
 int			find_op_index(char *opcode);
 
-
 /*
 ** conversion
 */
@@ -74,6 +73,7 @@ void		convert_instruction(t_asm *asmbly);
 void		write_label(t_instru *instru, char *conv);
 int			reverse_label(t_asm *asmbly, t_instru *instru, char *label);
 int			compare_label(char *label1, char *label2);
+char		*convert_params(t_asm *asmbly, t_instru **instru);
 
 /*
 ** write file

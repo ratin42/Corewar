@@ -12,6 +12,10 @@
 
 #include "corewar.h"
 
+/*
+** Get nbr of instruction for variable asmbly->size;
+*/
+
 void	count_size(t_asm *asmbly)
 {
 	t_instru	*instru;
@@ -24,18 +28,14 @@ void	count_size(t_asm *asmbly)
 	while (instru)
 	{
 		y = -1;
-		i = 0;
-		while (instru->conv_par != NULL && instru->conv_par[i])
+		i = -1;
+		while (instru->conv_par != NULL && instru->conv_par[++i])
 		{
 			if (instru->conv_par[i] == ';')
-			{
-				i++;
 				continue ;
-			}
 			if (y % 2 == 0)
 				count++;
 			y++;
-			i++;
 		}
 		instru = instru->next;
 	}
