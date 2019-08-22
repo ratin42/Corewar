@@ -29,6 +29,7 @@ void	inst_xor(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
+	ft_get_reg_value(&arg, plst, FRST | SCND);
 	plst->p.reg[arg.value[2]] = arg.value[0] ^ arg.value[1];
 	plst->p.carry = !(arg.value[0] ^ arg.value[1]);
 	ft_print_debug(plst, "XOR", 1);

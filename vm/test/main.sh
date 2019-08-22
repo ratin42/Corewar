@@ -1,8 +1,12 @@
 #!/bin/bash
 
 make -C .. -s
-./instruction/03_test_st.sh
-./instruction/04_test_add.sh
-./instruction/05_test_sub.sh
-./instruction/06_test_and.sh
-./instruction/11_test_sti.sh
+./instruction/02_ld_test.sh
+./instruction/03_st_test.sh
+./instruction/04_add_test.sh
+./instruction/05_sub_test.sh
+./instruction/06_and_test.sh
+./instruction/07_or_test.sh
+./instruction/08_xor_test.sh
+./instruction/10_ldi_test.sh
+./instruction/11_sti_test.sh

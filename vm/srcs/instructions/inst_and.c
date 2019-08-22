@@ -7,21 +7,6 @@
 // stock le resultat dans le troisieme paramametre. Si la valeur resultante
 // est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
 
-static inline void	ft_get_reg_value(t_arg *arg, t_plst *plst, int pos)
-{
-	int		i;
-	int		flag;
-
-	i = 0;
-	flag = 1;
-	while (i < arg->nb_arg)
-	{
-		if (pos & flag && arg->type[i] == REG_CODE)
-			arg->value[i] = plst->p.reg[arg->value[i]];
-		flag = flag << 1;
-		i++;
-	}
-} 
 void	inst_and(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
