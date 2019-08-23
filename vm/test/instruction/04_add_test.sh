@@ -16,4 +16,5 @@ echo "### TESTING ADD ###"
 ./../corezaz -d 400 champ/04_add_champ.cor > result/04_add_zaz.txt
 diff result/04_add_result.txt result/04_add_zaz.txt
 
+result=$?
 source $(dirname $0)/result.sh

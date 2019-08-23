@@ -1,10 +1,9 @@
 #!/bin/bash
 
-echo -n "Result: "
-if [[ $? ]]
+if [[ $result -eq 0 ]]
 then
-	echo -e "[${GREEN}OK${NC}]"
+	echo -e "Result: [${GREEN}OK${NC}]"
 else
-	echo -e "[${RED}ERROR${NC}]"
+	echo -e "Result: [${RED}ERROR${NC}]"
 fi
 echo -e -n '\n'

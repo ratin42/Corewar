@@ -16,4 +16,5 @@ echo "### TESTING STI ###"
 ./../corezaz -d ${n_dump} champ/11_sti_champ.cor > result/11_sti_zaz.txt
 diff result/11_sti_result.txt result/11_sti_zaz.txt
 
+result=$?
 source $(dirname $0)/result.sh
