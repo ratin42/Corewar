@@ -16,4 +16,5 @@ echo "### TESTING ST ###"
 ./../corezaz -d 400 champ/03_st_champ.cor > result/03_st_zaz.txt
 diff result/03_st_result.txt result/03_st_zaz.txt
 
+result=$?
 source $(dirname $0)/result.sh

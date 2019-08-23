@@ -66,7 +66,7 @@ OBJ = $(SRC:.c=.o)
 all: libft $(NAME)
 
 libft:
-	@Make -C $(LIBFT)
+	@make -C $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
@@ -75,8 +75,6 @@ $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 %.o: %.c $(INC)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
-
-
 
 clean:
 	@make -C $(LIBFT) clean

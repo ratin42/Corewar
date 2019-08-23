@@ -15,5 +15,6 @@ echo "### TESTING SUB ###"
 ./../corezaz -d 400 champ/05_sub_champ.cor > result/05_sub_zaz.txt
 diff result/05_sub_result.txt result/05_sub_zaz.txt
 
+result=$?
 source $(dirname $0)/result.sh
 
