@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 00:21:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 23:20:14 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/24 18:26:26 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,25 @@ void			error_no_label(t_asm *asmbly, t_instru *instru, char *label)
 	quit_prog(asmbly);
 }
 
+static int		get_distance(t_instru **count)
+{
+	int			distance;
+
+	distance = 0;
+	while ((*count) && (*count)->labelsrc == 0)
+	{
+		distance += (*count)->byte_size;
+		(*count) = (*count)->next;
+	}
+	return (distance);
+}
+
 int				reverse_label(t_asm *asmbly, t_instru *instru, char *label)
 {
 	t_instru	*count;
 	int			distance;
 	int			max_dist;
 
-	distance = 0;
 	max_dist = 65535;
 	count = asmbly->instru;
 	instru->labelsrc = 1;
@@ -62,11 +74,7 @@ int				reverse_label(t_asm *asmbly, t_instru *instru, char *label)
 	}
 	if (count == NULL)
 		error_no_label(asmbly, instru, label);
-	while (count && count->labelsrc == 0)
-	{
-		distance += count->byte_size;
-		count = count->next;
-	}
+	distance = get_distance(&count);
 	instru->labelsrc = 0;
 	distance = max_dist - distance + 1;
 	return (distance);

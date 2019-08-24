@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/23 10:04:42 by gly              ###   ########.fr       */
+/*   Updated: 2019/08/24 18:20:50 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,4 @@ void			convert_instruction(t_asm *asmbly)
 		replace_label(asmbly);
 		i++;
 	}
-	//print_instruction(asmbly);
 }
