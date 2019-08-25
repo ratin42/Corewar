@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:45:09 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 02:01:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void			p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
 	quit_prog(asmbly);
 }
 
+//void			check_para(int para_index,)
+
 int				check_type(t_asm *asmbly, t_instru *instru, char *str, int line)
 {
 	extern t_op	g_op_tab[17];
@@ -74,6 +76,7 @@ int				check_type(t_asm *asmbly, t_instru *instru, char *str, int line)
 	last = instru->param;
 	while (last)
 	{
+		check_para(para_index, i);
 		if (para_index == 1)
 			checker = g_op_tab[i].type_of_param.param1;
 		if (para_index == 2)

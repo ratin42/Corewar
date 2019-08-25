@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 00:21:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/24 18:26:26 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 01:50:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,20 @@ int				reverse_label(t_asm *asmbly, t_instru *instru, char *label)
 	instru->labelsrc = 0;
 	distance = max_dist - distance + 1;
 	return (distance);
+}
+
+void			replace_label(t_asm *asmbly)
+{
+	t_instru	*instru;
+
+	instru = asmbly->instru;
+	while (instru != NULL)
+	{
+		if (instru->opcode != NULL)
+		{
+			if (ft_strchr(instru->conv_par, 'L') != NULL)
+				get_label_value(asmbly, instru);
+		}
+		instru = instru->next;
+	}
 }

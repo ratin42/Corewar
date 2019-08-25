@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 22:55:14 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 01:49:12 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		write_label(t_instru *instru, char *conv);
 int			reverse_label(t_asm *asmbly, t_instru *instru, char *label);
 int			compare_label(char *label1, char *label2);
 char		*convert_params(t_asm *asmbly, t_instru **instru);
+void		get_label_value(t_asm *asmbly, t_instru *instru);
 
 /*
 ** write file

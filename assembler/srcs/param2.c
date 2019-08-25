@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/24 23:02:02 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 00:51:26 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static int		check_label(char *param)
 	if (param[0] != ':')
 		return (0);
 	if (param[i] == '\0')
-		return (0);
-	if (strmaxint(param))
 		return (0);
 	while (param[i])
 	{

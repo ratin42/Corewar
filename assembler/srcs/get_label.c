@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 23:13:44 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 01:48:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ int		compare_label(char *label1, char *label2)
 	if (ft_strcmp(label1, label2) == 0)
 		return (1);
 	return (0);
+}
+
+void	trim_conv(int size, t_asm *asmbly, char **conv)
+{
+	if (size > 0)
+		(*conv) = fill_direct(asmbly, size, conv);
+	else if (size < 0)
+		(*conv) = reduce_conv(asmbly, size, conv);
 }
 
 void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
@@ -41,13 +49,10 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
 	if (g_op_tab[instru->nbr_opcode - 1].direct_size == 0 && reverse == 1)
 		conv = ft_strjoin_free("ffff", conv, 2);
 	size -= ft_strlen(conv);
-	if (size > 0)
-		conv = fill_direct(asmbly, size, &conv);
-	else if (size < 0)
-		conv = reduce_conv(asmbly, size, &conv);
+	trim_conv(size, asmbly, &conv);
 	free(addr);
-	write_label(instru, conv);
 	free(conv);
+	write_label(instru, conv);
 }
 
 void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
@@ -104,20 +109,4 @@ void	get_label_value(t_asm *asmbly, t_instru *instru)
 		i++;
 	i++;
 	distance_label(asmbly, instru, &param->param[i]);
-}
-
-void	replace_label(t_asm *asmbly)
-{
-	t_instru	*instru;
-
-	instru = asmbly->instru;
-	while (instru != NULL)
-	{
-		if (instru->opcode != NULL)
-		{
-			if (ft_strchr(instru->conv_par, 'L') != NULL)
-				get_label_value(asmbly, instru);
-		}
-		instru = instru->next;
-	}
 }
