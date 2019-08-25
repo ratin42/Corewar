@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 01:49:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 00:33:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int			comment_presence(char *str);
 int			is_empty(char *str);
 int			check_label_presence(char *str);
 void		dlt_lst_empty_lbl(t_asm *asmbly);
+int			check_opc_presence(char *str);
+void		verify_label(t_asm *asmbly, char *label, int line);
 
 /*
 ** instruction

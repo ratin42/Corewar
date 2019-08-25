@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 08:24:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 23:11:36 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 23:58:45 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,43 @@ void		dlt_lst_empty_lbl(t_asm *asmbly)
 		instru = instru->next;
 	if (instru->opcode == NULL && instru->label != NULL)
 		move_label(asmbly, &instru);
+}
+
+void		verify_label(t_asm *asmbly, char *label, int line)
+{
+	int			i;
+
+	i = 0;
+	while (label[i])
+	{
+		if (!(ft_strchr(LABEL_CHARS, label[i])))
+		{
+			ft_putstr_fd("Lexical error for label at [", 2);
+			ft_putnbr(line);
+			ft_putchar(':');
+			ft_putnbr(i);
+			ft_putstr_fd("] ->", 2);
+			ft_putstr_fd(&label[i], 2);
+			ft_putchar('\n');
+			quit_prog(asmbly);
+		}
+		i++;
+	}
+}
+
+int			check_label_presence(char *str)
+{
+	int			i;
+
+	i = 0;
+	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+		i++;
+	while (str[i] && (ft_strchr(LABEL_CHARS, str[i]) != NULL
+		|| str[i] == LABEL_CHAR))
+	{
+		if (str[i] == LABEL_CHAR)
+			return (1);
+		i++;
+	}
+	return (0);
 }

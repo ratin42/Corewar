@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 15:08:52 by syzhang           #+#    #+#             */
-/*   Updated: 2019/07/29 23:27:38 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/08/26 00:32:43 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,19 @@ int				find_op_index(char *opcode)
 		i++;
 	}
 	return (i);
+}
+
+void			print_erro_param(t_asm *asmbly, char *str, int line, int error)
+{
+	if (error == 1)
+		ft_putstr_fd("Lexical error for param [", 2);
+	else if (error == 2)
+		ft_putstr_fd("bad number of parameter at [", 2);
+	ft_putnbr(line);
+	ft_putchar(':');
+	ft_putnbr(0);
+	ft_putstr_fd("] ->", 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar('\n');
+	quit_prog(asmbly);
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 22:58:40 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/25 23:46:29 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,21 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	check_opcode(asmbly, opcode, line);
 	instru->opcode = opcode;
 	return (i);
+}
+
+int				check_opc_presence(char *str)
+{
+	int			i;
+
+	i = 0;
+	while (str[i] && str[i] != ':')
+		i++;
+	while (str[++i])
+	{
+		if (str[i] == COMMENT_CHAR)
+			return (0);
+		if (str[i] && str[i] != 32 && (str[i] < 9 || str[i] > 13))
+			return (1);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 00:51:37 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 01:00:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,7 @@ int			main(int ac, char **av)
 	free_prog(&asmbly);
 	return (0);
 }
+
+//have to close the file
+//separator with nothing after
+//double_separatorchar.s

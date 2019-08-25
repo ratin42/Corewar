@@ -6,48 +6,18 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 00:32:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 00:02:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			verify_label(t_asm *asmbly, char *label, int line)
+int				treat_label(t_instru *instru, char **label, char *str)
 {
-	int			i;
-
-	i = 0;
-	while (label[i])
-	{
-		if (!(ft_strchr(LABEL_CHARS, label[i])))
-		{
-			ft_putstr_fd("Lexical error for label at [", 2);
-			ft_putnbr(line);
-			ft_putchar(':');
-			ft_putnbr(i);
-			ft_putstr_fd("] ->", 2);
-			ft_putstr_fd(&label[i], 2);
-			ft_putchar('\n');
-			quit_prog(asmbly);
-		}
-		i++;
-	}
-}
-
-int				check_opc_presence(char *str)
-{
-	int			i;
-
-	i = 0;
-	while (str[i] && str[i] != ':')
-		i++;
-	while (str[++i])
-	{
-		if (str[i] == COMMENT_CHAR)
-			return (0);
-		if (str[i] && str[i] != 32 && (str[i] < 9 || str[i] > 13))
-			return (1);
-	}
+	if (instru->label == NULL)
+		instru->label = *label;
+	if (check_opc_presence(str) == 0)
+		return (-1);
 	return (0);
 }
 
@@ -75,28 +45,7 @@ int				get_label(t_asm *asmbly, char *str, int line)
 			quit_prog(asmbly);
 	}
 	verify_label(asmbly, label, line);
-	if (instru->label == NULL)
-		instru->label = label;
-	if (check_opc_presence(str) == 0)
-		return (-1);
-	return (0);
-}
-
-int				check_label_presence(char *str)
-{
-	int			i;
-
-	i = 0;
-	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
-		i++;
-	while (str[i] && (ft_strchr(LABEL_CHARS, str[i]) != NULL
-		|| str[i] == LABEL_CHAR))
-	{
-		if (str[i] == LABEL_CHAR)
-			return (1);
-		i++;
-	}
-	return (0);
+	return (treat_label(instru, &label, str));
 }
 
 static int		last_instru_cmplt(t_asm *asmbly)
@@ -122,7 +71,6 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 	t_instru	*instru;
 	int			op_index;
 
-	indexer = 0;
 	if (last_instru_cmplt(asmbly) == 1)
 		add_instru(asmbly, line);
 	if (check_label_presence(str) == 1)
