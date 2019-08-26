@@ -19,8 +19,8 @@ void	inst_zjmp(t_corewar *cor, t_plst *plst)
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
 	if (plst->p.carry == 1)
-		//plst->p.pc = pc_modulo(plst->p.pc - 3 + ft_get_restricted_addr(arg.value[0]));
-		plst->p.pc = pc_modulo(plst->p.og_pc + ft_get_restricted_addr(arg.value[0]));
+		plst->p.pc = pc_modulo(plst->p.og_pc
+				+ ft_get_restricted_addr(arg.value[0]));
 	else
 		plst->p.pc %= MEM_SIZE;
 	ft_print_debug(plst, "ZJMP", 1);

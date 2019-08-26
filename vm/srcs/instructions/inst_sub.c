@@ -3,18 +3,14 @@
 
 void	inst_sub(t_corewar *cor, t_plst *plst)
 {
-	// if (DEBUG)
-	// 	ft_printf("SUB\n");
-	ft_print_debug(plst, "SUB", 0);
-	int reg_1;
-	int reg_2;
-	int reg_3;
+	int reg[3];
 	int	*type_param;
 
+	ft_print_debug(plst, "SUB", 0);
 	type_param = check_opcode(cor, plst);
-	reg_1 = get_reg_index(cor, plst);
-	reg_2 = get_reg_index(cor, plst);
-	reg_3 = get_reg_index(cor, plst);
+	reg[0] = get_reg_index(cor, plst);
+	reg[1] = get_reg_index(cor, plst);
+	reg[2] = get_reg_index(cor, plst);
 	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE || type_param[2]
 		!= REG_CODE)
 	{
@@ -23,12 +19,12 @@ void	inst_sub(t_corewar *cor, t_plst *plst)
 		free(type_param);
 		return ;
 	}
-	if (!check_registre_index(reg_1, reg_2, reg_3))
+	if (!check_registre_index(reg[0], reg[1], reg[2]))
 	{
 		free(type_param);
 		return ;
 	}
-	plst->p.reg[reg_3] = plst->p.reg[reg_1] - plst->p.reg[reg_2];
-	plst->p.carry = (plst->p.reg[reg_3] == 0);
+	plst->p.reg[reg[2]] = plst->p.reg[reg[0]] - plst->p.reg[reg[1]];
+	plst->p.carry = (plst->p.reg[reg[2]] == 0);
 	ft_print_debug(plst, "SUB", 1);
 }

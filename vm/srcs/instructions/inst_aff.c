@@ -23,19 +23,17 @@
 // permet de facilement faire des boucle pour display des strings, si tant
 // est qu'elles se terminent par un NUL char.
 
-
-//Le cheat sheet doit pas etre bon pour aff, ils parlent pas du carry dans le sujet;
+//Le cheat sheet doit pas etre bon pour aff,
+//ils parlent pas du carry dans le sujet;
+//Oui, ca ne modifie pas le carry.
 
 void	inst_aff(t_corewar *cor, t_plst *plst)
 {
 	int reg_i;
 
 	ft_print_debug(plst, "AFF", 0);
-	//saute l'OCP
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
-	//recupere l'index du registre
 	reg_i = get_reg_index(cor, plst);
-	//gere le cas d'erreur de l'index du registre
 	if (!(check_registre_index(reg_i, 1, 1)))
 		return ;
 	if (cor->verbosity && !cor->visu)

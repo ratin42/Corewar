@@ -3,21 +3,18 @@
 
 void	inst_add(t_corewar *cor, t_plst *plst)
 {
-	// if (DEBUG)
-	// 	ft_printf("ADD\n");
+	int		reg_1;
+	int		reg_2;
+	int		reg_3;
+	int		*type_param;
 
 	ft_print_debug(plst, "ADD", 0);
-	int reg_1;
-	int reg_2;
-	int reg_3;
-	int	*type_param;
-
 	type_param = check_opcode(cor, plst);
 	reg_1 = get_reg_index(cor, plst);
 	reg_2 = get_reg_index(cor, plst);
 	reg_3 = get_reg_index(cor, plst);
-	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE || type_param[2]
-		!= REG_CODE)
+	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE
+			|| type_param[2] != REG_CODE)
 	{
 		if (!cor->visu)
 			ft_printf("add error.\n");

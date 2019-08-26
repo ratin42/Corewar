@@ -22,16 +22,13 @@ void	inst_and(t_corewar *cor, t_plst *plst)
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
-	//ft_print_args(arg);
 	if (ft_check_reg_index(arg) == FAIL)
 	{
-
 		if (!cor->visu && cor->verbosity)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
 	ft_get_reg_value(&arg, plst, FRST | SCND);
-	//ft_print_args(arg);
 	plst->p.reg[arg.value[2]] = arg.value[0] & arg.value[1];
 	plst->p.carry = arg.value[0] & arg.value[1] ? 0 : 1;
 	ft_print_debug(plst, "AND", 1);
