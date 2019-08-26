@@ -9,10 +9,10 @@
 // l'addition des deux derniers paramametres. Si cette valeur est nulle,
 // alors le carry passe a l'etat un, sinon a l'ettat zero.
 
-int		get_param(t_corewar *cor, t_plst *plst, int type)
+int		get_param(t_corewar *cor, t_plst *plst, int type, int *flag_error)
 {
 	if (type == REG_CODE)
-		return (get_reg_value(cor, plst));
+		return (get_reg_value(cor, plst, &flag_error));
 	if (type == DIR_CODE)
 		return (get_small_dir(cor, plst));
 	if (type == IND_CODE)
@@ -55,12 +55,18 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	int	param2;
 	int	param3;
 	int	*type_param;
-
-	ft_print_debug(plst, "STI", 0);
+	int	flag_error;
+	
+	flag_error = 0;
 	type_param = check_opcode(cor, plst);
-	param1 = get_param(cor, plst, type_param[0]);
-	param2 = get_param(cor, plst, type_param[1]);
-	param3 = get_param(cor, plst, type_param[2]);
+	param1 = get_param(cor, plst, type_param[0], &flag_error);
+	param2 = get_param(cor, plst, type_param[1], &flag_error);
+	param3 = get_param(cor, plst, type_param[2], &flag_error);
+	if (flag_error == -1)
+	{
+		free(type_param);
+		return ;
+	}
 	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
 		!= DIR_CODE && type_param[2] != REG_CODE))
 	{

@@ -6,10 +6,10 @@
 // Transfert direct Registre > RAM / Registre. Charge le contenu du
 // registre passé en premier parametre dans le second parametre.
 
-static int	get_param(t_corewar *cor, t_plst *plst, int type)
+static int	get_param(t_corewar *cor, t_plst *plst, int type, int *flag_error)
 {
 	if (type == REG_CODE)
-		return (get_reg_value(cor, plst));
+		return (get_reg_value(cor, plst, &flag_error));
 	if (type == IND_CODE)
 		return (get_small_dir(cor, plst));
 	return (0);
@@ -28,12 +28,14 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 {
 	int		*instru_type;
 	int		param[2];
+	int		flag_error;
 	
+	flag_error = 0;
 	ft_print_debug(plst, "ST", 0);
 	instru_type = check_opcode(cor, plst);
-	param[0] = get_param(cor, plst, instru_type[0]);
+	param[0] = get_param(cor, plst, instru_type[0], &flag_error);
 	if (instru_type[1] == IND_CODE)
-		param[1] = get_param(cor, plst, instru_type[1]);
+		param[1] = get_param(cor, plst, instru_type[1], &flag_error);
 	else
 	{
 		param[1] = get_reg_index(cor, plst);
@@ -42,7 +44,11 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 			free(instru_type);
 			return ;
 		}
-
+	}
+	if (flag_error == -1)
+	{
+		free(instru_type);
+		return ;
 	}
 	if (instru_type[0] != REG_CODE || (instru_type[1] != REG_CODE
 		&& instru_type[1] != IND_CODE))

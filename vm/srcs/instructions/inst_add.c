@@ -16,7 +16,7 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE
 			|| type_param[2] != REG_CODE)
 	{
-		if (!cor->visu)
+		if (DEBUG)
 			ft_printf("add error.\n");
 		free(type_param);
 		return ;
