@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 16:24:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 17:33:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				nbr_prm(t_asm *asmbly, t_instru *instru, char *str, int line)
 void			p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
 {
 	ft_putstr_fd("bad parameter at line: ", 2);
-	ft_putnbr(line);
+	ft_putnbr_fd(line, 2);
 	ft_putstr_fd(" for instruction ", 2);
 	ft_putstr_fd(ins->opcode, 2);
 	ft_putstr_fd(".\nGot ", 2);
