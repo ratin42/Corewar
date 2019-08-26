@@ -28,7 +28,8 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	plst->p.reg[arg.value[1]] = arg.value[0];
-	plst->p.carry = !(arg.value[0]);
+	plst->p.reg[arg.value[1]] = arg.type[0] == DIR_CODE
+		? arg.value[0] : arg.value[0] >> 16;
+	plst->p.carry = !(plst->p.reg[arg.value[1]]);
 	ft_print_debug(plst, "LLD", 1);
 }

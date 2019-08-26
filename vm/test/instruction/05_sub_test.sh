@@ -10,11 +10,8 @@
 source $(dirname $0)/param.sh
 
 echo "### TESTING SUB ###"
-./../../asm champ/05_sub_champ.s
-./../corewar -dump ${n_dump} champ/05_sub_champ.cor > result/05_sub_result.txt
-./../corezaz -d ${n_dump} champ/05_sub_champ.cor > result/05_sub_zaz.txt
-diff result/05_sub_result.txt result/05_sub_zaz.txt
+test='05_sub'
+source $(dirname $0)/test.sh
 
-result=$?
 source $(dirname $0)/result.sh
 

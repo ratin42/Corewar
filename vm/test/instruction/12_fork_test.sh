@@ -10,8 +10,8 @@
 
 source $(dirname $0)/param.sh
 
-echo "### TESTING STI ###"
-test='11_sti'
+echo "### TESTING FORK ###"
+test='12_fork'
 source $(dirname $0)/test.sh
 
 source $(dirname $0)/result.sh

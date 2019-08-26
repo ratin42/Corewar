@@ -10,3 +10,5 @@ make -C .. -s
 ./instruction/08_xor_test.sh
 ./instruction/10_ldi_test.sh
 ./instruction/11_sti_test.sh
+./instruction/12_fork_test.sh
+./instruction/13_lld_test.sh

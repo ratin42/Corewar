@@ -11,7 +11,7 @@ live:	live %1
 		st r8,256			#45
 		ldi r4,%5,r9		#50
 		st r9,256			#56
-		ldi 2,r5,r10		#61 voir si ca vaut autre chose que 0
+		ldi 2,r5,r10		#61
 		st r10,256			#67
 		ldi 1,%2,r11		#72 voir si ca vaut autre chose que 0
 		st r11,256			#79

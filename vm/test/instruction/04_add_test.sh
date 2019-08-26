@@ -11,10 +11,7 @@
 source $(dirname $0)/param.sh
 
 echo "### TESTING ADD ###"
-./../../asm champ/04_add_champ.s
-./../corewar -dump ${n_dump} champ/04_add_champ.cor > result/04_add_result.txt
-./../corezaz -d ${n_dump} champ/04_add_champ.cor > result/04_add_zaz.txt
-diff result/04_add_result.txt result/04_add_zaz.txt
+test='04_add'
+source $(dirname $0)/test.sh
 
-result=$?
 source $(dirname $0)/result.sh

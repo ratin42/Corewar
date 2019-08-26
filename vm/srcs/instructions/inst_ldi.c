@@ -2,13 +2,12 @@
 
 // ldi | Indirect Load | 0x0A
 // Usage : ldi S(RG/ID/D2), S(ID/D2), D(RG) Durée : 25
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
+// OCP : Oui Adressage Restreint : Oui Modifie le carry : Non
 // Transfert indirect RAM > Registre. Charge la valeur a l'adresse
 // resultante de l'addition des deux premiers paramametres, dans le
-// registre passé en troisieme parametre. Si cette valeur est nulle, alors le
-// carry passe a l'etat un, sinon a l'ettat zero.
+// registre passé en troisieme parametre.
 
-static int			fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
+static int			ft_fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
 {
 	unsigned int	j;
 	int				result;
@@ -51,7 +50,7 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
 	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0); */
 	ft_get_reg_value(&arg, plst, FRST | SCND);
-	plst->p.reg[arg.value[2]] = fill_value(cor, plst, &arg);
-	plst->p.carry = !(plst->p.reg[arg.value[2]]);
+	plst->p.reg[arg.value[2]] = ft_fill_value(cor, plst, &arg);
+	//plst->p.carry = !(plst->p.reg[arg.value[2]]);
 	ft_print_debug(plst, "LDI", 1);
 }
