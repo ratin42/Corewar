@@ -3,8 +3,7 @@
 #This test makes the assumption that instructions LD and ZJMP work correctly.
 
 # Need to test
-# - Write on memory (positive and negative value)
-# - All combination of arg2(RG/ID/D2) and arg3(ID/D2)
+# - Create a new process
 # - Does not modify the carry
 # - Has restricted address
 
