@@ -66,13 +66,8 @@ void	debug_order(t_corewar *cor)
 void	corewar_usage(void)
 {
 	ft_putstr_fd("Usage: ./corewar [-d N -v -n N] <champion.cor> <...>\n\n", 2);
-<<<<<<< Updated upstream
-	ft_putstr_fd("#### TEXT OUTPUT MODE ######################", 2);
-	ft_putstr_fd("####################################\n", 2);
-=======
 	ft_putstr_fd("#### TEXT OUTPUT MODE \
 			##########################################################\n", 2);
->>>>>>> Stashed changes
 	ft_putstr_fd("    -n N      : Assign order N to next champion, \
 			default is : first champ is first to play\n", 2);
 	ft_putstr_fd("    -dump N   : Dumps memory after N cycles then exits\n", 2);
