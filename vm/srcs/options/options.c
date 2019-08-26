@@ -20,7 +20,7 @@ void	dump_option(t_corewar *cor, char **av, int *i)
 void	verbosity_option(t_corewar *cor, char **av, int *i)
 {
 	//Ca vous semble necessaire de faire plusieurs types ?
-	
+
 	(void)av;
 	(void)i;
 
@@ -41,7 +41,8 @@ void	order_option(t_corewar *cor, char **av, int *i)
 		&& ft_strcmp(av[*i], "3") && ft_strcmp(av[*i], "4"))
 	{
 		corewar_usage();
-		corewar_quit("\n-n [number] option has to be between 1 and 4 (included)");
+		corewar_quit("\n-n [number] option has to be \
+				between 1 and 4 (included)");
 	}
 	order = ft_atoi(av[*i]);
 	cor->order = order;
