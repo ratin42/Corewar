@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 08:24:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 23:58:45 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 17:36:01 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void		verify_label(t_asm *asmbly, char *label, int line)
 		if (!(ft_strchr(LABEL_CHARS, label[i])))
 		{
 			ft_putstr_fd("Lexical error for label at [", 2);
-			ft_putnbr(line);
-			ft_putchar(':');
-			ft_putnbr(i);
+			ft_putnbr_fd(line, 2);
+			ft_putchar_fd(':', 2);
+			ft_putnbr_fd(i, 2);
 			ft_putstr_fd("] ->", 2);
 			ft_putstr_fd(&label[i], 2);
-			ft_putchar('\n');
+			ft_putchar_fd('\n', 2);
 			quit_prog(asmbly);
 		}
 		i++;

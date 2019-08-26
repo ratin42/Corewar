@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 00:51:26 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 17:33:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ static int		check_dir(char *param)
 void			error_type(t_asm *asmbly, t_param *param)
 {
 	ft_putstr_fd("Lexical error of type for param at line ", 2);
-	ft_putnbr(param->line);
+	ft_putnbr_fd(param->line, 2);
 	ft_putstr_fd(" ->", 2);
 	ft_putstr_fd(param->param, 2);
-	ft_putchar('\n');
+	ft_putchar_fd('\n', 2);
 	quit_prog(asmbly);
 }
 
