@@ -14,3 +14,4 @@ make -C .. -s
 ./instruction/13_lld_test.sh
 ./instruction/14_lldi_test.sh
 ./instruction/15_lfork_test.sh
+./instruction/16_aff_test.sh

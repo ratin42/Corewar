@@ -28,22 +28,17 @@
 
 void	inst_aff(t_corewar *cor, t_plst *plst)
 {
-	if (DEBUG)
-		ft_printf("AFF\n");
-
 	int reg_i;
-	
-	if (DEBUG)
-		ft_printf("process[%d] : AFF FINISHED\n", plst->p.id);
 
+	ft_print_debug(plst, "AFF", 0);
 	//saute l'OCP
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	//recupere l'index du registre
 	reg_i = get_reg_index(cor, plst);
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
 	//gere le cas d'erreur de l'index du registre
 	if (!(check_registre_index(reg_i, 1, 1)))
 		return ;
 	if (cor->verbosity && !cor->visu)
 		ft_printf("%c\n", plst->p.reg[reg_i] % 256);
+	ft_print_debug(plst, "AFF", 1);
 }

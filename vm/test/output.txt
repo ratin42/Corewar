@@ -1,1 +1,0 @@
-Writing output program to champ/11_sti_champ.cor
