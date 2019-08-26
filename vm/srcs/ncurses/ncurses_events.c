@@ -1,6 +1,5 @@
 #include "vm.h"
 
-
 void	ncurse_events(t_corewar *cor)
 {
 	int keycode;
@@ -33,7 +32,7 @@ void	ncurse_events(t_corewar *cor)
 void	pause_game(t_corewar *cor)
 {
 	int keycode;
-	
+
 	draw_pause(cor);
 	while (42)
 	{
@@ -42,7 +41,7 @@ void	pause_game(t_corewar *cor)
 		{
 			cor->pause = 0;
 			draw_play(cor);
-			return;
+			return ;
 		}
 		manage_pause(cor, keycode);
 	}

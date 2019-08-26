@@ -29,7 +29,6 @@ void	draw_play_1(t_corewar *cor, int x, int x1, int y1)
 		x1 -= 4;
 		y1--;
 	}
-
 }
 
 void	draw_play_2(t_corewar *cor, int x, int x1, int y)
@@ -48,7 +47,7 @@ void	draw_play_2(t_corewar *cor, int x, int x1, int y)
 void	draw_pause(t_corewar *cor)
 {
 	int y;
-	
+
 	werase(cor->render.menu);
 	fill_border_menu(cor);
 	draw_menu(cor);
@@ -70,5 +69,4 @@ void	draw_pause(t_corewar *cor)
 	mvwprintw(cor->render.menu, 1, 27, "***  PAUSED  ***");
 	wattroff(cor->render.menu, COLOR_PAIR(3) | A_BOLD);
 	wrefresh(cor->render.menu);
-
 }

@@ -50,7 +50,7 @@ void	fill_border_cmd(t_corewar *cor)
 		mvwaddch(cor->render.commands, 0, i, '*');
 		mvwaddch(cor->render.commands, 14, i, '*');
 	}
-	i = - 1;
+	i = -1;
 	while (++i < 15)
 		mvwaddch(cor->render.commands, i, 49, '*');
 	wattroff(cor->render.commands, COLOR_PAIR(6));
