@@ -11,14 +11,16 @@ void	highlight_process_pc(t_corewar *cor)
 	{
 		i = process->p.og_pc;
 		id = process->p.id;
-		id = re_adjust_id(id);
+		id = re_adjust_id(id, &process->p);
 		highlight_it(cor, i, id);
 		process = process->next;
 	}
 }
 
-int		re_adjust_id(int id)
+int		re_adjust_id(int id, t_process *pro)
 {
+	if (pro->order == -1)
+		return (id);
 	if (id == 1)
 		return (4);
 	else if (id == 3)
@@ -36,12 +38,18 @@ void	highlight_it(t_corewar *cor, unsigned int i, int id)
 	unsigned char	c;
 
 	c = cor->arena[i];
-	wattron(cor->render.main, COLOR_PAIR(id + 8));
+	if (cor->render.mem_owner[i] == 0)
+		wattron(cor->render.main, COLOR_PAIR(1));
+	else
+		wattron(cor->render.main, COLOR_PAIR(id + 8));
 	if (cor->stealth)
 		mvwprintw(cor->render.main, (i / 64) + 2, (i % 64) * 3 + 3, "ff");
 	else
 		mvwprintw(cor->render.main, (i / 64) + 2, (i % 64) * 3 + 3, "%.2x", c);
-	wattroff(cor->render.main, COLOR_PAIR(id + 8));
+	if (cor->render.mem_owner[i] == 0)
+		wattroff(cor->render.main, COLOR_PAIR(1));
+	else
+		wattroff(cor->render.main, COLOR_PAIR(id + 8));
 }
 
 void	set_attributes(t_corewar *cor, unsigned char color, int i)
@@ -60,6 +68,8 @@ void	unset_attributes(t_corewar *cor, unsigned char color, int i)
 {
 	if (color == 0)
 		wattroff(cor->render.main, COLOR_PAIR(7));
+	else if (color == 5 && cor->render.bold[i] != 0)
+		wattroff(cor->render.main, COLOR_PAIR(14));
 	else
 		wattroff(cor->render.main, COLOR_PAIR(color));
 	if (cor->render.bold[i] != 0)

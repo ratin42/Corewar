@@ -65,6 +65,7 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 	else
 		plst->p.opcode = 0;
 	plst->p.pc = pc_modulo(plst->p.pc + 1);
+	plst->p.og_pc = plst->p.pc;
 }
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)

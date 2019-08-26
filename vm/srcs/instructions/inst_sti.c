@@ -37,25 +37,25 @@ void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 	//printf("stocking ->|%02x|\n", a);
 	cor->arena[addr] = a;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
 	
 	addr = pc_modulo(addr + 1);
 	//printf("stocking ->|%02x|\n", b);
 	cor->arena[addr] = b;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
 
 	addr = pc_modulo(addr + 1);
 	//printf("stocking ->|%02x|\n", c);
 	cor->arena[addr] = c;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
 
 	addr = pc_modulo(addr + 1);
 	//printf("stocking ->|%02x|\n", d);
 	cor->arena[addr] = d;
 	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id) + 1;
+	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
 }
 
 void	inst_sti(t_corewar *cor, t_plst *plst)

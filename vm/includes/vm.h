@@ -111,7 +111,7 @@ void				highlight_process_pc(t_corewar *cor);
 void				highlight_it(t_corewar *cor, unsigned int i, int id);
 void				set_attributes(t_corewar *cor, unsigned char color, int i);
 void				unset_attributes(t_corewar *cor, unsigned char color, int i);
-int					re_adjust_id(int id);
+int					re_adjust_id(int id, t_process *pro);
 
 //ncurses_close.c
 

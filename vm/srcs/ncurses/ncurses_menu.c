@@ -72,7 +72,7 @@ void	draw_command(t_corewar *cor)
 {
 	wattron(cor->render.commands, COLOR_PAIR(13));
 	wattron(cor->render.commands, A_BOLD);
-	mvwprintw(cor->render.commands, 2, 17, "-[ COMMANDS MENU ]-");
+	mvwprintw(cor->render.commands, 2, 15, "-[ COMMANDS MENU ]-");
 
 	mvwprintw(cor->render.commands, 5, 3, "SPACE :  PAUSE / UNPAUSE");
 	wattroff(cor->render.commands, COLOR_PAIR(13));
