@@ -27,6 +27,7 @@ SRC = srcs/corewar.c \
 	  srcs/exec/cycles.c \
 	  srcs/utility/update_pc.c \
 	  srcs/utility/inst_tool.c \
+	  srcs/utility/pc_modulo.c \
 	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/utility/ft_arg_manipulators.c \
 	  srcs/utility/ft_arg_manipulators2.c \

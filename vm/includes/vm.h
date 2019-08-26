@@ -131,7 +131,7 @@ void				end_visu(t_corewar *cor);
 */
 
 int					cor_file(char *av);
-int					parse_arguments(int ac, char **av, t_corewar *cor);
+void				parse_arguments(int ac, char **av, t_corewar *cor);
 void				get_champion(t_corewar *cor, char **av, int i);
 void				order_process(t_corewar *cor);
 
@@ -164,11 +164,6 @@ uint32_t			swap_endian(uint32_t val);
 */
 
 void				read_process(char *name, t_corewar *cor, int i);
-void				stock_process_size(t_corewar *cor, t_header *header, char *name, int i);
-void				stock_process_name(t_corewar *cor, t_header *header, char *name, int i);
-void				stock_process_comment(t_corewar *cor, t_header *header, char *name, int i);
-void				stock_process_magic(t_corewar *cor, t_header *header, char *name, int i);
-void				stock_process_code(t_corewar *cor, int i, int fd);
 
 /*
  * GAME.c

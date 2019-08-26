@@ -66,9 +66,6 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)
 {
-	//if (DEBUG)
-	//	ft_printf("opcode exec = %d\n", plst->p.opcode);
-	
 	g_func[plst->p.opcode - 1](cor, plst);
 	plst->p.opcode = 0;
 }
@@ -111,17 +108,17 @@ void				play(t_corewar *cor)
 		{
 			print_arena_state(cor);
 			cor->hide_winner = 1;
-			return;
+			return ;
 		}
 		if (cor->cycle > cor->ctd)
 			update_cycles(cor);
 	}
 }
 
-void			introducing_contestants(t_corewar *cor)
+void				introducing_contestants(t_corewar *cor)
 {
 	int		i;
-	
+
 	i = -1;
 	if (!cor->visu)
 	{

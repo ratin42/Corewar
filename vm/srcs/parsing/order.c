@@ -30,7 +30,6 @@ int		order_available(t_corewar *cor, int one, int two, int three)
 	if (three == cor->nb_players)
 		return (3);
 	return (4);
-
 }
 
 void	attribute_order(t_corewar *cor)
@@ -87,9 +86,6 @@ void	reorder_process(t_corewar *cor)
 		}
 	}
 }
-
-
-//Fonction DOUBLONS deja presente dans asm.c
 
 uint32_t	swap_endian(uint32_t val)
 {

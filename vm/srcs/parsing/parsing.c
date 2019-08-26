@@ -1,6 +1,17 @@
 #include "vm.h"
 
-int		parse_arguments(int ac, char **av, t_corewar *cor)
+void		parse_arguments_2(t_corewar *cor)
+{
+	if (!cor->nb_players)
+	{
+		corewar_usage();
+		corewar_quit("\nNeed at least one champion to start game");
+	}
+	if (cor->order_option)
+		order_process(cor);
+}
+
+void		parse_arguments(int ac, char **av, t_corewar *cor)
 {
 	int i;
 
@@ -25,17 +36,10 @@ int		parse_arguments(int ac, char **av, t_corewar *cor)
 			corewar_quit("");
 		}
 	}
-	if (!cor->nb_players)
-	{
-		corewar_usage();
-		corewar_quit("\nNeed at least one champion to start game");
-	}
-	if (cor->order_option)
-		order_process(cor);
-	return (1);
+	parse_arguments_2(cor);
 }
 
-int		cor_file(char *av)
+int			cor_file(char *av)
 {
 	int i;
 
@@ -62,10 +66,10 @@ void		get_champion(t_corewar *cor, char **av, int i)
 		corewar_quit("\t=> Too many champions (maximum 4)");
 }
 
-void	order_process(t_corewar *cor)
+void		order_process(t_corewar *cor)
 {
 	if (!check_doubles_order(cor))
 		corewar_quit("Cannot give multiple same [number] with -n option");
 	attribute_order(cor);
-	reorder_process(cor);	
+	reorder_process(cor);
 }

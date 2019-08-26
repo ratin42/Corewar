@@ -17,12 +17,8 @@ t_plst	*ft_plst_init(t_corewar *cor)
 		elem->next = plst;
 		plst = elem;
 		i++;
-
 		plst->p.id = plst->p.order == -1 ? i : plst->p.order;
-
-		//plst->p.id *= -1;
-		//printf("id = %d\n", plst->p.id);
-
+		plst->p.id *= -1;
 		plst->p.reg[1] = plst->p.id;
 	}
 	cor->nb_process = i;

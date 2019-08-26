@@ -1,6 +1,6 @@
 #include "vm.h"
 
-void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
+void				ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 {
 	unsigned char	bmask;
 	unsigned int	pc;
@@ -14,7 +14,7 @@ void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 	pc_modulo2(plst, 1);
 }
 
-static inline int		ft_get_arg_size(t_arg_type arg_type, int dir_size)
+static inline int	ft_get_arg_size(t_arg_type arg_type, int dir_size)
 {
 	if (arg_type == REG_CODE)
 		return (1);
@@ -25,10 +25,10 @@ static inline int		ft_get_arg_size(t_arg_type arg_type, int dir_size)
 	return (0);
 }
 
-void	ft_get_args_size(t_arg *arg)
+void				ft_get_args_size(t_arg *arg)
 {
 	int		i;
-	
+
 	i = 0;
 	while (i < arg->nb_arg)
 	{
@@ -37,7 +37,8 @@ void	ft_get_args_size(t_arg *arg)
 	}
 }
 
-void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict)
+void				ft_arg_init(t_arg *arg, int nb_arg, int dir_size,
+		int addr_restrict)
 {
 	arg->nb_arg = nb_arg;
 	arg->dir_size = dir_size;
