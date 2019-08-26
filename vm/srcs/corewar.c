@@ -44,7 +44,7 @@ int					main(int ac, char **av)
 		init_datas(&cor);
 		parse_arguments(ac, av, &cor);
 		create_arena(&cor);
-		introducing_contestants(&cor);	
+		introducing_contestants(&cor);
 		//debug_order(&cor);
 		//print_arena_state(&cor);
 		play(&cor);
@@ -68,6 +68,5 @@ void			corewar_end(t_corewar *cor)
 			ft_printf("Contestant %d, \"%s\", has won !\n", winner,
 					cor->player[ft_get_player_index(cor, winner)].name);
 	}
-
-	//FREE_CE_QU'IL FAUT;	
+	//FREE_CE_QU'IL FAUT;
 }

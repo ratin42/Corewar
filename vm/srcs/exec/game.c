@@ -51,21 +51,17 @@ static inline void	ft_get_instru(t_corewar *cor, t_plst *plst)
 {
 	if (cor->arena[plst->p.pc] <= 17 && cor->arena[plst->p.pc] >= 1)
 	{
-		// if (DEBUG)
-		// 	ft_printf("pc exec = %u\n", plst->p.pc);
 		plst->p.opcode = cor->arena[plst->p.pc];
 		plst->p.og_pc = plst->p.pc;
-		// if (DEBUG)
-		// 	ft_printf("opcode = %d\n", plst->p.opcode);
-		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle - 1; //wait
-		// // verifier s'il faut vraiment le -1 ou pas.
-		// if (DEBUG)
-		// 	ft_printf("wait = %d\n", plst->p.wait);
+		plst->p.wait = g_op_tab[plst->p.opcode - 1].nbr_of_cycle - 1;
+		pc_modulo2(plst, 1);
 	}
 	else
+	{
 		plst->p.opcode = 0;
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
-	plst->p.og_pc = plst->p.pc;
+		pc_modulo2(plst, 1);
+		plst->p.og_pc = plst->p.pc;
+	}
 }
 
 static inline void	execute_code(t_corewar *cor, t_plst *plst)

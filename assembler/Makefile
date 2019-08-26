@@ -23,7 +23,6 @@ SRC = srcs/op.c \
 	  srcs/param.c \
 	  srcs/param2.c \
 	  srcs/param3.c \
-	  srcs/swap_endian.c \
 	  srcs/get_opc.c \
 	  srcs/get_file.c \
 	  srcs/get_label.c \
@@ -35,13 +34,15 @@ SRC = srcs/op.c \
 	  srcs/write_file.c \
 	  srcs/get_header.c \
 	  srcs/param_conv.c \
-	  srcs/param_conv2.c \
 	  srcs/instruction.c \
+	  srcs/swap_endian.c \
 	  srcs/param_error.c \
+	  srcs/param_conv2.c \
 	  srcs/label_correc.c \
+	  srcs/instru_param.c \
 	  srcs/param_creation.c \
 	  srcs/get_instruction.c \
-	  srcs/convert_instruction.c
+	  srcs/convert_instruction.c \
 
 OBJ = $(SRC:.c=.o)
 
