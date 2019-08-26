@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 01:00:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/26 17:06:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void		print_writing(char *str)
 	int		i;
 
 	i = 0;
-	ft_putstr("Writing output program to ");
+	ft_putstr("Writing output program to .");
 	while (str[i] && str[i] == '.')
 		i++;
+	if (str[i] != '/')
+		ft_putchar('/');
 	while (str[i])
 	{
 		ft_putchar(str[i]);
