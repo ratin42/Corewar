@@ -8,7 +8,7 @@
 # - Modify the carry
 # - Has restricted address
 
-source $(dirname $0)/color.sh
+source $(dirname $0)/param.sh
 
 echo "### TESTING STI ###"
 ./../../asm champ/11_sti_champ.s

@@ -7,12 +7,12 @@
 # - Modify the carry
 # - Has restricted address
 
-source $(dirname $0)/color.sh
+source $(dirname $0)/param.sh
 
 echo "### TESTING OR ###"
 ./../../asm champ/07_or_champ.s
-./../corewar -dump 400 champ/07_or_champ.cor > result/07_or_result.txt
-./../corezaz -d 400 champ/07_or_champ.cor > result/07_or_zaz.txt
+./../corewar -dump ${n_dump} champ/07_or_champ.cor > result/07_or_result.txt
+./../corezaz -d ${n_dump} champ/07_or_champ.cor > result/07_or_zaz.txt
 diff result/07_or_result.txt result/07_or_zaz.txt
 
 result=$?

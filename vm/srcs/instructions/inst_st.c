@@ -2,11 +2,9 @@
 
 // st | Direct Store | 0x03
 // Usage : st S(RG), D(RG/ID) Durée : 5
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
+// OCP : Oui Adressage Restreint : Oui Modifie le carry : Non
 // Transfert direct Registre > RAM / Registre. Charge le contenu du
-// registre passé en premier parametre dans le second parametre. Si la
-// valeur du premier parametre est egale a zero, alors le carry passe a
-// l'etat un, sinon a l'etat zero.
+// registre passé en premier parametre dans le second parametre.
 
 static int	get_param(t_corewar *cor, t_plst *plst, int type)
 {

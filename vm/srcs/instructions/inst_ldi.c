@@ -28,11 +28,11 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 
-	//ft_print_debug(plst, "LDI", 0);
+	ft_print_debug(plst, "LDI", 0);
 	ft_arg_init(&arg, 3, HALF, TRUE);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
-	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, IND_CODE, DIR_CODE) == FAIL
+	if (arg.type[0] == 0 || ft_check_arg_type(arg, 1, REG_CODE, DIR_CODE) == FAIL
 			|| arg.type[2] != REG_CODE)
 	{
 		if (!cor->visu && cor->verbosity)
@@ -50,7 +50,8 @@ void	inst_ldi(t_corewar *cor, t_plst *plst)
 	/* plst->p.reg[arg.value[2]] = cor->arena[pc_modulo(plst->p.og_pc
 		+ ft_get_restricted_addr(arg.value[0] + arg.value[1]))];
 	plst->p.carry = !((arg.value[0] + arg.value[1]) % IDX_MOD == 0); */
-
+	ft_get_reg_value(&arg, plst, FRST | SCND);
 	plst->p.reg[arg.value[2]] = fill_value(cor, plst, &arg);
-	//ft_print_debug(plst, "LDI", 1);
+	plst->p.carry = !(plst->p.reg[arg.value[2]]);
+	ft_print_debug(plst, "LDI", 1);
 }

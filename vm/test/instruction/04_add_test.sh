@@ -8,12 +8,12 @@
 # - Modify the carry
 # - Has restricted address
 
-source $(dirname $0)/color.sh
+source $(dirname $0)/param.sh
 
 echo "### TESTING ADD ###"
 ./../../asm champ/04_add_champ.s
-./../corewar -dump 400 champ/04_add_champ.cor > result/04_add_result.txt
-./../corezaz -d 400 champ/04_add_champ.cor > result/04_add_zaz.txt
+./../corewar -dump ${n_dump} champ/04_add_champ.cor > result/04_add_result.txt
+./../corezaz -d ${n_dump} champ/04_add_champ.cor > result/04_add_zaz.txt
 diff result/04_add_result.txt result/04_add_zaz.txt
 
 result=$?

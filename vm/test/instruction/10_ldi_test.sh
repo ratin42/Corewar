@@ -8,7 +8,7 @@
 # - Modify the carry
 # - Has restricted address
 
-source $(dirname $0)/color.sh
+source $(dirname $0)/param.sh
 
 echo "### TESTING LDI ###"
 ./../../asm champ/10_ldi_champ.s
