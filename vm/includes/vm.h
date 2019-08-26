@@ -189,7 +189,7 @@ int					get_reg_index(t_corewar *cor, t_plst *plst);
 int					*check_opcode(t_corewar *cor, t_plst *plst);
 int					check_registre_index(int reg_1, int reg_2, int reg_3);
 int					ft_check_reg_index(t_arg arg);
-int					get_reg_value(t_corewar *cor, t_plst *plst);
+int					get_reg_value(t_corewar *cor, t_plst *plst, int **f_error);
 int					get_small_dir(t_corewar *cor, t_plst *plst);
 int					get_ind(t_corewar *cor, t_plst *plst);
 void				print_value(t_corewar *cor, int value, int addr, t_plst *plst);
