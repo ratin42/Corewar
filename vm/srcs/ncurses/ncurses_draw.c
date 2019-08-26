@@ -1,12 +1,11 @@
 #include "vm.h"
 
-void    draw_arena(t_corewar *cor)
+void	draw_arena(t_corewar *cor)
 {
-	int x;
-	int y;
-	int i;
-	unsigned char   c;
-	unsigned char   color;
+	int				x;
+	int				y;
+	int				i;
+	unsigned char	color;
 
 	i = 0;
 	y = -1;
@@ -15,13 +14,11 @@ void    draw_arena(t_corewar *cor)
 		x = -1;
 		while (++x < 64)
 		{
-			c = cor->arena[i];
 			color = cor->render.mem_owner[i];
 			set_attributes(cor, color, i);
-			if (cor->stealth)
-				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "ff");
-			else
-				mvwprintw(cor->render.main, y + 2, x * 3 + 3, "%.2x", c);
+			cor->stealth ? mvwprintw(cor->render.main, y + 2, x * 3 + 3, "ff")
+				: mvwprintw(cor->render.main, y + 2, x * 3 + 3, "%.2x",
+						cor->arena[i]);
 			unset_attributes(cor, color, i);
 			mvwprintw(cor->render.main, y + 2, x * 3 + 5, " ");
 			i++;

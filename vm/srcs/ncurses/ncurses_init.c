@@ -13,7 +13,7 @@ void	init_ncurse(t_corewar *cor)
 	ft_bzero(cor->render.bold, MEM_SIZE);
 	init_colors();
 	noecho();
-	cbreak();	
+	cbreak();
 	curs_set(0);
 	cor->pause = 1;
 	cor->sleep = 10000;

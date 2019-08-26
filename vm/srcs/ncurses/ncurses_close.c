@@ -1,6 +1,6 @@
 #include "vm.h"
 
-void    close_ncurses(t_corewar *cor)
+void	close_ncurses(t_corewar *cor)
 {
 	wclear(cor->render.main);
 	delwin(cor->render.main);
@@ -10,11 +10,9 @@ void    close_ncurses(t_corewar *cor)
 	delwin(cor->render.commands);
 	refresh();
 	endwin();
-
 	//CHECKER LEAKS AVEC ET SANS VISU
 	//pour voir si le visu ne rajoute pas de leaks
 }
-
 
 void	end_visu(t_corewar *cor)
 {
@@ -28,14 +26,12 @@ void	end_visu(t_corewar *cor)
 	ncurses_show_winner(cor);
 	wait_and_close(3);
 	endwin();
-
 	//FREE ICI AUSSI
 }
 
-
 void	ncurses_show_winner(t_corewar *cor)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	attron(COLOR_PAIR(15));
@@ -44,7 +40,7 @@ void	ncurses_show_winner(t_corewar *cor)
 		mvprintw(LINES / 3 - 2, (COLS / 2 - 30) + i, "*");
 		mvprintw(LINES / 3 + 2, (COLS / 2 - 30) + i, "*");
 	}
-	i = - 1;
+	i = -1;
 	while (++i < 5)
 	{
 		mvprintw((LINES / 3 - 2) + i, (COLS / 2 - 30), "*");
