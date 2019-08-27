@@ -14,31 +14,18 @@ int					ft_get_player_index(t_corewar *cor, int i)
 	return (-1);
 }
 
-static inline void	ft_verbosity_output(t_corewar *cor, t_arg arg, int index)
-{
-	if (cor->verbosity && !cor->visu)
-	{
-		if (index == -1)
-			ft_printf("Live: Player with id %d does not exist.\n",
-					arg.value[0]);
-		else
-			ft_printf("Player %s (id: %d) is alive.\n",
-				cor->player[index].name, arg.value[0]);
-	}
-}
-
 void				inst_live(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;
 	int		index;
 
 	ft_print_debug(plst, "LIVE", 0);
-	ft_arg_init(&arg, 1, FULL, FALSE);
+	ft_arg_init(&arg, 1, FULL, FALSE, SPECIAL);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 4;
 	ft_get_args(cor, plst, &arg);
 	index = ft_get_player_index(cor, arg.value[0]);
-	ft_verbosity_output(cor, arg, index);
+	ft_verbosity_instru(cor, plst, arg);
 	(plst->p.live)++;
 	if (index != -1)
 	{

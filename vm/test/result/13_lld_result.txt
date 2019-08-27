@@ -1,5 +1,399 @@
 Introducing contestants...
 * Player 1, weighing 85 bytes, "Test LLD" ("Champion de test de l'instruction LLD.") !
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
+P    0 | zjmp 13 FAILED
+ADV 3 (0x0040 -> 0x0043) 09 00 0d 
+P    0 | lld 0 r9
+ADV 7 (0x0043 -> 0x004a) 0d 90 00 00 00 00 09 
+P    0 | zjmp -74 OK
+P    0 | live 1
+ADV 5 (000000 -> 0x0005) 01 00 00 00 01 
+P    0 | lld 55 r1
+ADV 7 (0x0005 -> 0x000c) 0d 90 00 00 00 37 01 
+P    0 | lld 1879113984 r2
+ADV 5 (0x0011 -> 0x0016) 0d d0 ff fc 02 
+P    0 | lld 1879245056 r3
+ADV 5 (0x001b -> 0x0020) 0d d0 00 06 03 
+P    0 | lld 0 r4
+ADV 5 (0x0025 -> 0x002a) 0d d0 04 06 04 
+P    0 | lld 0 r5
+ADV 5 (0x002f -> 0x0034) 0d d0 fb fc 05 
+P    0 | lld 40 r8
+ADV 7 (0x0039 -> 0x0040) 0d 90 00 00 00 28 08 
 0x0000 : 01 00 00 00 01 0d 90 00 00 00 37 01 03 70 01 01 00 0d d0 ff fc 02 03 70 02 01 00 0d d0 00 06 03 03 70 03 01 00 0d d0 04 06 04 03 70 04 01 00 0d d0 fb fc 05 03 70 05 01 00 0d 90 00 00 00 28 08 
 0x0040 : 09 00 0d 0d 90 00 00 00 00 09 09 ff b6 03 70 01 01 00 09 ff fb 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0080 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 

@@ -10,12 +10,13 @@ void	inst_lfork(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 	t_plst	*elem;
 
-	ft_arg_init(&arg, 1, HALF, TRUE);
+	ft_arg_init(&arg, 1, HALF, TRUE, SPECIAL);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
 	if (!(elem = malloc(sizeof(t_plst))))
 		corewar_quit("Fail malloc");//voir si on met autre chose ou pas
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.opcode = 0;
 	ft_memcpy(elem, plst, sizeof(t_plst));
 	elem->p.pc = pc_modulo(plst->p.og_pc + arg.value[0]);

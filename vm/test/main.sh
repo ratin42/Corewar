@@ -15,3 +15,4 @@ make -C .. -s
 ./instruction/14_lldi_test.sh
 ./instruction/15_lfork_test.sh
 ./instruction/16_aff_test.sh
+./instruction/00_verbosity_test.sh

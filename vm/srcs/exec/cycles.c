@@ -8,7 +8,7 @@ static inline void		ft_kill_nlp_2(t_corewar *cor, t_plst *plst)
 	{
 		if (plst->next->p.live == 0)
 		{
-			if (cor->verbosity)
+			if (cor->verbosity && !cor->visu)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 					plst->next->p.id, plst->next->p.no_live, cor->ctd);
 			elem = plst->next;
@@ -29,7 +29,7 @@ static inline void		ft_kill_no_live_process(t_corewar *cor)
 	plst = cor->plst;
 	while (plst->p.live == 0)
 	{
-		if (cor->verbosity)
+		if (cor->verbosity && !cor->visu)
 			ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 					plst->p.id, plst->p.no_live, cor->ctd);
 		cor->plst = plst->next;
@@ -71,7 +71,7 @@ void					update_cycles(t_corewar *cor)
 		cor->ctd -= CYCLE_DELTA;
 		if (cor->visu)
 			cor->round_end = cor->ctd;
-		if (cor->verbosity)
+		if (cor->verbosity && !cor->visu)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;
 	}

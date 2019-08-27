@@ -10,7 +10,7 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "LLD", 0);
-	ft_arg_init(&arg, 2, FULL, FALSE);
+	ft_arg_init(&arg, 2, FULL, FALSE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (ft_check_arg_type(arg, 0, IND_CODE, DIR_CODE) == FAIL
@@ -28,6 +28,7 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.reg[arg.value[1]] = arg.type[0] == DIR_CODE
 		? arg.value[0] : arg.value[0] >> 16;
 	plst->p.carry = !(plst->p.reg[arg.value[1]]);

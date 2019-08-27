@@ -10,7 +10,10 @@ void				ft_get_reg_value(t_arg *arg, t_plst *plst, int pos)
 	while (i < arg->nb_arg)
 	{
 		if (pos & flag && arg->type[i] == REG_CODE)
+		{
 			arg->value[i] = plst->p.reg[arg->value[i]];
+			arg->type[i] = DIR_CODE;
+		}
 		flag = flag << 1;
 		i++;
 	}

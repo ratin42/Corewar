@@ -17,13 +17,15 @@ void	dump_option(t_corewar *cor, char **av, int *i)
 		cor->n_dump = cycle;
 }
 
-void	verbosity_option(t_corewar *cor, char **av, int *i)
+void	verbosity_option(t_corewar *cor, char **av, int ac, int *i)
 {
-	//Ca vous semble necessaire de faire plusieurs types ?
-
-	(void)av;
-	(void)i;
-
+	if (*i + 1 > ac)
+	{
+		corewar_usage();
+		corewar_quit(VERBO_TXT);
+	}
+	(*i)++;
+	cor->v_lvl = ft_atoi(av[*i]);
 	cor->verbosity = 1;
 }
 

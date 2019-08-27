@@ -45,7 +45,23 @@
 #define STR5 "| \\__/\\ \\_/ / |\\ \\| |___\\  /\\  / | | | |\\ \\ "
 #define STR6 " \\____/\\___/\\_| \\_\\____/ \\/  \\/\\_| |_|_| \\_|"
 
+#define VERBO_TXT "\nNeed to specify verbosity level after -v option:\n\
+				Verbosity levels, can be added together to enable several\n\
+				- 1 : Show lives\n\
+                - 2 : Show cycles\n\
+                - 4 : Show operations (Params are NOT litteral ...)\n\
+                - 8 : Show deaths\n\
+                - 16 : Show PC movements (Except for jumps)\n"
+# define VERBO1 1
+# define VERBO2 2
+# define VERBO3 4
+# define VERBO4	8
+# define VERBO5 16
+# define NORMAL 1
+# define INDIRECT 1 << 1
+# define SPECIAL 1 << 2
 
+extern t_op		g_op_tab[17];
 /*
  * DEBUG_TOOLS.c
 */
@@ -140,8 +156,9 @@ void				order_process(t_corewar *cor);
 */
 
 void				dump_option(t_corewar *cor, char **av, int *i);
-void				verbosity_option(t_corewar *cor, char **av, int *i);
+void				verbosity_option(t_corewar *cor, char **av, int ac, int *i);
 void				order_option(t_corewar *cor, char **av, int *i);
+void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg);
 
 /*
  * ORDERS.c
@@ -225,7 +242,8 @@ void				inst_zjmp(t_corewar *cor, t_plst *plst);
  * ARG MANIPULATORS
 */
 
-void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size, int addr_restrict);
+void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size,
+	int addr_restrict, int verbo);
 void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);

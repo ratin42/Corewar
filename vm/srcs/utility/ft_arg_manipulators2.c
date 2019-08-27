@@ -38,9 +38,10 @@ void				ft_get_args_size(t_arg *arg)
 }
 
 void				ft_arg_init(t_arg *arg, int nb_arg, int dir_size,
-		int addr_restrict)
+		int addr_restrict, int verbo)
 {
 	arg->nb_arg = nb_arg;
 	arg->dir_size = dir_size;
 	arg->addr_restrict = addr_restrict;
+	arg->verbo = verbo;
 }

@@ -12,7 +12,7 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "OR", 0);
-	ft_arg_init(&arg, 3, FULL, TRUE);
+	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || arg.type[1] == 0 || arg.type[2] != REG_CODE)
@@ -29,6 +29,7 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
+	ft_verbosity_instru(cor, plst, arg);
 	ft_get_reg_value(&arg, plst, FRST | SCND);
 	plst->p.reg[arg.value[2]] = arg.value[0] | arg.value[1];
 	plst->p.carry = !(arg.value[0] | arg.value[1]);

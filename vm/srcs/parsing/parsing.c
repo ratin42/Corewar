@@ -21,7 +21,7 @@ void		parse_arguments(int ac, char **av, t_corewar *cor)
 		if (!ft_strcmp(av[i], "-dump"))
 			dump_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-v"))
-			verbosity_option(cor, av, &i);
+			verbosity_option(cor, av, ac, &i);
 		else if (!ft_strcmp(av[i], "-n"))
 			order_option(cor, av, &i);
 		else if (!ft_strcmp(av[i], "-visu"))

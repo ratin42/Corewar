@@ -22,6 +22,7 @@ SRC = srcs/corewar.c \
 	  srcs/parsing/read_process.c \
 	  srcs/parsing/order.c \
 	  srcs/options/options.c \
+	  srcs/options/ft_verbosity_instru.c \
 	  srcs/debug/debug_tools.c \
 	  srcs/exec/game.c \
 	  srcs/exec/cycles.c \

@@ -29,7 +29,7 @@ void				inst_ldi(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "LDI", 0);
-	ft_arg_init(&arg, 3, HALF, TRUE);
+	ft_arg_init(&arg, 3, HALF, TRUE, INDIRECT);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || !ft_check_arg_type(arg, 1, REG_CODE, DIR_CODE)
@@ -48,6 +48,7 @@ void				inst_ldi(t_corewar *cor, t_plst *plst)
 		return ;
 	}
 	ft_get_reg_value(&arg, plst, FRST | SCND);
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.reg[arg.value[2]] = ft_fill_value(cor, plst, &arg);
 	ft_print_debug(plst, "LDI", 1);
 }

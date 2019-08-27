@@ -57,7 +57,7 @@ typedef struct			s_process
 typedef struct			s_plst
 {
 	struct s_plst		*next;
-	int					id;
+	int					n_plst;
 	t_process			p;
 }						t_plst;
 
@@ -89,6 +89,7 @@ typedef struct 			s_corewar
 
 	int					n_dump;
 	int					verbosity;
+	int					v_lvl;
 	int					order;
 	int					order_option;
 	int					stealth;
@@ -113,6 +114,7 @@ typedef	struct			s_arg
 	int					value[4];
 	int					dir_size;
 	int					addr_restrict;
+	int					verbo;
 }						t_arg;
 
 #endif
