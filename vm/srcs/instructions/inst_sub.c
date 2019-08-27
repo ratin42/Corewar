@@ -3,15 +3,14 @@
 
 void	inst_sub(t_corewar *cor, t_plst *plst)
 {
-	int reg[3];
-	int	*type_param;
+	t_arg 	arg;
 
 	ft_print_debug(plst, "SUB", 0);
 	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] != REG_CODE || arg.type[1] != REG_CODE
-			|| arg.typem[2] != REG_CODE)
+			|| arg.type[2] != REG_CODE)
 	{
 		if (!cor->visu && cor->verbosity)
 			ft_printf("OCP error.\n");

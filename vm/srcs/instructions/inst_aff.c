@@ -29,7 +29,7 @@
 
 void	inst_aff(t_corewar *cor, t_plst *plst)
 {
-	int reg_i;
+	t_arg	arg;
 
 	ft_print_debug(plst, "AFF", 0);
 	ft_arg_init(&arg, 1, FULL, TRUE, SPECIAL);
@@ -49,6 +49,6 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 		return ;
 	}
 	if (cor->verbosity && !cor->visu)
-		ft_printf("%c\n", plst->p.reg[reg_i] % 256);
+		ft_printf("%c\n", plst->p.reg[arg.value[0]] % 256);
 	ft_print_debug(plst, "AFF", 1);
 }

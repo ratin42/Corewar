@@ -51,6 +51,7 @@ void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
 {
+	ft_print_debug(plst, "STI", 0);
 	int	param1;
 	int	param2;
 	int	param3;

@@ -9,7 +9,7 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] != REG_CODE || arg.type[1] != REG_CODE
-			|| arg.typem[2] != REG_CODE)
+			|| arg.type[2] != REG_CODE)
 	{
 		if (!cor->visu && cor->verbosity)
 			ft_printf("OCP error.\n");
