@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 17:33:59 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 18:46:42 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,32 @@ static int		check_ind(char *param)
 	return (1);
 }
 
-static int		check_dir(char *param)
+static int		check_dir(t_asm *asmbly, char **param)
 {
 	int			i;
 
 	i = 0;
-	if (param[i] == '%')
+	if ((*param)[i] == '%')
 		i++;
 	else
 		return (0);
-	if (param[i] == '\0')
+	if ((*param)[i] == '\0')
 		return (0);
-	if (param[i] == ':')
-		return (check_label(&param[i]));
-	if (strmaxint(param))
+	if ((*param)[i] == ':')
+		return (check_label(&(*param)[i]));
+	if (strmaxint(*param))
 		return (0);
-	while (param[i])
+	while ((*param)[i])
 	{
-		if ((param[i] == '-' || param[i] == '+')
-			&& (param[i + 1]) && ft_isdigit(param[i + 1]))
+		if (((*param)[i] == '-' || (*param)[i] == '+')
+			&& ((*param)[i + 1]) && ft_isdigit((*param)[i + 1]))
 			i++;
-		if (ft_isdigit(param[i]) == 0)
+		if (ft_isdigit((*param)[i]) == 0)
 			return (0);
 		i++;
 	}
 	return (1);
+	(void)asmbly;
 }
 
 void			error_type(t_asm *asmbly, t_param *param)
@@ -100,7 +101,7 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	{
 		if (is_register(param->param) == T_REG)
 			param->type = T_REG;
-		else if (check_dir(param->param) == 1)
+		else if (check_dir(asmbly, &param->param) == 1)
 			param->type = T_DIR;
 		else if (check_ind(param->param) == 1)
 			param->type = T_IND;

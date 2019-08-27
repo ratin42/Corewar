@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 01:52:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 18:46:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,6 @@ char			*reduce_conv(t_asm *asmbly, int size, char **conv)
 	return (*conv);
 }
 
-static char		*get_conv(char *cpy)
-{
-	char		*conv;
-
-	//printf("cpy = %s atoll cpy = %lld\n", cpy, ft_atoll(cpy));
-/* 	if (cpy[0] == '-' && ((ft_strlen(cpy) > 10 && ft_atoll(cpy) < -2147483648)
-		|| ft_strlen(cpy) > 11))
-		conv = ft_ul_convert_base("-2147483648", "0123456789abcdef");
-	else if ((ft_strlen(cpy) > 10 && ft_atoll(cpy) > 2147483647)
-		|| ft_strlen(cpy) > 11)
-		conv = ft_ul_convert_base("2147483647", "0123456789abcdef");
-	else */
-		conv = ft_ul_convert_base(cpy, "0123456789abcdef");
-	return (conv);
-}
-
 char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 {
 	extern t_op	g_op_tab[17];
@@ -113,7 +97,8 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 		return (lab_conver(asmbly, size));
 	if (!(cpy = ft_strdup(&param->param[1])))
 		quit_prog(asmbly);
-	conv = get_conv(cpy);
+	if (!(conv = ft_ul_convert_base(cpy, "0123456789abcdef")))
+		quit_prog(asmbly);
 	free(cpy);
 	size -= ft_strlen(conv);
 	if (size > 0)

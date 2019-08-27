@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 17:27:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 16:58:44 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,5 @@ int			main(int ac, char **av)
 //have to close the file
 //separator with nothing after
 //double_separatorchar.s
+//gerer les retour null de ul_convertbase
+//gerer les nom a plusieur . genre octobre_rouge.42.s

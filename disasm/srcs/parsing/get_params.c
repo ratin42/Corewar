@@ -6,21 +6,21 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:21:54 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 15:44:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 17:59:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disassembler.h"
 
-void	ft_get_opcode(t_corewar *cor, t_arg *arg)
+void	ft_get_opcode(t_corewar *cor, t_arg **arg)
 {
 	unsigned char	bmask;
 
 	bmask = 3;
-	arg->type[0] = ((bmask << 6) & cor->code[cor->pc]) >> 6;
-	arg->type[1] = ((bmask << 4) & cor->code[cor->pc]) >> 4;
-	arg->type[2] = ((bmask << 2) & cor->code[cor->pc]) >> 2;
-	arg->type[3] = bmask & cor->code[cor->pc];
+	(*arg)->type[0] = ((bmask << 6) & cor->code[cor->pc]) >> 6;
+	(*arg)->type[1] = ((bmask << 4) & cor->code[cor->pc]) >> 4;
+	(*arg)->type[2] = ((bmask << 2) & cor->code[cor->pc]) >> 2;
+	(*arg)->type[3] = bmask & cor->code[cor->pc];
 	cor->pc++;
 }
 
@@ -74,7 +74,9 @@ void		get_params(t_corewar *cor, t_arg *arg, int opcode)
 	ft_bzero(arg, sizeof(arg));
 	init_arg(arg, opcode);
 	if (arg->ocp == 1)
-		ft_get_opcode(cor, arg);
+		ft_get_opcode(cor, &arg);
+	else
+		arg->type[0] = T_DIR;
 	ft_get_args_size(arg);
 	ft_get_args(cor, arg);
 }
