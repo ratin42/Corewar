@@ -32,10 +32,22 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 	int reg_i;
 
 	ft_print_debug(plst, "AFF", 0);
-	plst->p.pc = pc_modulo(plst->p.pc + 1);
-	reg_i = get_reg_index(cor, plst);
-	if (!(check_registre_index(reg_i, 1, 1)))
+	ft_arg_init(&arg, 1, FULL, TRUE, SPECIAL);
+	ft_get_opcode(cor, plst, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] != REG_CODE)
+	{
+		if (!cor->visu && cor->verbosity)
+			ft_printf("OCP error.\n");
 		return ;
+	}
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
+	{
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
+		return ;
+	}
 	if (cor->verbosity && !cor->visu)
 		ft_printf("%c\n", plst->p.reg[reg_i] % 256);
 	ft_print_debug(plst, "AFF", 1);

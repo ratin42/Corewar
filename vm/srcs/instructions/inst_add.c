@@ -1,30 +1,30 @@
-
 #include "vm.h"
 
 void	inst_add(t_corewar *cor, t_plst *plst)
 {
-	int		reg_1;
-	int		reg_2;
-	int		reg_3;
-	int		*type_param;
+	t_arg	arg;
 
 	ft_print_debug(plst, "ADD", 0);
-	type_param = check_opcode(cor, plst);
-	reg_1 = get_reg_index(cor, plst);
-	reg_2 = get_reg_index(cor, plst);
-	reg_3 = get_reg_index(cor, plst);
-	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE
-			|| type_param[2] != REG_CODE)
+	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);
+	ft_get_opcode(cor, plst, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] != REG_CODE || arg.type[1] != REG_CODE
+			|| arg.typem[2] != REG_CODE)
 	{
-		if (DEBUG)
-			ft_printf("add error.\n");
-		free(type_param);
+		if (!cor->visu && cor->verbosity)
+			ft_printf("OCP error.\n");
 		return ;
 	}
-	if (!check_registre_index(reg_1, reg_2, reg_3))
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
+	{
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
 		return ;
-	plst->p.reg[reg_3] = plst->p.reg[reg_1] + plst->p.reg[reg_2];
-	plst->p.carry = (plst->p.reg[reg_3] == 0);
-	free(type_param);
+	}
+	ft_verbosity_instru(cor, plst, arg);
+	ft_get_reg_value(&arg, plst, FRST | SCND);
+	plst->p.reg[arg.value[2]] = arg.value[0] + arg.value[1];
+	plst->p.carry = (plst->p.reg[arg.value[2]] == 0);
 	ft_print_debug(plst, "ADD", 1);
 }

@@ -7,24 +7,26 @@ void	inst_sub(t_corewar *cor, t_plst *plst)
 	int	*type_param;
 
 	ft_print_debug(plst, "SUB", 0);
-	type_param = check_opcode(cor, plst);
-	reg[0] = get_reg_index(cor, plst);
-	reg[1] = get_reg_index(cor, plst);
-	reg[2] = get_reg_index(cor, plst);
-	if (type_param[0] != REG_CODE || type_param[1] != REG_CODE || type_param[2]
-		!= REG_CODE)
+	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);
+	ft_get_opcode(cor, plst, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] != REG_CODE || arg.type[1] != REG_CODE
+			|| arg.typem[2] != REG_CODE)
 	{
 		if (!cor->visu && cor->verbosity)
-			ft_printf("sub error.\n");
-		free(type_param);
+			ft_printf("OCP error.\n");
 		return ;
 	}
-	if (!check_registre_index(reg[0], reg[1], reg[2]))
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
 	{
-		free(type_param);
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	plst->p.reg[reg[2]] = plst->p.reg[reg[0]] - plst->p.reg[reg[1]];
-	plst->p.carry = (plst->p.reg[reg[2]] == 0);
+	ft_verbosity_instru(cor, plst, arg);
+	ft_get_reg_value(&arg, plst, FRST | SCND);
+	plst->p.reg[arg.value[2]] = arg.value[0] - arg.value[1];
+	plst->p.carry = (plst->p.reg[arg.value[2]] == 0);
 	ft_print_debug(plst, "SUB", 1);
 }
