@@ -6,7 +6,7 @@
 #    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/16 16:31:50 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/27 16:14:26 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ OBJ = $(SRC:.c=.o)
 all: libft $(NAME)
 
 libft:
-	@Make -C $(LIBFT)
+	@make -C $(LIBFT) -s
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
-	@printf "\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
+	@printf "\n\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
 	@$(CC) $(CFLAGS) -o $@ -c $<

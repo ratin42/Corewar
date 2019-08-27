@@ -31,36 +31,50 @@ do
 	cp $file $file.original
 done;
 
-#Disassemble .cor into a .s file
+#Delete all .s files
+
+for file in ./asm_valid/*.s
+do
+	rm -rf $file
+done
+
+#Disassemble .cor into a .s file and delete all .cor
 
 for file in ./asm_valid/*.cor
 do
-	./../disassembler $file 1&-
+	./../disassembler $file
+	rm -rf $file
 done;
 
-#Reassemble .cor
+#Reassemble and create .cor files
 
 for file in ./asm_valid/*.s
 do
 	./../ressources/vm_champs/asm $file
 done;
 
+#Stocking output from original .cor file
+
 for file in ./asm_valid/*.cor.original
 do
 	./../ressources/vm_champs/corewar -d $CYCLE $file > ./results/disassembler/original_$NB
 	NB=$((NB+1))
-	rm -rf $file
 done;
 
 NB=$((0))
+
+#Stocking output from .cor file generated with our disassembled .s file
 
 for file in ./asm_valid/*.cor
 do
 	./../ressources/vm_champs/corewar -d $CYCLE $file > ./results/disassembler/new_$NB
 	NB=$((NB + 1))
+	rm -rf $file
 done;
 
 NB=$((0))
+
+#Comparing outputs
 
 for file in ./results/disassembler/*
 do
@@ -95,7 +109,14 @@ else
 	echo $GREEN"PERFECT ✔" $NC
 fi
 
+#Restoring asm_valid folder back to original
+
 for file in ./asm_valid/*.s.original
 do
 	mv "$file" "${file/.s.original/.s}"
+done;
+
+for file in ./asm_valid/*.cor.original
+do
+	rm -rf $file
 done;

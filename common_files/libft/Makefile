@@ -6,7 +6,7 @@
 #    By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 22:03:59 by hlombard          #+#    #+#              #
-#    Updated: 2019/08/16 16:47:50 by hlombard         ###   ########.fr        #
+#    Updated: 2019/08/27 16:14:25 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,7 @@ all: $(NAME) includes/
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@printf "\n\x1b[32mLIBFT Ready ✔\x1b[0m\n"
+	@printf "\n\x1b[32mLIBFT Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
