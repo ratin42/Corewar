@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 02:57:18 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 23:04:32 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 19:40:13 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,9 @@ void				write_file(t_asm *asmbly, char *file)
 	}
 	free(new_file);
 	write_bytecode(asmbly, fd);
+	if (close(fd) < 0)
+	{
+		ft_putstr_fd("close error\n", 2);
+		quit_prog(asmbly);
+	}
 }

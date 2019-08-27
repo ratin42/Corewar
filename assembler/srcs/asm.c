@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 19:00:16 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 19:41:15 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,4 @@ int			main(int ac, char **av)
 	return (0);
 }
 
-//have to close the file
-//separator with nothing after
-//double_separatorchar.s
-
-//gerer les retour null de ul_convertbase
+//protection contre dev/ran null
