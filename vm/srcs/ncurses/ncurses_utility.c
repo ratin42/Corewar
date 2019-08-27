@@ -20,17 +20,9 @@ void	highlight_process_pc(t_corewar *cor)
 int		re_adjust_id(int id, t_process *pro)
 {
 	if (pro->order == -1)
-		return (id);
-	if (id == 1)
-		return (4);
-	else if (id == 3)
-		return (2);
-	else if (id == 2)
-		return (3);
-	else if (id == 4)
-		return (1);
+		return (-id);
 	else
-		return (0);
+		return (pro->order);
 }
 
 void	highlight_it(t_corewar *cor, unsigned int i, int id)
