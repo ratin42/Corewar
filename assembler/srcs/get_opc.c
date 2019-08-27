@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 20:20:02 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 01:40:31 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 18:59:14 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ char				*get_ocp(t_asm *asmbly, t_instru *instru)
 		bin_code = fill_bincode(asmbly, bin_code);
 	decimal_code = binary_to_decimal(ft_atoi(bin_code));
 	d_code = ft_itoa(decimal_code);
-	result = ft_ul_convert_base(d_code, "0123456789abcdef");
+	if (!(result = ft_ul_convert_base(d_code, "0123456789abcdef")))
+		quit_prog(asmbly);
 	free(d_code);
 	free(bin_code);
 	return (result);

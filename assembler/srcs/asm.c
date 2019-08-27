@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 16:58:44 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 19:00:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,16 @@ void		init_prog(t_asm *asmbly)
 void		print_writing(char *str)
 {
 	int		i;
+	char	*new_file;
 
 	i = 0;
+	new_file = ft_strndup(str, ft_strlen(str) - 2);
 	ft_putstr("Writing output program to .");
-	while (str[i] && str[i] == '.')
-		i++;
 	if (str[i] != '/')
 		ft_putchar('/');
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		if (str[i] == '.')
-			break ;
-		i++;
-	}
-	ft_putstr("cor\n");
+	ft_putstr(new_file);
+	ft_putstr(".cor\n");
+	free(new_file);
 }
 
 int			main(int ac, char **av)
@@ -62,5 +57,5 @@ int			main(int ac, char **av)
 //have to close the file
 //separator with nothing after
 //double_separatorchar.s
+
 //gerer les retour null de ul_convertbase
-//gerer les nom a plusieur . genre octobre_rouge.42.s

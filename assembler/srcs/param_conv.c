@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 18:46:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 18:59:43 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ char			*ind_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	size = 4;
 	if (ft_strchr(param->param, ':') != NULL)
 		return (lab_conver(asmbly, size));
-	conv = ft_ul_convert_base(param->param, "0123456789abcdef");
+	if (!(conv = ft_ul_convert_base(param->param, "0123456789abcdef")))
+		quit_prog(asmbly);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(asmbly, size, &conv);

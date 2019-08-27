@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 23:43:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 16:21:41 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/27 19:12:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,17 @@ void		get_last_param(t_asm *asmbly, char *str, int i, int line)
 	free(param);
 }
 
+void		error_comma(t_asm *asmbly, char *str, int line, int i)
+{
+		if (str[i] == ',' && str[i + 1] == ',')
+		{
+			ft_putstr_fd("Error double comma at line ", 2);
+			ft_putnbr_fd(line, 2);
+			ft_putchar_fd('\n', 2);
+			quit_prog(asmbly);
+		}
+}
+
 void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
 {
 	int			i;
@@ -70,6 +81,7 @@ void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
 	while (str[++i])
 	{
 		y = 0;
+		error_comma(asmbly, str, line, i);
 		while ((str[i] == ',' || str[i] == 32
 			|| (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
