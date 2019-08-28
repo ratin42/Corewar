@@ -52,7 +52,7 @@ static inline void	ft_get_arg(t_corewar *cor, t_plst *plst,
 		pc_modulo2(plst, 1);
 		j++;
 	}
-	if (arg->type[i] == IND_CODE)
+	if (arg->type[i] == IND_CODE && plst->p.opcode != 3)
 		ft_get_ind(cor, plst, arg, i);
 }
 

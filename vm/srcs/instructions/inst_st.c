@@ -37,8 +37,8 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	ft_get_reg_value(&arg, plst, FRST);
 	ft_verbosity_instru(cor, plst, arg);
+	ft_get_reg_value(&arg, plst, FRST);
 	fill_value(cor, plst, arg);
 	ft_print_debug(plst, "ST", 1);
 }
