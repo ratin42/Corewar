@@ -18,9 +18,11 @@ t_plst	*ft_plst_init(t_corewar *cor)
 		plst = elem;
 		i++;
 		plst->p.id = plst->p.order == -1 ? i : plst->p.order;
+		plst->n_plst = i;
 		plst->p.id *= -1;
 		plst->p.reg[1] = plst->p.id;
 	}
 	cor->nb_process = i;
+	cor->nb_process_max = i;
 	return (plst);
 }

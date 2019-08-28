@@ -37,7 +37,6 @@ void				inst_ldi(t_corewar *cor, t_plst *plst)
 	{
 		if (!cor->visu && cor->verbosity)
 			ft_printf("OCP error.\n");
-		pc_modulo2(plst, 1);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);

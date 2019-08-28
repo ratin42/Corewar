@@ -76,6 +76,7 @@ typedef struct 			s_corewar
 	int					nb_players;
 	t_player			player[4];
 	int					nb_process;
+	int					nb_process_max;
 	unsigned int		current_live;
 	int					cycle;
 	int					total_cycle;

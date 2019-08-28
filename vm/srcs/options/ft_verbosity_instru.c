@@ -57,12 +57,17 @@ void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
 	int		length;
 	int		i;
 
-	ft_printf("P%5d | %s", plst->n_plst, g_op_tab[plst->p.opcode - 1].name);
-	ft_print_verbo_normal(plst, arg);
-	if (arg.verbo & INDIRECT)
-		ft_print_verbo_indirect(plst, arg);
-	else if (arg.verbo & SPECIAL)
-		ft_print_verbo_special(cor, plst, arg);
+	if (!cor->verbosity || cor->visu)
+		return ;
+	if (plst->p.opcode != 16)
+	{
+		ft_printf("P%5d | %s", plst->n_plst, g_op_tab[plst->p.opcode - 1].name);
+		ft_print_verbo_normal(plst, arg);
+		if (arg.verbo & INDIRECT)
+			ft_print_verbo_indirect(plst, arg);
+		else if (arg.verbo & SPECIAL)
+			ft_print_verbo_special(cor, plst, arg);
+	}
 	if (plst->p.opcode != 9 || plst->p.carry == 0)
 	{
 		length = plst->p.pc - plst->p.og_pc;

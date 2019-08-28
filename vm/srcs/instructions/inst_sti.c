@@ -9,73 +9,52 @@
 // l'addition des deux derniers paramametres. Si cette valeur est nulle,
 // alors le carry passe a l'etat un, sinon a l'ettat zero.
 
-int		get_param(t_corewar *cor, t_plst *plst, int type, int *flag_error)
-{
-	if (type == REG_CODE)
-		return (get_reg_value(cor, plst, &flag_error));
-	if (type == DIR_CODE)
-		return (get_small_dir(cor, plst));
-	if (type == IND_CODE)
-		return (get_ind(cor, plst));
-	return (0);
-}
-
 void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 {
-	char	a;
-	char	b;
 	char	c;
-	char	d;
+	int		i;
 
-	a = ((value >> 24) & 0xFF);
-	b = ((value >> 16) & 0xFF);
-	c = ((value >> 8) & 0xFF);
-	d = value & 0xFF;
+	i = 0;
 	addr = pc_modulo(addr);
-	cor->arena[addr] = a;
-	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
-	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = b;
-	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
-	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = c;
-	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
-	addr = pc_modulo(addr + 1);
-	cor->arena[addr] = d;
-	cor->render.bold[addr] = 50;
-	cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
+	while (i < 4)
+	{
+		c = (value >> (8 * (3 - i))) & 0xFF;
+		cor->arena[addr] = c;
+		cor->render.bold[addr] = 50;
+		cor->render.mem_owner[addr] = re_adjust_id(plst->p.id, &plst->p) + 1;
+		addr = pc_modulo(addr + 1);
+		i++;
+	}
 }
 
 void	inst_sti(t_corewar *cor, t_plst *plst)
 {
+	t_arg	arg;
+
 	ft_print_debug(plst, "STI", 0);
-	int	param1;
-	int	param2;
-	int	param3;
-	int	*type_param;
-	int	flag_error;
-	
-	flag_error = 0;
-	type_param = check_opcode(cor, plst);
-	param1 = get_param(cor, plst, type_param[0], &flag_error);
-	param2 = get_param(cor, plst, type_param[1], &flag_error);
-	param3 = get_param(cor, plst, type_param[2], &flag_error);
-	if (flag_error == -1)
+	ft_arg_init(&arg, 3, HALF, TRUE, INDIRECT);
+	ft_get_opcode(cor, plst, &arg);
+	ft_get_args_size(&arg);
+	if (arg.type[0] != REG_CODE || arg.type[1] == 0
+		|| ft_check_arg_type(arg, 2, DIR_CODE, REG_CODE) == FAIL)
 	{
-		free(type_param);
+		if (!cor->visu && cor->verbosity)
+			ft_printf("OCP error.\n");
 		return ;
 	}
-	if (type_param[0] != REG_CODE || type_param[1] == 0 || (type_param[2]
-		!= DIR_CODE && type_param[2] != REG_CODE))
+	ft_get_args(cor, plst, &arg);
+	if (ft_check_reg_index(arg) == FAIL)
 	{
-		free(type_param);
+		if (!cor->visu && cor->verbosity)
+			ft_printf("Register argument is not within the valid range.\n");
 		return ;
 	}
-	print_value(cor, param1,
-			plst->p.og_pc + ft_get_restricted_addr(param2 + param3), plst);
-	free(type_param);
+	arg.value[1] = arg.type[1] == IND_CODE ?
+		ft_get_restricted_addr(arg.value[1]) : arg.value[1];
+	arg.value[2] = ft_get_restricted_addr(arg.value[2]);
+	ft_verbosity_instru(cor, plst, arg);
+	ft_get_reg_value(&arg, plst, FRST | SCND | THRD);
+	print_value(cor, arg.value[0],
+			plst->p.og_pc + ft_get_restricted_addr(arg.value[1] + arg.value[2]), plst);
 	ft_print_debug(plst, "STI", 1);
 }

@@ -27,6 +27,8 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	elem->next = cor->plst;
 	cor->plst = elem;
 	cor->nb_process++;
+	cor->nb_process_max++;
+	elem->n_plst = cor->nb_process_max;
 	if (DEBUG)
 	{
 		printf("##########  DEBUG FORK  ##########\n");
