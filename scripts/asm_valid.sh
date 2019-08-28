@@ -8,41 +8,78 @@ TOTAL=1
 OK=0
 ZERO=0
 
-rm -rf ./results/asm_valid/our_output*
-rm -rf ./results/asm_valid/zaz_output*
+rm -rf ./results/asm_valid/our*
+rm -rf ./results/asm_valid/zaz*
 rm -rf ./results/asm_valid/diff*
+rm -rf ./results/asm_valid/*.cor
+
+#Generating our .cor files
+
+for file in ./asm_valid/*.s
+do
+	./../asm $file 2>&- 1>&-
+done;
+
+#Stocking hexdump results
+
+for file in ./asm_valid/*.cor
+do
+	hexdump -C $file > ./results/asm_valid/our_hexdump_`basename $file`
+done;
+
+#Deleting our .cor files
+
+for file in ./asm_valid/*.cor
+do
+	rm -rf $file
+done;
+
+
+#Generating zaz .cor files
+
+for file in ./asm_valid/*.s
+do
+	./../ressources/vm_champs/asm $file 1>&- 2>&-
+done;
+
+TOTAL=$((1))
+
+#Stocking zaz hexdump
+
+for file in ./asm_valid/*.cor
+do
+	hexdump -C $file > ./results/asm_valid/zaz_hexdump_`basename $file`
+done
+
+TOTAL=$((1))
 
 for file in ./asm_valid/*.s;
 do
 	echo $YELLOW"[TEST $TOTAL]: `basename $file`"$NC
-	./../asm $file 2>&- > ./results/asm_valid/our_output_$TOTAL
-	./../ressources/vm_champs/asm $file 2>&- > ./results/asm_valid/zaz_output_$TOTAL
-	diff ./results/asm_valid/our_output_$TOTAL ./results/asm_valid/zaz_output_$TOTAL > ./results/asm_valid/diff_$TOTAL
+	./../asm $file > ./results/asm_valid/our_output_`basename ${file/.s/.cor}` 
+	./../ressources/vm_champs/asm $file 2>&1 > ./results/asm_valid/zaz_output_`basename ${file/.s/.cor}` 
+	diff ./results/asm_valid/our_output_`basename ${file/.s/.cor}` ./results/asm_valid/zaz_output_`basename ${file/.s/.cor}` > ./results/asm_valid/diff_`basename ${file/.s/.cor}` 
 	if [ "$?" = "$ZERO" ]; then
-		echo $GREEN"[OK]\n"$NC
-		OK=$((OK+1))
-	else
-		echo $RED"[KO]\n"$NC
-		echo "Check details ? Y/n "
-		read ANSWER
-		if [ "$ANSWER" = "Y" ] ; then
-			clear
-			cat ./results/asm_valid/diff_$TOTAL
-			echo "\n\nContinue tests ? Y/n"
-			read ANSWER
-			if [ "$ANSWER" != "Y" ] ; then
-				TOTAL=$((TOTAL+1))
-				break;
-			fi
+		echo "\nGenerating .cor file       $GREEN[OK]"$NC
+		diff ./results/asm_valid/our_hexdump_`basename ${file/.s/.cor}` \
+		./results/asm_valid/zaz_hexdump_`basename ${file/.s/.cor}` 2>&1 \
+		> ./results/asm_valid/diff_hexdump_`basename ${file/.s/.cor}`
+		if [ "$?" = "$ZERO" ]; then
+			echo "Hexdump similar with zaz   $GREEN[OK]\n"$NC
+			OK=$((OK+1))
+		else
+			echo "Hexdump similar with zaz   $RED[KO]\n"$NC
 		fi
-	fi
+	else
+		echo "\nGenerating .cor file $RED[KO]\n"$NC
+		fi
 	TOTAL=$((TOTAL+1))
 done;
 
 TOTAL=$((TOTAL-1))
 
 echo "\n\n-------------------------\n"
-echo "Results : $OK / $TOTAL\n"
+echo $YELLOW"Results : $OK / $TOTAL\n"$NC
 
 if  [ $OK != $TOTAL ]; then
 	echo $RED"FAILED check details in ./results/asm_valid/\n" $NC
