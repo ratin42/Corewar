@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 18:46:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/28 16:25:40 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,41 @@ static int		check_label(char *param)
 	return (1);
 }
 
-static int		check_ind(char *param)
+static char		*get_good_value(char **param, int type)
+{
+	char		*result;
+
+	if (type == DIR_CODE)
+		result = ft_litoa((int)ft_atoll(&(*param)[1]));
+	else
+		result = ft_litoa((int)ft_atoll((*param)));
+	free(*param);
+	return (result);
+}
+
+static int		check_ind(char **param)
 {
 	int			i;
 
 	i = 0;
-	if (param[i] == ':')
-		return (check_label(param));
-	if (strmaxint(param))
-		return (0);
-	while (param[i])
+	if ((*param)[i] == ':')
+		return (check_label((*param)));
+/* 	if (strmaxint(*param) == 1)
+		return (0); */
+	while ((*param)[i])
 	{
-		if ((param[i] == '-' || param[i] == '+')
-			&& (param[i + 1]) && ft_isdigit(param[i + 1]))
+		if (((*param)[i] == '-' || (*param)[i] == '+')
+			&& ((*param)[i + 1]) && ft_isdigit((*param)[i + 1]))
 			i++;
-		if (ft_isdigit(param[i]) == 0)
+		if (ft_isdigit((*param)[i]) == 0)
 			return (0);
 		i++;
 	}
+	(*param) = get_good_value((param), IND_CODE);
 	return (1);
 }
 
-static int		check_dir(t_asm *asmbly, char **param)
+static int		check_dir(char **param)
 {
 	int			i;
 
@@ -64,8 +77,6 @@ static int		check_dir(t_asm *asmbly, char **param)
 		return (0);
 	if ((*param)[i] == ':')
 		return (check_label(&(*param)[i]));
-	if (strmaxint(*param))
-		return (0);
 	while ((*param)[i])
 	{
 		if (((*param)[i] == '-' || (*param)[i] == '+')
@@ -75,18 +86,9 @@ static int		check_dir(t_asm *asmbly, char **param)
 			return (0);
 		i++;
 	}
+	*param = get_good_value(param, DIR_CODE);
+	*param = ft_strjoin_free("%", *param, 2);
 	return (1);
-	(void)asmbly;
-}
-
-void			error_type(t_asm *asmbly, t_param *param)
-{
-	ft_putstr_fd("Lexical error of type for param at line ", 2);
-	ft_putnbr_fd(param->line, 2);
-	ft_putstr_fd(" ->", 2);
-	ft_putstr_fd(param->param, 2);
-	ft_putchar_fd('\n', 2);
-	quit_prog(asmbly);
 }
 
 void			get_params_type(t_asm *asmbly, char *str, int line)
@@ -101,9 +103,9 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 	{
 		if (is_register(param->param) == T_REG)
 			param->type = T_REG;
-		else if (check_dir(asmbly, &param->param) == 1)
+		else if (check_dir(&param->param) == 1)
 			param->type = T_DIR;
-		else if (check_ind(param->param) == 1)
+		else if (check_ind(&param->param) == 1)
 			param->type = T_IND;
 		else
 			error_type(asmbly, param);
