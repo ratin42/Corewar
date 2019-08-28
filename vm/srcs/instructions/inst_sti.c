@@ -52,8 +52,8 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	arg.value[1] = arg.type[1] == IND_CODE ?
 		ft_get_restricted_addr(arg.value[1]) : arg.value[1];
 	arg.value[2] = ft_get_restricted_addr(arg.value[2]);
+	ft_get_reg_value(&arg, plst, SCND | THRD);
 	ft_verbosity_instru(cor, plst, arg);
-	ft_get_reg_value(&arg, plst, FRST | SCND | THRD);
 	print_value(cor, arg.value[0],
 			plst->p.og_pc + ft_get_restricted_addr(arg.value[1] + arg.value[2]), plst);
 	ft_print_debug(plst, "STI", 1);

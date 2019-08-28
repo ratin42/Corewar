@@ -26,7 +26,7 @@ static inline void	ft_print_verbo_indirect(t_plst *plst, t_arg arg)
 	sti = plst->p.opcode == 11 ? 1 : 0;
 	lldi = plst->p.opcode == 14 ? 1 : 0;
 	value = arg.value[0 + sti] + arg.value[1 + sti];
-	ft_printf("		| -> %s %d + %d = %d (with %s %d)\n",
+	ft_printf("       | -> %s %d + %d = %d (with %s %d)\n",
 		sti ? "store to" : "load from",
 		arg.value[0 + sti], arg.value[1 + sti], value,
 		lldi ? "pc" : "pc and mod", lldi ? value + plst->p.og_pc
@@ -39,7 +39,7 @@ static inline void	ft_print_verbo_special(t_corewar *cor, t_plst *plst, t_arg ar
 
 	if (plst->p.opcode == 12 || plst->p.opcode == 15)
 		ft_printf(" (%d)\n", plst->p.opcode == 12
-			? pc_modulo(arg.value[0] + plst->p.og_pc)
+			? ft_get_restricted_addr(arg.value[0] + plst->p.og_pc)
 			: arg.value[0] + plst->p.og_pc);
 	else if (plst->p.opcode == 9)
 		ft_printf(" %s\n", plst->p.carry ? "OK" : "FAILED");
@@ -59,7 +59,7 @@ void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
 
 	if (!cor->verbosity || cor->visu)
 		return ;
-	if (plst->p.opcode != 16)
+	if ((cor->v_lvl & VERBO3) && plst->p.opcode != 16)
 	{
 		ft_printf("P%5d | %s", plst->n_plst, g_op_tab[plst->p.opcode - 1].name);
 		ft_print_verbo_normal(plst, arg);
@@ -68,10 +68,10 @@ void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
 		else if (arg.verbo & SPECIAL)
 			ft_print_verbo_special(cor, plst, arg);
 	}
-	if (plst->p.opcode != 9 || plst->p.carry == 0)
+	if ((cor->v_lvl & VERBO5) && (plst->p.opcode != 9 || plst->p.carry == 0))
 	{
 		length = plst->p.pc - plst->p.og_pc;
-		ft_printf("ADV %d (%#06x -> %#06x) ", length, plst->p.og_pc, plst->p.pc);
+		ft_printf("ADV %d (0x%04x -> %#06x) ", length, plst->p.og_pc, plst->p.pc);
 		i = 0;
 		while (i < length)
 		{

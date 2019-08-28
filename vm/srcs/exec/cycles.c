@@ -8,9 +8,9 @@ static inline void		ft_kill_nlp_2(t_corewar *cor, t_plst *plst)
 	{
 		if (plst->next->p.live == 0)
 		{
-			if (cor->verbosity && !cor->visu)
+			if (cor->verbosity && (cor->v_lvl & VERBO4) && !cor->visu)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					plst->next->p.id, plst->next->p.no_live, cor->ctd);
+					plst->next->n_plst, plst->next->p.no_live, cor->ctd);
 			elem = plst->next;
 			plst->next = plst->next->next;
 			free(elem);
@@ -29,9 +29,9 @@ static inline void		ft_kill_no_live_process(t_corewar *cor)
 	plst = cor->plst;
 	while (plst->p.live == 0)
 	{
-		if (cor->verbosity && !cor->visu)
+		if (cor->verbosity && (cor->v_lvl & VERBO4) && !cor->visu)
 			ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					plst->p.id, plst->p.no_live, cor->ctd);
+					plst->n_plst, plst->p.no_live, cor->ctd);
 		cor->plst = plst->next;
 		free(plst);
 		plst = cor->plst;
