@@ -6,12 +6,14 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 19:03:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/28 17:49:31 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+//# include "../../common_files/op.h"
+# include "../../common_files/op.h"
 
 struct					s_type
 {
@@ -35,10 +37,12 @@ typedef struct			s_op
 typedef struct			s_asm
 {
 	char				*name;
-	char				*comment;
+	char				comment[COMMENT_LENGTH + 1];
 	int					size;
 	int					got_name;
 	int					got_comment;
+	int					in_comment;
+	int					idx_comment;
 	struct s_op			op_tab[17];
 	struct s_instru		*instru;
 }						t_asm;

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 19:48:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/28 16:48:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void		parse(t_asm *asmbly, char *str, int turn)
 		return ;
 	else if (name_presence(str) == 1 && asmbly->got_name == 0)
 		get_name(asmbly, str);
-	else if (comment_presence(str) == 1 && asmbly->got_comment == 0)
+	else if ((comment_presence(str) == 1 && asmbly->got_comment == 0)
+		|| asmbly->in_comment == 1)
 		get_comment(asmbly, str);
 	else if (asmbly->got_name == 1 && asmbly->got_comment == 1)
 		get_instruction(asmbly, str, turn + 1);

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:23:48 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/08 20:30:11 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/28 16:56:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			free_instru(t_asm *asmbly)
 void			free_prog(t_asm *asmbly)
 {
 	free(asmbly->name);
-	free(asmbly->comment);
+	//free(asmbly->comment);
 	free_instru(asmbly);
 }
 

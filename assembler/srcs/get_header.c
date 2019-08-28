@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/14 18:15:32 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/28 18:00:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,52 @@ void	get_name(t_asm *asmbly, char *str)
 	asmbly->got_name = 1;
 }
 
+int		fill_comment(char *str, t_asm *asmbly)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '"')
+	{
+		if (asmbly->idx_comment == COMMENT_LENGTH + 1)
+			error_length(asmbly, 2);
+		asmbly->comment[asmbly->idx_comment] = str[i];
+		//printf("comment = |%c|\n", asmbly->comment[asmbly->idx_comment]);
+		asmbly->idx_comment++;
+		i++;
+	}
+	if (str[i] == '"')
+	{
+		printf("passage\n");
+		asmbly->comment[asmbly->idx_comment] = '\0';
+		return (0);
+	}
+	return (1);
+}
+
 void	get_comment(t_asm *asmbly, char *str)
+{
+	int		i;
+
+	i = 0;
+	if (asmbly->in_comment == 0)
+	{
+		while (str[i] && str[i] != '"')
+			i++;
+		i++;
+		if (!(str[i]))
+			return ;
+		asmbly->in_comment = 1;
+	}
+	if (!(fill_comment(&str[i], asmbly)))
+	{
+		asmbly->in_comment = 0;
+		asmbly->got_comment = 1;
+		printf("comment = |%s|\n", asmbly->comment);
+	}
+}
+
+/* void	get_comment(t_asm *asmbly, char *str)
 {
 	size_t	i;
 	size_t	y;
@@ -76,3 +121,4 @@ void	get_comment(t_asm *asmbly, char *str)
 		error_length(asmbly, 2);
 	asmbly->got_comment = 1;
 }
+ */
