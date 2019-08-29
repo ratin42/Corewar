@@ -6,13 +6,16 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 TOTAL=1
 OK=0
-ZERO=0
 ISOK="Writing output program to"
 
-make -C .. -s
+#Making sure binaries are ready, and clearing results folder
 
+make -C .. -s
 rm -rf ./results/asm_invalid/our_output*
 rm -rf ./results/asm_invalid/zaz_output*
+
+#This script, check if we and zaz, both reject .s files
+#Every files in ./asm_invalid should be rejected
 
 for file in ./asm_invalid/*.s;
 do
@@ -38,7 +41,7 @@ echo "\n\n-------------------------\n"
 echo "Results : $OK / $TOTAL\n"
 
 if  [ $OK != $TOTAL ]; then
-	echo $RED"FAILED Check details in ./results/asm_invalud/\n" $NC
+	echo $RED"FAILED Check details in ./results/asm_invalid/\n" $NC
 else
 	echo $GREEN"PERFECT ✔" $NC
 fi

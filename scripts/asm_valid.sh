@@ -8,6 +8,9 @@ TOTAL=1
 OK=0
 ZERO=0
 
+#Making sure that binaries are ready, and clearing results folder
+
+make .. -s
 rm -rf ./results/asm_valid/our*
 rm -rf ./results/asm_valid/zaz*
 rm -rf ./results/asm_valid/diff*
@@ -34,15 +37,12 @@ do
 	rm -rf $file
 done;
 
-
 #Generating zaz .cor files
 
 for file in ./asm_valid/*.s
 do
 	./../ressources/vm_champs/asm $file 1>&- 2>&-
 done;
-
-TOTAL=$((1))
 
 #Stocking zaz hexdump
 
@@ -51,7 +51,10 @@ do
 	hexdump -C $file > ./results/asm_valid/zaz_hexdump_`basename $file`
 done
 
-TOTAL=$((1))
+
+#This script, verify that we and zaz, both create a .cor file from the .s
+#If its the case, then compare the hexdump of .cor generated and if there is no diff
+#Then it considers the test as OK and not failed.
 
 for file in ./asm_valid/*.s;
 do
@@ -86,6 +89,8 @@ if  [ $OK != $TOTAL ]; then
 else
 	echo $GREEN"PERFECT ✔" $NC
 fi
+
+#Clearing ./asm_valid to be ready for next use of the script
 
 for file in ./asm_valid/*.cor
 do
