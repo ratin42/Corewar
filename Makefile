@@ -1,20 +1,20 @@
 all:
-	@Make -C assembler
-	@Make -C vm
-	@Make -C disasm
+	@make -C assembler
+	@make -C vm
+	@make -C disasm
 	@mv ./vm/corewar ./corewar
 	@mv ./assembler/asm ./asm
 	@mv ./disasm/disassembler ./disassembler
 
 clean:
-	@Make -C assembler clean
-	@Make -C vm clean
-	@Make -C disasm clean
+	@make -C assembler clean
+	@make -C vm clean
+	@make -C disasm clean
 
 fclean:
-	@Make -C assembler fclean
-	@Make -C vm fclean
-	@Make -C disasm fclean
+	@make -C assembler fclean
+	@make -C vm fclean
+	@make -C disasm fclean
 	@rm -rf asm
 	@rm -rf corewar
 	@rm -rf disassembler

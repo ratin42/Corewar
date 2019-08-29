@@ -50,7 +50,7 @@ OBJ = $(SRC:.c=.o)
 all: libft $(NAME)
 
 libft:
-	@Make -C $(LIBFT) -s
+	@make -C $(LIBFT) -s
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
