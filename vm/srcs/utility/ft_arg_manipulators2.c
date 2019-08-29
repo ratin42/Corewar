@@ -14,6 +14,21 @@ void				ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 	pc_modulo2(plst, 1);
 }
 
+int					ft_get_args_size_sum(t_arg	arg)
+{
+	int		i;
+	int		sum;
+
+	i = 0;
+	sum = 0;
+	while (i < arg.nb_arg)
+	{
+		sum += arg.size[i];
+		i++;
+	}
+	return (sum);
+}
+
 static inline int	ft_get_arg_size(t_arg_type arg_type, int dir_size)
 {
 	if (arg_type == REG_CODE)
@@ -30,7 +45,7 @@ void				ft_get_args_size(t_arg *arg)
 	int		i;
 
 	i = 0;
-	while (i < arg->nb_arg)
+	while (i < 4)
 	{
 		arg->size[i] = ft_get_arg_size(arg->type[i], arg->dir_size);
 		i++;

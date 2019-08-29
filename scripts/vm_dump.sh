@@ -12,6 +12,9 @@ rm -rf ./results/vm_dump/our_output*
 rm -rf ./results/vm_dump/zaz_output*
 rm -rf ./results/vm_dump/diff*
 
+make -C .. -s
+clear
+
 echo "Which cycle to compare ? "
 read CYCLE
 

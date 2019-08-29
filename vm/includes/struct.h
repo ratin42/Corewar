@@ -1,4 +1,4 @@
-#ifndef	STRUCT_H
+#ifndef STRUCT_H
 # define STRUCT_H
 
 # include <ncurses.h>
@@ -52,7 +52,7 @@ typedef struct			s_process
 	int					no_live;
 	unsigned int		wait;
 	int					opcode;
-}                       t_process;
+}						t_process;
 
 typedef struct			s_plst
 {
@@ -67,10 +67,10 @@ typedef struct			s_player
 	int					id;
 }						t_player;
 
-typedef struct 			s_corewar
+typedef struct			s_corewar
 {
 	unsigned char		arena[MEM_SIZE];
-	unsigned int 		ram_full;
+	unsigned int		ram_full;
 	int					count;
 	int					last_live_id;
 	int					nb_players;

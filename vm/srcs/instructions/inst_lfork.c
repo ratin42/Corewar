@@ -25,6 +25,7 @@ void	inst_lfork(t_corewar *cor, t_plst *plst)
 	cor->nb_process++;
 	cor->nb_process_max++;
 	elem->n_plst = cor->nb_process_max;
+	ft_verbosity_adv(cor, plst);
 	if (DEBUG)
 	{
 		printf("##########  DEBUG LFORK  ##########\n");

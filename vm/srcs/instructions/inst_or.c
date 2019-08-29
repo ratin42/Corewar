@@ -17,21 +17,17 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || arg.type[1] == 0 || arg.type[2] != REG_CODE)
 	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("OCP error.\n");
-		pc_modulo2(plst, 1);
+		pc_modulo2(plst, ft_get_args_size_sum(arg));
+		ft_verbosity_adv(cor, plst);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
-	if (ft_check_reg_index(arg) == FAIL)
-	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("Register argument is not within the valid range.\n");
+	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
-	}
 	ft_get_reg_value(&arg, plst, FRST | SCND);
 	ft_verbosity_instru(cor, plst, arg);
 	plst->p.reg[arg.value[2]] = arg.value[0] | arg.value[1];
 	plst->p.carry = !(arg.value[0] | arg.value[1]);
+	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "OR", 1);
 }

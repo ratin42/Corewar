@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 19:43:22 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/28 17:49:36 by ratin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef COREWAR_H
 # define COREWAR_H
 
@@ -60,6 +48,12 @@ void		add_param(t_asm *asmbly, t_instru *instru, int line, char *param);
 int			get_opcode(t_asm *asbly, char *str, int line);
 int			is_register(char *param);
 int			find_op_index(char *opcode);
+int			get_nbr_of_params(char *opcode);
+int			get_comma(char *str, int i);
+void		get_last_param(t_asm *asmbly, char *str, int i, int line);
+void		error_comma(t_asm *asmbly, char *str, int line, int i);
+void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line);
+void		check_end_coma(t_asm *asmbly, char *str, int line);
 
 /*
 ** conversion

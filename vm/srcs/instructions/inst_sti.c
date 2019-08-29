@@ -38,23 +38,19 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	if (arg.type[0] != REG_CODE || arg.type[1] == 0
 		|| ft_check_arg_type(arg, 2, DIR_CODE, REG_CODE) == FAIL)
 	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("OCP error.\n");
+		pc_modulo2(plst, ft_get_args_size_sum(arg));
+		ft_verbosity_adv(cor, plst);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
-	if (ft_check_reg_index(arg) == FAIL)
-	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("Register argument is not within the valid range.\n");
+	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
-	}
-	arg.value[1] = arg.type[1] == IND_CODE ?
-		ft_get_restricted_addr(arg.value[1]) : arg.value[1];
-	arg.value[2] = ft_get_restricted_addr(arg.value[2]);
+	ft_get_reg_value(&arg, plst, SCND | THRD);
 	ft_verbosity_instru(cor, plst, arg);
-	ft_get_reg_value(&arg, plst, FRST | SCND | THRD);
+	ft_get_reg_value(&arg, plst, FRST);
 	print_value(cor, arg.value[0],
-			plst->p.og_pc + ft_get_restricted_addr(arg.value[1] + arg.value[2]), plst);
+			plst->p.og_pc
+			+ ft_get_restricted_addr(arg.value[1] + arg.value[2], FULL), plst);
+	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "STI", 1);
 }

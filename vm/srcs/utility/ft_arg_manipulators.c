@@ -12,7 +12,7 @@ void				ft_get_reg_value(t_arg *arg, t_plst *plst, int pos)
 		if (pos & flag && arg->type[i] == REG_CODE)
 		{
 			arg->value[i] = plst->p.reg[arg->value[i]];
-			arg->type[i] = DIR_CODE;
+			arg->type[i] = IND_CODE;
 		}
 		flag = flag << 1;
 		i++;
@@ -27,7 +27,7 @@ static inline void	ft_get_ind(t_corewar *cor, t_plst *plst,
 
 	j = 0;
 	pos = arg->addr_restrict == 1
-		? ft_get_restricted_addr(arg->value[i])
+		? ft_get_restricted_addr(arg->value[i], HALF)
 		: pc_modulo(arg->value[i]);
 	arg->value[i] = 0;
 	while (j < 4)
@@ -49,10 +49,12 @@ static inline void	ft_get_arg(t_corewar *cor, t_plst *plst,
 	{
 		arg->value[i] = (arg->value[i] << 8);
 		arg->value[i] += cor->arena[plst->p.pc];
+		if (arg->size[i] == 2)
+			arg->value[i] = (short)arg->value[i];
 		pc_modulo2(plst, 1);
 		j++;
 	}
-	if (arg->type[i] == IND_CODE)
+	if (arg->type[i] == IND_CODE && plst->p.opcode != 3)
 		ft_get_ind(cor, plst, arg, i);
 }
 

@@ -23,12 +23,13 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	plst->p.opcode = 0;
 	ft_memcpy(elem, plst, sizeof(t_plst));
 	elem->p.pc = pc_modulo(plst->p.og_pc
-			+ ft_get_restricted_addr(arg.value[0]));
+			+ ft_get_restricted_addr(arg.value[0], HALF));
 	elem->next = cor->plst;
 	cor->plst = elem;
 	cor->nb_process++;
 	cor->nb_process_max++;
 	elem->n_plst = cor->nb_process_max;
+	ft_verbosity_adv(cor, plst);
 	if (DEBUG)
 	{
 		printf("##########  DEBUG FORK  ##########\n");

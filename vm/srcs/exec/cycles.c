@@ -6,17 +6,18 @@ static inline void		ft_kill_nlp_2(t_corewar *cor, t_plst *plst)
 
 	while (plst->next != NULL)
 	{
-		if (plst->next->p.live == 0)
+		if (plst->next->p.no_live >= cor->ctd)
 		{
-			if (cor->verbosity && !cor->visu)
+			if (cor->verbosity && (cor->v_lvl & VERBO4) && !cor->visu)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					plst->next->p.id, plst->next->p.no_live, cor->ctd);
+					plst->next->n_plst, plst->next->p.no_live, cor->ctd);
 			elem = plst->next;
 			plst->next = plst->next->next;
 			free(elem);
 			cor->nb_process--;
 		}
-		plst = plst->next;
+		else
+			plst = plst->next;
 		if (plst == NULL)
 			return ;
 	}
@@ -27,11 +28,11 @@ static inline void		ft_kill_no_live_process(t_corewar *cor)
 	t_plst	*plst;
 
 	plst = cor->plst;
-	while (plst->p.live == 0)
+	while (plst->p.no_live >= cor->ctd)
 	{
-		if (cor->verbosity && !cor->visu)
+		if (cor->verbosity && (cor->v_lvl & VERBO4) && !cor->visu)
 			ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-					plst->p.id, plst->p.no_live, cor->ctd);
+					plst->n_plst, plst->p.no_live, cor->ctd);
 		cor->plst = plst->next;
 		free(plst);
 		plst = cor->plst;
@@ -64,8 +65,6 @@ void					update_cycles(t_corewar *cor)
 	cor->check_cycle++;
 	cor->cycle = 0;
 	ft_kill_no_live_process(cor);
-	if (cor->plst == NULL)
-		return ;
 	if (cor->live_declared >= NBR_LIVE || cor->check_cycle == MAX_CHECKS)
 	{
 		cor->ctd -= CYCLE_DELTA;

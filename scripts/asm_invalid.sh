@@ -6,23 +6,27 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 TOTAL=1
 OK=0
-ZERO=0
 ISOK="Writing output program to"
 
+#Making sure binaries are ready, and clearing results folder
+
+make -C .. -s
 rm -rf ./results/asm_invalid/our_output*
 rm -rf ./results/asm_invalid/zaz_output*
+
+#This script, check if we and zaz, both reject .s files
+#Every files in ./asm_invalid should be rejected
 
 for file in ./asm_invalid/*.s;
 do
 	echo $YELLOW"[TEST $TOTAL]: `basename $file`"$NC
 	./../asm $file > ./results/asm_invalid/our_output_$TOTAL 2>&1
 	./../ressources/vm_champs/asm $file > ./results/asm_invalid/zaz_output_$TOTAL
-
 	DATA1=$(cat ./results/asm_invalid/our_output_$TOTAL)
 	DATA2=$(cat ./results/asm_invalid/zaz_output_$TOTAL)
-	printf "\nOur Output: $DATA1"
-	printf "\nZaz Output: $DATA2\n\n"
-	if [ "$DATA1" != "$ISOK $file" ] && [ "$DATA2" != "$ISOK $file" ]; then
+	echo "\nOur Output: $DATA1"
+	echo "Zaz Output: $DATA2\n"
+	if [ "$DATA1" != "$ISOK ${file/.s/.cor}" ] && [ "$DATA2" != "$ISOK ${file/.s/.cor}" ]; then
 		echo $GREEN"[OK]\n"$NC
 		OK=$((OK+1))
 	else
@@ -37,7 +41,7 @@ echo "\n\n-------------------------\n"
 echo "Results : $OK / $TOTAL\n"
 
 if  [ $OK != $TOTAL ]; then
-	echo $RED"FAILED\n" $NC
+	echo $RED"FAILED Check details in ./results/asm_invalid/\n" $NC
 else
 	echo $GREEN"PERFECT ✔" $NC
 fi

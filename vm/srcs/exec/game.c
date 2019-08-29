@@ -74,7 +74,7 @@ void				play(t_corewar *cor)
 			update_window(cor);
 		cor->cycle++;
 		cor->total_cycle++;
-		if (cor->verbosity && !cor->visu)
+		if (cor->verbosity && (cor->v_lvl & VERBO2) && !cor->visu)
 			ft_printf("It is now cycle %d\n", cor->total_cycle);
 		exec_process(cor);
 		if (cor->total_cycle == cor->n_dump)
@@ -83,7 +83,7 @@ void				play(t_corewar *cor)
 			cor->hide_winner = 1;
 			return ;
 		}
-		if (cor->cycle > cor->ctd)
+		if (cor->cycle >= cor->ctd)
 			update_cycles(cor);
 	}
 }
