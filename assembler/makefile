@@ -49,11 +49,11 @@ OBJ = $(SRC:.c=.o)
 all: libft $(NAME)
 
 libft:
-	@Make -C $(LIBFT) -s
+	@Make -C $(LIBFT)
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
-	@printf "\n\x1b[32mASM Ready ✔\x1b[0m\n\n"
+	@printf "\x1b[32mASM Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC)
 	@$(CC) $(CFLAGS) -o $@ -c $<
