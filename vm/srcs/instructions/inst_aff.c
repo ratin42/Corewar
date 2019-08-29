@@ -42,13 +42,9 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
-	if (ft_check_reg_index(arg) == FAIL)
-	{
-		if (!cor->visu && cor->verbosity)
-			ft_printf("Register argument is not within the valid range.\n");
+	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
-	}
-	ft_verbosity_instru(cor, plst, arg);
+	ft_verbosity_instru(cor, plst, arg, SUCCESS);
 	if (!cor->verbosity && !cor->visu)
 		ft_printf("%c\n", plst->p.reg[arg.value[0]] % 256);
 	ft_print_debug(plst, "AFF", 1);

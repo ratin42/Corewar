@@ -7,7 +7,7 @@ static inline void	ft_print_verbo_normal(t_plst *plst, t_arg arg)
 	i = 0;
 	while (i < arg.nb_arg)
 	{
-		if (arg.type[i] == REG_CODE)
+		if (arg.type[i] == REG_CODE && (plst->p.opcode != 3 || i != 1))
 			ft_printf(" r%d", arg.value[i]);
 		else
 			ft_printf(" %d", arg.value[i]);
@@ -30,7 +30,7 @@ static inline void	ft_print_verbo_indirect(t_plst *plst, t_arg arg)
 		sti ? "store to" : "load from",
 		arg.value[0 + sti], arg.value[1 + sti], value,
 		lldi ? "pc" : "pc and mod", lldi ? value + plst->p.og_pc
-		: ft_get_restricted_addr(value + plst->p.og_pc));
+		: ft_get_restricted_addr(value, FULL) + plst->p.og_pc);
 }
 
 static inline void	ft_print_verbo_special(t_corewar *cor, t_plst *plst, t_arg arg)
@@ -39,7 +39,7 @@ static inline void	ft_print_verbo_special(t_corewar *cor, t_plst *plst, t_arg ar
 
 	if (plst->p.opcode == 12 || plst->p.opcode == 15)
 		ft_printf(" (%d)\n", plst->p.opcode == 12
-			? ft_get_restricted_addr(arg.value[0] + plst->p.og_pc)
+			? ft_get_restricted_addr(arg.value[0], HALF) + plst->p.og_pc
 			: arg.value[0] + plst->p.og_pc);
 	else if (plst->p.opcode == 9)
 		ft_printf(" %s\n", plst->p.carry ? "OK" : "FAILED");
@@ -52,14 +52,15 @@ static inline void	ft_print_verbo_special(t_corewar *cor, t_plst *plst, t_arg ar
 	}
 }
 
-void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
+void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg,
+	int flag)
 {
 	int		length;
 	int		i;
 
 	if (!cor->verbosity || cor->visu)
 		return ;
-	if ((cor->v_lvl & VERBO3) && plst->p.opcode != 16)
+	if ((cor->v_lvl & VERBO3) && plst->p.opcode != 16 && flag != FAIL)
 	{
 		ft_printf("P%5d | %s", plst->n_plst, g_op_tab[plst->p.opcode - 1].name);
 		ft_print_verbo_normal(plst, arg);
