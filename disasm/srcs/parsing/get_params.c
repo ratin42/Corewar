@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:21:54 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 17:59:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/29 15:01:04 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disassembler.h"
 
-void	ft_get_opcode(t_corewar *cor, t_arg **arg)
+void				ft_get_opcode(t_corewar *cor, t_arg **arg)
 {
 	unsigned char	bmask;
 
@@ -24,10 +24,10 @@ void	ft_get_opcode(t_corewar *cor, t_arg **arg)
 	cor->pc++;
 }
 
-void			init_arg(t_arg *arg, int opcode)
+void				init_arg(t_arg *arg, int opcode)
 {
 	extern t_op	g_op_tab[17];
-	
+
 	arg->nb_arg = g_op_tab[opcode - 1].nbr_of_param;
 	if (g_op_tab[opcode - 1].direct_size == 1)
 		arg->dir_size = 2;
@@ -39,23 +39,21 @@ void			init_arg(t_arg *arg, int opcode)
 		arg->ocp = 0;
 }
 
-static inline int		ft_get_arg_size(t_arg_type arg_type, int dir_size)
+static inline int	ft_get_arg_size(t_arg_type arg_type, int dir_size)
 {
 	if (arg_type == REG_CODE)
 		return (1);
 	if (arg_type == IND_CODE)
 		return (IND_SIZE);
 	if (arg_type == DIR_CODE)
-	{
 		return (dir_size);
-	}
 	return (0);
 }
 
-void	ft_get_args_size(t_arg *arg)
+void				ft_get_args_size(t_arg *arg)
 {
-	int		i;
-	
+	int				i;
+
 	i = 0;
 	if (arg->ocp == 1)
 	{
@@ -69,7 +67,7 @@ void	ft_get_args_size(t_arg *arg)
 		arg->size[0] = arg->dir_size;
 }
 
-void		get_params(t_corewar *cor, t_arg *arg, int opcode)
+void				get_params(t_corewar *cor, t_arg *arg, int opcode)
 {
 	ft_bzero(arg, sizeof(arg));
 	init_arg(arg, opcode);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disassembler.h                                        :+:      :+:    :+:   */
+/*   disassembler.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 14:33:25 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/08/29 14:49:24 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@
 # include <sys/stat.h>
 # include "../../common_files/libft/libft.h"
 # include "../../common_files/op.h"
-
-
 # include <stdio.h>
 
-# define ERROR				-1
-# define SUCCESS			1
+# define ERROR			-1
+# define SUCCESS		1
 
-typedef struct 			s_corewar
+typedef struct			s_corewar
 {
 	char				name[PROG_NAME_LENGTH + 1];
 	char				comment[COMMENT_LENGTH];
 	unsigned char		code[CHAMP_MAX_SIZE];
 	unsigned int		size;
 	unsigned int		magic;
-	unsigned int 		pc;
+	unsigned int		pc;
 	int					fd;
 }						t_corewar;
 
@@ -68,38 +66,39 @@ typedef	struct			s_arg
 ** PARSING
 */
 
-uint32_t	swap_endian(uint32_t val);
-void		read_process(char *name, t_corewar *cor);
-void		decomp_quit(char *str);
-void		create_file(t_corewar *cor, char *name);
-void		print_file(t_corewar *cor);
-void		create_list(t_corewar *cor);
-void		stock_process_name(t_corewar *cor, t_header *header);
-void		stock_process_size(t_corewar *cor, t_header *header);
-void		stock_process_code(t_corewar *cor, int fd);
-void		stock_process_comment(t_corewar *cor, t_header *header);
-void		stock_process_magic(t_corewar *cor, t_header *header);
+uint32_t				swap_endian(uint32_t val);
+void					read_process(char *name, t_corewar *cor);
+void					decomp_quit(char *str);
+void					create_file(t_corewar *cor, char *name);
+void					print_file(t_corewar *cor);
+void					create_list(t_corewar *cor);
+void					stock_process_name(t_corewar *cor, t_header *header);
+void					stock_process_size(t_corewar *cor, t_header *header);
+void					stock_process_code(t_corewar *cor, int fd);
+void					stock_process_comment(t_corewar *cor, t_header *header);
+void					stock_process_magic(t_corewar *cor, t_header *header);
 
 /*
 ** INSTRUCTION
 */
-void		inst_sti(t_corewar *cor);
-void		inst_and(t_corewar *cor);
-void		inst_live(t_corewar *cor);
-void		inst_zjmp(t_corewar *cor);
-void		inst_ld(t_corewar *cor);
+void					inst_sti(t_corewar *cor);
+void					inst_and(t_corewar *cor);
+void					inst_live(t_corewar *cor);
+void					inst_zjmp(t_corewar *cor);
+void					inst_ld(t_corewar *cor);
 
-char		*get_small_dir(t_corewar *cor);
-char		*get_big_dir(t_corewar *cor);
-char		*get_reg_index(t_corewar *cor);
-char		*get_ind(t_corewar *cor);
-char		*get_small_param(t_corewar *cor, int type);
-int			*check_opcode(t_corewar *cor);
-void		get_params(t_corewar *cor, t_arg *arg, int opcode);
-void		ft_get_args(t_corewar *cor, t_arg *arg);
+char					*get_small_dir(t_corewar *cor);
+char					*get_big_dir(t_corewar *cor);
+char					*get_reg_index(t_corewar *cor);
+char					*get_ind(t_corewar *cor);
+char					*get_small_param(t_corewar *cor, int type);
+int						*check_opcode(t_corewar *cor);
+void					get_params(t_corewar *cor, t_arg *arg, int opcode);
+void					ft_get_args(t_corewar *cor, t_arg *arg);
 
-
-//DEBUG
-void	print_champion(t_corewar *cor);
-void	pcode(t_corewar *cor, int pc);
+/*
+** DEBUG
+*/
+void					print_champion(t_corewar *cor);
+void					pcode(t_corewar *cor, int pc);
 #endif
