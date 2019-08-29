@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hlombard <hlombard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:47:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 19:47:50 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/29 18:24:32 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void		print_writing(char *str)
 
 	i = 0;
 	new_file = ft_strndup(str, ft_strlen(str) - 2);
-	ft_putstr("Writing output program to .");
-	if (str[i] != '/')
-		ft_putchar('/');
+	ft_putstr("Writing output program to ");
+/* 	if (str[i] != '/')
+		ft_putchar('/'); */
 	ft_putstr(new_file);
 	ft_putstr(".cor\n");
 	free(new_file);

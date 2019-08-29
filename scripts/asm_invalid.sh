@@ -45,3 +45,8 @@ if  [ $OK != $TOTAL ]; then
 else
 	echo $GREEN"PERFECT ✔" $NC
 fi
+
+for file in ./asm_invalid/*.cor
+do
+	rm -rf $file
+done;
