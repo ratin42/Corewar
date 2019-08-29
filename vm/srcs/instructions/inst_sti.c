@@ -1,13 +1,11 @@
-
 #include "vm.h"
 
-// sti | Indirect Store | 0x0B
-// Usage : sti S(RG), S(RG/ID/D2), S(RG/D2) Durée : 25
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
-// Transfert indirect Registre > RAM. Charge la valeur contenu dans le
-// registre passé en premier parametre a l'adresse resultante de
-// l'addition des deux derniers paramametres. Si cette valeur est nulle,
-// alors le carry passe a l'etat un, sinon a l'ettat zero.
+/*
+** The sti instruction add the last two arguments together, treating that
+** as an address from where the value of the first argument will be stored at
+** and it doesn't modify the carry.
+** There's a coding byte for the arguments and its opcode is 0x0B.
+*/
 
 void	print_value(t_corewar *cor, int value, int addr, t_plst *plst)
 {

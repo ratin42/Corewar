@@ -1,5 +1,13 @@
 #include "vm.h"
 
+/*
+** The add instruction is used to add two values.
+** It takes three arguments, add the first two arguments together and put
+** the result in the third argument and it sets the carry to 1 if the result
+** is equal to 0, otherwise it sets it to 0.
+** There's a coding byte for the arguments and its opcode is 0x04.
+*/
+
 void	inst_add(t_corewar *cor, t_plst *plst)
 {
 	t_arg	arg;

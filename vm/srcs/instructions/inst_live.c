@@ -1,5 +1,12 @@
 #include "vm.h"
 
+/*
+** The live instruction allows a process to stay alive.
+** It takes only one argument, which is the player's number, to record
+** if the player is indeed alive and it doesn't modify the carry.
+** There's no coding byte for the argument and its opcode is 0x01.
+*/
+
 int					ft_get_player_index(t_corewar *cor, int i)
 {
 	int		j;

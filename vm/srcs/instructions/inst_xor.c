@@ -1,11 +1,12 @@
 #include "vm.h"
 
-// xor | Logical XOR | 0x08
-// Usage : xor S(RG/ID/D4), S(RG/ID/D4), D(RG) Durée : 6
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
-// Effectue un XOR logique entre les deux premiers paramametres et
-// stock le resultat dans le troisieme paramametre. Si la valeur resultante
-// est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+/*
+** The xor instruction apply an ^ (bit-to-bit XOR).
+** It apply an | over the first two arguments and store the result in the
+** third argument and it sets the carry to 1 if the result is equal to 0,
+** otherwise it sets it to 0.
+** There's a coding byte for the arguments and its opcode is 0x08.
+*/
 
 void	inst_xor(t_corewar *cor, t_plst *plst)
 {
