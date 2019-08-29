@@ -12,11 +12,7 @@ void		fill_value(t_corewar *cor, t_plst *plst, t_arg arg)
 		plst->p.reg[arg.value[1]] = arg.value[0];
 	else
 		print_value(cor, arg.value[0], plst->p.og_pc
-<<<<<<< HEAD
-			+ ft_get_restricted_addr(arg.value[1]), plst);
-=======
-			+ ft_get_restricted_addr(arg.value[1], FULL), plst);	
->>>>>>> 81ee75c5bd4a48f4e9a92d923481a74b2d6a09e6
+			+ ft_get_restricted_addr(arg.value[1], FULL), plst);
 }
 
 void		inst_st(t_corewar *cor, t_plst *plst)
