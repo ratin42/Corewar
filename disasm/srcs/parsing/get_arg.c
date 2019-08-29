@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:45:32 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/16 15:44:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/29 14:58:17 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static inline void	ft_get_arg(t_corewar *cor, t_arg *arg, int i)
 	j = 0;
 	arg->value[i] = 0;
 	while (j < arg->size[i])
-	{	
+	{
 		arg->value[i] = (arg->value[i] << 8);
 		arg->value[i] += cor->code[cor->pc];
 		cor->pc++;
@@ -44,9 +44,9 @@ static inline void	ft_get_arg(t_corewar *cor, t_arg *arg, int i)
 	}
 }
 
-void	ft_get_args(t_corewar *cor, t_arg *arg)
+void				ft_get_args(t_corewar *cor, t_arg *arg)
 {
-	int		i;
+	int				i;
 
 	i = 0;
 	while (i < arg->nb_arg)
@@ -59,3 +59,4 @@ void	ft_get_args(t_corewar *cor, t_arg *arg)
 		i++;
 	}
 }
+

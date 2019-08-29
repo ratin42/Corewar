@@ -23,6 +23,7 @@ SRC = srcs/op.c \
 	  srcs/param.c \
 	  srcs/param2.c \
 	  srcs/param3.c \
+	  srcs/param4.c \
 	  srcs/get_opc.c \
 	  srcs/get_file.c \
 	  srcs/get_label.c \

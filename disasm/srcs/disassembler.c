@@ -6,27 +6,27 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 17:09:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/29 15:03:15 by syzhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disassembler.h"
 
-uint32_t	swap_endian(uint32_t val)
+uint32_t			swap_endian(uint32_t val)
 {
 	val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
 	return ((val << 16) | (val >> 16));
 }
 
-void			decomp_quit(char *str)
+void				decomp_quit(char *str)
 {
 	ft_putstr_fd(str, 2);
-	exit (1);
+	exit(1);
 }
 
-int		cor_file(char *av)
+int					cor_file(char *av)
 {
-	int i;
+	int			i;
 
 	i = ft_strlen(av);
 	if (i <= 4)
@@ -43,7 +43,7 @@ static inline void	init_datas(t_corewar *cor)
 	ft_bzero(cor, sizeof(t_corewar));
 }
 
-int				main(int ac, char **av)
+int					main(int ac, char **av)
 {
 	t_corewar	cor;
 
