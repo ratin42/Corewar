@@ -1,11 +1,11 @@
 #include "vm.h"
 
-// ldi | Indirect Load | 0x0A
-// Usage : ldi S(RG/ID/D2), S(ID/D2), D(RG) Durée : 25
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Non
-// Transfert indirect RAM > Registre. Charge la valeur a l'adresse
-// resultante de l'addition des deux premiers paramametres, dans le
-// registre passé en troisieme parametre.
+/*
+** The ldi instruction add the first two arguments together, treating that
+** as an address from where the value at this address, will be loaded in
+** the third argument. It doesn't modify the carry.
+** There's a coding byte for the arguments and its opcode is 0x0A.
+*/
 
 static inline int	ft_fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
 {
@@ -18,7 +18,8 @@ static inline int	ft_fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
 	{
 		result = (result << 8);
 		result += cor->arena[pc_modulo(plst->p.og_pc
-				+ ft_get_restricted_addr(arg->value[0] + arg->value[1], FULL) + j)];
+				+ ft_get_restricted_addr(arg->value[0]
+				+ arg->value[1], FULL) + j)];
 		j++;
 	}
 	return (result);

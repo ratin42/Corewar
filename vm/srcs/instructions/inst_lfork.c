@@ -1,9 +1,10 @@
 #include "vm.h"
 
-// lfork | Long Fork | 0x0F
-// Usage : lfork S(D2) Durée : 1000
-// OCP : Non Adressage Restreint : Non Modifie le carry : Non
-// Identique a Fork mais sans restriction de l'adressage.
+/*
+** The lfork instruction works the same as the fork instruction, the only
+** difference is that it does not use '% IND_MOD'.
+** There's no coding byte for the arguments and its opcode is 0x0F.
+*/
 
 void	inst_lfork(t_corewar *cor, t_plst *plst)
 {
@@ -15,7 +16,7 @@ void	inst_lfork(t_corewar *cor, t_plst *plst)
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
 	if (!(elem = malloc(sizeof(t_plst))))
-		corewar_quit("Fail malloc");//voir si on met autre chose ou pas
+		corewar_quit("Fail malloc");
 	ft_verbosity_instru(cor, plst, arg);
 	plst->p.opcode = 0;
 	ft_memcpy(elem, plst, sizeof(t_plst));

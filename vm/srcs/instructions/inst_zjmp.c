@@ -1,13 +1,12 @@
 #include "vm.h"
 
-// zjmp | Jump if zero | 0x09
-// Usage : zjmp S(D2) Durée : 20
-// OCP : Non Adressage Restreint : Non Modifie le carry : Non
-// Saute a l'adresse passé en parametre si le carry est a l'etat un.
-// L'adresse devient alors celle de la prochaine instruction. Si le carry est
-// a l'etat zero, rien ne se passe et le flot continue normalement jusqu'a
-// l'instruction suivante. Rien ne precise si l'instruction consomme la
-// totalité de ces cycles dans ce cas, a vous d'en decider
+/*
+** The zjmp instruction jumps to a given part of the memory.
+** It takes only one argument which is the part of the memory that you
+** want to access and it jumps there only if the carry is set to 1, but
+** does not modify the carry.
+** There's no coding byte for the argument and its opcode is 0x09.
+*/
 
 void	inst_zjmp(t_corewar *cor, t_plst *plst)
 {

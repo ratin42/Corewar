@@ -1,9 +1,10 @@
 #include "vm.h"
 
-// lld | Long Direct Load | 0x0D
-// Usage : lld S(ID/D4), D(RG) Durée : 10
-// OCP : Oui Adressage Restreint : Non Modifie le carry : Oui
-// Identique a Direct Load mais sans restriction de l'adressage.
+/*
+** The lld instruction works the same as the ld instruction, the only
+** difference is that it does not use '% IND_MOD'.
+** There's a coding byte for the arguments and its opcode is 0x0D.
+*/
 
 void	inst_lld(t_corewar *cor, t_plst *plst)
 {

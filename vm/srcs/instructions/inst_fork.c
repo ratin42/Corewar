@@ -1,12 +1,12 @@
 #include "vm.h"
 
-// fork | Fork | 0x0C
-// Usage : fork S(D2) Durée : 800
-// OCP : Non Adressage Restreint : Oui Modifie le carry : Non
-// Genere un nouveau processus a l'adresse passée en parametre par
-// copie du processus appelant. Le nouveau processus garde donc
-// l'etat de tout les registres et du carry, seul le PC differe ( sauf dans le
-// cas d'un fork %0 ).
+/*
+** The fork instruction creates a new process, that will inherit the
+** different states of its father, except its PC.
+** It takes only one argument which is the place where to start the
+** new process and it doesn't modify the carry.
+** There's no coding byte for the argument and its opcode is 0x0C.
+*/
 
 void	inst_fork(t_corewar *cor, t_plst *plst)
 {
@@ -18,7 +18,7 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);
 	if (!(elem = malloc(sizeof(t_plst))))
-		corewar_quit("Fail malloc");//voir si on met autre chose ou pas
+		corewar_quit("Fail malloc");
 	ft_verbosity_instru(cor, plst, arg);
 	plst->p.opcode = 0;
 	ft_memcpy(elem, plst, sizeof(t_plst));

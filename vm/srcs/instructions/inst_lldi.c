@@ -1,9 +1,10 @@
 #include "vm.h"
 
-// lldi | Long Indirect Load | 0x0E
-// Usage : lldi S(RG/ID/D2), S(ID/D2), D(RG) Durée : 50
-// OCP : Oui Adressage Restreint : Non Modifie le carry : Oui
-// Identique a Indirect Load mais sans restriction de l'adressage.
+/*
+** The lldi instruction works the same as the ldi instruction, the only
+** difference is that it does not use '% IND_MOD'.
+** There's a coding byte for the arguments and its opcode is 0x0E.
+*/
 
 static inline int	ft_fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
 {

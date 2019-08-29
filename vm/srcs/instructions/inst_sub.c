@@ -1,9 +1,16 @@
-
 #include "vm.h"
+
+/*
+** The sub instruction is used to substract two values.
+** It takes three arguments, substract the first two arguments together and
+** put the result in the third argument and it sets the carry to 1 if the
+** result is equal to 0, otherwise it sets the carry to 0.
+** There's a coding byte for the arguments and its opcode is 0x05.
+*/
 
 void	inst_sub(t_corewar *cor, t_plst *plst)
 {
-	t_arg 	arg;
+	t_arg	arg;
 
 	ft_print_debug(plst, "SUB", 0);
 	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);

@@ -1,12 +1,11 @@
 #include "vm.h"
 
-// ld | Direct Load | 0x02
-// Usage : ld S(ID/D4), D(RG) Durée : 5
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
-// Transfert direct RAM > Registre. Charge le premier parametre dans le
-// registre passé en second parametre. Si la valeur du premier
-// parametre est egale a zero, alors le carry passe a l'etat un, sinon a
-// l'etat zero.
+/*
+** The ld instruction is used to load values from memory to a registry.
+** It load the value from the first argument to the second argument and
+** sets the carry to 1 if the value of the first argument is 0, else to 0.
+** There's a coding byte for the arguments and its opcode is 0x02.
+*/
 
 void	inst_ld(t_corewar *cor, t_plst *plst)
 {

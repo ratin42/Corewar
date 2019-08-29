@@ -1,11 +1,12 @@
 #include "vm.h"
 
-// and | Logical AND | 0x06
-// Usage : and S(RG/ID/D4), S(RG/ID/D4), D(RG) Durée : 6
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Oui
-// Effectue un AND logique entre les deux premiers paramametres et
-// stock le resultat dans le troisieme paramametre. Si la valeur resultante
-// est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+/*
+** The and instruction apply an & (bit-to-bit AND).
+** It apply an & over the first two arguments and store the result in the
+** third argument and sets the carry to 1 if the result is equal to 0,
+** otherwise it sets it to 0.
+** There's a coding byte for the arguments and its opcode is 0x06.
+*/
 
 void	inst_and(t_corewar *cor, t_plst *plst)
 {

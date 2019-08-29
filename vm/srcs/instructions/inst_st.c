@@ -1,10 +1,11 @@
 #include "vm.h"
 
-// st | Direct Store | 0x03
-// Usage : st S(RG), D(RG/ID) Durée : 5
-// OCP : Oui Adressage Restreint : Oui Modifie le carry : Non
-// Transfert direct Registre > RAM / Registre. Charge le contenu du
-// registre passé en premier parametre dans le second parametre.
+/*
+** The st instruction is used to store the value from a registry to the memory
+** It stores the value of the first argument toward the second argument and it
+** doesn't modify the carry.
+** There's a coding byte for the arguments and its opcode is 0x03.
+*/
 
 void		fill_value(t_corewar *cor, t_plst *plst, t_arg arg)
 {
