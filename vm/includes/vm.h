@@ -158,7 +158,8 @@ void				order_process(t_corewar *cor);
 void				dump_option(t_corewar *cor, char **av, int *i);
 void				verbosity_option(t_corewar *cor, char **av, int ac, int *i);
 void				order_option(t_corewar *cor, char **av, int *i);
-void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg);
+void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg,
+    int flag);
 
 /*
  * ORDERS.c
@@ -205,7 +206,7 @@ int					pc_modulo(int pc);
 int					get_reg_index(t_corewar *cor, t_plst *plst);
 int					*check_opcode(t_corewar *cor, t_plst *plst);
 int					check_registre_index(int reg_1, int reg_2, int reg_3);
-int					ft_check_reg_index(t_arg arg);
+int					ft_check_reg_index(t_corewar *cor, t_plst *plst, t_arg arg);
 int					get_reg_value(t_corewar *cor, t_plst *plst, int **f_error);
 int					get_small_dir(t_corewar *cor, t_plst *plst);
 int					get_ind(t_corewar *cor, t_plst *plst);
@@ -213,7 +214,7 @@ void				print_value(t_corewar *cor, int value, int addr, t_plst *plst);
 
 int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
 void				ft_player_init(t_corewar *cor);
-int					ft_get_restricted_addr(int value);
+int					ft_get_restricted_addr(int value, int flag);
 void				init_plst(t_corewar *cor);
 
 /*						INSTRUCTIONS						*/
@@ -248,7 +249,7 @@ void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_reg_value(t_arg *arg, t_plst *plst, int pos);
-
+int					ft_get_args_size_sum(t_arg	arg);
 
 
 

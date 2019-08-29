@@ -25,7 +25,7 @@ void				inst_live(t_corewar *cor, t_plst *plst)
 	arg.size[0] = 4;
 	ft_get_args(cor, plst, &arg);
 	index = ft_get_player_index(cor, arg.value[0]);
-	ft_verbosity_instru(cor, plst, arg);
+	ft_verbosity_instru(cor, plst, arg, SUCCESS);
 	(plst->p.live)++;
 	if (index != -1)
 	{
