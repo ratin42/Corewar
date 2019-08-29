@@ -92,7 +92,7 @@ void			corewar_end(t_corewar *cor)
 		if (winner == 0)
 			ft_printf("No contestant managed to make a succesful live. DRAW\n");
 		else
-			ft_printf("Contestant %d, \"%s\", has won !\n", winner,
+			ft_printf("Contestant %d, \"%s\", has won !\n", winner * -1,
 					cor->player[ft_get_player_index(cor, winner)].name);
 	}
 	//FREE_CE_QU'IL FAUT;

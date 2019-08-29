@@ -83,7 +83,7 @@ void				play(t_corewar *cor)
 			cor->hide_winner = 1;
 			return ;
 		}
-		if (cor->cycle > cor->ctd)
+		if (cor->cycle >= cor->ctd)
 			update_cycles(cor);
 	}
 }

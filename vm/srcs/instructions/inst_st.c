@@ -20,21 +20,22 @@ void		inst_st(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "ST", 0);
-	ft_arg_init(&arg, 2, HALF, TRUE, NORMAL);
+	ft_arg_init(&arg, 2, FULL, TRUE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] != REG_CODE
 		|| ft_check_arg_type(arg, 1, IND_CODE, REG_CODE) == FAIL)
 	{
 		pc_modulo2(plst, ft_get_args_size_sum(arg));
-		ft_verbosity_instru(cor, plst, arg, FAIL);
+		ft_verbosity_adv(cor, plst);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
-	ft_verbosity_instru(cor, plst, arg, SUCCESS);
+	ft_verbosity_instru(cor, plst, arg);
 	ft_get_reg_value(&arg, plst, FRST);
 	fill_value(cor, plst, arg);
+	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "ST", 1);
 }

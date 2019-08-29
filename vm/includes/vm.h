@@ -158,8 +158,8 @@ void				order_process(t_corewar *cor);
 void				dump_option(t_corewar *cor, char **av, int *i);
 void				verbosity_option(t_corewar *cor, char **av, int ac, int *i);
 void				order_option(t_corewar *cor, char **av, int *i);
-void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg,
-    int flag);
+void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg);
+void				ft_verbosity_adv(t_corewar *cor, t_plst *plst);
 
 /*
  * ORDERS.c

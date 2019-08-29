@@ -45,7 +45,7 @@ void				ft_get_args_size(t_arg *arg)
 	int		i;
 
 	i = 0;
-	while (i < arg->nb_arg)
+	while (i < 4)
 	{
 		arg->size[i] = ft_get_arg_size(arg->type[i], arg->dir_size);
 		i++;

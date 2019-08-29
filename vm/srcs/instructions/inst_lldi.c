@@ -34,15 +34,16 @@ void				inst_lldi(t_corewar *cor, t_plst *plst)
 			|| arg.type[2] != REG_CODE)
 	{
 		pc_modulo2(plst, ft_get_args_size_sum(arg));
-		ft_verbosity_instru(cor, plst, arg, FAIL);
+		ft_verbosity_adv(cor, plst);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
 	ft_get_reg_value(&arg, plst, FRST | SCND);
-	ft_verbosity_instru(cor, plst, arg, SUCCESS);
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.reg[arg.value[2]] = ft_fill_value(cor, plst, &arg);
 	plst->p.carry = !(plst->p.reg[arg.value[2]]);
+	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "LLDI", 1);
 }

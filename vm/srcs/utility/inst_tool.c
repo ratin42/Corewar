@@ -38,7 +38,7 @@ int		ft_check_reg_index(t_corewar *cor, t_plst *plst, t_arg arg)
 		if (arg.type[i] == REG_CODE
 			&& (arg.value[i] < 1 || arg.value[i] > REG_NUMBER))
 			{
-				ft_verbosity_instru(cor, plst, arg, FAIL);
+				ft_verbosity_adv(cor, plst);
 				return (FAIL);
 			}
 		i++;

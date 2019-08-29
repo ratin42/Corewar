@@ -18,7 +18,7 @@ static inline int	ft_fill_value(t_corewar *cor, t_plst *plst, t_arg *arg)
 	{
 		result = (result << 8);
 		result += cor->arena[pc_modulo(plst->p.og_pc
-				+ ft_get_restricted_addr(arg->value[0] + arg->value[1], HALF) + j)];
+				+ ft_get_restricted_addr(arg->value[0] + arg->value[1], FULL) + j)];
 		j++;
 	}
 	return (result);
@@ -36,14 +36,15 @@ void				inst_ldi(t_corewar *cor, t_plst *plst)
 			|| arg.type[2] != REG_CODE)
 	{
 		pc_modulo2(plst, ft_get_args_size_sum(arg));
-		ft_verbosity_instru(cor, plst, arg, FAIL);
+		ft_verbosity_adv(cor, plst);
 		return ;
 	}
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
 	ft_get_reg_value(&arg, plst, FRST | SCND);
-	ft_verbosity_instru(cor, plst, arg, SUCCESS);
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.reg[arg.value[2]] = ft_fill_value(cor, plst, &arg);
+	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "LDI", 1);
 }

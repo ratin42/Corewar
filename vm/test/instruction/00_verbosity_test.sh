@@ -2,7 +2,7 @@
 
 #This test looks at the verbosity option
 
-n_dump=5000
+n_dump=6000
 
 echo "### TESTING VERBOSITY ###"
 test='00_verbosity'

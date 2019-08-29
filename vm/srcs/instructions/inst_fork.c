@@ -19,7 +19,7 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	ft_get_args(cor, plst, &arg);
 	if (!(elem = malloc(sizeof(t_plst))))
 		corewar_quit("Fail malloc");//voir si on met autre chose ou pas
-	ft_verbosity_instru(cor, plst, arg, SUCCESS);
+	ft_verbosity_instru(cor, plst, arg);
 	plst->p.opcode = 0;
 	ft_memcpy(elem, plst, sizeof(t_plst));
 	elem->p.pc = pc_modulo(plst->p.og_pc
@@ -29,6 +29,7 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	cor->nb_process++;
 	cor->nb_process_max++;
 	elem->n_plst = cor->nb_process_max;
+	ft_verbosity_adv(cor, plst);
 	if (DEBUG)
 	{
 		printf("##########  DEBUG FORK  ##########\n");

@@ -1595,7 +1595,7 @@ It is now cycle 1465
 It is now cycle 1466
 It is now cycle 1467
 It is now cycle 1468
-ADV 2 (0x0184 -> 0x0186) 0d 00 
+ADV 6 (0x0184 -> 0x018a) 0d ff ff ff 93 0d 
 It is now cycle 1469
 It is now cycle 1470
 It is now cycle 1471
@@ -1604,35 +1604,34 @@ It is now cycle 1473
 It is now cycle 1474
 It is now cycle 1475
 It is now cycle 1476
-ADV 4 (0x0188 -> 0x018c) 08 0d d0 ff 
 It is now cycle 1477
+ADV 4 (0x018d -> 0x0191) 07 0d d0 e1 
 It is now cycle 1478
 It is now cycle 1479
 It is now cycle 1480
 It is now cycle 1481
 It is now cycle 1482
 It is now cycle 1483
-ADV 4 (0x018d -> 0x0191) 07 0d d0 e1 
 It is now cycle 1484
+ADV 4 (0x0192 -> 0x0196) 08 0e e4 00 
 It is now cycle 1485
 It is now cycle 1486
 It is now cycle 1487
 It is now cycle 1488
 It is now cycle 1489
 It is now cycle 1490
-ADV 4 (0x0192 -> 0x0196) 08 0e e4 00 
 It is now cycle 1491
 It is now cycle 1492
 It is now cycle 1493
 It is now cycle 1494
+P    1 | live 13108238
+ADV 5 (0x0196 -> 0x019b) 01 00 c8 04 0e 
 It is now cycle 1495
 It is now cycle 1496
 It is now cycle 1497
 It is now cycle 1498
 It is now cycle 1499
 It is now cycle 1500
-P    1 | live 13108238
-ADV 5 (0x0196 -> 0x019b) 01 00 c8 04 0e 
 It is now cycle 1501
 It is now cycle 1502
 It is now cycle 1503
@@ -1642,45 +1641,45 @@ It is now cycle 1506
 It is now cycle 1507
 It is now cycle 1508
 It is now cycle 1509
+ADV 4 (0x01a0 -> 0x01a4) 05 0e d4 00 
 It is now cycle 1510
 It is now cycle 1511
 It is now cycle 1512
 It is now cycle 1513
 It is now cycle 1514
 It is now cycle 1515
-ADV 4 (0x01a0 -> 0x01a4) 05 0e d4 00 
 It is now cycle 1516
+ADV 3 (0x01a5 -> 0x01a8) 06 06 0e 
 It is now cycle 1517
 It is now cycle 1518
 It is now cycle 1519
 It is now cycle 1520
 It is now cycle 1521
 It is now cycle 1522
-ADV 3 (0x01a5 -> 0x01a8) 06 06 0e 
+ADV 2 (0x01a9 -> 0x01ab) 02 04 
 It is now cycle 1523
 It is now cycle 1524
 It is now cycle 1525
 It is now cycle 1526
 It is now cycle 1527
 It is now cycle 1528
-ADV 2 (0x01a9 -> 0x01ab) 02 04 
+ADV 4 (0x01ab -> 0x01af) 07 0e a4 0b 
 It is now cycle 1529
 It is now cycle 1530
 It is now cycle 1531
 It is now cycle 1532
 It is now cycle 1533
 It is now cycle 1534
-ADV 4 (0x01ab -> 0x01af) 07 0e a4 0b 
 It is now cycle 1535
 It is now cycle 1536
 It is now cycle 1537
+ADV 4 (0x01b2 -> 0x01b6) 08 0e 94 00 
 It is now cycle 1538
 It is now cycle 1539
 It is now cycle 1540
 It is now cycle 1541
 It is now cycle 1542
 It is now cycle 1543
-ADV 4 (0x01b2 -> 0x01b6) 08 0e 94 00 
 It is now cycle 1544
 It is now cycle 1545
 It is now cycle 1546
@@ -1696,19 +1695,19 @@ It is now cycle 1555
 It is now cycle 1556
 It is now cycle 1557
 It is now cycle 1558
+P    1 | zjmp 2319 FAILED
+ADV 3 (0x01b7 -> 0x01ba) 09 09 0f 
 It is now cycle 1559
 It is now cycle 1560
 It is now cycle 1561
 It is now cycle 1562
+ADV 3 (0x01bc -> 0x01bf) 10 40 01 
 It is now cycle 1563
 It is now cycle 1564
-P    1 | zjmp 271 FAILED
-ADV 3 (0x01b7 -> 0x01ba) 09 09 0f 
 It is now cycle 1565
 It is now cycle 1566
 It is now cycle 1567
 It is now cycle 1568
-ADV 3 (0x01bc -> 0x01bf) 10 40 01 
 It is now cycle 1569
 It is now cycle 1570
 It is now cycle 1571
@@ -1723,19 +1722,21 @@ It is now cycle 1579
 It is now cycle 1580
 It is now cycle 1581
 It is now cycle 1582
+P    1 | zjmp -30 FAILED
+ADV 3 (0x01bf -> 0x01c2) 09 ff e2 
 It is now cycle 1583
 It is now cycle 1584
 It is now cycle 1585
 It is now cycle 1586
 It is now cycle 1587
 It is now cycle 1588
-P    1 | zjmp -30 FAILED
-ADV 3 (0x01bf -> 0x01c2) 09 ff e2 
 It is now cycle 1589
 It is now cycle 1590
 It is now cycle 1591
 It is now cycle 1592
 It is now cycle 1593
+P    1 | live -721352439
+ADV 5 (0x01c3 -> 0x01c8) 01 d5 01 09 09 
 It is now cycle 1594
 It is now cycle 1595
 It is now cycle 1596
@@ -1744,7 +1745,8 @@ It is now cycle 1598
 It is now cycle 1599
 It is now cycle 1600
 It is now cycle 1601
-ADV 6 (0x01c5 -> 0x01cb) 04 09 09 ff e2 08 
+P    1 | xor -109 99 r11
+ADV 11 (0x01ca -> 0x01d5) 08 a4 ff ff ff 93 00 00 00 63 0b 
 It is now cycle 1602
 It is now cycle 1603
 It is now cycle 1604
@@ -1765,6 +1767,8 @@ It is now cycle 1618
 It is now cycle 1619
 It is now cycle 1620
 It is now cycle 1621
+P    1 | zjmp 2 FAILED
+ADV 3 (0x01d5 -> 0x01d8) 09 00 02 
 It is now cycle 1622
 It is now cycle 1623
 It is now cycle 1624
@@ -1779,7 +1783,6 @@ It is now cycle 1632
 It is now cycle 1633
 It is now cycle 1634
 It is now cycle 1635
-ADV 4 (0x01d4 -> 0x01d8) 0b 09 00 02 
 It is now cycle 1636
 It is now cycle 1637
 It is now cycle 1638
@@ -1816,6 +1819,9 @@ It is now cycle 1668
 It is now cycle 1669
 It is now cycle 1670
 It is now cycle 1671
+P    1 | lldi -109 2 r2
+       | -> load from -109 + 2 = -107 (with pc 365)
+ADV 6 (0x01d8 -> 0x01de) 0e 64 08 00 02 02 
 It is now cycle 1672
 It is now cycle 1673
 It is now cycle 1674
@@ -1830,9 +1836,6 @@ It is now cycle 1682
 It is now cycle 1683
 It is now cycle 1684
 It is now cycle 1685
-P    1 | lldi -109 2 r2
-       | -> load from -109 + 2 = -107 (with pc 365)
-ADV 6 (0x01d8 -> 0x01de) 0e 64 08 00 02 02 
 It is now cycle 1686
 It is now cycle 1687
 It is now cycle 1688
@@ -2819,6 +2822,8 @@ It is now cycle 2668
 It is now cycle 2669
 It is now cycle 2670
 It is now cycle 2671
+P    1 | lfork 3447 (3925)
+ADV 3 (0x01de -> 0x01e1) 0f 0d 77 
 It is now cycle 2672
 It is now cycle 2673
 It is now cycle 2674
@@ -2833,8 +2838,6 @@ It is now cycle 2682
 It is now cycle 2683
 It is now cycle 2684
 It is now cycle 2685
-P    1 | lfork 3447 (3925)
-ADV 3 (0x01de -> 0x01e1) 0f 0d 77 
 It is now cycle 2686
 It is now cycle 2687
 It is now cycle 2688
@@ -2993,7 +2996,6 @@ It is now cycle 2840
 It is now cycle 2841
 It is now cycle 2842
 It is now cycle 2843
-ADV 2 (0x0fed -> 0x0fef) 07 00 
 It is now cycle 2844
 It is now cycle 2845
 It is now cycle 2846
@@ -3003,316 +3005,316 @@ It is now cycle 2849
 It is now cycle 2850
 It is now cycle 2851
 It is now cycle 2852
+P    3 | live 1
+ADV 5 (0x0000 -> 0x0005) 01 00 00 00 01 
 It is now cycle 2853
 It is now cycle 2854
 It is now cycle 2855
 It is now cycle 2856
 It is now cycle 2857
+P    3 | ld 55 r1
+ADV 7 (0x0005 -> 0x000c) 02 90 00 00 00 37 01 
 It is now cycle 2858
 It is now cycle 2859
 It is now cycle 2860
 It is now cycle 2861
 It is now cycle 2862
+P    3 | ld 14081 r2
+ADV 5 (0x000c -> 0x0011) 02 d0 ff fc 02 
 It is now cycle 2863
 It is now cycle 2864
 It is now cycle 2865
 It is now cycle 2866
 It is now cycle 2867
+P    3 | ld 0 r3
+ADV 5 (0x0011 -> 0x0016) 02 d0 a0 20 03 
 It is now cycle 2868
 It is now cycle 2869
 It is now cycle 2870
-P    3 | live 1
-ADV 5 (0x0000 -> 0x0005) 01 00 00 00 01 
 It is now cycle 2871
 It is now cycle 2872
+P    3 | ld -788547577 r4
+ADV 5 (0x0016 -> 0x001b) 02 d0 0d 74 04 
 It is now cycle 2873
 It is now cycle 2874
 It is now cycle 2875
-P    3 | ld 55 r1
-ADV 7 (0x0005 -> 0x000c) 02 90 00 00 00 37 01 
 It is now cycle 2876
 It is now cycle 2877
+P    3 | ld 204434445 r5
+ADV 5 (0x001b -> 0x0020) 02 d0 01 58 05 
 It is now cycle 2878
 It is now cycle 2879
 It is now cycle 2880
-P    3 | ld 14081 r2
-ADV 5 (0x000c -> 0x0011) 02 d0 ff fc 02 
 It is now cycle 2881
 It is now cycle 2882
+P    3 | st r1 256
+ADV 5 (0x0020 -> 0x0025) 03 70 01 01 00 
 It is now cycle 2883
 It is now cycle 2884
 It is now cycle 2885
-P    3 | ld 0 r3
-ADV 5 (0x0011 -> 0x0016) 02 d0 a0 20 03 
 It is now cycle 2886
 It is now cycle 2887
+P    3 | st r2 6
+ADV 4 (0x0025 -> 0x0029) 03 50 02 06 
 It is now cycle 2888
 It is now cycle 2889
 It is now cycle 2890
-P    3 | ld -788547577 r4
-ADV 5 (0x0016 -> 0x001b) 02 d0 0d 74 04 
 It is now cycle 2891
 It is now cycle 2892
 It is now cycle 2893
 It is now cycle 2894
 It is now cycle 2895
-P    3 | ld 204434445 r5
-ADV 5 (0x001b -> 0x0020) 02 d0 01 58 05 
 It is now cycle 2896
 It is now cycle 2897
+P    3 | add r1 r2 r3
+ADV 5 (0x0029 -> 0x002e) 04 54 01 02 03 
 It is now cycle 2898
 It is now cycle 2899
 It is now cycle 2900
-P    3 | st r1 256
-ADV 5 (0x0020 -> 0x0025) 03 70 01 01 00 
 It is now cycle 2901
 It is now cycle 2902
 It is now cycle 2903
 It is now cycle 2904
 It is now cycle 2905
-P    3 | st r2 6
-ADV 4 (0x0025 -> 0x0029) 03 50 02 06 
 It is now cycle 2906
 It is now cycle 2907
+P    3 | sub r1 r2 r3
+ADV 5 (0x002e -> 0x0033) 05 54 01 02 03 
 It is now cycle 2908
 It is now cycle 2909
 It is now cycle 2910
 It is now cycle 2911
 It is now cycle 2912
 It is now cycle 2913
+P    3 | and 55 14081 r3
+ADV 5 (0x0033 -> 0x0038) 06 54 01 02 03 
 It is now cycle 2914
 It is now cycle 2915
-P    3 | add r1 r2 r3
-ADV 5 (0x0029 -> 0x002e) 04 54 01 02 03 
 It is now cycle 2916
 It is now cycle 2917
 It is now cycle 2918
 It is now cycle 2919
+P    3 | and 55 106168578 r4
+ADV 6 (0x0038 -> 0x003e) 06 74 01 ff fb 04 
 It is now cycle 2920
 It is now cycle 2921
 It is now cycle 2922
 It is now cycle 2923
 It is now cycle 2924
 It is now cycle 2925
-P    3 | sub r1 r2 r3
-ADV 5 (0x002e -> 0x0033) 05 54 01 02 03 
+P    3 | and -109 503 r5
+ADV 8 (0x003e -> 0x0046) 06 64 08 00 00 01 f7 05 
 It is now cycle 2926
 It is now cycle 2927
 It is now cycle 2928
 It is now cycle 2929
 It is now cycle 2930
 It is now cycle 2931
-P    3 | and 55 14081 r3
-ADV 5 (0x0033 -> 0x0038) 06 54 01 02 03 
+P    3 | and 48 2 r6
+ADV 8 (0x0046 -> 0x004e) 06 94 00 00 00 30 04 06 
 It is now cycle 2932
 It is now cycle 2933
 It is now cycle 2934
 It is now cycle 2935
 It is now cycle 2936
 It is now cycle 2937
-P    3 | and 55 106168578 r4
-ADV 6 (0x0038 -> 0x003e) 06 74 01 ff fb 04 
+P    3 | and -109 99 r7
+ADV 11 (0x004e -> 0x0059) 06 a4 ff ff ff 93 00 00 00 63 07 
 It is now cycle 2938
 It is now cycle 2939
 It is now cycle 2940
 It is now cycle 2941
 It is now cycle 2942
 It is now cycle 2943
-P    3 | and -109 503 r5
-ADV 8 (0x003e -> 0x0046) 06 64 08 00 00 01 f7 05 
+P    3 | and -109 6490889 r8
+ADV 9 (0x0059 -> 0x0062) 06 b4 ff ff ff 93 0d 79 08 
 It is now cycle 2944
 It is now cycle 2945
 It is now cycle 2946
 It is now cycle 2947
 It is now cycle 2948
 It is now cycle 2949
-P    3 | and 48 2 r6
-ADV 8 (0x0046 -> 0x004e) 06 94 00 00 00 30 04 06 
+P    3 | and 0 55 r9
+ADV 6 (0x0062 -> 0x0068) 06 d4 01 d5 01 09 
 It is now cycle 2950
 It is now cycle 2951
 It is now cycle 2952
 It is now cycle 2953
 It is now cycle 2954
 It is now cycle 2955
-P    3 | and -109 99 r7
-ADV 11 (0x004e -> 0x0059) 06 a4 ff ff ff 93 00 00 00 63 07 
+P    3 | and 0 1946288123 r10
+ADV 7 (0x0068 -> 0x006f) 06 f4 fe bc ff d1 0a 
 It is now cycle 2956
 It is now cycle 2957
 It is now cycle 2958
 It is now cycle 2959
 It is now cycle 2960
 It is now cycle 2961
-P    3 | and -109 6490889 r8
-ADV 9 (0x0059 -> 0x0062) 06 b4 ff ff ff 93 0d 79 08 
+P    3 | and 1409352195 -4 r11
+ADV 9 (0x006f -> 0x0078) 06 e4 ff c5 ff ff ff fc 0b 
 It is now cycle 2962
 It is now cycle 2963
 It is now cycle 2964
 It is now cycle 2965
 It is now cycle 2966
 It is now cycle 2967
-P    3 | and 0 55 r9
-ADV 6 (0x0062 -> 0x0068) 06 d4 01 d5 01 09 
+P    3 | or 55 14081 r3
+ADV 5 (0x0078 -> 0x007d) 07 54 01 02 03 
 It is now cycle 2968
 It is now cycle 2969
 It is now cycle 2970
 It is now cycle 2971
 It is now cycle 2972
 It is now cycle 2973
-P    3 | and 0 1946288123 r10
-ADV 7 (0x0068 -> 0x006f) 06 f4 fe bc ff d1 0a 
+P    3 | or 55 122945794 r4
+ADV 6 (0x007d -> 0x0083) 07 74 01 ff fb 04 
 It is now cycle 2974
 It is now cycle 2975
 It is now cycle 2976
 It is now cycle 2977
 It is now cycle 2978
 It is now cycle 2979
-P    3 | and 1409352195 -4 r11
-ADV 9 (0x006f -> 0x0078) 06 e4 ff c5 ff ff ff fc 0b 
+P    3 | or 6490881 503 r5
+ADV 8 (0x0083 -> 0x008b) 07 64 08 00 00 01 f7 05 
 It is now cycle 2980
 It is now cycle 2981
 It is now cycle 2982
 It is now cycle 2983
 It is now cycle 2984
 It is now cycle 2985
-P    3 | or 55 14081 r3
-ADV 5 (0x0078 -> 0x007d) 07 54 01 02 03 
+P    3 | or 48 122945847 r6
+ADV 8 (0x008b -> 0x0093) 07 94 00 00 00 30 04 06 
 It is now cycle 2986
 It is now cycle 2987
 It is now cycle 2988
 It is now cycle 2989
 It is now cycle 2990
 It is now cycle 2991
-P    3 | or 55 122945794 r4
-ADV 6 (0x007d -> 0x0083) 07 74 01 ff fb 04 
+P    3 | or -109 99 r7
+ADV 11 (0x0093 -> 0x009e) 07 a4 ff ff ff 93 00 00 00 63 07 
 It is now cycle 2992
 It is now cycle 2993
 It is now cycle 2994
 It is now cycle 2995
 It is now cycle 2996
 It is now cycle 2997
-P    3 | or 6490881 503 r5
-ADV 8 (0x0083 -> 0x008b) 07 64 08 00 00 01 f7 05 
+P    3 | or -109 0 r8
+ADV 9 (0x009e -> 0x00a7) 07 b4 ff ff ff 93 0d 79 08 
 It is now cycle 2998
 It is now cycle 2999
 It is now cycle 3000
 It is now cycle 3001
 It is now cycle 3002
 It is now cycle 3003
-P    3 | or 48 122945847 r6
-ADV 8 (0x008b -> 0x0093) 07 94 00 00 00 30 04 06 
+P    3 | or 0 55 r9
+ADV 6 (0x00a7 -> 0x00ad) 07 d4 01 d5 01 09 
 It is now cycle 3004
 It is now cycle 3005
 It is now cycle 3006
 It is now cycle 3007
 It is now cycle 3008
 It is now cycle 3009
-P    3 | or -109 99 r7
-ADV 11 (0x0093 -> 0x009e) 07 a4 ff ff ff 93 00 00 00 63 07 
+P    3 | or 0 1946288123 r10
+ADV 7 (0x00ad -> 0x00b4) 07 f4 fe bc ff d1 0a 
 It is now cycle 3010
 It is now cycle 3011
 It is now cycle 3012
 It is now cycle 3013
 It is now cycle 3014
 It is now cycle 3015
-P    3 | or -109 0 r8
-ADV 9 (0x009e -> 0x00a7) 07 b4 ff ff ff 93 0d 79 08 
+P    3 | or 1409352195 -4 r11
+ADV 9 (0x00b4 -> 0x00bd) 07 e4 ff c5 ff ff ff fc 0b 
 It is now cycle 3016
 It is now cycle 3017
 It is now cycle 3018
 It is now cycle 3019
 It is now cycle 3020
 It is now cycle 3021
-P    3 | or 0 55 r9
-ADV 6 (0x00a7 -> 0x00ad) 07 d4 01 d5 01 09 
+P    3 | xor 55 14081 r3
+ADV 5 (0x00bd -> 0x00c2) 08 54 01 02 03 
 It is now cycle 3022
 It is now cycle 3023
 It is now cycle 3024
 It is now cycle 3025
 It is now cycle 3026
 It is now cycle 3027
-P    3 | or 0 1946288123 r10
-ADV 7 (0x00ad -> 0x00b4) 07 f4 fe bc ff d1 0a 
+P    3 | xor 55 139723010 r4
+ADV 6 (0x00c2 -> 0x00c8) 08 74 01 ff fb 04 
 It is now cycle 3028
 It is now cycle 3029
 It is now cycle 3030
 It is now cycle 3031
 It is now cycle 3032
 It is now cycle 3033
-P    3 | or 1409352195 -4 r11
-ADV 9 (0x00b4 -> 0x00bd) 07 e4 ff c5 ff ff ff fc 0b 
+P    3 | xor -109 16945152 r5
+ADV 8 (0x00c8 -> 0x00d0) 08 64 08 01 02 90 00 05 
 It is now cycle 3034
 It is now cycle 3035
 It is now cycle 3036
 It is now cycle 3037
 It is now cycle 3038
 It is now cycle 3039
-P    3 | xor 55 14081 r3
-ADV 5 (0x00bd -> 0x00c2) 08 54 01 02 03 
+P    3 | xor 48 139723061 r6
+ADV 8 (0x00d0 -> 0x00d8) 08 94 00 00 00 30 04 06 
 It is now cycle 3040
 It is now cycle 3041
 It is now cycle 3042
 It is now cycle 3043
 It is now cycle 3044
 It is now cycle 3045
-P    3 | xor 55 139723010 r4
-ADV 6 (0x00c2 -> 0x00c8) 08 74 01 ff fb 04 
+P    3 | xor -109 99 r7
+ADV 11 (0x00d8 -> 0x00e3) 08 a4 ff ff ff 93 00 00 00 63 07 
 It is now cycle 3046
 It is now cycle 3047
 It is now cycle 3048
 It is now cycle 3049
 It is now cycle 3050
 It is now cycle 3051
-P    3 | xor -109 3 r5
-ADV 8 (0x00c8 -> 0x00d0) 08 64 08 00 00 00 03 05 
+P    3 | xor -109 0 r8
+ADV 9 (0x00e3 -> 0x00ec) 08 b4 ff ff ff 93 0d 79 08 
 It is now cycle 3052
 It is now cycle 3053
 It is now cycle 3054
 It is now cycle 3055
 It is now cycle 3056
 It is now cycle 3057
-P    3 | xor 48 139723061 r6
-ADV 8 (0x00d0 -> 0x00d8) 08 94 00 00 00 30 04 06 
+P    3 | xor 0 55 r9
+ADV 6 (0x00ec -> 0x00f2) 08 d4 01 d5 01 09 
 It is now cycle 3058
 It is now cycle 3059
 It is now cycle 3060
 It is now cycle 3061
 It is now cycle 3062
 It is now cycle 3063
-P    3 | xor -109 99 r7
-ADV 11 (0x00d8 -> 0x00e3) 08 a4 ff ff ff 93 00 00 00 63 07 
+P    3 | xor 0 1946288123 r10
+ADV 7 (0x00f2 -> 0x00f9) 08 f4 fe bc ff d1 0a 
 It is now cycle 3064
 It is now cycle 3065
 It is now cycle 3066
 It is now cycle 3067
 It is now cycle 3068
 It is now cycle 3069
-P    3 | xor -109 0 r8
-ADV 9 (0x00e3 -> 0x00ec) 08 b4 ff ff ff 93 0d 79 08 
+P    3 | xor 1409352195 -4 r11
+ADV 9 (0x00f9 -> 0x0102) 08 e4 ff c5 ff ff ff fc 0b 
 It is now cycle 3070
 It is now cycle 3071
 It is now cycle 3072
+Process 2 hasn't lived for 3062 cycles (CTD 1536)
 It is now cycle 3073
 It is now cycle 3074
-Process 2 hasn't lived for 3064 cycles (CTD 1536)
 It is now cycle 3075
-P    3 | xor 0 55 r9
-ADV 6 (0x00ec -> 0x00f2) 08 d4 01 d5 01 09 
 It is now cycle 3076
 It is now cycle 3077
 It is now cycle 3078
 It is now cycle 3079
 It is now cycle 3080
 It is now cycle 3081
-P    3 | xor 0 1946288123 r10
-ADV 7 (0x00f2 -> 0x00f9) 08 f4 fe bc ff d1 0a 
 It is now cycle 3082
 It is now cycle 3083
 It is now cycle 3084
 It is now cycle 3085
 It is now cycle 3086
 It is now cycle 3087
-P    3 | xor 1409352195 -4 r11
-ADV 9 (0x00f9 -> 0x0102) 08 e4 ff c5 ff ff ff fc 0b 
 It is now cycle 3088
 It is now cycle 3089
 It is now cycle 3090
@@ -3320,6 +3322,9 @@ It is now cycle 3091
 It is now cycle 3092
 It is now cycle 3093
 It is now cycle 3094
+P    3 | ldi -469761792 2 r3
+       | -> load from -469761792 + 2 = -469761790 (with pc and mod 4)
+ADV 7 (0x0102 -> 0x0109) 0a e4 00 01 00 02 03 
 It is now cycle 3095
 It is now cycle 3096
 It is now cycle 3097
@@ -3338,9 +3343,6 @@ It is now cycle 3109
 It is now cycle 3110
 It is now cycle 3111
 It is now cycle 3112
-P    3 | ldi -469761792 2 r3
-       | -> load from -469761792 + 2 = -469761790 (with pc and mod 4)
-ADV 7 (0x0102 -> 0x0109) 0a e4 00 01 00 02 03 
 It is now cycle 3113
 It is now cycle 3114
 It is now cycle 3115
@@ -3348,6 +3350,9 @@ It is now cycle 3116
 It is now cycle 3117
 It is now cycle 3118
 It is now cycle 3119
+P    3 | ldi -3997607 14081 r4
+       | -> load from -3997607 + 14081 = -3983526 (with pc and mod 99)
+ADV 6 (0x0109 -> 0x010f) 0a d4 00 25 02 04 
 It is now cycle 3120
 It is now cycle 3121
 It is now cycle 3122
@@ -3366,9 +3371,6 @@ It is now cycle 3134
 It is now cycle 3135
 It is now cycle 3136
 It is now cycle 3137
-P    3 | ldi -3997607 14081 r4
-       | -> load from -3997607 + 14081 = -3983526 (with pc and mod 99)
-ADV 6 (0x0109 -> 0x010f) 0a d4 00 25 02 04 
 It is now cycle 3138
 It is now cycle 3139
 It is now cycle 3140
@@ -3376,6 +3378,7 @@ It is now cycle 3141
 It is now cycle 3142
 It is now cycle 3143
 It is now cycle 3144
+ADV 2 (0x010f -> 0x0111) 0a 00 
 It is now cycle 3145
 It is now cycle 3146
 It is now cycle 3147
@@ -3389,13 +3392,14 @@ It is now cycle 3154
 It is now cycle 3155
 It is now cycle 3156
 It is now cycle 3157
+ADV 6 (0x0114 -> 0x011a) 05 0a d4 03 45 02 
 It is now cycle 3158
 It is now cycle 3159
 It is now cycle 3160
 It is now cycle 3161
 It is now cycle 3162
-ADV 2 (0x010f -> 0x0111) 0a 00 
 It is now cycle 3163
+ADV 6 (0x011a -> 0x0120) 06 0a 64 08 00 54 
 It is now cycle 3164
 It is now cycle 3165
 It is now cycle 3166
@@ -3407,21 +3411,19 @@ It is now cycle 3171
 It is now cycle 3172
 It is now cycle 3173
 It is now cycle 3174
-ADV 3 (0x0113 -> 0x0116) 05 05 0a 
 It is now cycle 3175
+ADV 6 (0x0126 -> 0x012c) 08 0a 54 01 06 09 
 It is now cycle 3176
 It is now cycle 3177
 It is now cycle 3178
 It is now cycle 3179
 It is now cycle 3180
-ADV 3 (0x0117 -> 0x011a) 03 45 02 
 It is now cycle 3181
 It is now cycle 3182
 It is now cycle 3183
 It is now cycle 3184
 It is now cycle 3185
 It is now cycle 3186
-ADV 6 (0x011a -> 0x0120) 06 0a 64 08 00 54 
 It is now cycle 3187
 It is now cycle 3188
 It is now cycle 3189
@@ -3434,9 +3436,11 @@ It is now cycle 3195
 It is now cycle 3196
 It is now cycle 3197
 It is now cycle 3198
-ADV 6 (0x0126 -> 0x012c) 08 0a 54 01 06 09 
 It is now cycle 3199
 It is now cycle 3200
+P    3 | ldi -61 89 r10
+       | -> load from -61 + 89 = 28 (with pc and mod 328)
+ADV 7 (0x012c -> 0x0133) 0a a4 ff c3 00 59 0a 
 It is now cycle 3201
 It is now cycle 3202
 It is now cycle 3203
@@ -3460,11 +3464,11 @@ It is now cycle 3220
 It is now cycle 3221
 It is now cycle 3222
 It is now cycle 3223
-P    3 | ldi -61 89 r10
-       | -> load from -61 + 89 = 28 (with pc and mod 328)
-ADV 7 (0x012c -> 0x0133) 0a a4 ff c3 00 59 0a 
 It is now cycle 3224
 It is now cycle 3225
+P    3 | ldi -613 89 r11
+       | -> load from -613 + 89 = -524 (with pc and mod 295)
+ADV 7 (0x0133 -> 0x013a) 0a a4 fd 9b 00 59 0b 
 It is now cycle 3226
 It is now cycle 3227
 It is now cycle 3228
@@ -3488,11 +3492,11 @@ It is now cycle 3245
 It is now cycle 3246
 It is now cycle 3247
 It is now cycle 3248
-P    3 | ldi -613 89 r11
-       | -> load from -613 + 89 = -524 (with pc and mod 295)
-ADV 7 (0x0133 -> 0x013a) 0a a4 fd 9b 00 59 0b 
 It is now cycle 3249
 It is now cycle 3250
+P    3 | ldi -6127 849 r12
+       | -> load from -6127 + 849 = -5278 (with pc and mod 156)
+ADV 7 (0x013a -> 0x0141) 0a a4 e8 11 03 51 0c 
 It is now cycle 3251
 It is now cycle 3252
 It is now cycle 3253
@@ -3516,11 +3520,11 @@ It is now cycle 3270
 It is now cycle 3271
 It is now cycle 3272
 It is now cycle 3273
-P    3 | ldi -6127 849 r12
-       | -> load from -6127 + 849 = -5278 (with pc and mod 156)
-ADV 7 (0x013a -> 0x0141) 0a a4 e8 11 03 51 0c 
 It is now cycle 3274
 It is now cycle 3275
+P    3 | ldi 4309 82 r13
+       | -> load from 4309 + 82 = 4391 (with pc and mod 616)
+ADV 7 (0x0141 -> 0x0148) 0a a4 10 d5 00 52 0d 
 It is now cycle 3276
 It is now cycle 3277
 It is now cycle 3278
@@ -3544,11 +3548,11 @@ It is now cycle 3295
 It is now cycle 3296
 It is now cycle 3297
 It is now cycle 3298
-P    3 | ldi 4309 82 r13
-       | -> load from 4309 + 82 = 4391 (with pc and mod 616)
-ADV 7 (0x0141 -> 0x0148) 0a a4 10 d5 00 52 0d 
 It is now cycle 3299
 It is now cycle 3300
+P    3 | ldi 24 14081 r14
+       | -> load from 24 + 14081 = 14105 (with pc and mod 609)
+ADV 6 (0x0148 -> 0x014e) 0a 94 00 18 02 0e 
 It is now cycle 3301
 It is now cycle 3302
 It is now cycle 3303
@@ -3572,11 +3576,11 @@ It is now cycle 3320
 It is now cycle 3321
 It is now cycle 3322
 It is now cycle 3323
-P    3 | ldi 24 14081 r14
-       | -> load from 24 + 14081 = 14105 (with pc and mod 609)
-ADV 6 (0x0148 -> 0x014e) 0a 94 00 18 02 0e 
 It is now cycle 3324
 It is now cycle 3325
+P    3 | sti r3 -109 -22
+       | -> store to -109 + -22 = -131 (with pc and mod 203)
+ADV 6 (0x014e -> 0x0154) 0b 58 03 08 ff ea 
 It is now cycle 3326
 It is now cycle 3327
 It is now cycle 3328
@@ -3600,11 +3604,11 @@ It is now cycle 3345
 It is now cycle 3346
 It is now cycle 3347
 It is now cycle 3348
-P    3 | sti r3 -109 -22
-       | -> store to -109 + -22 = -131 (with pc and mod 203)
-ADV 6 (0x014e -> 0x0154) 0b 58 03 08 ff ea 
 It is now cycle 3349
 It is now cycle 3350
+P    3 | sti r4 55 55
+       | -> store to 55 + 55 = 110 (with pc and mod 450)
+ADV 5 (0x0154 -> 0x0159) 0b 54 04 09 01 
 It is now cycle 3351
 It is now cycle 3352
 It is now cycle 3353
@@ -3628,11 +3632,11 @@ It is now cycle 3370
 It is now cycle 3371
 It is now cycle 3372
 It is now cycle 3373
-P    3 | sti r4 55 55
-       | -> store to 55 + 55 = 110 (with pc and mod 450)
-ADV 5 (0x0154 -> 0x0159) 0b 54 04 09 01 
 It is now cycle 3374
 It is now cycle 3375
+P    3 | sti r5 -563 -22
+       | -> store to -563 + -22 = -585 (with pc and mod 272)
+ADV 7 (0x0159 -> 0x0160) 0b 68 05 fd cd ff ea 
 It is now cycle 3376
 It is now cycle 3377
 It is now cycle 3378
@@ -3656,11 +3660,11 @@ It is now cycle 3395
 It is now cycle 3396
 It is now cycle 3397
 It is now cycle 3398
-P    3 | sti r5 -563 -22
-       | -> store to -563 + -22 = -585 (with pc and mod 272)
-ADV 7 (0x0159 -> 0x0160) 0b 68 05 fd cd ff ea 
 It is now cycle 3399
 It is now cycle 3400
+P    3 | sti r6 233 55
+       | -> store to 233 + 55 = 288 (with pc and mod 640)
+ADV 6 (0x0160 -> 0x0166) 0b 64 06 00 e9 01 
 It is now cycle 3401
 It is now cycle 3402
 It is now cycle 3403
@@ -3684,11 +3688,11 @@ It is now cycle 3420
 It is now cycle 3421
 It is now cycle 3422
 It is now cycle 3423
-P    3 | sti r6 233 55
-       | -> store to 233 + 55 = 288 (with pc and mod 640)
-ADV 6 (0x0160 -> 0x0166) 0b 64 06 00 e9 01 
 It is now cycle 3424
 It is now cycle 3425
+P    3 | sti r7 922813136 1661405108
+       | -> store to 922813136 + 1661405108 = -1710749052 (with pc and mod -22)
+ADV 6 (0x0166 -> 0x016c) 0b 74 07 ee a4 0c 
 It is now cycle 3426
 It is now cycle 3427
 It is now cycle 3428
@@ -3712,11 +3716,11 @@ It is now cycle 3445
 It is now cycle 3446
 It is now cycle 3447
 It is now cycle 3448
-P    3 | sti r7 922813136 1661405108
-       | -> store to 922813136 + 1661405108 = -1710749052 (with pc and mod -22)
-ADV 6 (0x0166 -> 0x016c) 0b 74 07 ee a4 0c 
 It is now cycle 3449
 It is now cycle 3450
+P    3 | sti r8 67997696 -999
+       | -> store to 67997696 + -999 = 67996697 (with pc and mod 389)
+ADV 7 (0x016c -> 0x0173) 0b 78 08 00 10 fc 19 
 It is now cycle 3451
 It is now cycle 3452
 It is now cycle 3453
@@ -3738,11 +3742,10 @@ It is now cycle 3468
 It is now cycle 3469
 It is now cycle 3470
 It is now cycle 3471
+P    1 | fork -1607 (410)
+ADV 3 (0x01e1 -> 0x01e4) 0c f9 b9 
 It is now cycle 3472
 It is now cycle 3473
-P    3 | sti r8 67997696 -999
-       | -> store to 67997696 + -999 = 67996697 (with pc and mod 389)
-ADV 7 (0x016c -> 0x0173) 0b 78 08 00 10 fc 19 
 It is now cycle 3474
 It is now cycle 3475
 It is now cycle 3476
@@ -3755,8 +3758,6 @@ It is now cycle 3482
 It is now cycle 3483
 It is now cycle 3484
 It is now cycle 3485
-P    1 | fork -1607 (410)
-ADV 3 (0x01e1 -> 0x01e4) 0c f9 b9 
 It is now cycle 3486
 It is now cycle 3487
 It is now cycle 3488
@@ -3793,6 +3794,9 @@ It is now cycle 3518
 It is now cycle 3519
 It is now cycle 3520
 It is now cycle 3521
+P    4 | lldi 0 -922 r5
+       | -> load from 0 + -922 = -922 (with pc -512)
+ADV 7 (0x019a -> 0x01a1) 0e e4 00 54 fc 66 05 
 It is now cycle 3522
 It is now cycle 3523
 It is now cycle 3524
@@ -3807,9 +3811,6 @@ It is now cycle 3532
 It is now cycle 3533
 It is now cycle 3534
 It is now cycle 3535
-P    4 | lldi 0 -922 r5
-       | -> load from 0 + -922 = -922 (with pc -512)
-ADV 7 (0x019a -> 0x01a1) 0e e4 00 54 fc 66 05 
 It is now cycle 3536
 It is now cycle 3537
 It is now cycle 3538
@@ -3846,6 +3847,9 @@ It is now cycle 3568
 It is now cycle 3569
 It is now cycle 3570
 It is now cycle 3571
+P    4 | lldi -738077439 0 r6
+       | -> load from -738077439 + 0 = -738077439 (with pc -738077022)
+ADV 6 (0x01a1 -> 0x01a7) 0e d4 00 21 06 06 
 It is now cycle 3572
 It is now cycle 3573
 It is now cycle 3574
@@ -3860,9 +3864,6 @@ It is now cycle 3582
 It is now cycle 3583
 It is now cycle 3584
 It is now cycle 3585
-P    4 | lldi 4 0 r6
-       | -> load from 4 + 0 = 4 (with pc 421)
-ADV 6 (0x01a1 -> 0x01a7) 0e d4 00 21 06 06 
 It is now cycle 3586
 It is now cycle 3587
 It is now cycle 3588
@@ -3899,6 +3900,9 @@ It is now cycle 3618
 It is now cycle 3619
 It is now cycle 3620
 It is now cycle 3621
+P    4 | lldi 2013790224 22 r7
+       | -> load from 2013790224 + 22 = 2013790246 (with pc 2013790669)
+ADV 5 (0x01a7 -> 0x01ac) 0e 54 02 04 07 
 It is now cycle 3622
 It is now cycle 3623
 It is now cycle 3624
@@ -3911,11 +3915,9 @@ It is now cycle 3630
 It is now cycle 3631
 It is now cycle 3632
 It is now cycle 3633
+ADV 5 (0x0280 -> 0x0285) 08 54 01 05 00 
 It is now cycle 3634
 It is now cycle 3635
-P    4 | lldi 2013790224 22 r7
-       | -> load from 2013790224 + 22 = 2013790246 (with pc 2013790669)
-ADV 5 (0x01a7 -> 0x01ac) 0e 54 02 04 07 
 It is now cycle 3636
 It is now cycle 3637
 It is now cycle 3638
@@ -3931,7 +3933,6 @@ It is now cycle 3647
 It is now cycle 3648
 It is now cycle 3649
 It is now cycle 3650
-ADV 2 (0x0283 -> 0x0285) 06 00 
 It is now cycle 3651
 It is now cycle 3652
 It is now cycle 3653
@@ -3953,6 +3954,9 @@ It is now cycle 3668
 It is now cycle 3669
 It is now cycle 3670
 It is now cycle 3671
+P    4 | lldi 3016 -428 r8
+       | -> load from 3016 + -428 = 2588 (with pc 3016)
+ADV 7 (0x01ac -> 0x01b3) 0e a4 0b c8 fe 54 08 
 It is now cycle 3672
 It is now cycle 3673
 It is now cycle 3674
@@ -3967,9 +3971,6 @@ It is now cycle 3682
 It is now cycle 3683
 It is now cycle 3684
 It is now cycle 3685
-P    4 | lldi 3016 -428 r8
-       | -> load from 3016 + -428 = 2588 (with pc 3016)
-ADV 7 (0x01ac -> 0x01b3) 0e a4 0b c8 fe 54 08 
 It is now cycle 3686
 It is now cycle 3687
 It is now cycle 3688
@@ -4006,6 +4007,9 @@ It is now cycle 3718
 It is now cycle 3719
 It is now cycle 3720
 It is now cycle 3721
+P    4 | lldi 90 55 r9
+       | -> load from 90 + 55 = 145 (with pc 580)
+ADV 6 (0x01b3 -> 0x01b9) 0e 94 00 5a 09 09 
 It is now cycle 3722
 It is now cycle 3723
 It is now cycle 3724
@@ -4020,9 +4024,6 @@ It is now cycle 3732
 It is now cycle 3733
 It is now cycle 3734
 It is now cycle 3735
-P    4 | lldi 90 55 r9
-       | -> load from 90 + 55 = 145 (with pc 580)
-ADV 6 (0x01b3 -> 0x01b9) 0e 94 00 5a 09 09 
 It is now cycle 3736
 It is now cycle 3737
 It is now cycle 3738
@@ -4538,6 +4539,8 @@ It is now cycle 4247
 It is now cycle 4248
 It is now cycle 4249
 It is now cycle 4250
+P    3 | fork 12140 (735)
+ADV 3 (0x0173 -> 0x0176) 0c 2f 6c 
 It is now cycle 4251
 It is now cycle 4252
 It is now cycle 4253
@@ -4548,6 +4551,8 @@ It is now cycle 4257
 It is now cycle 4258
 It is now cycle 4259
 It is now cycle 4260
+P    3 | lld 22 r4
+ADV 7 (0x0176 -> 0x017d) 0d 90 00 00 00 16 04 
 It is now cycle 4261
 It is now cycle 4262
 It is now cycle 4263
@@ -4558,11 +4563,11 @@ It is now cycle 4267
 It is now cycle 4268
 It is now cycle 4269
 It is now cycle 4270
+P    3 | lld 2442 r5
+ADV 7 (0x017d -> 0x0184) 0d 90 00 00 09 8a 05 
 It is now cycle 4271
 It is now cycle 4272
 It is now cycle 4273
-P    3 | fork 12140 (735)
-ADV 3 (0x0173 -> 0x0176) 0c 2f 6c 
 It is now cycle 4274
 It is now cycle 4275
 It is now cycle 4276
@@ -4570,26 +4575,25 @@ It is now cycle 4277
 It is now cycle 4278
 It is now cycle 4279
 It is now cycle 4280
+ADV 6 (0x0184 -> 0x018a) 0d ff ff ff 93 0d 
 It is now cycle 4281
 It is now cycle 4282
 It is now cycle 4283
-P    3 | lld 22 r4
-ADV 7 (0x0176 -> 0x017d) 0d 90 00 00 00 16 04 
 It is now cycle 4284
 It is now cycle 4285
 It is now cycle 4286
 It is now cycle 4287
 It is now cycle 4288
 It is now cycle 4289
+ADV 4 (0x018d -> 0x0191) 07 0d d0 e1 
 It is now cycle 4290
 It is now cycle 4291
 It is now cycle 4292
 It is now cycle 4293
-P    3 | lld 2442 r5
-ADV 7 (0x017d -> 0x0184) 0d 90 00 00 09 8a 05 
 It is now cycle 4294
 It is now cycle 4295
 It is now cycle 4296
+ADV 4 (0x0192 -> 0x0196) 08 0e e4 00 
 It is now cycle 4297
 It is now cycle 4298
 It is now cycle 4299
@@ -4597,16 +4601,16 @@ It is now cycle 4300
 It is now cycle 4301
 It is now cycle 4302
 It is now cycle 4303
-ADV 2 (0x0184 -> 0x0186) 0d 00 
 It is now cycle 4304
 It is now cycle 4305
 It is now cycle 4306
+P    3 | live 13108238
+ADV 5 (0x0196 -> 0x019b) 01 00 c8 04 0e 
 It is now cycle 4307
 It is now cycle 4308
 It is now cycle 4309
 It is now cycle 4310
 It is now cycle 4311
-ADV 4 (0x0188 -> 0x018c) 08 0d d0 ff 
 It is now cycle 4312
 It is now cycle 4313
 It is now cycle 4314
@@ -4614,32 +4618,32 @@ It is now cycle 4315
 It is now cycle 4316
 It is now cycle 4317
 It is now cycle 4318
-ADV 4 (0x018d -> 0x0191) 07 0d d0 e1 
 It is now cycle 4319
 It is now cycle 4320
 It is now cycle 4321
+ADV 4 (0x01a0 -> 0x01a4) 05 0e d4 00 
 It is now cycle 4322
 It is now cycle 4323
 It is now cycle 4324
 It is now cycle 4325
-ADV 4 (0x0192 -> 0x0196) 08 0e e4 00 
 It is now cycle 4326
 It is now cycle 4327
 It is now cycle 4328
+ADV 3 (0x01a5 -> 0x01a8) 06 06 0e 
 It is now cycle 4329
 It is now cycle 4330
 It is now cycle 4331
 It is now cycle 4332
 It is now cycle 4333
 It is now cycle 4334
+ADV 2 (0x01a9 -> 0x01ab) 02 04 
 It is now cycle 4335
-P    3 | live 13108238
-ADV 5 (0x0196 -> 0x019b) 01 00 c8 04 0e 
 It is now cycle 4336
 It is now cycle 4337
 It is now cycle 4338
 It is now cycle 4339
 It is now cycle 4340
+ADV 4 (0x01ab -> 0x01af) 07 0e a4 0b 
 It is now cycle 4341
 It is now cycle 4342
 It is now cycle 4343
@@ -4649,8 +4653,8 @@ It is now cycle 4346
 It is now cycle 4347
 It is now cycle 4348
 It is now cycle 4349
+ADV 4 (0x01b2 -> 0x01b6) 08 0e 94 00 
 It is now cycle 4350
-ADV 4 (0x01a0 -> 0x01a4) 05 0e d4 00 
 It is now cycle 4351
 It is now cycle 4352
 It is now cycle 4353
@@ -4658,31 +4662,30 @@ It is now cycle 4354
 It is now cycle 4355
 It is now cycle 4356
 It is now cycle 4357
-ADV 3 (0x01a5 -> 0x01a8) 06 06 0e 
 It is now cycle 4358
 It is now cycle 4359
 It is now cycle 4360
 It is now cycle 4361
 It is now cycle 4362
 It is now cycle 4363
-ADV 2 (0x01a9 -> 0x01ab) 02 04 
 It is now cycle 4364
 It is now cycle 4365
 It is now cycle 4366
 It is now cycle 4367
 It is now cycle 4368
 It is now cycle 4369
-ADV 4 (0x01ab -> 0x01af) 07 0e a4 0b 
 It is now cycle 4370
+P    3 | zjmp 2319 FAILED
+ADV 3 (0x01b7 -> 0x01ba) 09 09 0f 
 It is now cycle 4371
 It is now cycle 4372
 It is now cycle 4373
 It is now cycle 4374
+ADV 3 (0x01bc -> 0x01bf) 10 40 01 
 It is now cycle 4375
 It is now cycle 4376
 It is now cycle 4377
 It is now cycle 4378
-ADV 4 (0x01b2 -> 0x01b6) 08 0e 94 00 
 It is now cycle 4379
 It is now cycle 4380
 It is now cycle 4381
@@ -4699,20 +4702,21 @@ It is now cycle 4391
 It is now cycle 4392
 It is now cycle 4393
 It is now cycle 4394
+P    3 | zjmp -30 FAILED
+ADV 3 (0x01bf -> 0x01c2) 09 ff e2 
 It is now cycle 4395
 It is now cycle 4396
 It is now cycle 4397
 It is now cycle 4398
 It is now cycle 4399
-P    3 | zjmp 271 FAILED
-ADV 3 (0x01b7 -> 0x01ba) 09 09 0f 
 It is now cycle 4400
 It is now cycle 4401
 It is now cycle 4402
 It is now cycle 4403
-ADV 3 (0x01bc -> 0x01bf) 10 40 01 
 It is now cycle 4404
 It is now cycle 4405
+P    3 | live -721352439
+ADV 5 (0x01c3 -> 0x01c8) 01 d5 01 09 09 
 It is now cycle 4406
 It is now cycle 4407
 It is now cycle 4408
@@ -4721,6 +4725,8 @@ It is now cycle 4410
 It is now cycle 4411
 It is now cycle 4412
 It is now cycle 4413
+P    3 | xor -109 99 r11
+ADV 11 (0x01ca -> 0x01d5) 08 a4 ff ff ff 93 00 00 00 63 0b 
 It is now cycle 4414
 It is now cycle 4415
 It is now cycle 4416
@@ -4731,8 +4737,6 @@ It is now cycle 4420
 It is now cycle 4421
 It is now cycle 4422
 It is now cycle 4423
-P    3 | zjmp -30 FAILED
-ADV 3 (0x01bf -> 0x01c2) 09 ff e2 
 It is now cycle 4424
 It is now cycle 4425
 It is now cycle 4426
@@ -4743,10 +4747,11 @@ It is now cycle 4430
 It is now cycle 4431
 It is now cycle 4432
 It is now cycle 4433
+P    3 | zjmp 2 FAILED
+ADV 3 (0x01d5 -> 0x01d8) 09 00 02 
 It is now cycle 4434
 It is now cycle 4435
 It is now cycle 4436
-ADV 6 (0x01c5 -> 0x01cb) 04 09 09 ff e2 08 
 It is now cycle 4437
 It is now cycle 4438
 It is now cycle 4439
@@ -4781,7 +4786,6 @@ It is now cycle 4467
 It is now cycle 4468
 It is now cycle 4469
 It is now cycle 4470
-ADV 4 (0x01d4 -> 0x01d8) 0b 09 00 02 
 It is now cycle 4471
 It is now cycle 4472
 It is now cycle 4473
@@ -4795,6 +4799,9 @@ It is now cycle 4480
 It is now cycle 4481
 It is now cycle 4482
 It is now cycle 4483
+P    3 | lldi -109 2 r2
+       | -> load from -109 + 2 = -107 (with pc 365)
+ADV 6 (0x01d8 -> 0x01de) 0e 64 08 00 02 02 
 It is now cycle 4484
 It is now cycle 4485
 It is now cycle 4486
@@ -4832,9 +4839,6 @@ It is now cycle 4517
 It is now cycle 4518
 It is now cycle 4519
 It is now cycle 4520
-P    3 | lldi -109 2 r2
-       | -> load from -109 + 2 = -107 (with pc 365)
-ADV 6 (0x01d8 -> 0x01de) 0e 64 08 00 02 02 
 It is now cycle 4521
 It is now cycle 4522
 It is now cycle 4523
@@ -4923,12 +4927,12 @@ It is now cycle 4605
 It is now cycle 4606
 It is now cycle 4607
 It is now cycle 4608
+Process 5 hasn't lived for 1756 cycles (CTD 1536)
+Process 4 hasn't lived for 3015 cycles (CTD 1536)
+Process 1 hasn't lived for 3015 cycles (CTD 1536)
 It is now cycle 4609
 It is now cycle 4610
 It is now cycle 4611
-Process 5 hasn't lived for 1741 cycles (CTD 1536)
-Process 4 hasn't lived for 3111 cycles (CTD 1536)
-Process 1 hasn't lived for 3111 cycles (CTD 1536)
 It is now cycle 4612
 It is now cycle 4613
 It is now cycle 4614
@@ -5318,17 +5322,1103 @@ It is now cycle 4997
 It is now cycle 4998
 It is now cycle 4999
 It is now cycle 5000
+It is now cycle 5001
+It is now cycle 5002
+It is now cycle 5003
+It is now cycle 5004
+It is now cycle 5005
+It is now cycle 5006
+It is now cycle 5007
+It is now cycle 5008
+It is now cycle 5009
+It is now cycle 5010
+It is now cycle 5011
+It is now cycle 5012
+It is now cycle 5013
+It is now cycle 5014
+It is now cycle 5015
+It is now cycle 5016
+It is now cycle 5017
+It is now cycle 5018
+It is now cycle 5019
+It is now cycle 5020
+It is now cycle 5021
+It is now cycle 5022
+It is now cycle 5023
+It is now cycle 5024
+It is now cycle 5025
+It is now cycle 5026
+It is now cycle 5027
+It is now cycle 5028
+It is now cycle 5029
+It is now cycle 5030
+It is now cycle 5031
+It is now cycle 5032
+It is now cycle 5033
+It is now cycle 5034
+It is now cycle 5035
+It is now cycle 5036
+It is now cycle 5037
+It is now cycle 5038
+It is now cycle 5039
+It is now cycle 5040
+It is now cycle 5041
+It is now cycle 5042
+It is now cycle 5043
+It is now cycle 5044
+It is now cycle 5045
+It is now cycle 5046
+It is now cycle 5047
+It is now cycle 5048
+It is now cycle 5049
+It is now cycle 5050
+It is now cycle 5051
+It is now cycle 5052
+It is now cycle 5053
+It is now cycle 5054
+It is now cycle 5055
+It is now cycle 5056
+It is now cycle 5057
+It is now cycle 5058
+It is now cycle 5059
+It is now cycle 5060
+It is now cycle 5061
+It is now cycle 5062
+It is now cycle 5063
+It is now cycle 5064
+It is now cycle 5065
+It is now cycle 5066
+It is now cycle 5067
+It is now cycle 5068
+It is now cycle 5069
+It is now cycle 5070
+It is now cycle 5071
+It is now cycle 5072
+It is now cycle 5073
+It is now cycle 5074
+It is now cycle 5075
+It is now cycle 5076
+It is now cycle 5077
+It is now cycle 5078
+It is now cycle 5079
+It is now cycle 5080
+It is now cycle 5081
+It is now cycle 5082
+It is now cycle 5083
+It is now cycle 5084
+It is now cycle 5085
+It is now cycle 5086
+It is now cycle 5087
+It is now cycle 5088
+It is now cycle 5089
+It is now cycle 5090
+It is now cycle 5091
+It is now cycle 5092
+It is now cycle 5093
+It is now cycle 5094
+It is now cycle 5095
+It is now cycle 5096
+It is now cycle 5097
+It is now cycle 5098
+It is now cycle 5099
+It is now cycle 5100
+It is now cycle 5101
+It is now cycle 5102
+It is now cycle 5103
+It is now cycle 5104
+It is now cycle 5105
+It is now cycle 5106
+It is now cycle 5107
+It is now cycle 5108
+It is now cycle 5109
+It is now cycle 5110
+It is now cycle 5111
+It is now cycle 5112
+It is now cycle 5113
+It is now cycle 5114
+It is now cycle 5115
+It is now cycle 5116
+It is now cycle 5117
+It is now cycle 5118
+It is now cycle 5119
+It is now cycle 5120
+It is now cycle 5121
+It is now cycle 5122
+It is now cycle 5123
+It is now cycle 5124
+It is now cycle 5125
+It is now cycle 5126
+It is now cycle 5127
+It is now cycle 5128
+It is now cycle 5129
+It is now cycle 5130
+It is now cycle 5131
+It is now cycle 5132
+It is now cycle 5133
+It is now cycle 5134
+It is now cycle 5135
+It is now cycle 5136
+It is now cycle 5137
+It is now cycle 5138
+It is now cycle 5139
+It is now cycle 5140
+It is now cycle 5141
+It is now cycle 5142
+It is now cycle 5143
+It is now cycle 5144
+It is now cycle 5145
+It is now cycle 5146
+It is now cycle 5147
+It is now cycle 5148
+It is now cycle 5149
+It is now cycle 5150
+It is now cycle 5151
+It is now cycle 5152
+It is now cycle 5153
+It is now cycle 5154
+It is now cycle 5155
+It is now cycle 5156
+It is now cycle 5157
+It is now cycle 5158
+It is now cycle 5159
+It is now cycle 5160
+It is now cycle 5161
+It is now cycle 5162
+It is now cycle 5163
+It is now cycle 5164
+It is now cycle 5165
+It is now cycle 5166
+It is now cycle 5167
+It is now cycle 5168
+It is now cycle 5169
+It is now cycle 5170
+It is now cycle 5171
+It is now cycle 5172
+It is now cycle 5173
+It is now cycle 5174
+It is now cycle 5175
+It is now cycle 5176
+It is now cycle 5177
+It is now cycle 5178
+It is now cycle 5179
+It is now cycle 5180
+It is now cycle 5181
+It is now cycle 5182
+It is now cycle 5183
+It is now cycle 5184
+It is now cycle 5185
+It is now cycle 5186
+It is now cycle 5187
+It is now cycle 5188
+It is now cycle 5189
+It is now cycle 5190
+It is now cycle 5191
+It is now cycle 5192
+It is now cycle 5193
+It is now cycle 5194
+It is now cycle 5195
+It is now cycle 5196
+It is now cycle 5197
+It is now cycle 5198
+It is now cycle 5199
+It is now cycle 5200
+It is now cycle 5201
+It is now cycle 5202
+It is now cycle 5203
+It is now cycle 5204
+It is now cycle 5205
+It is now cycle 5206
+It is now cycle 5207
+It is now cycle 5208
+It is now cycle 5209
+It is now cycle 5210
+It is now cycle 5211
+It is now cycle 5212
+It is now cycle 5213
+It is now cycle 5214
+It is now cycle 5215
+It is now cycle 5216
+It is now cycle 5217
+It is now cycle 5218
+It is now cycle 5219
+It is now cycle 5220
+It is now cycle 5221
+It is now cycle 5222
+It is now cycle 5223
+It is now cycle 5224
+It is now cycle 5225
+It is now cycle 5226
+It is now cycle 5227
+It is now cycle 5228
+It is now cycle 5229
+It is now cycle 5230
+It is now cycle 5231
+It is now cycle 5232
+It is now cycle 5233
+It is now cycle 5234
+It is now cycle 5235
+It is now cycle 5236
+It is now cycle 5237
+It is now cycle 5238
+It is now cycle 5239
+It is now cycle 5240
+It is now cycle 5241
+It is now cycle 5242
+It is now cycle 5243
+It is now cycle 5244
+It is now cycle 5245
+It is now cycle 5246
+It is now cycle 5247
+It is now cycle 5248
+It is now cycle 5249
+It is now cycle 5250
+It is now cycle 5251
+It is now cycle 5252
+It is now cycle 5253
+It is now cycle 5254
+It is now cycle 5255
+It is now cycle 5256
+It is now cycle 5257
+It is now cycle 5258
+It is now cycle 5259
+It is now cycle 5260
+It is now cycle 5261
+It is now cycle 5262
+It is now cycle 5263
+It is now cycle 5264
+It is now cycle 5265
+It is now cycle 5266
+It is now cycle 5267
+It is now cycle 5268
+It is now cycle 5269
+It is now cycle 5270
+It is now cycle 5271
+It is now cycle 5272
+It is now cycle 5273
+It is now cycle 5274
+It is now cycle 5275
+It is now cycle 5276
+It is now cycle 5277
+It is now cycle 5278
+It is now cycle 5279
+It is now cycle 5280
+It is now cycle 5281
+It is now cycle 5282
+It is now cycle 5283
+It is now cycle 5284
+It is now cycle 5285
+It is now cycle 5286
+It is now cycle 5287
+It is now cycle 5288
+It is now cycle 5289
+It is now cycle 5290
+It is now cycle 5291
+It is now cycle 5292
+It is now cycle 5293
+It is now cycle 5294
+It is now cycle 5295
+It is now cycle 5296
+It is now cycle 5297
+It is now cycle 5298
+It is now cycle 5299
+It is now cycle 5300
+It is now cycle 5301
+It is now cycle 5302
+It is now cycle 5303
+It is now cycle 5304
+It is now cycle 5305
+It is now cycle 5306
+It is now cycle 5307
+It is now cycle 5308
+It is now cycle 5309
+It is now cycle 5310
+It is now cycle 5311
+It is now cycle 5312
+It is now cycle 5313
+It is now cycle 5314
+It is now cycle 5315
+It is now cycle 5316
+It is now cycle 5317
+It is now cycle 5318
+It is now cycle 5319
+It is now cycle 5320
+It is now cycle 5321
+It is now cycle 5322
+It is now cycle 5323
+It is now cycle 5324
+It is now cycle 5325
+It is now cycle 5326
+It is now cycle 5327
+It is now cycle 5328
+It is now cycle 5329
+It is now cycle 5330
+It is now cycle 5331
+It is now cycle 5332
+It is now cycle 5333
+It is now cycle 5334
+It is now cycle 5335
+It is now cycle 5336
+It is now cycle 5337
+It is now cycle 5338
+It is now cycle 5339
+It is now cycle 5340
+It is now cycle 5341
+It is now cycle 5342
+It is now cycle 5343
+It is now cycle 5344
+It is now cycle 5345
+It is now cycle 5346
+It is now cycle 5347
+It is now cycle 5348
+It is now cycle 5349
+It is now cycle 5350
+It is now cycle 5351
+It is now cycle 5352
+It is now cycle 5353
+It is now cycle 5354
+It is now cycle 5355
+It is now cycle 5356
+It is now cycle 5357
+It is now cycle 5358
+It is now cycle 5359
+It is now cycle 5360
+It is now cycle 5361
+It is now cycle 5362
+It is now cycle 5363
+It is now cycle 5364
+It is now cycle 5365
+It is now cycle 5366
+It is now cycle 5367
+It is now cycle 5368
+It is now cycle 5369
+It is now cycle 5370
+It is now cycle 5371
+It is now cycle 5372
+It is now cycle 5373
+It is now cycle 5374
+It is now cycle 5375
+It is now cycle 5376
+It is now cycle 5377
+It is now cycle 5378
+It is now cycle 5379
+It is now cycle 5380
+It is now cycle 5381
+It is now cycle 5382
+It is now cycle 5383
+It is now cycle 5384
+It is now cycle 5385
+It is now cycle 5386
+It is now cycle 5387
+It is now cycle 5388
+It is now cycle 5389
+It is now cycle 5390
+It is now cycle 5391
+It is now cycle 5392
+It is now cycle 5393
+It is now cycle 5394
+It is now cycle 5395
+It is now cycle 5396
+It is now cycle 5397
+It is now cycle 5398
+It is now cycle 5399
+It is now cycle 5400
+It is now cycle 5401
+It is now cycle 5402
+It is now cycle 5403
+It is now cycle 5404
+It is now cycle 5405
+It is now cycle 5406
+It is now cycle 5407
+It is now cycle 5408
+It is now cycle 5409
+It is now cycle 5410
+It is now cycle 5411
+It is now cycle 5412
+It is now cycle 5413
+It is now cycle 5414
+It is now cycle 5415
+It is now cycle 5416
+It is now cycle 5417
+It is now cycle 5418
+It is now cycle 5419
+It is now cycle 5420
+It is now cycle 5421
+It is now cycle 5422
+It is now cycle 5423
+It is now cycle 5424
+It is now cycle 5425
+It is now cycle 5426
+It is now cycle 5427
+It is now cycle 5428
+It is now cycle 5429
+It is now cycle 5430
+It is now cycle 5431
+It is now cycle 5432
+It is now cycle 5433
+It is now cycle 5434
+It is now cycle 5435
+It is now cycle 5436
+It is now cycle 5437
+It is now cycle 5438
+It is now cycle 5439
+It is now cycle 5440
+It is now cycle 5441
+It is now cycle 5442
+It is now cycle 5443
+It is now cycle 5444
+It is now cycle 5445
+It is now cycle 5446
+It is now cycle 5447
+It is now cycle 5448
+It is now cycle 5449
+It is now cycle 5450
+It is now cycle 5451
+It is now cycle 5452
+It is now cycle 5453
+It is now cycle 5454
+It is now cycle 5455
+It is now cycle 5456
+It is now cycle 5457
+It is now cycle 5458
+It is now cycle 5459
+It is now cycle 5460
+It is now cycle 5461
+It is now cycle 5462
+It is now cycle 5463
+It is now cycle 5464
+It is now cycle 5465
+It is now cycle 5466
+It is now cycle 5467
+It is now cycle 5468
+It is now cycle 5469
+It is now cycle 5470
+It is now cycle 5471
+It is now cycle 5472
+It is now cycle 5473
+It is now cycle 5474
+It is now cycle 5475
+It is now cycle 5476
+It is now cycle 5477
+It is now cycle 5478
+It is now cycle 5479
+It is now cycle 5480
+It is now cycle 5481
+It is now cycle 5482
+It is now cycle 5483
+P    3 | lfork 3447 (3925)
+ADV 3 (0x01de -> 0x01e1) 0f 0d 77 
+It is now cycle 5484
+It is now cycle 5485
+It is now cycle 5486
+It is now cycle 5487
+It is now cycle 5488
+It is now cycle 5489
+It is now cycle 5490
+It is now cycle 5491
+It is now cycle 5492
+It is now cycle 5493
+It is now cycle 5494
+It is now cycle 5495
+It is now cycle 5496
+It is now cycle 5497
+It is now cycle 5498
+It is now cycle 5499
+It is now cycle 5500
+It is now cycle 5501
+It is now cycle 5502
+It is now cycle 5503
+It is now cycle 5504
+It is now cycle 5505
+It is now cycle 5506
+It is now cycle 5507
+It is now cycle 5508
+It is now cycle 5509
+It is now cycle 5510
+It is now cycle 5511
+It is now cycle 5512
+It is now cycle 5513
+It is now cycle 5514
+It is now cycle 5515
+It is now cycle 5516
+It is now cycle 5517
+It is now cycle 5518
+It is now cycle 5519
+It is now cycle 5520
+It is now cycle 5521
+It is now cycle 5522
+It is now cycle 5523
+It is now cycle 5524
+It is now cycle 5525
+It is now cycle 5526
+It is now cycle 5527
+It is now cycle 5528
+It is now cycle 5529
+It is now cycle 5530
+It is now cycle 5531
+It is now cycle 5532
+It is now cycle 5533
+It is now cycle 5534
+It is now cycle 5535
+It is now cycle 5536
+It is now cycle 5537
+It is now cycle 5538
+It is now cycle 5539
+It is now cycle 5540
+It is now cycle 5541
+It is now cycle 5542
+It is now cycle 5543
+It is now cycle 5544
+It is now cycle 5545
+It is now cycle 5546
+It is now cycle 5547
+It is now cycle 5548
+It is now cycle 5549
+It is now cycle 5550
+It is now cycle 5551
+It is now cycle 5552
+It is now cycle 5553
+It is now cycle 5554
+It is now cycle 5555
+It is now cycle 5556
+It is now cycle 5557
+It is now cycle 5558
+It is now cycle 5559
+It is now cycle 5560
+It is now cycle 5561
+It is now cycle 5562
+It is now cycle 5563
+It is now cycle 5564
+It is now cycle 5565
+It is now cycle 5566
+It is now cycle 5567
+It is now cycle 5568
+It is now cycle 5569
+It is now cycle 5570
+It is now cycle 5571
+It is now cycle 5572
+It is now cycle 5573
+It is now cycle 5574
+It is now cycle 5575
+It is now cycle 5576
+It is now cycle 5577
+It is now cycle 5578
+It is now cycle 5579
+It is now cycle 5580
+It is now cycle 5581
+It is now cycle 5582
+It is now cycle 5583
+It is now cycle 5584
+It is now cycle 5585
+It is now cycle 5586
+It is now cycle 5587
+It is now cycle 5588
+It is now cycle 5589
+It is now cycle 5590
+It is now cycle 5591
+It is now cycle 5592
+It is now cycle 5593
+It is now cycle 5594
+It is now cycle 5595
+It is now cycle 5596
+It is now cycle 5597
+It is now cycle 5598
+It is now cycle 5599
+It is now cycle 5600
+It is now cycle 5601
+It is now cycle 5602
+It is now cycle 5603
+It is now cycle 5604
+It is now cycle 5605
+It is now cycle 5606
+It is now cycle 5607
+It is now cycle 5608
+It is now cycle 5609
+It is now cycle 5610
+It is now cycle 5611
+It is now cycle 5612
+It is now cycle 5613
+It is now cycle 5614
+It is now cycle 5615
+It is now cycle 5616
+It is now cycle 5617
+It is now cycle 5618
+It is now cycle 5619
+It is now cycle 5620
+It is now cycle 5621
+It is now cycle 5622
+It is now cycle 5623
+It is now cycle 5624
+It is now cycle 5625
+It is now cycle 5626
+It is now cycle 5627
+It is now cycle 5628
+It is now cycle 5629
+It is now cycle 5630
+It is now cycle 5631
+It is now cycle 5632
+It is now cycle 5633
+It is now cycle 5634
+It is now cycle 5635
+It is now cycle 5636
+It is now cycle 5637
+It is now cycle 5638
+It is now cycle 5639
+It is now cycle 5640
+It is now cycle 5641
+It is now cycle 5642
+It is now cycle 5643
+It is now cycle 5644
+It is now cycle 5645
+It is now cycle 5646
+It is now cycle 5647
+It is now cycle 5648
+It is now cycle 5649
+It is now cycle 5650
+It is now cycle 5651
+It is now cycle 5652
+It is now cycle 5653
+It is now cycle 5654
+It is now cycle 5655
+It is now cycle 5656
+It is now cycle 5657
+It is now cycle 5658
+It is now cycle 5659
+It is now cycle 5660
+It is now cycle 5661
+It is now cycle 5662
+It is now cycle 5663
+It is now cycle 5664
+P    6 | live 1
+ADV 5 (0x0000 -> 0x0005) 01 00 00 00 01 
+It is now cycle 5665
+It is now cycle 5666
+It is now cycle 5667
+It is now cycle 5668
+It is now cycle 5669
+P    6 | ld 55 r1
+ADV 7 (0x0005 -> 0x000c) 02 90 00 00 00 37 01 
+It is now cycle 5670
+It is now cycle 5671
+It is now cycle 5672
+It is now cycle 5673
+It is now cycle 5674
+P    6 | ld 14081 r2
+ADV 5 (0x000c -> 0x0011) 02 d0 ff fc 02 
+It is now cycle 5675
+It is now cycle 5676
+It is now cycle 5677
+It is now cycle 5678
+It is now cycle 5679
+P    6 | ld 0 r3
+ADV 5 (0x0011 -> 0x0016) 02 d0 a0 20 03 
+It is now cycle 5680
+It is now cycle 5681
+It is now cycle 5682
+It is now cycle 5683
+It is now cycle 5684
+P    6 | ld -788547577 r4
+ADV 5 (0x0016 -> 0x001b) 02 d0 0d 74 04 
+It is now cycle 5685
+It is now cycle 5686
+It is now cycle 5687
+It is now cycle 5688
+It is now cycle 5689
+P    6 | ld 204434445 r5
+ADV 5 (0x001b -> 0x0020) 02 d0 01 58 05 
+It is now cycle 5690
+It is now cycle 5691
+It is now cycle 5692
+It is now cycle 5693
+It is now cycle 5694
+P    6 | st r1 256
+ADV 5 (0x0020 -> 0x0025) 03 70 01 01 00 
+It is now cycle 5695
+It is now cycle 5696
+It is now cycle 5697
+It is now cycle 5698
+It is now cycle 5699
+P    6 | st r2 6
+ADV 4 (0x0025 -> 0x0029) 03 50 02 06 
+It is now cycle 5700
+It is now cycle 5701
+It is now cycle 5702
+It is now cycle 5703
+It is now cycle 5704
+It is now cycle 5705
+It is now cycle 5706
+It is now cycle 5707
+It is now cycle 5708
+It is now cycle 5709
+P    6 | add r1 r2 r3
+ADV 5 (0x0029 -> 0x002e) 04 54 01 02 03 
+It is now cycle 5710
+It is now cycle 5711
+It is now cycle 5712
+It is now cycle 5713
+It is now cycle 5714
+It is now cycle 5715
+It is now cycle 5716
+It is now cycle 5717
+It is now cycle 5718
+It is now cycle 5719
+P    6 | sub r1 r2 r3
+ADV 5 (0x002e -> 0x0033) 05 54 01 02 03 
+It is now cycle 5720
+It is now cycle 5721
+It is now cycle 5722
+It is now cycle 5723
+It is now cycle 5724
+It is now cycle 5725
+P    6 | and 55 14081 r3
+ADV 5 (0x0033 -> 0x0038) 06 54 01 02 03 
+It is now cycle 5726
+It is now cycle 5727
+It is now cycle 5728
+It is now cycle 5729
+It is now cycle 5730
+It is now cycle 5731
+P    6 | and 55 106168578 r4
+ADV 6 (0x0038 -> 0x003e) 06 74 01 ff fb 04 
+It is now cycle 5732
+It is now cycle 5733
+It is now cycle 5734
+It is now cycle 5735
+It is now cycle 5736
+It is now cycle 5737
+P    6 | and -109 503 r5
+ADV 8 (0x003e -> 0x0046) 06 64 08 00 00 01 f7 05 
+It is now cycle 5738
+It is now cycle 5739
+It is now cycle 5740
+It is now cycle 5741
+It is now cycle 5742
+It is now cycle 5743
+P    6 | and 48 2 r6
+ADV 8 (0x0046 -> 0x004e) 06 94 00 00 00 30 04 06 
+It is now cycle 5744
+It is now cycle 5745
+It is now cycle 5746
+It is now cycle 5747
+It is now cycle 5748
+It is now cycle 5749
+P    6 | and -109 99 r7
+ADV 11 (0x004e -> 0x0059) 06 a4 ff ff ff 93 00 00 00 63 07 
+It is now cycle 5750
+It is now cycle 5751
+It is now cycle 5752
+It is now cycle 5753
+It is now cycle 5754
+It is now cycle 5755
+P    6 | and -109 6490889 r8
+ADV 9 (0x0059 -> 0x0062) 06 b4 ff ff ff 93 0d 79 08 
+It is now cycle 5756
+It is now cycle 5757
+It is now cycle 5758
+It is now cycle 5759
+It is now cycle 5760
+It is now cycle 5761
+P    6 | and 0 55 r9
+ADV 6 (0x0062 -> 0x0068) 06 d4 01 d5 01 09 
+It is now cycle 5762
+It is now cycle 5763
+It is now cycle 5764
+It is now cycle 5765
+It is now cycle 5766
+It is now cycle 5767
+P    6 | and 0 1946288123 r10
+ADV 7 (0x0068 -> 0x006f) 06 f4 fe bc ff d1 0a 
+It is now cycle 5768
+It is now cycle 5769
+It is now cycle 5770
+It is now cycle 5771
+It is now cycle 5772
+It is now cycle 5773
+P    6 | and 1409352195 -4 r11
+ADV 9 (0x006f -> 0x0078) 06 e4 ff c5 ff ff ff fc 0b 
+It is now cycle 5774
+It is now cycle 5775
+It is now cycle 5776
+It is now cycle 5777
+It is now cycle 5778
+It is now cycle 5779
+P    6 | or 55 14081 r3
+ADV 5 (0x0078 -> 0x007d) 07 54 01 02 03 
+It is now cycle 5780
+It is now cycle 5781
+It is now cycle 5782
+It is now cycle 5783
+It is now cycle 5784
+It is now cycle 5785
+P    6 | or 55 122945794 r4
+ADV 6 (0x007d -> 0x0083) 07 74 01 ff fb 04 
+It is now cycle 5786
+It is now cycle 5787
+It is now cycle 5788
+It is now cycle 5789
+It is now cycle 5790
+It is now cycle 5791
+P    6 | or 6490881 503 r5
+ADV 8 (0x0083 -> 0x008b) 07 64 08 00 00 01 f7 05 
+It is now cycle 5792
+It is now cycle 5793
+It is now cycle 5794
+It is now cycle 5795
+It is now cycle 5796
+It is now cycle 5797
+P    6 | or 48 122945847 r6
+ADV 8 (0x008b -> 0x0093) 07 94 00 00 00 30 04 06 
+It is now cycle 5798
+It is now cycle 5799
+It is now cycle 5800
+It is now cycle 5801
+It is now cycle 5802
+It is now cycle 5803
+P    6 | or -109 99 r7
+ADV 11 (0x0093 -> 0x009e) 07 a4 ff ff ff 93 00 00 00 63 07 
+It is now cycle 5804
+It is now cycle 5805
+It is now cycle 5806
+It is now cycle 5807
+It is now cycle 5808
+It is now cycle 5809
+P    6 | or -109 0 r8
+ADV 9 (0x009e -> 0x00a7) 07 b4 ff ff ff 93 0d 79 08 
+It is now cycle 5810
+It is now cycle 5811
+It is now cycle 5812
+It is now cycle 5813
+It is now cycle 5814
+It is now cycle 5815
+P    6 | or 0 55 r9
+ADV 6 (0x00a7 -> 0x00ad) 07 d4 01 d5 01 09 
+It is now cycle 5816
+It is now cycle 5817
+It is now cycle 5818
+It is now cycle 5819
+It is now cycle 5820
+It is now cycle 5821
+P    6 | or 0 1946288123 r10
+ADV 7 (0x00ad -> 0x00b4) 07 f4 fe bc ff d1 0a 
+It is now cycle 5822
+It is now cycle 5823
+It is now cycle 5824
+It is now cycle 5825
+It is now cycle 5826
+It is now cycle 5827
+P    6 | or 1409352195 -4 r11
+ADV 9 (0x00b4 -> 0x00bd) 07 e4 ff c5 ff ff ff fc 0b 
+It is now cycle 5828
+It is now cycle 5829
+It is now cycle 5830
+It is now cycle 5831
+It is now cycle 5832
+It is now cycle 5833
+P    6 | xor 55 14081 r3
+ADV 5 (0x00bd -> 0x00c2) 08 54 01 02 03 
+It is now cycle 5834
+It is now cycle 5835
+It is now cycle 5836
+It is now cycle 5837
+It is now cycle 5838
+It is now cycle 5839
+P    6 | xor 55 139723010 r4
+ADV 6 (0x00c2 -> 0x00c8) 08 74 01 ff fb 04 
+It is now cycle 5840
+It is now cycle 5841
+It is now cycle 5842
+It is now cycle 5843
+It is now cycle 5844
+It is now cycle 5845
+P    6 | xor -109 16945152 r5
+ADV 8 (0x00c8 -> 0x00d0) 08 64 08 01 02 90 00 05 
+It is now cycle 5846
+It is now cycle 5847
+It is now cycle 5848
+It is now cycle 5849
+It is now cycle 5850
+It is now cycle 5851
+P    6 | xor 48 139723061 r6
+ADV 8 (0x00d0 -> 0x00d8) 08 94 00 00 00 30 04 06 
+It is now cycle 5852
+It is now cycle 5853
+It is now cycle 5854
+It is now cycle 5855
+It is now cycle 5856
+It is now cycle 5857
+P    6 | xor -109 99 r7
+ADV 11 (0x00d8 -> 0x00e3) 08 a4 ff ff ff 93 00 00 00 63 07 
+It is now cycle 5858
+It is now cycle 5859
+It is now cycle 5860
+It is now cycle 5861
+It is now cycle 5862
+It is now cycle 5863
+P    6 | xor -109 0 r8
+ADV 9 (0x00e3 -> 0x00ec) 08 b4 ff ff ff 93 0d 79 08 
+It is now cycle 5864
+It is now cycle 5865
+It is now cycle 5866
+It is now cycle 5867
+It is now cycle 5868
+It is now cycle 5869
+P    6 | xor 0 55 r9
+ADV 6 (0x00ec -> 0x00f2) 08 d4 01 d5 01 09 
+It is now cycle 5870
+It is now cycle 5871
+It is now cycle 5872
+It is now cycle 5873
+It is now cycle 5874
+It is now cycle 5875
+P    6 | xor 0 1946288123 r10
+ADV 7 (0x00f2 -> 0x00f9) 08 f4 fe bc ff d1 0a 
+It is now cycle 5876
+It is now cycle 5877
+It is now cycle 5878
+It is now cycle 5879
+It is now cycle 5880
+It is now cycle 5881
+P    6 | xor 1409352195 -4 r11
+ADV 9 (0x00f9 -> 0x0102) 08 e4 ff c5 ff ff ff fc 0b 
+It is now cycle 5882
+It is now cycle 5883
+It is now cycle 5884
+It is now cycle 5885
+It is now cycle 5886
+It is now cycle 5887
+It is now cycle 5888
+It is now cycle 5889
+It is now cycle 5890
+It is now cycle 5891
+It is now cycle 5892
+It is now cycle 5893
+It is now cycle 5894
+It is now cycle 5895
+It is now cycle 5896
+It is now cycle 5897
+It is now cycle 5898
+It is now cycle 5899
+It is now cycle 5900
+It is now cycle 5901
+It is now cycle 5902
+It is now cycle 5903
+It is now cycle 5904
+It is now cycle 5905
+It is now cycle 5906
+P    6 | ldi -469761792 2 r3
+       | -> load from -469761792 + 2 = -469761790 (with pc and mod 4)
+ADV 7 (0x0102 -> 0x0109) 0a e4 00 01 00 02 03 
+It is now cycle 5907
+It is now cycle 5908
+It is now cycle 5909
+It is now cycle 5910
+It is now cycle 5911
+It is now cycle 5912
+It is now cycle 5913
+It is now cycle 5914
+It is now cycle 5915
+It is now cycle 5916
+It is now cycle 5917
+It is now cycle 5918
+It is now cycle 5919
+It is now cycle 5920
+It is now cycle 5921
+It is now cycle 5922
+It is now cycle 5923
+It is now cycle 5924
+It is now cycle 5925
+It is now cycle 5926
+It is now cycle 5927
+It is now cycle 5928
+It is now cycle 5929
+It is now cycle 5930
+It is now cycle 5931
+P    6 | ldi -3997607 14081 r4
+       | -> load from -3997607 + 14081 = -3983526 (with pc and mod 99)
+ADV 6 (0x0109 -> 0x010f) 0a d4 00 25 02 04 
+It is now cycle 5932
+It is now cycle 5933
+It is now cycle 5934
+It is now cycle 5935
+It is now cycle 5936
+It is now cycle 5937
+It is now cycle 5938
+It is now cycle 5939
+It is now cycle 5940
+It is now cycle 5941
+It is now cycle 5942
+It is now cycle 5943
+It is now cycle 5944
+It is now cycle 5945
+It is now cycle 5946
+It is now cycle 5947
+It is now cycle 5948
+It is now cycle 5949
+It is now cycle 5950
+It is now cycle 5951
+It is now cycle 5952
+It is now cycle 5953
+It is now cycle 5954
+It is now cycle 5955
+It is now cycle 5956
+ADV 8 (0x010f -> 0x0117) 0a fe fd 6f 93 05 0a d4 
+It is now cycle 5957
+It is now cycle 5958
+It is now cycle 5959
+It is now cycle 5960
+It is now cycle 5961
+ADV 3 (0x0117 -> 0x011a) 03 45 02 
+It is now cycle 5962
+It is now cycle 5963
+It is now cycle 5964
+It is now cycle 5965
+It is now cycle 5966
+It is now cycle 5967
+ADV 6 (0x011a -> 0x0120) 06 0a 64 08 00 54 
+It is now cycle 5968
+It is now cycle 5969
+It is now cycle 5970
+It is now cycle 5971
+It is now cycle 5972
+It is now cycle 5973
+It is now cycle 5974
+It is now cycle 5975
+It is now cycle 5976
+It is now cycle 5977
+It is now cycle 5978
+It is now cycle 5979
+ADV 6 (0x0126 -> 0x012c) 08 0a 54 01 06 09 
+It is now cycle 5980
+It is now cycle 5981
+It is now cycle 5982
+It is now cycle 5983
+It is now cycle 5984
+It is now cycle 5985
+It is now cycle 5986
+It is now cycle 5987
+It is now cycle 5988
+It is now cycle 5989
+It is now cycle 5990
+It is now cycle 5991
+It is now cycle 5992
+It is now cycle 5993
+It is now cycle 5994
+It is now cycle 5995
+It is now cycle 5996
+It is now cycle 5997
+It is now cycle 5998
+It is now cycle 5999
+It is now cycle 6000
 0x0000 : 01 00 00 00 01 02 90 00 00 00 37 01 02 d0 ff fc 02 02 d0 a0 20 03 02 d0 0d 74 04 02 d0 01 58 05 03 70 01 01 00 03 50 02 06 04 54 01 02 03 05 54 01 02 03 06 54 01 02 03 06 74 01 ff fb 04 06 64 
 0x0040 : 08 00 00 01 f7 05 06 94 00 00 00 30 04 06 06 a4 ff ff ff 93 00 00 00 63 07 06 b4 ff ff ff 93 0d 79 08 06 d4 01 d5 01 09 06 f4 fe bc ff d1 0a 06 e4 ff c5 ff ff ff fc 0b 07 54 01 02 03 07 74 01 
 0x0080 : ff fb 04 07 64 08 00 00 01 f7 05 07 94 00 00 00 30 04 06 07 a4 ff ff ff 93 00 00 00 63 07 07 b4 ff ff ff 93 0d 79 08 07 d4 01 d5 01 09 07 f4 fe bc ff d1 0a 07 e4 ff c5 ff ff ff fc 0b 08 54 01 
-0x00c0 : 02 03 08 74 01 ff fb 04 08 64 08 00 00 00 03 05 08 94 00 00 00 30 04 06 08 a4 ff ff ff 93 00 00 00 63 07 08 b4 ff ff ff 93 0d 79 08 08 d4 01 d5 01 09 08 f4 fe bc ff d1 0a 08 e4 ff c5 ff ff ff 
-0x0100 : fc 0b 0a e4 00 01 00 02 03 0a d4 00 25 02 04 0a 00 00 00 05 05 0a d4 03 45 02 06 0a 64 08 00 54 00 00 00 37 20 fc 08 0a 54 01 06 09 0a a4 ff c3 00 59 0a 0a a4 fd 9b 00 59 0b 0a a4 e8 11 03 51 
+0x00c0 : 02 03 08 74 01 ff fb 04 08 64 08 01 02 90 00 05 08 94 00 00 00 30 04 06 08 a4 ff ff ff 93 00 00 00 63 07 08 b4 ff ff ff 93 0d 79 08 08 d4 01 d5 01 09 08 f4 fe bc ff d1 0a 08 e4 ff c5 ff ff ff 
+0x0100 : fc 0b 0a e4 00 01 00 02 03 0a d4 00 25 02 04 0a fe fd 6f 93 05 0a d4 03 45 02 06 0a 64 08 00 54 00 00 00 37 20 fc 08 0a 54 01 06 09 0a a4 ff c3 00 59 0a 0a a4 fd 9b 00 59 0b 0a a4 e8 11 03 51 
 0x0140 : 0c 0a a4 10 d5 00 52 0d 0a 94 00 18 02 0e 0b 58 03 08 ff ea 0b 54 04 09 01 0b 68 05 fd cd ff ea 0b 64 06 00 e9 01 0b 74 07 ee a4 0c 0b 78 08 00 10 fc 19 0c 2f 6c 0d 90 00 00 00 16 04 0d 90 00 
-0x0180 : 00 09 8a 05 0d 00 00 00 08 0d d0 ff b8 07 0d d0 e1 72 08 0e e4 00 01 00 c8 04 0e e4 00 54 fc 66 05 0e d4 00 21 06 06 0e 54 02 04 07 0e a4 0b c8 fe 54 08 0e 94 00 5a 09 09 0f 52 94 10 40 01 09 
-0x01c0 : ff e2 00 00 00 04 09 09 ff e2 08 a4 ff ff ff 93 00 00 00 63 0b 09 00 02 0e 64 08 00 02 02 0f 0d 77 0c f9 b9 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+0x0180 : 00 09 8a 05 0d ff ff ff 93 0d d0 ff b8 07 0d d0 e1 72 08 0e e4 00 01 00 c8 04 0e e4 00 54 fc 66 05 0e d4 00 21 06 06 0e 54 02 04 07 0e a4 0b c8 fe 54 08 0e 94 00 5a 09 09 0f 52 94 10 40 01 09 
+0x01c0 : ff e2 d4 01 d5 01 09 09 ff e2 08 a4 ff ff ff 93 00 00 00 63 0b 09 00 02 0e 64 08 00 02 02 0f 0d 77 0c f9 b9 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0200 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0240 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
-0x0280 : 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+0x0280 : 08 54 01 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x02c0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0300 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0340 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
@@ -5381,4 +6471,4 @@ It is now cycle 5000
 0x0f00 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0f40 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0f80 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
-0x0fc0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 07 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+0x0fc0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff f0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
