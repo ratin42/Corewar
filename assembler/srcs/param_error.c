@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/30 16:53:29 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/30 23:18:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,34 @@ void			p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
 	quit_prog(asmbly);
 }
 
+int				multi_param_checker(int type, int checker)
+{
+	if ((type | T_REG) == checker)
+		return (0);
+	if ((type | T_DIR) == checker)
+		return (0);
+	if ((type | T_IND) == checker)
+		return (0);
+	if ((type | T_DIR | T_IND) == checker)
+		return (0);
+	if ((type | T_REG | T_IND) == checker)
+		return (0);
+	if ((type | T_REG | T_DIR) == checker)
+		return (0);
+	return (-1);
+}
+
 int				check_para(int para_index, int i, t_param *last)
 {
 	extern t_op	g_op_tab[17];
 	int			checker;
 
-//	printf("pour param n%d param is %s type %d\n", para_index, last->param, last->type);
 	if (para_index == 1)
 		checker = g_op_tab[i].type_of_param.param1;
 	if (para_index == 2)
 		checker = g_op_tab[i].type_of_param.param2;
 	if (para_index == 3)
 		checker = g_op_tab[i].type_of_param.param3;
-//	printf("checker = %d gtab = %d\n", checker, g_op_tab[i].type_of_param.param2);
 	if (checker == 1 || checker == 2 || checker == 4)
 	{
 		if (last->type != checker)
@@ -66,8 +81,9 @@ int				check_para(int para_index, int i, t_param *last)
 	}
 	else
 	{
-		if (last->type > checker)
-			return (-1);
+		return (multi_param_checker(last->type, checker));
+/* 		if (last->type > checker)
+			return (-1); */
 	}
 	return (0);
 }
