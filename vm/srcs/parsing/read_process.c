@@ -12,6 +12,11 @@ static inline void	stock_process_size(t_corewar *cor, t_header *header,
 				name, size, CHAMP_MAX_SIZE);
 		corewar_quit("");
 	}
+	if (size == 0)
+	{
+		ft_printf("Champ %s is too small to be a champion", name);
+		corewar_quit("");
+	}
 	cor->process[i].size = size;
 }
 
