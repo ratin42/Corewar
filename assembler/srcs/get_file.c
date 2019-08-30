@@ -6,22 +6,24 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/28 16:48:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/30 15:56:46 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		parse_error(t_asm *asmbly)
+void		parse_error(t_asm *asmbly, int line, char *str)
 {
-	ft_putstr_fd("error no comment or no name found\n", 2);
+	ft_putstr_fd("bad parsing at line ", 2);
+	ft_putnbr_fd(line, 2);
+	ft_putstr_fd(" for ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\n', 2);
 	quit_prog(asmbly);
 }
 
 void		parse(t_asm *asmbly, char *str, int turn)
 {
-	if (is_empty(str) == 1)
-		return ;
 	if (check_comment(str) == 1)
 		return ;
 	else if (name_presence(str) == 1 && asmbly->got_name == 0)
@@ -29,12 +31,14 @@ void		parse(t_asm *asmbly, char *str, int turn)
 	else if ((comment_presence(str) == 1 && asmbly->got_comment == 0)
 		|| asmbly->in_comment == 1)
 		get_comment(asmbly, str);
+	else if (is_empty(asmbly, str) == 1)
+		return ;
 	else if (asmbly->got_name == 1 && asmbly->got_comment == 1)
 		get_instruction(asmbly, str, turn + 1);
 	else
 	{
 		free(str);
-		parse_error(asmbly);
+		parse_error(asmbly, turn, str);
 	}
 }
 

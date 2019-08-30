@@ -37,6 +37,7 @@ int			main(int ac, char **av)
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
+//	print_instruction(&asmbly);
 	print_writing(av[ac - 1]);
 	free_prog(&asmbly);
 	return (0);

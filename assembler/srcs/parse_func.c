@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 13:29:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 23:04:12 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/30 15:20:33 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int			is_empty(char *str)
+int			is_empty(t_asm *asmbly, char *str)
 {
 	int		i;
 
@@ -25,6 +25,7 @@ int			is_empty(char *str)
 			return (0);
 		i++;
 	}
+	(void)asmbly;
 	return (1);
 }
 

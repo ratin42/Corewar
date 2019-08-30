@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/28 18:00:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/30 16:35:44 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		fill_comment(char *str, t_asm *asmbly)
 	}
 	if (str[i] == '"')
 	{
-		printf("passage\n");
 		asmbly->comment[asmbly->idx_comment] = '\0';
 		return (0);
 	}
@@ -87,16 +86,23 @@ void	get_comment(t_asm *asmbly, char *str)
 		while (str[i] && str[i] != '"')
 			i++;
 		i++;
-		if (!(str[i]))
-			return ;
 		asmbly->in_comment = 1;
+		if (!(str[i]))
+		{
+			asmbly->comment[asmbly->idx_comment] = '\n';
+			asmbly->idx_comment++;
+			return ;
+		}
 	}
 	if (!(fill_comment(&str[i], asmbly)))
 	{
 		asmbly->in_comment = 0;
 		asmbly->got_comment = 1;
-		printf("comment = |%s|\n", asmbly->comment);
+		//printf("comment = |%s|\n", asmbly->comment);
+		return ;
 	}
+	asmbly->comment[asmbly->idx_comment] = '\n';
+	asmbly->idx_comment++;
 }
 
 /* void	get_comment(t_asm *asmbly, char *str)

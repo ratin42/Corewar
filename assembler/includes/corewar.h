@@ -25,7 +25,7 @@ int			parse_file(t_asm *asmbly, char *file);
 int			check_comment(char *str);
 int			name_presence(char *str);
 int			comment_presence(char *str);
-int			is_empty(char *str);
+int			is_empty(t_asm *asmbly, char *str);
 int			check_label_presence(char *str);
 void		dlt_lst_empty_lbl(t_asm *asmbly);
 int			check_opc_presence(char *str);
