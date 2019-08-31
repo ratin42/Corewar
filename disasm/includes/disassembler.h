@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/29 14:49:24 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/08/31 19:48:44 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct			s_corewar
 {
 	char				name[PROG_NAME_LENGTH + 1];
 	char				comment[COMMENT_LENGTH];
-	unsigned char		code[CHAMP_MAX_SIZE];
+	unsigned char		*code;
 	unsigned int		size;
 	unsigned int		magic;
 	unsigned int		pc;

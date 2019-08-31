@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 17:07:03 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 17:09:46 by ratin            ###   ########.fr       */
+/*   Updated: 2019/08/31 19:52:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		create_list(t_corewar *cor)
 	int		opcode;
 	t_arg	arg;
 
+	//cor->fd = 1;
 	while (cor->pc < cor->size)
 	{
 		opcode = cor->code[cor->pc++];

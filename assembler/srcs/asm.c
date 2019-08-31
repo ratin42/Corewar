@@ -45,3 +45,4 @@ int			main(int ac, char **av)
 
 //faire les commentaire sur plusieurs ligne
 //protection contre dev/ran null
+//probleme retour a la ligne script invalid

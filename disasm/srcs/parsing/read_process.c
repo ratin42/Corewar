@@ -15,8 +15,6 @@ void	stock_process_size(t_corewar *cor, t_header *header)
 	int size;
 
 	size = swap_endian(header->prog_size);
-	if (size > CHAMP_MAX_SIZE)
-		decomp_quit("Champion is to big\n");
 	cor->size = size;
 }
 
@@ -43,8 +41,9 @@ void	stock_process_magic(t_corewar *cor, t_header *header)
 
 void	stock_process_code(t_corewar *cor, int fd)
 {
-	ft_bzero((unsigned char *)cor->code, cor->size);
+	if (!(cor->code = ft_memalloc(sizeof(unsigned char) * cor->size)))
+		decomp_quit("Malloc error\n");
 	if ((read(fd, cor->code, cor->size) < 0))
-		decomp_quit("Read error");
+		decomp_quit("Read error\n");
 }
 

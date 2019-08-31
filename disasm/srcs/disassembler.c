@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/29 15:03:15 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/08/31 19:32:27 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int					main(int ac, char **av)
 	init_datas(&cor);
 	read_process(av[1], &cor);
 	create_file(&cor, av[1]);
+
+	//DEBUG
 	//print_champion(&cor);
 }
 
