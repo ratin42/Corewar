@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
+/*   Updated: 2019/09/01 20:20:54 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef COREWAR_H
 # define COREWAR_H
 
@@ -31,6 +43,8 @@ void		dlt_lst_empty_lbl(t_asm *asmbly);
 int			check_opc_presence(char *str);
 void		verify_label(t_asm *asmbly, char *label, int line);
 void		error_type(t_asm *asmbly, t_param *param);
+void		print_error(t_asm *asmbly, char *str);
+void		p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins);
 
 /*
 ** instruction

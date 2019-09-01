@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_process1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/01 20:22:44 by ratin             #+#    #+#             */
+/*   Updated: 2019/09/01 20:22:50 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "disassembler.h"
 
 void	read_process(char *name, t_corewar *cor)
@@ -15,4 +27,3 @@ void	read_process(char *name, t_corewar *cor)
 	stock_process_magic(cor, &header);
 	stock_process_code(cor, fd);
 }
-

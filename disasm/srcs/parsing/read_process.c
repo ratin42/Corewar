@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_process.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/01 20:22:36 by ratin             #+#    #+#             */
+/*   Updated: 2019/09/01 20:22:41 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "disassembler.h"
 
 void	stock_process_name(t_corewar *cor, t_header *header)
@@ -46,4 +58,3 @@ void	stock_process_code(t_corewar *cor, int fd)
 	if ((read(fd, cor->code, cor->size) < 0))
 		decomp_quit("Read error\n");
 }
-

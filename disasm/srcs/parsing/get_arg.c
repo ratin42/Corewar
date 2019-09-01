@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:45:32 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/31 19:52:38 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/01 20:22:18 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static inline void	print_value(t_corewar *cor, int value)
 {
 	char			*to_print;
 
-	//printf("value in print = %d\n", (char)value);
 	to_print = ft_itoa((int)value);
 	ft_putstr_fd(to_print, cor->fd);
 	free(to_print);
@@ -40,11 +39,9 @@ static inline void	ft_get_arg(t_corewar *cor, t_arg *arg, int i)
 	{
 		arg->value[i] = (arg->value[i] << 8);
 		arg->value[i] += cor->code[cor->pc];
-		//printf("cor code = |%x| value = %u\n", cor->code[cor->pc], arg->value[i]);
 		cor->pc++;
 		j++;
 	}
-	//printf("\n");
 }
 
 void				ft_get_args(t_corewar *cor, t_arg *arg)
@@ -56,11 +53,9 @@ void				ft_get_args(t_corewar *cor, t_arg *arg)
 	{
 		ft_get_arg(cor, arg, i);
 		print_type(cor, arg->type[i]);
-		//printf("arg value sorti = %u\n", arg->value[i]);
 		print_value(cor, arg->value[i]);
 		if (i + 1 < arg->nb_arg)
 			ft_putstr_fd(", ", cor->fd);
 		i++;
 	}
 }
-

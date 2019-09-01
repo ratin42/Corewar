@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 13:52:25 by syzhang           #+#    #+#             */
-/*   Updated: 2019/08/29 15:01:39 by syzhang          ###   ########.fr       */
+/*   Updated: 2019/09/01 20:06:35 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,15 @@ void		get_params(t_asm *asmbly, char *str, int line)
 	check_end_coma(asmbly, str, line);
 	fill_params(asmbly, &instru, &str[i], line);
 	get_params_type(asmbly, &str[i], line);
+}
+
+void		error_comma(t_asm *asmbly, char *str, int line, int i)
+{
+	if (str[i] == ',' && str[i + 1] == ',')
+	{
+		ft_putstr_fd("Error double comma at line ", 2);
+		ft_putnbr_fd(line, 2);
+		ft_putchar_fd('\n', 2);
+		quit_prog(asmbly);
+	}
 }

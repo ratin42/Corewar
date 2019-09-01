@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 19:46:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/30 23:39:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/01 20:20:46 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-//# include "../../common_files/op.h"
+
 # include "../../common_files/op.h"
 
 struct					s_type

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/01 20:02:59 by ratin             #+#    #+#             */
+/*   Updated: 2019/09/01 20:10:30 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
@@ -49,15 +60,11 @@ void		get_last_param(t_asm *asmbly, char *str, int i, int line)
 	free(param);
 }
 
-void		error_comma(t_asm *asmbly, char *str, int line, int i)
+void		add_free_param(t_asm *asmbly, t_instru **instru, int line
+	, char **param)
 {
-	if (str[i] == ',' && str[i + 1] == ',')
-	{
-		ft_putstr_fd("Error double comma at line ", 2);
-		ft_putnbr_fd(line, 2);
-		ft_putchar_fd('\n', 2);
-		quit_prog(asmbly);
-	}
+	add_param(asmbly, *instru, line, *param);
+	free(*param);
 }
 
 void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
@@ -82,8 +89,7 @@ void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
 			return ;
 		}
 		param = ft_strsub(str, i, y);
-		add_param(asmbly, *instru, line, param);
-		free(param);
+		add_free_param(asmbly, instru, line, &param);
 		i += y;
 		if (str[i] == '\0')
 			break ;

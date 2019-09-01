@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/01 20:17:57 by ratin             #+#    #+#             */
+/*   Updated: 2019/09/01 20:18:00 by ratin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
@@ -37,12 +48,7 @@ int			main(int ac, char **av)
 	convert_instruction(&asmbly);
 	count_size(&asmbly);
 	write_file(&asmbly, av[ac - 1]);
-//	print_instruction(&asmbly);
 	print_writing(av[ac - 1]);
 	free_prog(&asmbly);
 	return (0);
 }
-
-//faire les commentaire sur plusieurs ligne
-//protection contre dev/ran null
-//probleme retour a la ligne script invalid

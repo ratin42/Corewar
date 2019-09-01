@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/30 23:18:27 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/01 20:18:01 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,6 @@ int				nbr_prm(t_asm *asmbly, t_instru *instru, char *str, int line)
 	if (i != instru->nbr_of_params)
 		print_erro_param(asmbly, str, line, 2);
 	return (0);
-}
-
-void			p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
-{
-	ft_putstr_fd("bad parameter at line: ", 2);
-	ft_putnbr_fd(line, 2);
-	ft_putstr_fd(" for instruction ", 2);
-	ft_putstr_fd(ins->opcode, 2);
-	ft_putstr_fd(".\nGot ", 2);
-	if (param->type == 1)
-		ft_putstr_fd("register", 2);
-	if (param->type == 2)
-		ft_putstr_fd("direct", 2);
-	if (param->type == 4)
-		ft_putstr_fd("indirect", 2);
-	ft_putstr_fd("\n", 2);
-	quit_prog(asmbly);
 }
 
 int				multi_param_checker(int type, int checker)
@@ -80,11 +63,7 @@ int				check_para(int para_index, int i, t_param *last)
 			return (-1);
 	}
 	else
-	{
 		return (multi_param_checker(last->type, checker));
-/* 		if (last->type > checker)
-			return (-1); */
-	}
 	return (0);
 }
 

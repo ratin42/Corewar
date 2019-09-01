@@ -6,19 +6,11 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/30 23:45:33 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/01 20:15:08 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void	print_error(t_asm *asmbly, char *str)
-{
-	ft_putstr_fd("Lexical error for", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\n", 2);
-	quit_prog(asmbly);
-}
 
 void	error_length(t_asm *asmbly, int selector)
 {
@@ -75,6 +67,20 @@ int		fill_comment(char *str, t_asm *asmbly)
 	return (1);
 }
 
+void	get_next_comment(t_asm *asmbly, char *str, int i)
+{
+	if (!(fill_comment(&str[i], asmbly)))
+	{
+		asmbly->in_comment = 0;
+		asmbly->got_comment = 1;
+		return ;
+	}
+	if (asmbly->idx_comment >= COMMENT_LENGTH)
+		error_length(asmbly, 2);
+	asmbly->comment[asmbly->idx_comment] = '\n';
+	asmbly->idx_comment++;
+}
+
 void	get_comment(t_asm *asmbly, char *str)
 {
 	int		i;
@@ -95,38 +101,5 @@ void	get_comment(t_asm *asmbly, char *str)
 			return ;
 		}
 	}
-	if (!(fill_comment(&str[i], asmbly)))
-	{
-		asmbly->in_comment = 0;
-		asmbly->got_comment = 1;
-		return ;
-	}
-	if (asmbly->idx_comment >= COMMENT_LENGTH)
-		error_length(asmbly, 2);
-	asmbly->comment[asmbly->idx_comment] = '\n';
-	asmbly->idx_comment++;
+	get_next_comment(asmbly, str, i);
 }
-
-/* void	get_comment(t_asm *asmbly, char *str)
-{
-	size_t	i;
-	size_t	y;
-
-	i = 0;
-	y = 0;
-	while (str[i] && str[i] != '"')
-		i++;
-	i++;
-	if (!(str[i]))
-		print_error(asmbly, str);
-	while (str[i + y] && str[i + y] != '"')
-		y++;
-	if (!(str[i + y]))
-		print_error(asmbly, str);
-	if (!(asmbly->comment = ft_strsub(str, i, y)))
-		quit_prog(asmbly);
-	if (ft_strlen(asmbly->comment) > COMMENT_LENGTH)
-		error_length(asmbly, 2);
-	asmbly->got_comment = 1;
-}
- */
