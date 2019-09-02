@@ -69,7 +69,9 @@ static inline void	stock_process_magic(t_corewar *cor, t_header *header,
 void				read_process(char *name, t_corewar *cor, int i)
 {
 	t_header			header;
+	char				tmp[1];
 	int					fd;
+	int					ret;
 
 	if ((fd = open(name, O_RDONLY)) < 0)
 		corewar_quit("Open error");
@@ -80,8 +82,12 @@ void				read_process(char *name, t_corewar *cor, int i)
 	stock_process_comment(cor, &header, name, i);
 	stock_process_magic(cor, &header, name, i);
 	ft_bzero((unsigned char *)cor->process[i].code, cor->process[i].size);
-	if ((read(fd, cor->process[i].code, cor->process[i].size) < 0))
+	if ((ret = read(fd, cor->process[i].code, cor->process[i].size)) < 0)
 		corewar_quit("Read error");
+	if (ret < (int)cor->process[i].size)
+		corewar_quit("Error code is smaller than size in header");
+	if ((ret = read(fd, tmp, 1)) != 0)
+		corewar_quit("Error code is biger than size in header");
 	if (cor->order != 0)
 	{
 		cor->process[i].order = cor->order;

@@ -26,7 +26,6 @@ void	inst_add(t_corewar *cor, t_plst *plst)
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 	{
-		ft_verbosity_instru(cor, plst, arg);
 		return ;
 	}
 	ft_verbosity_instru(cor, plst, arg);
