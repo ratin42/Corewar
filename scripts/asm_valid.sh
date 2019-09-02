@@ -11,10 +11,10 @@ ZERO=0
 #Making sure that binaries are ready, and clearing results folder
 
 make .. -s
-rm -rf ./results/asm_valid/our*
-rm -rf ./results/asm_valid/zaz*
-rm -rf ./results/asm_valid/diff*
-rm -rf ./results/asm_valid/*.cor
+mkdir -p ./results
+mkdir -p ./results/asm_valid/
+rm -rf ./results/asm_valid/*
+
 
 #Generating our .cor files
 

@@ -1,6 +1,9 @@
 #!/bin/bash
 
 make -C .. -s
+mkdir -p ./results
+mkdir -p ./results/instructions
+rm -rf ./results/instructions/*
 ./instructions_tests/02_ld_test.sh
 ./instructions_tests/03_st_test.sh
 ./instructions_tests/04_add_test.sh

@@ -11,8 +11,9 @@ ISOK="Writing output program to"
 #Making sure binaries are ready, and clearing results folder
 
 make -C .. -s
-rm -rf ./results/asm_invalid/our_output*
-rm -rf ./results/asm_invalid/zaz_output*
+mkdir -p ./results
+mkdir -p ./results/asm_invalid/
+rm -rf ./results/asm_invalid/*
 
 #This script, check if we and zaz, both reject .s files
 #Every files in ./asm_invalid should be rejected

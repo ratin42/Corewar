@@ -12,9 +12,9 @@ NB=0
 #Making sure that binaries are ready, and clearing results folder
 
 make .. -s
-rm -rf ./results/disassembler/our_output*
-rm -rf ./results/disassembler/zaz_output*
-rm -rf ./results/disassembler/diff*
+mkdir -p ./results
+mkdir -p ./results/disassembler
+rm -rf ./results/disassembler/*
 
 
 #Make a copy of originals .s files and assemble them with zaz asm

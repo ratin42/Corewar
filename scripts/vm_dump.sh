@@ -8,12 +8,12 @@ TOTAL=1
 OK=0
 ZERO=0
 
-rm -rf ./results/vm_dump/our_output*
-rm -rf ./results/vm_dump/zaz_output*
-rm -rf ./results/vm_dump/diff*
 
 make -C .. -s
-clear
+mkdir -p ./results
+mkdir -p ./results/vm_dump
+rm -rf ./results/vm_dump/*
+
 
 echo "Which cycle to compare ? "
 read CYCLE
