@@ -59,8 +59,9 @@ static inline void	stock_process_magic(t_corewar *cor, t_header *header,
 	magic = swap_endian(header->magic);
 	if (magic != COREWAR_EXEC_MAGIC)
 	{
-		ft_printf("Champion [%s], has wrong magic : [%u], has to be : %u\n",
+		ft_printf("Champion [%s], has wrong magic : [%u], has to be : %u",
 				name, header->magic, COREWAR_EXEC_MAGIC);
+		corewar_quit("");
 	}
 	cor->process[i].magic = magic;
 }
