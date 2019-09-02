@@ -1,8 +1,8 @@
 #include "vm.h"
 
 /*
-** The sub instruction is used to substract two values.
-** It takes three arguments, substract the first two arguments together and
+** The sub instruction is used to subtract two values.
+** It takes three arguments, subtract the first two arguments together and
 ** put the result in the third argument and it sets the carry to 1 if the
 ** result is equal to 0, otherwise it sets the carry to 0.
 ** There's a coding byte for the arguments and its opcode is 0x05.
