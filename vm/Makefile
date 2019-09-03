@@ -2,7 +2,7 @@ NAME = corewar
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
