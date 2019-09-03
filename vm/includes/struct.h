@@ -2,7 +2,7 @@
 # define STRUCT_H
 
 # include <ncurses.h>
-# include "../../common_files/op.h"
+# include "op.h"
 
 typedef struct			s_type
 {

@@ -2,15 +2,8 @@
 # define VM_H
 
 # include <fcntl.h>
-# include <locale.h>
-# include <stdint.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-
-# include "../../common_files/libft/libft.h"
-# include "../../common_files/libft/includes/ft_printf.h"
+# include "libft.h"
 # include "struct.h"
-
 
 # define DEBUG			0
 # define TRUE			1

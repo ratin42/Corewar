@@ -2,13 +2,15 @@ NAME = corewar
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(INC_FOLD)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
 C_BASE = "\033[00m"
 
 LIBFT = ../common_files/libft/
+
+OP = ../common_files/
 
 LIBFT.a = ../common_files/libft/libft.a
 
@@ -74,7 +76,7 @@ $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
 	@printf "\n\x1b[32mVM Ready ✔\x1b[0m\n\n"
 
-%.o: %.c $(INC)
+%.o: %.c $(INC) $(OP)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 

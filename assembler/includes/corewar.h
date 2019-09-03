@@ -6,23 +6,16 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:20:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/03 13:44:36 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <fcntl.h>
-# include <sys/stat.h>
-
 # include "struct.h"
-# include "../../common_files/libft/libft.h"
-# include "../../common_files/libft/includes/ft_printf.h"
-
-# include <stdio.h>
+# include "libft.h"
 
 # define ERROR				-1
 # define SUCCESS			1

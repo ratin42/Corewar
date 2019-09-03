@@ -2,13 +2,15 @@ NAME = asm
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
+CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
 C_BASE = "\033[00m"
 
 LIBFT = ../common_files/libft/
+
+OP = ../common_files/
 
 LIBFT.a = ../common_files/libft/libft.a
 
@@ -20,6 +22,7 @@ INC = includes/corewar.h \
 SRC = srcs/op.c \
 	  srcs/asm.c \
 	  srcs/debug.c \
+	  srcs/error.c \
 	  srcs/param.c \
 	  srcs/param2.c \
 	  srcs/param3.c \
@@ -56,7 +59,7 @@ $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\n\x1b[32mASM Ready ✔\x1b[0m\n\n"
 
-%.o: %.c $(INC)
+%.o: %.c $(INC) $(OP)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 

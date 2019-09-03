@@ -6,7 +6,7 @@
 #    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/08/29 14:54:52 by syzhang          ###   ########.fr        #
+#    Updated: 2019/09/03 13:48:08 by hlombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,15 @@ NAME = disassembler
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(INC_FOLD)
+CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
 C_BASE = "\033[00m"
 
 LIBFT = ../common_files/libft/
+
+OP = ../common_files/
 
 LIBFT.a = ../common_files/libft/libft.a
 
@@ -50,7 +52,7 @@ $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\n\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
 
-%.o: %.c $(INC)
+%.o: %.c $(INC) $(OP)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 

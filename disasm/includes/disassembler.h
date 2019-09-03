@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/31 19:48:44 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/03 13:32:40 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 # define DISASSEMBLER_H
 
 # include <fcntl.h>
-# include <sys/stat.h>
-# include "../../common_files/libft/libft.h"
-# include "../../common_files/op.h"
-# include <stdio.h>
+# include "libft.h"
+# include "op.h"
 
 # define ERROR			-1
 # define SUCCESS		1

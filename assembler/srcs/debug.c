@@ -6,11 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 22:16:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/28 18:01:23 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/03 13:17:21 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+//On rend ce .c ?
 
 void			print_bytecode(char *str)
 {
@@ -30,7 +32,7 @@ void			print_bytecode(char *str)
 		i++;
 		y++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void			print_param(t_instru *instru)
@@ -40,7 +42,7 @@ void			print_param(t_instru *instru)
 	last = instru->param;
 	while (last)
 	{
-		printf("	param = %-10s type = %d\n", last->param, last->type);
+		ft_printf("	param = %-10s type = %d\n", last->param, last->type);
 		last = last->next;
 	}
 }
@@ -50,25 +52,24 @@ void			print_instruction(t_asm *asmbly)
 	t_instru	*instru;
 
 	instru = asmbly->instru;
-	printf("\n~~~ instruction are ~~~\n");
+	ft_printf("\n~~~ instruction are ~~~\n");
 	while (instru)
 	{
-		printf("___________________________________\n");
-		printf("\nopcode = %s\n", instru->opcode);
-		printf("nbr_opcode = %d\n", instru->nbr_opcode);
-		printf("line = %d\n", instru->line);
-		printf("label = %s\n", instru->label);
-		printf("nbr_of_param = %d\n", instru->nbr_of_params);
+		ft_printf("___________________________________\n");
+		ft_printf("\nopcode = %s\n", instru->opcode);
+		ft_printf("nbr_opcode = %d\n", instru->nbr_opcode);
+		ft_printf("line = %d\n", instru->line);
+		ft_printf("label = %s\n", instru->label);
+		ft_printf("nbr_of_param = %d\n", instru->nbr_of_params);
 		print_param(instru);
 		if (instru->conv_par != NULL)
 		{
-			printf("     =>");
-			fflush(stdout);
+			ft_printf("     =>");
 			print_bytecode(instru->conv_par);
 		}
-		printf("\n");
+		ft_printf("\n");
 		instru = instru->next;
 	}
-	printf("___________________________________\n");
-	printf("\n~~~       FIN       ~~~\n");
+	ft_printf("___________________________________\n");
+	ft_printf("\n~~~       FIN       ~~~\n");
 }
