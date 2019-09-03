@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 14:10:21 by gly               #+#    #+#             */
-/*   Updated: 2019/09/03 14:10:29 by gly              ###   ########.fr       */
+/*   Updated: 2019/09/03 15:59:22 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	verbosity_option(t_corewar *cor, char **av, int ac, int *i)
 	if (*i + 1 > ac)
 	{
 		corewar_usage();
-		corewar_quit(VERBO_TXT);
+		corewar_quit("");
 	}
 	(*i)++;
 	cor->v_lvl = ft_atoi(av[*i]);
