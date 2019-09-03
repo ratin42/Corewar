@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_arg_manipulators2.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:18:25 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:19:18 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 void				ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
@@ -14,7 +26,7 @@ void				ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg)
 	pc_modulo2(plst, 1);
 }
 
-int					ft_get_args_size_sum(t_arg	arg)
+int					ft_get_args_size_sum(t_arg arg)
 {
 	int		i;
 	int		sum;
@@ -52,11 +64,14 @@ void				ft_get_args_size(t_arg *arg)
 	}
 }
 
-void				ft_arg_init(t_arg *arg, int nb_arg, int dir_size,
+t_arg				ft_arg_init(int nb_arg, int dir_size,
 		int addr_restrict, int verbo)
 {
-	arg->nb_arg = nb_arg;
-	arg->dir_size = dir_size;
-	arg->addr_restrict = addr_restrict;
-	arg->verbo = verbo;
+	t_arg	arg;
+
+	arg.nb_arg = nb_arg;
+	arg.dir_size = dir_size;
+	arg.addr_restrict = addr_restrict;
+	arg.verbo = verbo;
+	return (arg);
 }

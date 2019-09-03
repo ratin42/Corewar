@@ -2,15 +2,8 @@
 # define VM_H
 
 # include <fcntl.h>
-# include <locale.h>
-# include <stdint.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-
-# include "../../common_files/libft/libft.h"
-# include "../../common_files/libft/includes/ft_printf.h"
+# include "libft.h"
 # include "struct.h"
-
 
 # define DEBUG			0
 # define TRUE			1
@@ -68,15 +61,13 @@ extern t_op		g_op_tab[17];
 
 void				print_process_data(t_corewar *cor, int player_nb);
 void				print_arena_state(t_corewar *cor);
-void				pcode(t_corewar *cor, int pc);
-void				debug_order(t_corewar *cor);
 void				corewar_usage(void);
 void				corewar_quit(char *str);
 
 void				ft_print_process(t_process p);
 void				ft_print_debug(t_plst *plst, char *op_name, int end);
 void				ft_print_plst(t_plst *plst);
-void	ft_print_args(t_arg arg);
+void	            ft_print_args(t_arg arg);
 
 /*
  * NCURSES
@@ -147,10 +138,8 @@ void				end_visu(t_corewar *cor);
  * PARSING.c
 */
 
-int					cor_file(char *av);
 void				parse_arguments(int ac, char **av, t_corewar *cor);
-void				get_champion(t_corewar *cor, char **av, int i);
-void				order_process(t_corewar *cor);
+void		        parse_arguments_2(t_corewar *cor);
 
 /*
  * OPTIONS.C
@@ -167,8 +156,6 @@ void				ft_verbosity_adv(t_corewar *cor, t_plst *plst);
 */
 
 int					check_doubles_order(t_corewar *cor);
-void				swap_process(t_corewar *cor, int i, int j);
-int					order_available(t_corewar *cor, int one, int two, int three);
 void				attribute_order(t_corewar *cor);
 void				reorder_process(t_corewar *cor);
 
@@ -201,16 +188,8 @@ void				update_cycles(t_corewar *cor);
  * UTILITY
 */
 t_plst				*ft_plst_init(t_corewar *cor);
-void				update_pc(t_corewar *cor, int i);
 void				pc_modulo2(t_plst *plst, int i);
 int					pc_modulo(int pc);
-int					get_reg_index(t_corewar *cor, t_plst *plst);
-int					*check_opcode(t_corewar *cor, t_plst *plst);
-int					check_registre_index(int reg_1, int reg_2, int reg_3);
-int					ft_check_reg_index(t_corewar *cor, t_plst *plst, t_arg arg);
-int					get_reg_value(t_corewar *cor, t_plst *plst, int **f_error);
-int					get_small_dir(t_corewar *cor, t_plst *plst);
-int					get_ind(t_corewar *cor, t_plst *plst);
 void				print_value(t_corewar *cor, int value, int addr, t_plst *plst);
 
 int					ft_check_arg_type(t_arg arg, int i, int code1, int code2);
@@ -244,13 +223,15 @@ void				inst_zjmp(t_corewar *cor, t_plst *plst);
  * ARG MANIPULATORS
 */
 
-void	ft_arg_init(t_arg *arg, int nb_arg, int dir_size,
+t_arg	ft_arg_init(int nb_arg, int dir_size,
 	int addr_restrict, int verbo);
 void	ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_args_size(t_arg *arg);
 void	ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
 void	ft_get_reg_value(t_arg *arg, t_plst *plst, int pos);
 int					ft_get_args_size_sum(t_arg	arg);
+
+int					ft_check_reg_index(t_corewar *cor, t_plst *plst, t_arg arg);
 
 
 

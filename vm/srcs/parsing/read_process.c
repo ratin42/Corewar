@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_process.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 13:57:32 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 13:57:35 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 static inline void	stock_process_size(t_corewar *cor, t_header *header,
@@ -51,7 +63,7 @@ static inline void	stock_process_comment(t_corewar *cor, t_header *header,
 	ft_strcpy(cor->process[i].comment, header->comment);
 }
 
-static inline void	stock_process_magic(t_corewar *cor, t_header *header,
+static inline void	stock_process_value(t_corewar *cor, t_header *header,
 		char *name, int i)
 {
 	unsigned int magic;
@@ -64,6 +76,9 @@ static inline void	stock_process_magic(t_corewar *cor, t_header *header,
 		corewar_quit("");
 	}
 	cor->process[i].magic = magic;
+	stock_process_name(cor, header, name, i);
+	stock_process_size(cor, header, name, i);
+	stock_process_comment(cor, header, name, i);
 }
 
 void				read_process(char *name, t_corewar *cor, int i)
@@ -77,17 +92,14 @@ void				read_process(char *name, t_corewar *cor, int i)
 		corewar_quit("Open error");
 	if ((read(fd, &header, sizeof(t_header)) < 0))
 		corewar_quit("Read error");
-	stock_process_name(cor, &header, name, i);
-	stock_process_size(cor, &header, name, i);
-	stock_process_comment(cor, &header, name, i);
-	stock_process_magic(cor, &header, name, i);
+	stock_process_value(cor, &header, name, i);
 	ft_bzero((unsigned char *)cor->process[i].code, cor->process[i].size);
 	if ((ret = read(fd, cor->process[i].code, cor->process[i].size)) < 0)
 		corewar_quit("Read error");
 	if (ret < (int)cor->process[i].size)
 		corewar_quit("Error code is smaller than size in header");
 	if ((ret = read(fd, tmp, 1)) != 0)
-		corewar_quit("Error code is biger than size in header");
+		corewar_quit("Error code is bigger than size in header");
 	if (cor->order != 0)
 	{
 		cor->process[i].order = cor->order;

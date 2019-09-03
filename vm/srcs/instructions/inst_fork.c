@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_fork.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:18 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:19 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -13,7 +25,7 @@ void	inst_fork(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 	t_plst	*elem;
 
-	ft_arg_init(&arg, 1, HALF, TRUE, SPECIAL);
+	arg = ft_arg_init(1, HALF, TRUE, SPECIAL);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 2;
 	ft_get_args(cor, plst, &arg);

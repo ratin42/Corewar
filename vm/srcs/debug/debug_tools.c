@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug_tools.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 15:15:02 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 15:15:04 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 void	print_process_data(t_corewar *cor, int player_nb)
@@ -48,33 +60,28 @@ void	print_arena_state(t_corewar *cor)
 	ft_printf("\n");
 }
 
-void	debug_order(t_corewar *cor)
-{
-	int i;
-	int x;
-
-	x = 1;
-	i = cor->nb_players;
-	while (--i >= 0)
-	{
-		ft_printf("[%d] : Process named: [%s]\n\t Order: [%d]\n",
-				x, cor->process[i].name, cor->process[i].order);
-		x++;
-	}
-}
-
 void	corewar_usage(void)
 {
-	ft_putstr_fd("Usage: ./corewar [-d N -v -n N] <champion.cor> <...>\n\n", 2);
-	ft_putstr_fd("#### TEXT OUTPUT MODE \
-			##########################################################\n", 2);
-	ft_putstr_fd("    -n N      : Assign order N to next champion, \
-			default is : first champ is first to play\n", 2);
+	ft_putstr_fd("Usage: ./corewar [-n N] [-dump \
+			N -v N | -visu --stealth] [-a]", 2);
+	ft_putstr_fd(" <champion.cor> <...>\n\n", 2);
+	ft_putstr_fd("    -a        : Prints output from \"aff\" \
+			(Default is to hide it)\n", 2);
+	ft_putstr_fd("    -n N      : Assign order N to next champion ", 2);
+	ft_putstr_fd("(default : first champ is first to play)\n", 2);
 	ft_putstr_fd("    -dump N   : Dumps memory after N cycles then exits\n", 2);
-	ft_putstr_fd("    -v        : Verbosity, print game informations\n", 2);
+	ft_putstr_fd("    -v N      : Verbosity levels, \
+			can be added together to enable several\n", 2);
+	ft_putstr_fd("\t\t\t- 0 : Show only essentials\n", 2);
+	ft_putstr_fd("\t\t\t- 1 : Show lives\n", 2);
+	ft_putstr_fd("\t\t\t- 2 : Show cycles\n", 2);
+	ft_putstr_fd("\t\t\t- 4 : Show operations \
+			(Params are NOT litteral ...)\n", 2);
+	ft_putstr_fd("\t\t\t- 8 : Show deaths\n", 2);
+	ft_putstr_fd("\t\t\t- 16 : Show PC movements (Except for jumps)\n", 2);
 	ft_putstr_fd("    -visu     : Ncurse visual\n", 2);
-	ft_putstr_fd("    --stealth : Competition mode, hide code with visual\n",
-			2);
+	ft_putstr_fd("    --stealth : Competition mode, \
+			hide code with visual\n", 2);
 }
 
 void	corewar_quit(char *str)
@@ -82,9 +89,4 @@ void	corewar_quit(char *str)
 	ft_putstr_fd(str, 2);
 	ft_putchar_fd('\n', 2);
 	exit(EXIT_SUCCESS);
-}
-
-void	pcode(t_corewar *cor, int pc)
-{
-	ft_printf("code = |%02x|\n", cor->arena[pc]);
 }

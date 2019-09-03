@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_verbosity_instru.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:10:14 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:10:19 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 static inline void	ft_print_verbo_normal(t_plst *plst, t_arg arg)
@@ -41,7 +53,6 @@ static inline void	ft_print_verbo_special(t_plst *plst, t_arg arg)
 			: arg.value[0] + plst->p.og_pc);
 	else if (plst->p.opcode == 9)
 		ft_printf(" %s\n", plst->p.carry ? "OK" : "FAILED");
-	
 }
 
 void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)

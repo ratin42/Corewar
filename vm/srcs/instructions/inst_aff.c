@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_aff.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:14 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:15 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -12,7 +24,7 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "AFF", 0);
-	ft_arg_init(&arg, 1, FULL, TRUE, SPECIAL);
+	arg = ft_arg_init(1, FULL, TRUE, SPECIAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] != REG_CODE)

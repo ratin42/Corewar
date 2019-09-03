@@ -1,15 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   order.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 13:59:20 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:09:00 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
-void	swap_process(t_corewar *cor, int i, int j)
-{
-	t_process	tmp;
-
-	tmp = cor->process[i];
-	cor->process[i] = cor->process[j];
-	cor->process[j] = tmp;
-}
-
-int		order_available(t_corewar *cor, int one, int two, int three)
+static inline int	order_available(t_corewar *cor, int one, int two, int three)
 {
 	int i;
 
@@ -32,7 +35,7 @@ int		order_available(t_corewar *cor, int one, int two, int three)
 	return (4);
 }
 
-void	attribute_order(t_corewar *cor)
+void				attribute_order(t_corewar *cor)
 {
 	int i;
 	int nb;
@@ -48,7 +51,7 @@ void	attribute_order(t_corewar *cor)
 	}
 }
 
-int		check_doubles_order(t_corewar *cor)
+int					check_doubles_order(t_corewar *cor)
 {
 	int i;
 	int j;
@@ -67,10 +70,11 @@ int		check_doubles_order(t_corewar *cor)
 	return (1);
 }
 
-void	reorder_process(t_corewar *cor)
+void				reorder_process(t_corewar *cor)
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
+	t_process	tmp;
 
 	i = -1;
 	while (++i < cor->nb_players)
@@ -81,13 +85,15 @@ void	reorder_process(t_corewar *cor)
 			if (cor->process[i].order != -1 &&
 					cor->process[i].order < cor->process[j].order)
 			{
-				swap_process(cor, i, j);
+				tmp = cor->process[i];
+				cor->process[i] = cor->process[j];
+				cor->process[j] = tmp;
 			}
 		}
 	}
 }
 
-uint32_t	swap_endian(uint32_t val)
+uint32_t			swap_endian(uint32_t val)
 {
 	val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
 	return ((val << 16) | (val >> 16));

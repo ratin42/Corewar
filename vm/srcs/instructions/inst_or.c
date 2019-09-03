@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_or.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:31 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:32 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -13,7 +25,7 @@ void	inst_or(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "OR", 0);
-	ft_arg_init(&arg, 3, FULL, TRUE, NORMAL);
+	arg = ft_arg_init(3, FULL, TRUE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] == 0 || arg.type[1] == 0 || arg.type[2] != REG_CODE)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_sti.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:36 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:37 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -30,7 +42,7 @@ void	inst_sti(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "STI", 0);
-	ft_arg_init(&arg, 3, HALF, TRUE, INDIRECT);
+	arg = ft_arg_init(3, HALF, TRUE, INDIRECT);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (arg.type[0] != REG_CODE || arg.type[1] == 0

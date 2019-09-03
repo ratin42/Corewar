@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_ld.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:21 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:22 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -12,7 +24,7 @@ void	inst_ld(t_corewar *cor, t_plst *plst)
 	t_arg	arg;
 
 	ft_print_debug(plst, "LD", 0);
-	ft_arg_init(&arg, 2, FULL, TRUE, NORMAL);
+	arg = ft_arg_init(2, FULL, TRUE, NORMAL);
 	ft_get_opcode(cor, plst, &arg);
 	ft_get_args_size(&arg);
 	if (ft_check_arg_type(arg, 0, IND_CODE, DIR_CODE) == FAIL

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 13:37:46 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 13:47:43 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/vm.h"
 
-t_op	g_op_tab[17] =
+t_op				g_op_tab[17] =
 {
 	{"live", 1, {T_DIR, 0, 0}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG, 0}, 2, 5, "load", 1, 0},
@@ -26,8 +38,6 @@ t_op	g_op_tab[17] =
 	{"aff", 1, {T_REG, 0, 0}, 16, 2, "aff", 1, 0},
 	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0}
 };
-
-//Connaitre le size min d'un champion pour rejeter comme zaz;
 
 static inline void	create_arena(t_corewar *cor)
 {
@@ -67,27 +77,25 @@ int					main(int ac, char **av)
 		corewar_usage();
 		return (0);
 	}
-	else
+	init_datas(&cor);
+	parse_arguments(ac, av, &cor);
+	parse_arguments_2(&cor);
+	create_arena(&cor);
+	introducing_contestants(&cor);
+	if (cor.n_dump == 0)
 	{
-		init_datas(&cor);
-		parse_arguments(ac, av, &cor);
-		create_arena(&cor);
-		introducing_contestants(&cor);
-		if (cor.n_dump == 0)
-		{
-			print_arena_state(&cor);
-			return (1);
-		}
-		if (!(cor.plst = ft_plst_init(&cor)))
-			corewar_quit("Malloc error");
-		ft_player_init(&cor);
-		play(&cor);
-		corewar_end(&cor);
+		print_arena_state(&cor);
+		return (1);
 	}
+	if (!(cor.plst = ft_plst_init(&cor)))
+		corewar_quit("Malloc error");
+	ft_player_init(&cor);
+	play(&cor);
+	corewar_end(&cor);
 	return (1);
 }
 
-void			corewar_end(t_corewar *cor)
+void				corewar_end(t_corewar *cor)
 {
 	int		winner;
 
@@ -102,5 +110,4 @@ void			corewar_end(t_corewar *cor)
 			ft_printf("Contestant %d, \"%s\", has won !\n", winner * -1,
 					cor->player[ft_get_player_index(cor, winner)].name);
 	}
-	//FREE_CE_QU'IL FAUT;
 }

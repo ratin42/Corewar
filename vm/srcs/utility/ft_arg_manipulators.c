@@ -1,4 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_arg_manipulators.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:18:30 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:20:15 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
+
+int					ft_check_reg_index(t_corewar *cor, t_plst *plst,
+		t_arg arg)
+{
+	int		i;
+
+	i = 0;
+	while (i < arg.nb_arg)
+	{
+		if (arg.type[i] == REG_CODE
+				&& (arg.value[i] < 1 || arg.value[i] > REG_NUMBER))
+		{
+			ft_verbosity_adv(cor, plst);
+			return (FAIL);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 void				ft_get_reg_value(t_arg *arg, t_plst *plst, int pos)
 {

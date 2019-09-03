@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inst_live.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 14:55:26 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 14:55:27 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 /*
@@ -27,7 +39,7 @@ void				inst_live(t_corewar *cor, t_plst *plst)
 	int		index;
 
 	ft_print_debug(plst, "LIVE", 0);
-	ft_arg_init(&arg, 1, FULL, FALSE, SPECIAL);
+	arg = ft_arg_init(1, FULL, FALSE, SPECIAL);
 	arg.type[0] = DIR_CODE;
 	arg.size[0] = 4;
 	ft_get_args(cor, plst, &arg);

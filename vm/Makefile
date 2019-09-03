@@ -2,13 +2,15 @@ NAME = corewar
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(INC_FOLD)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
 C_BASE = "\033[00m"
 
 LIBFT = ../common_files/libft/
+
+OP = ../common_files/
 
 LIBFT.a = ../common_files/libft/libft.a
 
@@ -26,8 +28,6 @@ SRC = srcs/corewar.c \
 	  srcs/debug/debug_tools.c \
 	  srcs/exec/game.c \
 	  srcs/exec/cycles.c \
-	  srcs/utility/update_pc.c \
-	  srcs/utility/inst_tool.c \
 	  srcs/utility/pc_modulo.c \
 	  srcs/utility/ft_plst_manipulators.c \
 	  srcs/utility/ft_arg_manipulators.c \
@@ -35,7 +35,6 @@ SRC = srcs/corewar.c \
 	  srcs/utility/ft_check_arg_type.c \
 	  srcs/utility/ft_player_init.c \
 	  srcs/utility/ft_get_restricted_addr.c \
-	  srcs/instructions/inst_get_params.c \
 	  srcs/instructions/inst_add.c \
 	  srcs/instructions/inst_sub.c \
 	  srcs/instructions/inst_aff.c \
@@ -71,10 +70,10 @@ libft:
 	@make -C $(LIBFT) -s
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT.a) -lncurses -o $(NAME)
 	@printf "\n\x1b[32mVM Ready ✔\x1b[0m\n\n"
 
-%.o: %.c $(INC)
+%.o: %.c $(INC) $(OP)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@echo "file =" $(C_GREEN){ $< } $(C_BASE)
 
