@@ -24,9 +24,9 @@ void	inst_lld(t_corewar *cor, t_plst *plst)
 	ft_get_args(cor, plst, &arg);
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
+	arg.value[0] = arg.type[0] == DIR_CODE	? arg.value[0] : arg.value[0] >> 16;
 	ft_verbosity_instru(cor, plst, arg);
-	plst->p.reg[arg.value[1]] = arg.type[0] == DIR_CODE
-		? arg.value[0] : arg.value[0] >> 16;
+	plst->p.reg[arg.value[1]] = arg.value[0];
 	plst->p.carry = !(plst->p.reg[arg.value[1]]);
 	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "LLD", 1);
