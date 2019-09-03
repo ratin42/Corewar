@@ -54,6 +54,7 @@ static inline void	create_arena(t_corewar *cor)
 static inline void	init_datas(t_corewar *cor)
 {
 	ft_bzero(cor, sizeof(t_corewar));
+	cor->ctd = CYCLE_TO_DIE;
 	cor->n_dump = -1;
 }
 
@@ -72,8 +73,14 @@ int					main(int ac, char **av)
 		parse_arguments(ac, av, &cor);
 		create_arena(&cor);
 		introducing_contestants(&cor);
-		//debug_order(&cor);
-		//print_arena_state(&cor);
+		if (cor.n_dump == 0)
+		{
+			print_arena_state(&cor);
+			return (1);
+		}
+		if (!(cor.plst = ft_plst_init(&cor)))
+			corewar_quit("Malloc error");
+		ft_player_init(&cor);
 		play(&cor);
 		corewar_end(&cor);
 	}

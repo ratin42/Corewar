@@ -103,8 +103,4 @@ void				introducing_contestants(t_corewar *cor)
 					cor->process[i].comment);
 		}
 	}
-	if (!(cor->plst = ft_plst_init(cor)))
-		corewar_quit("Malloc error");
-	cor->ctd = CYCLE_TO_DIE;
-	ft_player_init(cor);
 }
