@@ -43,9 +43,7 @@ done
 
 for file in ./asm_valid/*.cor
 do
-
-	#add:                   2>&- 1>&-
-	./../disassembler $file
+	./../disassembler $file 2>&- 1>&-
 	rm -rf $file
 done;
 
@@ -53,8 +51,7 @@ done;
 
 for file in ./asm_valid/*.s
 do
-	#add                                2>&- 1>&-
-	./../ressources/vm_champs/asm $file
+	./../ressources/vm_champs/asm $file 2>&- 1>&-
 	rm -rf $file
 done;
 
