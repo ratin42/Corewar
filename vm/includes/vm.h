@@ -132,6 +132,7 @@ int					re_adjust_id(int id, t_process *pro);
 //ncurses_close.c
 
 void				wait_and_close(int wait);
+void				free_with_visu(t_corewar *cor);
 void				ncurses_show_winner(t_corewar *cor);
 void				close_ncurses(t_corewar *cor);
 void				end_visu(t_corewar *cor);
