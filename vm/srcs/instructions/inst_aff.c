@@ -25,8 +25,8 @@ void	inst_aff(t_corewar *cor, t_plst *plst)
 	if (ft_check_reg_index(cor, plst, arg) == FAIL)
 		return ;
 	ft_verbosity_instru(cor, plst, arg);
-	if (!cor->verbosity && !cor->visu && DEBUG)
-		ft_printf("%c\n", plst->p.reg[arg.value[0]] % 256);
+	if (cor->aff && !cor->visu)
+		ft_printf("Aff: %c\n", plst->p.reg[arg.value[0]] % 256);
 	ft_verbosity_adv(cor, plst);
 	ft_print_debug(plst, "AFF", 1);
 }

@@ -33,27 +33,21 @@ static inline void	ft_print_verbo_indirect(t_plst *plst, t_arg arg)
 		: ft_get_restricted_addr(value, FULL) + plst->p.og_pc);
 }
 
-static inline void	ft_print_verbo_special(t_corewar *cor, t_plst *plst, t_arg arg)
+static inline void	ft_print_verbo_special(t_plst *plst, t_arg arg)
 {
-	int		index;
-
 	if (plst->p.opcode == 12 || plst->p.opcode == 15)
 		ft_printf(" (%d)\n", plst->p.opcode == 12
 			? ft_get_restricted_addr(arg.value[0], HALF) + plst->p.og_pc
 			: arg.value[0] + plst->p.og_pc);
 	else if (plst->p.opcode == 9)
 		ft_printf(" %s\n", plst->p.carry ? "OK" : "FAILED");
-	else
-	{
-		index = ft_get_player_index(cor, arg.value[0]);
-		if (index != -1)
-			ft_printf("Player %d (%s) is said to be alive\n",
-				arg.value[0] * -1, cor->player[index].name);
-	}
+	
 }
 
 void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
 {
+	int		index;
+
 	if (!cor->verbosity || cor->visu)
 		return ;
 	if ((cor->v_lvl & VERBO3) && plst->p.opcode != 16)
@@ -63,7 +57,14 @@ void				ft_verbosity_instru(t_corewar *cor, t_plst *plst, t_arg arg)
 		if (arg.verbo & INDIRECT)
 			ft_print_verbo_indirect(plst, arg);
 		else if (arg.verbo & SPECIAL)
-			ft_print_verbo_special(cor, plst, arg);
+			ft_print_verbo_special(plst, arg);
+	}
+	if (cor->v_lvl & VERBO1 && plst->p.opcode == 1)
+	{
+		index = ft_get_player_index(cor, arg.value[0]);
+		if (index != -1)
+			ft_printf("Player %d (%s) is said to be alive\n",
+				arg.value[0] * -1, cor->player[index].name);
 	}
 }
 

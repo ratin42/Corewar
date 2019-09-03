@@ -95,6 +95,7 @@ typedef struct			s_corewar
 	int					order_option;
 	int					stealth;
 	int					visu;
+	int					aff;
 	int					pause;
 	int					sleep;
 

@@ -70,7 +70,7 @@ void					update_cycles(t_corewar *cor)
 		cor->ctd -= CYCLE_DELTA;
 		if (cor->visu)
 			cor->round_end = cor->ctd;
-		if (cor->verbosity && !cor->visu)
+		if (cor->verbosity && (cor->v_lvl & VERBO2) && !cor->visu)
 			ft_printf("Cycle to die is now %d\n", cor->ctd);
 		cor->check_cycle = 0;
 	}
