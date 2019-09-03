@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/03 15:30:35 by gly               #+#    #+#             */
+/*   Updated: 2019/09/03 15:30:41 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
 # define STRUCT_H
 
@@ -35,11 +47,11 @@ typedef struct			s_op
 
 typedef struct			s_process
 {
-	char				name[PROG_NAME_LENGTH];// il faudrait pas un +1 ici ?
-	char				comment[COMMENT_LENGTH];
+	char				name[PROG_NAME_LENGTH + 1];
+	char				comment[COMMENT_LENGTH + 1];
 	unsigned int		magic;
 	unsigned int		size;
-	unsigned char		code[CHAMP_MAX_SIZE];
+	unsigned char		code[CHAMP_MAX_SIZE + 1];
 	int					order;
 	int					id;
 	int					reg[REG_NUMBER + 1];
@@ -99,7 +111,6 @@ typedef struct			s_corewar
 	int					pause;
 	int					sleep;
 
-	int					winner_id; //on garde ou pas ?
 	int					hide_winner;
 
 	struct s_op			instru;
