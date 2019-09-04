@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base_finale.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlombard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 22:04:40 by hlombard          #+#    #+#             */
-/*   Updated: 2019/08/15 22:31:31 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/04 13:29:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char				*treat(char *base_to, long long int *tab,
 	long long int	tmp;
 	char			*ret;
 
-	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
-		return (NULL);
 	tmp = 0;
 	i = 0;
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
+		return (NULL);
 	while (tab[1] != 0)
 	{
 		ret = ft_realloc(ret, (*size)++);

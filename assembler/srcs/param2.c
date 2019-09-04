@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:16:57 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 12:26:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 		else if (check_ind(&param->param) == 1)
 			param->type = T_IND;
 		else
-			error_type(asmbly, param);
+		{
+			ft_printf("str = %s\n", str);
+			error_type(asmbly, param, str);
+		}
 		param = param->next;
 	}
 	(void)str;

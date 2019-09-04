@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:23:48 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:11:36 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 13:53:39 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void			quit_prog(t_asm *asmbly)
 {
 	free_prog(asmbly);
 	exit(1);
+	(void)asmbly;
 }

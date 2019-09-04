@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:17:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 11:22:24 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 13:53:51 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@ void		init_prog(t_asm *asmbly)
 {
 	asmbly->name = NULL;
 	ft_bzero(asmbly->comment, COMMENT_LENGTH + 1);
-	asmbly->instru = NULL;
+	asmbly->size = 0;
 	asmbly->in_comment = 0;
+	asmbly->got_comment = 0;
+	asmbly->got_name = 0;
+	asmbly->in_comment = 0;
+	asmbly->idx_comment = 0;
+	asmbly->instru = NULL;
 }
 
 void		print_writing(char *str)
@@ -32,6 +37,11 @@ void		print_writing(char *str)
 	ft_putstr(".cor\n");
 	free(new_file);
 }
+
+/* __attribute__((destructor)) void end (void)
+{
+	while (42);
+} */
 
 int			main(int ac, char **av)
 {

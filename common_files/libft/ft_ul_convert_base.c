@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 15:29:31 by saouas            #+#    #+#             */
-/*   Updated: 2019/08/16 14:04:56 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/04 14:01:19 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ static char						*treat(char *base_to,
 	unsigned long long int		tmp;
 	char						*ret;
 
+	i = 0;
+	tmp = 0;
+	ret = NULL;
 	if (!(ret = (char *)ft_memalloc(sizeof(char) * 1)))
 		return (NULL);
-	tmp = 0;
-	i = 0;
 	while (tab[1] != 0)
 	{
 		ret = ft_realloc(ret, (*size)++);
@@ -65,10 +66,12 @@ char							*ft_ul_convert_base(char *nbr,
 	unsigned long long int		tab[3];
 	char						*ret;
 
-	tab[0] = u_base_to_decimal(nbr);
 	size = 1;
+	ret = NULL;
+	tab[0] = u_base_to_decimal(nbr);
 	calcul = u_base_to_decimal(nbr);
 	tab[1] = calcul;
+	tab[2] = 0;
 	ret = treat(base_to, tab, &size);
 	ft_reverse_str(ret, ft_strlen(ret));
 	return (ret);

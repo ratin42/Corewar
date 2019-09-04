@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/03 13:44:36 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:25:34 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			check_label_presence(char *str);
 void		dlt_lst_empty_lbl(t_asm *asmbly);
 int			check_opc_presence(char *str);
 void		verify_label(t_asm *asmbly, char *label, int line);
-void		error_type(t_asm *asmbly, t_param *param);
+void		error_type(t_asm *asmbly, t_param *param, char *str);
 void		print_error(t_asm *asmbly, char *str);
 void		p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins);
 

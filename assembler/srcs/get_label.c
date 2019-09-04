@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 01:48:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 12:54:53 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
 		quit_prog(asmbly);
 	while (instru->conv_par[i] && instru->conv_par[i] != 'L')
 		i++;
+	if (instru->conv_par[i] == '\0')
+		quit_prog(asmbly);
 	while (instru->conv_par[++i] && instru->conv_par[i] == 'L')
 		size++;
 	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
@@ -51,8 +53,8 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
 	size -= ft_strlen(conv);
 	trim_conv(size, asmbly, &conv);
 	free(addr);
-	free(conv);
 	write_label(instru, conv);
+	free(conv);
 }
 
 void	distance_label(t_asm *asmbly, t_instru *instru, char *label)
