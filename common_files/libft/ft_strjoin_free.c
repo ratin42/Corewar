@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlombard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 21:53:21 by hlombard          #+#    #+#             */
-/*   Updated: 2019/08/15 21:53:51 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/04 14:15:18 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_strjoin_free(char const *s1, char const *s2, int string)
 {
 	char	*str;
 
+	str = NULL;
 	if (!s1)
 		return (ft_strfreedup((char *)s2));
 	if (!s2)

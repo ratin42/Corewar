@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/24 23:11:02 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 14:09:51 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static char		*convert_opcode(t_asm *asmbly, t_instru *instru)
 	int			size;
 
 	size = 2;
+	c_opcode = NULL;
 	op_index = find_op_index(instru->opcode);
-	c_opcode = ft_itoa(g_op_tab[op_index].opcode);
+	if (!(c_opcode = ft_itoa(g_op_tab[op_index].opcode)))
+		quit_prog(asmbly);
 	if (!(conv = ft_ul_convert_base(c_opcode, "0123456789abcdef")))
 		quit_prog(asmbly);
 	free(c_opcode);
@@ -73,6 +75,7 @@ void			convert_instruction(t_asm *asmbly)
 	int			i;
 
 	i = 0;
+	instru = NULL;
 	instru = asmbly->instru;
 	while (instru)
 	{

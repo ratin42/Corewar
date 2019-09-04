@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/31 18:00:18 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 16:06:16 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int			parse_file(t_asm *asmbly, char *file)
 	char	*str;
 	int		turn;
 
+	str = NULL;
 	turn = 0;
 	fd_file = open_file(asmbly, file);
 	check_name(asmbly, file);
@@ -94,6 +95,7 @@ int			parse_file(t_asm *asmbly, char *file)
 			free(str);
 		turn++;
 	}
+	free(str);
 	if (asmbly->instru == NULL)
 	{
 		ft_putstr_fd("No instruction found\n", 2);

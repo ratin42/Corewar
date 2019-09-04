@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 19:50:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/20 22:59:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 14:09:07 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_instru		*create_instuction(t_asm *asmbly, int line)
 
 	if (!(new_instru = ft_memalloc(sizeof(*new_instru))))
 		quit_prog(asmbly);
+	ft_bzero(new_instru, sizeof(new_instru));
 	new_instru->conv_par = NULL;
 	new_instru->param = NULL;
 	new_instru->label = NULL;

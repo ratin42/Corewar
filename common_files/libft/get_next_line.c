@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlombard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 01:06:11 by hlombard          #+#    #+#             */
-/*   Updated: 2019/04/16 17:30:18 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/04 14:47:44 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int					get_next_line(const int fd, char **line)
 	char			*buf;
 	static char		*stock = NULL;
 
+	ret = 0;
+	//buf = NULL;
 	buf = ft_strnew(BUFF_SIZE);
 	if (read(fd, buf, 0) == -1 || fd < 0 || !line || BUFF_SIZE < 1)
 	{

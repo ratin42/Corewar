@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/27 18:59:43 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 15:44:04 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	int			op_index;
 
 	conv = NULL;
+	cpy = NULL;
+	size = 0;
+	op_index = 0;
 	op_index = find_op_index(instru->opcode);
 	if (g_op_tab[op_index].direct_size == 1)
 		size = 4;
