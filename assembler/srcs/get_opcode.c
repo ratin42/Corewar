@@ -6,13 +6,13 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 17:31:49 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 16:30:20 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			check_opcode(t_asm *asmbly, char *opcode, int line)
+void			check_opcode(t_asm *asmbly, char *opcode, int line, char **str)
 {
 	extern t_op	g_op_tab[17];
 	int			i;
@@ -28,6 +28,7 @@ void			check_opcode(t_asm *asmbly, char *opcode, int line)
 	ft_putnbr_fd(line, 2);
 	ft_putchar_fd('\n', 2);
 	free(opcode);
+	free(*str);
 	quit_prog(asmbly);
 }
 
@@ -76,7 +77,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
 		quit_prog(asmbly);
-	check_opcode(asmbly, opcode, line);
+	check_opcode(asmbly, opcode, line, &str);
 	instru->opcode = opcode;
 	return (i);
 }
