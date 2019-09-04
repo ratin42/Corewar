@@ -21,7 +21,6 @@ INC = includes/corewar.h \
 
 SRC = srcs/op.c \
 	  srcs/asm.c \
-	  srcs/debug.c \
 	  srcs/error.c \
 	  srcs/param.c \
 	  srcs/param2.c \

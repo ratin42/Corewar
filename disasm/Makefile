@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: syzhang <syzhang@student.42.fr>            +#+  +:+       +#+         #
+#    By: ratin <ratin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:46:26 by ratin             #+#    #+#              #
-#    Updated: 2019/09/03 13:48:08 by hlombard         ###   ########.fr        #
+#    Updated: 2019/09/04 11:13:39 by ratin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ INC = includes/disassembler.h
 SRC = srcs/disassembler.c \
 	srcs/parsing/read_process.c \
 	srcs/parsing/read_process1.c \
-	srcs/parsing/debug.c \
 	srcs/parsing/create_file.c \
 	srcs/parsing/print_file.c \
 	srcs/parsing/create_list.c \
