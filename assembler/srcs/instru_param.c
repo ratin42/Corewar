@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 22:54:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 18:48:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 14:15:07 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char			*convert_params(t_asm *asmbly, t_instru **instru)
 	t_param		*param;
 	char		*result;
 
+	param = NULL;
+	result = NULL;
 	if (!(result = (char *)ft_memalloc(sizeof(char))))
 		quit_prog(asmbly);
 	param = (*instru)->param;

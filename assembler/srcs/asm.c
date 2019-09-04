@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:17:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 13:53:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 14:05:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		init_prog(t_asm *asmbly)
 {
+	ft_bzero(asmbly, sizeof(asmbly));
 	asmbly->name = NULL;
 	ft_bzero(asmbly->comment, COMMENT_LENGTH + 1);
 	asmbly->size = 0;

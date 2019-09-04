@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 22:04:40 by hlombard          #+#    #+#             */
-/*   Updated: 2019/09/04 13:29:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 16:05:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char				*treat(char *base_to, long long int *tab,
 		ret = ft_realloc(ret, (*size)++);
 		tmp = tab[1] / give_base_nbr(base_to);
 		ret[i] = base_to[tab[1] % give_base_nbr(base_to)];
+		ret[i + 1] = '\0';
 		tab[1] = tmp;
 		i++;
 	}
-	ret[i] = '\0';
 	ret[i] = '\0';
 	return (ret);
 }
@@ -62,7 +62,7 @@ char				*ft_convert_base_finale(char *nbr, char *base_to)
 	char			*ret;
 
 	tab[0] = base_to_decimal(nbr);
-	size = 1;
+	size = 2;
 	calcul = base_to_decimal(nbr);
 	if (calcul < 0)
 	{
