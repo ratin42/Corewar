@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 12:25:34 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 16:17:47 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <fcntl.h>
 # include "struct.h"
 # include "libft.h"
+
+#include <stdio.h>
 
 # define ERROR				-1
 # define SUCCESS			1
