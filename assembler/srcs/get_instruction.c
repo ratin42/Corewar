@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:35:31 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/28 16:15:25 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 00:20:32 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,18 @@ int				get_label(t_asm *asmbly, char *str, int line)
 	while (str[i] && str[i] != (char)LABEL_CHAR)
 		i++;
 	if (!(label = ft_strsub(str, y, (size_t)i)))
+	{
+		free(str);
 		quit_prog(asmbly);
+	}
 	if (label[ft_strlen(label) - 1] == ':')
 	{
 		free(label);
 		if (!(label = ft_strsub(str, y, (size_t)i - 1)))
+		{
+			free(str);
 			quit_prog(asmbly);
+		}
 	}
 	verify_label(asmbly, label, line);
 	return (treat_label(instru, &label, str));
@@ -89,6 +95,10 @@ void			get_instruction(t_asm *asmbly, char *str, int line)
 		instru = get_last_instru(asmbly);
 	op_index = find_op_index(instru->opcode);
 	instru->nbr_opcode = g_op_tab[op_index].opcode;
-	get_params(asmbly, &str[indexer], line);
+	if (!(get_params(asmbly, &str[indexer], line)))
+	{
+		free(str);
+		quit_prog(asmbly);
+	}
 	check_params_error(asmbly, str, line);
 }

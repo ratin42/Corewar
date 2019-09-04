@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 16:17:47 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 00:12:29 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			check_label_presence(char *str);
 void		dlt_lst_empty_lbl(t_asm *asmbly);
 int			check_opc_presence(char *str);
 void		verify_label(t_asm *asmbly, char *label, int line);
-void		error_type(t_asm *asmbly, t_param *param, char *str);
+int			error_type(t_asm *asmbly, t_param *param, char *str);
 void		print_error(t_asm *asmbly, char *str);
 void		p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins);
 
@@ -49,20 +49,19 @@ t_instru	*get_last_instru(t_asm *asmbly);
 void		get_instruction(t_asm *asmbly, char *str, int line);
 void		add_instru(t_asm *asmbly, int line);
 void		delete_instru(t_instru **instru);
-void		get_params(t_asm *asmbly, char *str, int line);
+int			get_params(t_asm *asmbly, char *str, int line);
 void		check_params_error(t_asm *asmbly, char *str, int line);
 void		print_erro_param(t_asm *asmbly, char *str, int line, int error);
-void		get_params_type(t_asm *asmbly, char *str, int line);
+int			get_params_type(t_asm *asmbly, char *str, int line);
 void		add_param(t_asm *asmbly, t_instru *instru, int line, char *param);
 int			get_opcode(t_asm *asbly, char *str, int line);
 int			is_register(char *param);
 int			find_op_index(char *opcode);
 int			get_nbr_of_params(char *opcode);
 int			get_comma(char *str, int i);
-void		get_last_param(t_asm *asmbly, char *str, int i, int line);
-void		error_comma(t_asm *asmbly, char *str, int line, int i);
-void		fill_params(t_asm *asmbly, t_instru **instru, char *str, int line);
-void		check_end_coma(t_asm *asmbly, char *str, int line);
+int			get_last_param(t_asm *asmbly, char *str, int i, int line);
+int			error_comma(t_asm *asmbly, char *str, int line, int i);
+int			fill_params(t_asm *asmbly, t_instru **instru, char *str, int line);
 
 /*
 ** conversion

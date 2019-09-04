@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 12:26:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 00:50:54 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,15 @@ static char		*get_good_value(char **param, int type)
 	char		*result;
 
 	if (type == DIR_CODE)
-		result = ft_litoa((int)ft_atoll(&(*param)[1]));
+	{
+		if (!(result = ft_litoa((int)ft_atoll(&(*param)[1]))))
+			return (NULL);
+	}
 	else
-		result = ft_litoa((int)ft_atoll((*param)));
+	{
+		if (!(result = ft_litoa((int)ft_atoll((*param)))))
+			return (NULL);
+	}
 	free(*param);
 	return (result);
 }
@@ -84,12 +90,14 @@ static int		check_dir(char **param)
 			return (0);
 		i++;
 	}
-	*param = get_good_value(param, DIR_CODE);
-	*param = ft_strjoin_free("%", *param, 2);
+	if (!(*param = get_good_value(param, DIR_CODE)))
+		return (0);
+	if (!(*param = ft_strjoin_free("%", *param, 2)))
+		return (0);
 	return (1);
 }
 
-void			get_params_type(t_asm *asmbly, char *str, int line)
+int				get_params_type(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*instru;
 	t_param		*param;
@@ -107,10 +115,11 @@ void			get_params_type(t_asm *asmbly, char *str, int line)
 			param->type = T_IND;
 		else
 		{
-			ft_printf("str = %s\n", str);
 			error_type(asmbly, param, str);
+			return (0);
 		}
 		param = param->next;
 	}
 	(void)str;
+	return (1);
 }

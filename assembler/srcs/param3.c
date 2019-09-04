@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 15:08:52 by syzhang           #+#    #+#             */
-/*   Updated: 2019/09/04 12:26:10 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 00:47:40 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,18 @@ void			print_erro_param(t_asm *asmbly, char *str, int line, int error)
 	ft_putstr_fd("] ->", 2);
 	ft_putstr_fd(str, 2);
 	ft_putchar_fd('\n', 2);
+	free(str);
 	quit_prog(asmbly);
 }
 
-void			error_type(t_asm *asmbly, t_param *param, char *str)
+int				error_type(t_asm *asmbly, t_param *param, char *str)
 {
 	ft_putstr_fd("Lexical error of type for param at line ", 2);
 	ft_putnbr_fd(param->line, 2);
 	ft_putstr_fd(" ->", 2);
 	ft_putstr_fd(param->param, 2);
 	ft_putchar_fd('\n', 2);
-	quit_prog(asmbly);
+	return (0);
+	(void)asmbly;
 	(void)str;
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 23:27:45 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:18:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/04 23:25:52 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				check_para(int para_index, int i, t_param *last)
 	return (0);
 }
 
-int				check_type(t_asm *asmbly, t_instru *instru, int line)
+int				check_type(t_asm *asmbly, t_instru *instru, int line, char *str)
 {
 	t_param		*last;
 	int			i;
@@ -79,7 +79,10 @@ int				check_type(t_asm *asmbly, t_instru *instru, int line)
 	while (last)
 	{
 		if (check_para(para_index, i, last) == -1)
+		{
+			free(str);
 			p_error(asmbly, last, line, instru);
+		}
 		para_index++;
 		last = last->next;
 	}
@@ -93,5 +96,5 @@ void			check_params_error(t_asm *asmbly, char *str, int line)
 	if (!(current = find_instru(asmbly, line)))
 		current = get_last_instru(asmbly);
 	nbr_prm(asmbly, current, str, line);
-	check_type(asmbly, current, line);
+	check_type(asmbly, current, line, str);
 }
