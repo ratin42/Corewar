@@ -138,7 +138,8 @@ void					parse_arguments_2(t_corewar *cor);
 */
 
 void					dump_option(t_corewar *cor, char **av, int *i);
-void					verbosity_option(t_corewar *cor, char **av, int ac, int *i);
+void					verbosity_option(t_corewar *cor, char **av, int ac,
+		int *i);
 void					order_option(t_corewar *cor, char **av, int *i);
 void					ft_verbosity_instru(t_corewar *cor, t_plst *plst,
 		t_arg arg);
@@ -179,7 +180,8 @@ void					pc_modulo2(t_plst *plst, int i);
 int						pc_modulo(int pc);
 void					print_value(t_corewar *cor, int value, int addr,
 		t_plst *plst);
-int						ft_check_arg_type(t_arg arg, int i, int code1, int code2);
+int						ft_check_arg_type(t_arg arg, int i, int code1,
+		int code2);
 void					ft_player_init(t_corewar *cor);
 int						ft_get_restricted_addr(int value, int flag);
 void					init_plst(t_corewar *cor);
@@ -213,12 +215,13 @@ void					inst_zjmp(t_corewar *cor, t_plst *plst);
 */
 
 t_arg					ft_arg_init(int nb_arg, int dir_size,
-	int addr_restrict, int verbo);
+		int addr_restrict, int verbo);
 void					ft_get_opcode(t_corewar *cor, t_plst *plst, t_arg *arg);
 void					ft_get_args_size(t_arg *arg);
 void					ft_get_args(t_corewar *cor, t_plst *plst, t_arg *arg);
 void					ft_get_reg_value(t_arg *arg, t_plst *plst, int pos);
 int						ft_get_args_size_sum(t_arg	arg);
-int						ft_check_reg_index(t_corewar *cor, t_plst *plst, t_arg arg);
+int						ft_check_reg_index(t_corewar *cor, t_plst *plst,
+		t_arg arg);
 
 #endif
