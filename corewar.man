@@ -6,7 +6,7 @@
 .PP
 \fB./asm\fR \fIfile_name.s\fR
 .br
-\fB./corewar\fR [\fB-n\fR] [\fB-dump\fR] [\fB-v\fR] [\fB-visu\fR] [\fB--stealth\fR] \fIfile_name.cor\fR \fI...\fR
+\fB./corewar\fR [\fB-n\fR N] [\fB-dump\fR N] [\fB-v\fR N] [\fB-visu\fR] [\fB--stealth\fR] [\fB-a\fR] \fIfile_name.cor\fR \fI...\fR
 .br
 \fB./disassembler\fR \fIfile_name.cor\fR
 .SH DESCRIPTION
@@ -84,18 +84,29 @@ Assign order N to next champion, default is : first champ is first to play
 \fB-dump\fI N
 Dumps memory after N cycles then exits
 .TP
-\fB-v\fI
-Verbosity, print game informations
+\fB-v\fI N
+Verbosity levels, can be added together to enable several
+ - 0 : Show only essentials
+ - 1 : Show lives
+ - 2 : Show cycles
+ - 4 : Show operations (Params are NOT litteral ...)
+ - 8 : Show deaths
+ - 16 : Show PC movements (Except for jumps)
 .TP
 \fB-visu\fI
-Ncurse visual
+Ncurses output mode
 .TP
 \fB--stealth\fI
 Competition mode, hide code with visual
+.TP
+\fB-a\fI
+Prints output from "aff"
 .SH EXAMPLES
 "./asm 'zork.s'" Compile the champion zork.s in a file called zork.cor.
 .br
 "./corewar 'zork.cor' '42.cor' 'beegees.cor'" Launch the virtual machine with 'zork.cor', '42.cor' and 'beegees.cor' fighting each other.
+.br
+"./disassembler 'zork.cor'" Decompile the zork.cor file in a file called zork.s.
 .SH SEE ALSO
 No related manpage.
 .SH BUGS

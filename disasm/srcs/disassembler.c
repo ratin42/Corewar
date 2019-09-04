@@ -49,7 +49,7 @@ int					main(int ac, char **av)
 
 	if (ac != 2 || cor_file(av[1]) == -1)
 	{
-		ft_putstr_fd("Usage: ./decompiler <file.cor>\n", 2);
+		ft_putstr_fd("Usage: ./disassembler <file.cor>\n", 2);
 		exit(ERROR);
 	}
 	init_datas(&cor);
