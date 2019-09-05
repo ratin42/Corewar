@@ -14,10 +14,10 @@
 
 void	print_header(t_corewar *cor)
 {
-	ft_putstr_fd(".name \"", cor->fd);
+	ft_putstr_fd(NAME_CMD_STRING " \"", cor->fd);
 	ft_putstr_fd(cor->name, cor->fd);
 	ft_putstr_fd("\"\n", cor->fd);
-	ft_putstr_fd(".comment \"", cor->fd);
+	ft_putstr_fd(COMMENT_CMD_STRING " \"", cor->fd);
 	ft_putstr_fd(cor->comment, cor->fd);
 	ft_putstr_fd("\"\n", cor->fd);
 	ft_putstr_fd("\n", cor->fd);

@@ -51,7 +51,11 @@ static inline void	ft_get_arg(t_corewar *cor, t_arg *arg, int i)
 void				ft_get_args(t_corewar *cor, t_arg *arg)
 {
 	int				i;
+	char			separator[3];
 
+	separator[0] = SEPARATOR_CHAR;
+	separator[1] = ' ';
+	separator[2] = '\0';
 	i = 0;
 	while (i < arg->nb_arg)
 	{
@@ -59,7 +63,7 @@ void				ft_get_args(t_corewar *cor, t_arg *arg)
 		print_type(cor, arg->type[i]);
 		print_value(cor, arg->value[i]);
 		if (i + 1 < arg->nb_arg)
-			ft_putstr_fd(", ", cor->fd);
+			ft_putstr_fd(separator, cor->fd);
 		i++;
 	}
 }
