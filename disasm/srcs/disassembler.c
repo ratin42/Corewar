@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:21:52 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 02:10:58 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ uint32_t			swap_endian(uint32_t val)
 	return ((val << 16) | (val >> 16));
 }
 
-void				decomp_quit(char *str)
+void				decomp_quit(t_corewar *cor, char *str)
 {
 	ft_putstr_fd(str, 2);
+	free(cor->code);
 	exit(1);
 }
 
@@ -55,4 +56,6 @@ int					main(int ac, char **av)
 	init_datas(&cor);
 	read_process(av[1], &cor);
 	create_file(&cor, av[1]);
+	free(cor.code);
+	return (0);
 }

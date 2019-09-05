@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:17:25 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/03 13:32:40 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/05 02:00:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef	struct			s_arg
 
 uint32_t				swap_endian(uint32_t val);
 void					read_process(char *name, t_corewar *cor);
-void					decomp_quit(char *str);
+void					decomp_quit(t_corewar *cor, char *str);
 void					create_file(t_corewar *cor, char *name);
 void					print_file(t_corewar *cor);
 void					create_list(t_corewar *cor);

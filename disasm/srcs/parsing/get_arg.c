@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 12:45:32 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/01 20:22:18 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 02:04:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static inline void	print_value(t_corewar *cor, int value)
 {
 	char			*to_print;
 
-	to_print = ft_itoa((int)value);
+	if (!(to_print = ft_itoa((int)value)))
+		decomp_quit(cor, "Error ft_itoa\n");
 	ft_putstr_fd(to_print, cor->fd);
 	free(to_print);
 }
