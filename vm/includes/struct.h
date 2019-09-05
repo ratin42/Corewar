@@ -86,7 +86,7 @@ typedef struct			s_corewar
 	int					count;
 	int					last_live_id;
 	int					nb_players;
-	t_player			player[4];
+	t_player			player[MAX_PLAYERS];
 	int					nb_process;
 	int					nb_process_max;
 	unsigned int		current_live;
