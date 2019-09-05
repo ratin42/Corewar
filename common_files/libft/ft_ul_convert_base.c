@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 15:29:31 by saouas            #+#    #+#             */
-/*   Updated: 2019/09/04 16:04:04 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 12:51:39 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char							*ft_ul_convert_base(char *nbr,
 
 	size = 2;
 	ret = NULL;
-
 	tab[0] = u_base_to_decimal(nbr);
 	tab[1] = u_base_to_decimal(nbr);
 	tab[2] = 0;
