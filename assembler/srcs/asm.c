@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:17:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 01:21:58 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 13:50:37 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ void		print_writing(char *str)
 	ft_putstr(".cor\n");
 	free(new_file);
 }
-
-/* __attribute__((destructor)) void end (void)
-{
-	while (42);
-} */
 
 int			main(int ac, char **av)
 {

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 13:35:37 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:53:42 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static int	open_file(t_asm *asmbly, char *str)
 		ft_putstr_fd("Can't read source file ", 2);
 		ft_putstr_fd(str, 2);
 		ft_putchar_fd('\n', 2);
-		//free(str);
 		quit_prog(asmbly);
 	}
 	return (fd);

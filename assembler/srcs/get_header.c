@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 01:55:34 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 13:51:22 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ void	get_next_comment(t_asm *asmbly, char *str, int i)
 		return ;
 	}
 	if (asmbly->idx_comment >= COMMENT_LENGTH)
-	{
 		error_length(asmbly, 2, str);
-
-	}
 	asmbly->comment[asmbly->idx_comment] = '\n';
 	asmbly->idx_comment++;
 }
