@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 00:50:54 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:50:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,17 @@ static int		check_dir(char **param)
 	i = 0;
 	direct_char[0] = DIRECT_CHAR;
 	direct_char[1] = '\0';
+
 	if ((*param)[i] == DIRECT_CHAR)
 		i++;
 	else
 		return (0);
+
 	if ((*param)[i] == '\0')
 		return (0);
 	if ((*param)[i] == LABEL_CHAR)
 		return (check_label(&(*param)[i]));
+
 	while ((*param)[i])
 	{
 		if (((*param)[i] == '-' || (*param)[i] == '+')

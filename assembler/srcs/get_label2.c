@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 00:21:21 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/25 01:50:35 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			error_no_label(t_asm *asmbly, t_instru *instru, char *label)
 	ft_putstr_fd(" line ", 2);
 	ft_putnbr_fd(instru->line, 2);
 	ft_putstr_fd("\n", 2);
-	quit_prog(asmbly);
+	quit_prog(asmbly, 0);
 }
 
 static int		get_distance(t_instru **count)

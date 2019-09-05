@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 23:58:26 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 14:51:18 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/05 16:43:02 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	fill_label(t_asm *asmbly, t_instru *instru, int distance, int reverse)
 	size = 1;
 	conv = NULL;
 	if (!(addr = ft_itoa(distance)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	while (instru->conv_par[i] && instru->conv_par[i] != 'L')
 		i++;
-	instru->conv_par[i] == '\0' ? quit_prog(asmbly) : 0;
+	instru->conv_par[i] == '\0' ? quit_prog(asmbly, 0) : 0;
 	while (instru->conv_par[++i] && instru->conv_par[i] == 'L')
 		size++;
 	if (!(conv = ft_ul_convert_base(addr, "0123456789abcdef")))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	if (g_op_tab[instru->nbr_opcode - 1].direct_size == 0 && reverse == 1)
 		conv = ft_strjoin_free("ffff", conv, 2);
 	size -= ft_strlen(conv);

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 08:24:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 01:19:03 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:47:25 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		verify_label(t_asm *asmbly, char *label, int line, char *str)
 			ft_putstr_fd(&label[i], 2);
 			ft_putchar_fd('\n', 2);
 			free(str);
-			quit_prog(asmbly);
+			quit_prog(asmbly, 1);
 		}
 		i++;
 	}

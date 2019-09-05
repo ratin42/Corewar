@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:01:04 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 14:09:51 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static char		*convert_opcode(t_asm *asmbly, t_instru *instru)
 	c_opcode = NULL;
 	op_index = find_op_index(instru->opcode);
 	if (!(c_opcode = ft_itoa(g_op_tab[op_index].opcode)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	if (!(conv = ft_ul_convert_base(c_opcode, "0123456789abcdef")))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	free(c_opcode);
 	size -= ft_strlen(conv);
 	if (size > 0)

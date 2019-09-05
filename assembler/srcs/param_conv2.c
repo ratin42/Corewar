@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 04:38:57 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/09 11:25:13 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char		*reg_conver(t_asm *asmbly, t_param *param)
 	if (ft_strlen(result) < 2)
 	{
 		if (!(tmp = ft_strdup(result)))
-			quit_prog(asmbly);
+			quit_prog(asmbly, 0);
 		free(result);
 		if (!(result = (char *)ft_memalloc(sizeof(char) * 3)))
-			quit_prog(asmbly);
+			quit_prog(asmbly, 0);
 		result[0] = '0';
 		result[1] = tmp[0];
 		result[2] = '\0';

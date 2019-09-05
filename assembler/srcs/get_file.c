@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 14:40:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 15:24:24 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/05 16:54:36 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		parse_error(t_asm *asmbly, int line, char *str)
 	ft_putstr_fd(" for ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putchar_fd('\n', 2);
-	quit_prog(asmbly);
+	quit_prog(asmbly, 1);
 }
 
 void		parse(t_asm *asmbly, char *str, int turn)
@@ -52,7 +52,7 @@ static int	open_file(t_asm *asmbly, char *str)
 		ft_putstr_fd("Can't read source file ", 2);
 		ft_putstr_fd(str, 2);
 		ft_putchar_fd('\n', 2);
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	}
 	return (fd);
 }
@@ -65,7 +65,7 @@ void		check_name(t_asm *asmbly, char *file)
 	if (ft_strlen(file) < 2)
 	{
 		ft_putstr_fd("bad file name\n", 2);
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	}
 	while (file[i])
 		i++;
@@ -74,7 +74,7 @@ void		check_name(t_asm *asmbly, char *file)
 	else
 	{
 		ft_putstr_fd("bad file name\n", 2);
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	}
 }
 
@@ -99,7 +99,7 @@ int			parse_file(t_asm *asmbly, char *file)
 	if (asmbly->instru == NULL)
 	{
 		ft_putstr_fd("No instruction found\n", 2);
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	}
 	return (SUCCESS);
 }

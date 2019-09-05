@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:23:48 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 15:28:34 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/05 16:44:11 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,19 @@ void			free_prog(t_asm *asmbly)
 	free_instru(asmbly);
 }
 
-void			quit_prog(t_asm *asmbly)
+void			quit_prog(t_asm *asmbly, int type)
 {
 	free_prog(asmbly);
-	//get_next_line(0, NULL);
+	if (type == 1)
+		get_next_line(0, NULL);
+	exit(1);
+}
+
+void			free_quit_prog(t_asm *asmbly, char *str, int type)
+{
+	free(str);
+	free_prog(asmbly);
+	if (type == 1)
+		get_next_line(0, NULL);
 	exit(1);
 }

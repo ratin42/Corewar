@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 15:44:04 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*lab_conver(t_asm *asmbly, int size)
 
 	i = 0;
 	if (!(conv = (char *)ft_memalloc(sizeof(char) * size + 1)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	while (size - i)
 	{
 		conv[i] = 'L';
@@ -36,11 +36,11 @@ char			*fill_direct(t_asm *asmbly, int size, char **conv)
 
 	i = 0;
 	if (!(tmp = ft_strdup(*conv)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	free(*conv);
 	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	while (size - i)
 	{
 		(*conv)[i] = '0';
@@ -61,13 +61,13 @@ char			*reduce_conv(t_asm *asmbly, int size, char **conv)
 
 	i = 0;
 	if (!(tmp = ft_strdup(*conv)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	tmp_size = ft_strlen(tmp) - 1;
 	new_size = size + (int)ft_strlen(tmp) - 1;
 	free(*conv);
 	if (!(*conv = (char *)ft_memalloc(sizeof(char)
 		* (size + (int)ft_strlen(tmp) + 1))))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	(*conv)[new_size + 1] = '\0';
 	while (new_size >= 0)
 	{
@@ -99,9 +99,9 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	if (ft_strchr(param->param, LABEL_CHAR) != NULL)
 		return (lab_conver(asmbly, size));
 	if (!(cpy = ft_strdup(&param->param[1])))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	if (!(conv = ft_ul_convert_base(cpy, "0123456789abcdef")))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	free(cpy);
 	size -= ft_strlen(conv);
 	if (size > 0)
@@ -123,7 +123,7 @@ char			*ind_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	if (ft_strchr(param->param, LABEL_CHAR) != NULL)
 		return (lab_conver(asmbly, size));
 	if (!(conv = ft_ul_convert_base(param->param, "0123456789abcdef")))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	size -= ft_strlen(conv);
 	if (size > 0)
 		conv = fill_direct(asmbly, size, &conv);

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:14:55 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 23:23:11 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:52:59 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_error(t_asm *asmbly, char *str)
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
 	free(str);
-	quit_prog(asmbly);
+	quit_prog(asmbly, 1);
 }
 
 void	p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
@@ -35,5 +35,5 @@ void	p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins)
 	if (param->type == 4)
 		ft_putstr_fd("indirect", 2);
 	ft_putstr_fd("\n", 2);
-	quit_prog(asmbly);
+	quit_prog(asmbly, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 22:54:44 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 14:15:07 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ char			*get_result(t_asm *asmbly, t_param *param, t_instru **instru
 	{
 		if (!((*result) = ft_strjoin_free((*result), reg_conver(asmbly
 			, param), 3)))
-			quit_prog(asmbly);
+			quit_prog(asmbly, 0);
 	}
 	if (param->type == 2)
 	{
 		if (!((*result) = ft_strjoin_free((*result), dir_conver(asmbly, param
 			, *instru), 3)))
-			quit_prog(asmbly);
+			quit_prog(asmbly, 0);
 	}
 	if (param->type == 4)
 	{
 		if (!((*result) = ft_strjoin_free((*result), ind_conver(asmbly, param
 			, *instru), 3)))
-			quit_prog(asmbly);
+			quit_prog(asmbly, 0);
 	}
 	if (!((*result) = ft_strjoin_free((*result), ";", 1)))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	return (*result);
 }
 
@@ -46,7 +46,7 @@ char			*convert_params(t_asm *asmbly, t_instru **instru)
 	param = NULL;
 	result = NULL;
 	if (!(result = (char *)ft_memalloc(sizeof(char))))
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	param = (*instru)->param;
 	while (param)
 	{

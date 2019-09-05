@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 13:51:22 by gly              ###   ########.fr       */
+/*   Updated: 2019/09/05 16:53:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_length(t_asm *asmbly, int selector, char *str)
 		ft_putstr_fd("comment", 2);
 	ft_putstr_fd(" is too big\n", 2);
 	free(str);
-	quit_prog(asmbly);
+	quit_prog(asmbly, 1);
 }
 
 void	get_name(t_asm *asmbly, char *str)
@@ -43,7 +43,7 @@ void	get_name(t_asm *asmbly, char *str)
 	if (!(asmbly->name = ft_strsub(str, i, y)))
 	{
 		free(str);
-		quit_prog(asmbly);
+		quit_prog(asmbly, 0);
 	}
 	if (ft_strlen(asmbly->name) > PROG_NAME_LENGTH)
 		error_length(asmbly, 1, str);
