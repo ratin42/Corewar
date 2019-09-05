@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 08:24:07 by ratin             #+#    #+#             */
-/*   Updated: 2019/08/26 17:36:01 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 01:19:03 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		dlt_lst_empty_lbl(t_asm *asmbly)
 		move_label(asmbly, &instru);
 }
 
-void		verify_label(t_asm *asmbly, char *label, int line)
+void		verify_label(t_asm *asmbly, char *label, int line, char *str)
 {
 	int			i;
 
@@ -54,6 +54,7 @@ void		verify_label(t_asm *asmbly, char *label, int line)
 			ft_putstr_fd("] ->", 2);
 			ft_putstr_fd(&label[i], 2);
 			ft_putchar_fd('\n', 2);
+			free(str);
 			quit_prog(asmbly);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 21:16:00 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 16:30:20 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 01:17:32 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 		&& (str[i + y] < 9 || str[i + y] > 13))
 		y++;
 	if (!(opcode = ft_strsub(str, i, y)))
+	{
+		free(str);
 		quit_prog(asmbly);
+	}
 	check_opcode(asmbly, opcode, line, &str);
 	instru->opcode = opcode;
 	return (i);

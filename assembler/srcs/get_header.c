@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:42:13 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/04 23:35:00 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 01:55:34 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	error_length(t_asm *asmbly, int selector, char *str)
 	else if (selector == 2)
 		ft_putstr_fd("comment", 2);
 	ft_putstr_fd(" is too big\n", 2);
-	(void)str;
+	free(str);
 	quit_prog(asmbly);
 }
 
@@ -50,20 +50,27 @@ void	get_name(t_asm *asmbly, char *str)
 	asmbly->got_name = 1;
 }
 
-int		fill_comment(char *str, t_asm *asmbly)
+int		fill_comment(char *str, t_asm *asmbly, int indexer)
 {
 	int	i;
+	int	idx_lenght;
 
 	i = 0;
-	while (str[i] && str[i] != '"')
+	idx_lenght = 0;
+	while (str[indexer + i] && str[indexer + i] != '"')
 	{
 		if (asmbly->idx_comment >= COMMENT_LENGTH)
-			error_length(asmbly, 2, str);
-		asmbly->comment[asmbly->idx_comment] = str[i];
+		{
+			idx_lenght = -1;
+			break ;
+		}
+		asmbly->comment[asmbly->idx_comment] = str[indexer + i];
 		asmbly->idx_comment++;
 		i++;
 	}
-	if (str[i] == '"')
+	if (idx_lenght == -1)
+		error_length(asmbly, 2, str);
+	if (str[indexer + i] == '"')
 	{
 		asmbly->comment[asmbly->idx_comment] = '\0';
 		return (0);
@@ -73,14 +80,17 @@ int		fill_comment(char *str, t_asm *asmbly)
 
 void	get_next_comment(t_asm *asmbly, char *str, int i)
 {
-	if (!(fill_comment(&str[i], asmbly)))
+	if (!(fill_comment(str, asmbly, i)))
 	{
 		asmbly->in_comment = 0;
 		asmbly->got_comment = 1;
 		return ;
 	}
 	if (asmbly->idx_comment >= COMMENT_LENGTH)
+	{
 		error_length(asmbly, 2, str);
+
+	}
 	asmbly->comment[asmbly->idx_comment] = '\n';
 	asmbly->idx_comment++;
 }
