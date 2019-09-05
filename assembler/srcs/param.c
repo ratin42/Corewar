@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:02:59 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 16:49:42 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:34:38 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			get_comma(char *str, int i)
 	return (y);
 }
 
-int				get_last_param(t_asm *asmbly, char *str, int i, int line)
+int			get_last_param(t_asm *asmbly, char *str, int i, int line)
 {
 	int			y;
 	char		*param;
@@ -62,40 +62,43 @@ int				get_last_param(t_asm *asmbly, char *str, int i, int line)
 	return (1);
 }
 
-void		add_free_param(t_asm *asmbly, t_instru **instru, int line
-	, char **param)
+int			grep_param(t_asm *asmbly, char *str, int line, int *i)
 {
-	add_param(asmbly, *instru, line, *param);
-	free(*param);
+	int			y;
+
+	y = 0;
+	if (!(error_comma(asmbly, str, line, *i)))
+		return (-2);
+	while ((str[*i] == SEPARATOR_CHAR || str[*i] == 32
+		|| (str[*i] >= 9 && str[*i] <= 13)) && str[*i])
+		(*i)++;
+	if (str[*i] == '\0' || str[*i] == COMMENT_CHAR)
+		return (-1);
+	if ((y = get_comma(str, *i)) == -1)
+	{
+		if (!(get_last_param(asmbly, str, *i, line)))
+			return (-2);
+		return (-1);
+	}
+	return (y);
 }
 
-int				fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
+int			fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
 {
 	int			i;
-	int			y;
+	int			ret;
 	char		*param;
 
 	i = -1;
 	while (str[++i])
 	{
-		y = 0;
-		if (!(error_comma(asmbly, str, line, i)))
-			return (0);
-		while ((str[i] == SEPARATOR_CHAR || str[i] == 32
-			|| (str[i] >= 9 && str[i] <= 13)) && str[i])
-			i++;
-		if (str[i] == '\0' || str[i] == COMMENT_CHAR)
-			return (1);
-		if ((y = get_comma(str, i)) == -1)
-		{
-			if (!(get_last_param(asmbly, str, i, line)))
-				return (0);
-			return (1);
-		}
-		if (!(param = ft_strsub(str, i, y)))
+		ret = grep_param(asmbly, str, line, &i);
+		if (ret < 0)
+			return (ret + 2);
+		if (!(param = ft_strsub(str, i, ret)))
 			return (0);
 		add_free_param(asmbly, instru, line, &param);
-		i += y;
+		i += ret;
 		if (str[i] == '\0')
 			break ;
 	}

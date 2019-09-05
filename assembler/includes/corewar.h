@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 20:20:52 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 16:43:46 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:33:56 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int			error_type(t_asm *asmbly, t_param *param, char *str);
 void		print_error(t_asm *asmbly, char *str);
 void		p_error(t_asm *asmbly, t_param *param, int line, t_instru *ins);
 void		free_quit_prog(t_asm *asmbly, char *str, int type);
+void		add_free_param(t_asm *asmbly, t_instru **instru, int line
+			, char **param);
 
 /*
 ** instruction

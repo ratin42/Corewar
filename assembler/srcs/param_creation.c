@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 22:08:51 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:34:49 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ t_param			*create_param(t_asm *asmbly, int line, char *param)
 	new_param->param = ft_strdup(param);
 	new_param->next = NULL;
 	return (new_param);
+}
+
+void			add_free_param(t_asm *asmbly, t_instru **instru, int line
+	, char **param)
+{
+	add_param(asmbly, *instru, line, *param);
+	free(*param);
 }
 
 void			add_param(t_asm *asmbly, t_instru *instru

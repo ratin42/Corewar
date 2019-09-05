@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:41:23 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 16:50:48 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:10:10 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,20 @@ static int		check_ind(char **param)
 	return (1);
 }
 
-static int		check_dir(char **param)
+static int		check_dir(char **param, int i)
 {
-	int			i;
 	char		direct_char[2];
 
-	i = 0;
 	direct_char[0] = DIRECT_CHAR;
 	direct_char[1] = '\0';
-
 	if ((*param)[i] == DIRECT_CHAR)
 		i++;
 	else
 		return (0);
-
 	if ((*param)[i] == '\0')
 		return (0);
 	if ((*param)[i] == LABEL_CHAR)
 		return (check_label(&(*param)[i]));
-
 	while ((*param)[i])
 	{
 		if (((*param)[i] == '-' || (*param)[i] == '+')
@@ -96,9 +91,8 @@ static int		check_dir(char **param)
 			return (0);
 		i++;
 	}
-	if (!(*param = get_good_value(param, DIR_CODE)))
-		return (0);
-	if (!(*param = ft_strjoin_free(direct_char, *param, 2)))
+	if (!(*param = get_good_value(param, DIR_CODE))
+		|| !(*param = ft_strjoin_free(direct_char, *param, 2)))
 		return (0);
 	return (1);
 }
@@ -115,7 +109,7 @@ int				get_params_type(t_asm *asmbly, char *str, int line)
 	{
 		if (is_register(param->param) == T_REG)
 			param->type = T_REG;
-		else if (check_dir(&param->param) == 1)
+		else if (check_dir(&param->param, 0) == 1)
 			param->type = T_DIR;
 		else if (check_ind(&param->param) == 1)
 			param->type = T_IND;

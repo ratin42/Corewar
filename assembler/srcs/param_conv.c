@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 03:17:06 by ratin             #+#    #+#             */
-/*   Updated: 2019/09/05 16:41:28 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:11:48 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,7 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	size = 0;
 	op_index = 0;
 	op_index = find_op_index(instru->opcode);
-	if (g_op_tab[op_index].direct_size == 1)
-		size = 4;
-	else
-		size = 8;
+	size = g_op_tab[op_index].direct_size == 1 ? 4 : 8;
 	if (ft_strchr(param->param, LABEL_CHAR) != NULL)
 		return (lab_conver(asmbly, size));
 	if (!(cpy = ft_strdup(&param->param[1])))

@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 13:52:25 by syzhang           #+#    #+#             */
-/*   Updated: 2019/09/05 16:48:45 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 17:38:23 by ratin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			check_end_coma(t_asm *asmbly, char *str, int line)
 	(void)asmbly;
 }
 
-int				get_params(t_asm *asmbly, char *str, int line)
+int			get_params(t_asm *asmbly, char *str, int line)
 {
 	t_instru	*instru;
 	int			i;
@@ -54,7 +54,7 @@ int				get_params(t_asm *asmbly, char *str, int line)
 	return (1);
 }
 
-int		error_comma(t_asm *asmbly, char *str, int line, int i)
+int			error_comma(t_asm *asmbly, char *str, int line, int i)
 {
 	if (str[i] == SEPARATOR_CHAR && str[i + 1] == SEPARATOR_CHAR)
 	{
