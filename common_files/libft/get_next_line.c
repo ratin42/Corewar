@@ -6,7 +6,7 @@
 /*   By: ratin <ratin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 01:06:11 by hlombard          #+#    #+#             */
-/*   Updated: 2019/09/04 17:25:11 by ratin            ###   ########.fr       */
+/*   Updated: 2019/09/05 13:02:56 by hlombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,22 @@ static int			stock_increase(char **stock, char *buf, int ret)
 	return (1);
 }
 
+static void			init_or_free_static(int *ret, char **buf,
+						char **line, char **stock)
+{
+	if (!line)
+		free(*stock);
+	*ret = 0;
+	*buf = ft_strnew(BUFF_SIZE);
+}
+
 int					get_next_line(const int fd, char **line)
 {
 	int				ret;
 	char			*buf;
 	static char		*stock = NULL;
 
-	ret = 0;
-	buf = ft_strnew(BUFF_SIZE);
+	init_or_free_static(&ret, &buf, line, &stock);
 	if (read(fd, buf, 0) == -1 || fd < 0 || !line || BUFF_SIZE < 1)
 	{
 		ft_strdel(&buf);
