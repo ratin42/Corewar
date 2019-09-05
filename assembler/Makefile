@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/09/05 14:48:17 by hlombard          #+#    #+#              #
+#    Updated: 2019/09/05 14:48:26 by hlombard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = asm
 
 CC = gcc
 
-CFLAGS = -g -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
+CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 #CFLAGS = -fsanitize=address -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
