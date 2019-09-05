@@ -15,7 +15,8 @@ NAME = disassembler
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
+CFLAGS = -g -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
+#CFLAGS = -fsanitize=address -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
 C_BLUE = "\033[36m"
@@ -48,7 +49,7 @@ libft:
 	@make -C $(LIBFT) -s
 
 $(NAME): $(LIBFT) $(INC_FOLD) Makefile $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT.a) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT.a) -o $(NAME)
 	@printf "\n\x1b[32mDISASSEMBLER Ready ✔\x1b[0m\n\n"
 
 %.o: %.c $(INC) $(OP)

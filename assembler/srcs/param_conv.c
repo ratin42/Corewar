@@ -96,7 +96,7 @@ char			*dir_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 		size = 4;
 	else
 		size = 8;
-	if (ft_strchr(param->param, ':') != NULL)
+	if (ft_strchr(param->param, LABEL_CHAR) != NULL)
 		return (lab_conver(asmbly, size));
 	if (!(cpy = ft_strdup(&param->param[1])))
 		quit_prog(asmbly);
@@ -120,7 +120,7 @@ char			*ind_conver(t_asm *asmbly, t_param *param, t_instru *instru)
 	i = 0;
 	conv = NULL;
 	size = 4;
-	if (ft_strchr(param->param, ':') != NULL)
+	if (ft_strchr(param->param, LABEL_CHAR) != NULL)
 		return (lab_conver(asmbly, size));
 	if (!(conv = ft_ul_convert_base(param->param, "0123456789abcdef")))
 		quit_prog(asmbly);

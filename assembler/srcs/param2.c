@@ -17,7 +17,7 @@ static int		check_label(char *param)
 	int			i;
 
 	i = 1;
-	if (param[0] != ':')
+	if (param[0] != LABEL_CHAR)
 		return (0);
 	if (param[i] == '\0')
 		return (0);
@@ -53,7 +53,7 @@ static int		check_ind(char **param)
 	int			i;
 
 	i = 0;
-	if ((*param)[i] == ':')
+	if ((*param)[i] == LABEL_CHAR)
 		return (check_label((*param)));
 	while ((*param)[i])
 	{
@@ -71,15 +71,18 @@ static int		check_ind(char **param)
 static int		check_dir(char **param)
 {
 	int			i;
+	char		direct_char[2];
 
 	i = 0;
-	if ((*param)[i] == '%')
+	direct_char[0] = DIRECT_CHAR;
+	direct_char[1] = '\0';
+	if ((*param)[i] == DIRECT_CHAR)
 		i++;
 	else
 		return (0);
 	if ((*param)[i] == '\0')
 		return (0);
-	if ((*param)[i] == ':')
+	if ((*param)[i] == LABEL_CHAR)
 		return (check_label(&(*param)[i]));
 	while ((*param)[i])
 	{
@@ -92,7 +95,7 @@ static int		check_dir(char **param)
 	}
 	if (!(*param = get_good_value(param, DIR_CODE)))
 		return (0);
-	if (!(*param = ft_strjoin_free("%", *param, 2)))
+	if (!(*param = ft_strjoin_free(direct_char, *param, 2)))
 		return (0);
 	return (1);
 }

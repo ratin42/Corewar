@@ -14,10 +14,13 @@
 
 static inline void	print_type(t_corewar *cor, t_arg_type arg_type)
 {
+	char		direct_char[1];
+
+	direct_char[0] = DIRECT_CHAR;
 	if (arg_type == REG_CODE)
 		ft_putstr_fd("r", cor->fd);
 	if (arg_type == DIR_CODE)
-		ft_putstr_fd("%", cor->fd);
+		write(cor->fd, direct_char, 1);
 }
 
 static inline void	print_value(t_corewar *cor, int value)

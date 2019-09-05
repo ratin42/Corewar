@@ -19,11 +19,11 @@ int			check_end_coma(t_asm *asmbly, char *str, int line)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '#')
+		if (str[i] == COMMENT_CHAR)
 			return (1);
 		i++;
 	}
-	if (str[ft_strlen(str) - 1] == ',')
+	if (str[ft_strlen(str) - 1] == SEPARATOR_CHAR)
 	{
 		ft_putstr_fd("Syntax error ENDLINE line ", 2);
 		ft_putnbr_fd(line, 2);
@@ -56,7 +56,7 @@ int				get_params(t_asm *asmbly, char *str, int line)
 
 int		error_comma(t_asm *asmbly, char *str, int line, int i)
 {
-	if (str[i] == ',' && str[i + 1] == ',')
+	if (str[i] == SEPARATOR_CHAR && str[i + 1] == SEPARATOR_CHAR)
 	{
 		ft_putstr_fd("Error double comma at line ", 2);
 		ft_putnbr_fd(line, 2);

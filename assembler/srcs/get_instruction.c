@@ -41,7 +41,7 @@ int				get_label(t_asm *asmbly, char *str, int line)
 		free(str);
 		quit_prog(asmbly);
 	}
-	if (label[ft_strlen(label) - 1] == ':')
+	if (label[ft_strlen(label) - 1] == LABEL_CHAR)
 	{
 		free(label);
 		if (!(label = ft_strsub(str, y, (size_t)i - 1)))

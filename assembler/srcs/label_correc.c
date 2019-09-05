@@ -49,7 +49,7 @@ void		verify_label(t_asm *asmbly, char *label, int line, char *str)
 		{
 			ft_putstr_fd("Lexical error for label at [", 2);
 			ft_putnbr_fd(line, 2);
-			ft_putchar_fd(':', 2);
+			ft_putchar_fd(LABEL_CHAR, 2);
 			ft_putnbr_fd(i, 2);
 			ft_putstr_fd("] ->", 2);
 			ft_putstr_fd(&label[i], 2);

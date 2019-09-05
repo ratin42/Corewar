@@ -34,7 +34,7 @@ int			get_comma(char *str, int i)
 	int			y;
 
 	y = 0;
-	while (str[i + y] && str[i + y] != ',' && str[i + y] != 32
+	while (str[i + y] && str[i + y] != SEPARATOR_CHAR && str[i + y] != 32
 		&& (str[i + y] < 9 || str[i + y] > 13))
 	{
 		if (str[i + y] == COMMENT_CHAR)
@@ -53,7 +53,7 @@ int				get_last_param(t_asm *asmbly, char *str, int i, int line)
 	y = 0;
 	if (!(instru = find_instru(asmbly, line)))
 		instru = get_last_instru(asmbly);
-	while (str[i + y] && str[i + y] != '#')
+	while (str[i + y] && str[i + y] != COMMENT_CHAR)
 		y++;
 	if (!(param = ft_strsub(str, i, y)))
 		return (0);
@@ -81,7 +81,7 @@ int				fill_params(t_asm *asmbly, t_instru **instru, char *str, int line)
 		y = 0;
 		if (!(error_comma(asmbly, str, line, i)))
 			return (0);
-		while ((str[i] == ',' || str[i] == 32
+		while ((str[i] == SEPARATOR_CHAR || str[i] == 32
 			|| (str[i] >= 9 && str[i] <= 13)) && str[i])
 			i++;
 		if (str[i] == '\0' || str[i] == COMMENT_CHAR)

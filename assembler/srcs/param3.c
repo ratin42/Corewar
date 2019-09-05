@@ -49,7 +49,7 @@ void			print_erro_param(t_asm *asmbly, char *str, int line, int error)
 	else if (error == 2)
 		ft_putstr_fd("bad number of parameter at [", 2);
 	ft_putnbr_fd(line, 2);
-	ft_putchar_fd(':', 2);
+	ft_putchar_fd(LABEL_CHAR, 2);
 	ft_putnbr_fd(0, 2);
 	ft_putstr_fd("] ->", 2);
 	ft_putstr_fd(str, 2);

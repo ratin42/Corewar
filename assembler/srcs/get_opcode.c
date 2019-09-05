@@ -66,7 +66,7 @@ int				get_opcode(t_asm *asmbly, char *str, int line)
 	if (!(instru = find_instru(asmbly, line)))
 		instru = get_last_instru(asmbly);
 	i = pass_label_char(str);
-	if (str[i] == ':')
+	if (str[i] == LABEL_CHAR)
 		i++;
 	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
 		i++;
@@ -90,7 +90,7 @@ int				check_opc_presence(char *str)
 	int			i;
 
 	i = 0;
-	while (str[i] && str[i] != ':')
+	while (str[i] && str[i] != LABEL_CHAR)
 		i++;
 	while (str[++i])
 	{
