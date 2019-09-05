@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hlombard <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/09/05 14:43:18 by hlombard          #+#    #+#              #
+#    Updated: 2019/09/05 14:43:32 by hlombard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = corewar
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 #CFLAGS = -fsanitize=address -Wall -Werror -Wextra -I $(LIBFT) -I$(OP) -I$(INC_FOLD)
 
 C_GREEN = "\033[32m"
