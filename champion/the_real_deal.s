@@ -6,6 +6,7 @@
 fork:
         live %1
         fork %:fork
+		aff r1
 live:
         live %1
         zjmp %:live
