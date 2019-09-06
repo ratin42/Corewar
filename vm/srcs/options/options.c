@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 14:10:21 by gly               #+#    #+#             */
-/*   Updated: 2019/09/03 15:59:22 by hlombard         ###   ########.fr       */
+/*   Updated: 2019/09/06 16:21:37 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dump_option(t_corewar *cor, char **av, int *i)
 
 void	verbosity_option(t_corewar *cor, char **av, int ac, int *i)
 {
-	if (*i + 1 > ac)
+	if (*i + 1 >= ac)
 	{
 		corewar_usage();
 		corewar_quit("");
